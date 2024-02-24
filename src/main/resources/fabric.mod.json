@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "tropicraft",
+  "version": "${version}",
+
+  "name": "Tropicraft",
+  "description": "A port of Tropicraft 3.0.5 for Minecraft 1.2.5 to StationAPI",
+  "authors": [
+    "DanyGames2014"
+  ],
+
+  "license": "MIT",
+  "icon": "assets/tropicraft/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "stationapi:event_bus": [
+    ],
+    "stationapi:event_bus_client": [
+    ],
+    "stationapi:event_bus_server": [
+    ]
+  },
+  "mixins": [
+    "tropicraft.mixins.json"
+  ],
+
+  "depends": {
+    "minecraft": "1.0.0-beta.7.3"
+  }
+}
