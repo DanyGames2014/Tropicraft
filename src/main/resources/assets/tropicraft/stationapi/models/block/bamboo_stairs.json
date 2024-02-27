@@ -1,8 +1,6 @@
 {
-  "parent": "minecraft:block/oak_stairs",
+  "parent": "tropicraft:block/template_stairs",
   "textures": {
-    "all": "tropicraft:block/bamboo_planks",
-    "side": "tropicraft:block/bamboo_planks",
-    "top": "tropicraft:block/bamboo_planks"
+    "all": "tropicraft:block/bamboo_planks"
   }
 }
