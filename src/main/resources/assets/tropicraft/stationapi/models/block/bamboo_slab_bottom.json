@@ -1,5 +1,5 @@
 {
-  "parent": "tropicraft:block/template/stairs",
+  "parent": "tropicraft:block/template/slab_bottom",
   "textures": {
     "all": "tropicraft:block/bamboo_planks"
   }
