@@ -13,28 +13,18 @@ import net.modificationstation.stationapi.api.util.Identifier;
 import net.modificationstation.stationapi.api.util.math.Direction;
 import net.modificationstation.stationapi.api.world.BlockStateView;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class SlabBlockTemplate extends TemplateBlock {
 
     public static final EnumProperty<SlabType> SLAB_TYPE = EnumProperty.of("slab_type", SlabType.class);
-    Block doubleBlock;
-    boolean doubleSlab;
 
-
-    public SlabBlockTemplate(Identifier identifier, Block baseBlock, Block doubleBlock) {
-        super(identifier, baseBlock.material);
-        this.doubleBlock = doubleBlock;
-        this.doubleSlab = false;
-        this.setBoundingBox(0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F);
-    }
 
     public SlabBlockTemplate(Identifier identifier, Block baseBlock) {
         super(identifier, baseBlock.material);
-        this.doubleBlock = null;
-        this.doubleSlab = true;
-        this.setBoundingBox(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+        this.setBoundingBox(0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F);
+        this.setOpacity(0);
     }
 
     @Override
@@ -63,10 +53,6 @@ public class SlabBlockTemplate extends TemplateBlock {
         BlockState state = getDefaultState();
         Direction side = context.getSide();
 
-        if (this.doubleSlab) {
-            return state.with(SLAB_TYPE, SlabType.DOUBLE);
-        }
-
         if (side == Direction.DOWN) {
             return state.with(SLAB_TYPE, SlabType.TOP);
         } else {
@@ -79,17 +65,17 @@ public class SlabBlockTemplate extends TemplateBlock {
         // 1 = Placed on bottom face
         // 0 = Placed on top face
 
-        if (!this.doubleSlab) {
+        if (!(world.getBlockState(x, y, z).get(SLAB_TYPE) == SlabType.DOUBLE)) {
             if (direction == 1 || direction == 0) {
                 int offset = direction == 0 ? 1 : -1;
 
                 if (world.getBlockId(x, y + offset, z) == this.id) {
                     if (direction == 0 && world.getBlockState(x, y + offset, z).get(SLAB_TYPE) == SlabType.TOP) {
                         world.setBlock(x, y, z, 0);
-                        world.setBlockState(x, y + offset, z, doubleBlock.getDefaultState().with(SLAB_TYPE, SlabType.DOUBLE));
+                        world.setBlockState(x, y + offset, z, this.getDefaultState().with(SLAB_TYPE, SlabType.DOUBLE));
                     } else if (direction == 1 && world.getBlockState(x, y + offset, z).get(SLAB_TYPE) == SlabType.BOTTOM) {
                         world.setBlock(x, y, z, 0);
-                        world.setBlockState(x, y + offset, z, doubleBlock.getDefaultState().with(SLAB_TYPE, SlabType.DOUBLE));
+                        world.setBlockState(x, y + offset, z, this.getDefaultState().with(SLAB_TYPE, SlabType.DOUBLE));
                     }
                 }
             }
@@ -97,17 +83,24 @@ public class SlabBlockTemplate extends TemplateBlock {
     }
 
     @Override
-    public int getDroppedItemCount(Random random) {
-        return doubleSlab ? 2 : 1;
+    public List<ItemStack> getDropList(World world, int x, int y, int z, BlockState state, int meta) {
+        ArrayList<ItemStack> drops = new ArrayList<>();
+        if (state.get(SLAB_TYPE) == SlabType.DOUBLE) {
+            drops.add(new ItemStack(this, 2));
+            return drops;
+        } else {
+            drops.add(new ItemStack(this, 1));
+            return drops;
+        }
     }
 
     @Override
     public boolean isFullCube() {
-        return doubleSlab;
+        return false;
     }
 
     @Override
     public boolean isOpaque() {
-        return doubleSlab;
+        return false;
     }
 }
