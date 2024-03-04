@@ -75,6 +75,7 @@ public class Tropicraft {
         pinaColada = new PinaColadaItem(NAMESPACE.id("pina_colada")).setTranslationKey(NAMESPACE, "pina_colada");
     }
 
+    @EventListener
     public void registerDimension(DimensionRegistryEvent event) {
         DimensionRegistry registry = event.registry;
         event.registry.register(NAMESPACE.id("tropics"), new DimensionContainer<>(TropicsDimension::new));

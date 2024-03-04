@@ -1,6 +1,7 @@
 package net.danygames2014.tropicraft.item.food;
 
 import net.danygames2014.tropicraft.Tropicraft;
+import net.minecraft.class_467;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
@@ -15,7 +16,12 @@ public class PinaColadaItem extends TemplateFoodItem {
 
     @Override
     public ItemStack use(ItemStack stack, World world, PlayerEntity user) {
-        DimensionHelper.switchDimension(user, Tropicraft.NAMESPACE.id("tropics"), 1, null);
+        DimensionHelper.switchDimension(
+                user,
+                Tropicraft.NAMESPACE.id("tropics"),
+                1,
+                new class_467()
+        );
 
         return stack;
     }
