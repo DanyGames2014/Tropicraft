@@ -1,6 +1,0 @@
-{
-  "parent": "tropicraft:block/template/slab_top",
-  "textures": {
-    "all": "tropicraft:block/bamboo_planks"
-  }
-}
