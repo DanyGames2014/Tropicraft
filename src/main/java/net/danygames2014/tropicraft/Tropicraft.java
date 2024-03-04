@@ -1,6 +1,6 @@
 package net.danygames2014.tropicraft;
 
-import net.danygames2014.tropicraft.block.BambooBlock;
+import net.danygames2014.tropicraft.block.BambooShootBlock;
 import net.danygames2014.tropicraft.block.template.SlabBlockTemplate;
 import net.danygames2014.tropicraft.block.template.StairsBlockTemplate;
 import net.mine_diver.unsafeevents.listener.EventListener;
@@ -29,7 +29,7 @@ public class Tropicraft {
 
     @EventListener
     public void registerBlocks(BlockRegistryEvent event) {
-        bambooShoot = new BambooBlock(NAMESPACE.id("bamboo_shoot")).setTranslationKey(NAMESPACE, "bamboo_block").disableAutoItemRegistration();
+        bambooShoot = new BambooShootBlock(NAMESPACE.id("bamboo_shoot")).setTranslationKey(NAMESPACE, "bamboo_block").disableAutoItemRegistration();
         bambooPlanksBlock = new TemplateBlock(NAMESPACE.id("bamboo_planks"), Material.WOOD).setTranslationKey(NAMESPACE, "bamboo_planks").setHardness(1.0F).setResistance(0.1F);
         bambooStairs = new StairsBlockTemplate(NAMESPACE.id("bamboo_stairs"), bambooPlanksBlock).setTranslationKey(NAMESPACE, "bamboo_stairs").setHardness(1.0F).setResistance(0.1F);
         bambooSlab = new SlabBlockTemplate(NAMESPACE.id("bamboo_slab"), bambooPlanksBlock).setTranslationKey(NAMESPACE, "bamboo_slab").setHardness(1.0F).setResistance(0.1F);

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    "ppp"
+  ],
+  "key":
+  {
+    "p":
+    {
+      "item": "tropicraft:bamboo_planks"
+    }
+  },
+  "result":
+  {
+    "item": "tropicraft:bamboo_slab",
+    "count": 3
+  }
+}

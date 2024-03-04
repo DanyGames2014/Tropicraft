@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    "p",
+    "pp",
+    "ppp"
+  ],
+  "key":
+  {
+    "p":
+    {
+      "item": "tropicraft:bamboo_planks"
+    }
+  },
+  "result":
+  {
+    "item": "tropicraft:bamboo_stairs",
+    "count": 6
+  }
+}

@@ -10,9 +10,9 @@ import net.modificationstation.stationapi.api.util.Identifier;
 
 import java.util.Random;
 
-public class BambooBlock extends TemplateBlock {
+public class BambooShootBlock extends TemplateBlock {
 
-    public BambooBlock(Identifier identifier) {
+    public BambooShootBlock(Identifier identifier) {
         super(identifier, Material.field_988);
         float f = 0.375f;
         this.setBoundingBox(0.5f - f, 0.0f, 0.5f - f, 0.5f + f, 1.0f, 0.5f + f);
