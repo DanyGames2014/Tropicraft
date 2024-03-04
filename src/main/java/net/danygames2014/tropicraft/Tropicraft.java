@@ -3,15 +3,19 @@ package net.danygames2014.tropicraft;
 import net.danygames2014.tropicraft.block.BambooShootBlock;
 import net.danygames2014.tropicraft.block.template.SlabBlockTemplate;
 import net.danygames2014.tropicraft.block.template.StairsBlockTemplate;
+import net.danygames2014.tropicraft.item.food.PinaColadaItem;
+import net.danygames2014.tropicraft.world.TropicsDimension;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.block.Block;
 import net.minecraft.block.Material;
 import net.minecraft.item.Item;
 import net.modificationstation.stationapi.api.event.registry.BlockRegistryEvent;
+import net.modificationstation.stationapi.api.event.registry.DimensionRegistryEvent;
 import net.modificationstation.stationapi.api.event.registry.ItemRegistryEvent;
 import net.modificationstation.stationapi.api.mod.entrypoint.Entrypoint;
+import net.modificationstation.stationapi.api.registry.DimensionContainer;
+import net.modificationstation.stationapi.api.registry.DimensionRegistry;
 import net.modificationstation.stationapi.api.template.block.TemplateBlock;
-import net.modificationstation.stationapi.api.template.block.TemplateSaplingBlock;
 import net.modificationstation.stationapi.api.template.item.BlockStateItem;
 import net.modificationstation.stationapi.api.util.Namespace;
 import net.modificationstation.stationapi.api.util.Null;
@@ -20,12 +24,15 @@ public class Tropicraft {
     @Entrypoint.Namespace
     public static final Namespace NAMESPACE = Null.get();
 
+    // Bamboo
     public static Block bambooShootBlock;
     public static Block bambooPlanksBlock;
     public static Block bambooStairs;
     public static Block bambooSlab;
     //public static Block bambooFence;
+    public static Item bambooShootItem;
 
+    // Palm
     public static Block palmLog;
     public static Block palmLeaves;
     public static Block palmSapling;
@@ -33,7 +40,8 @@ public class Tropicraft {
     public static Block palmStairs;
     public static Block palmSlab;
 
-    public static Item bambooShootItem;
+    // Drinks
+    public static Item pinaColada;
 
     @EventListener
     public void registerBlocks(BlockRegistryEvent event) {
@@ -61,5 +69,13 @@ public class Tropicraft {
         bambooShootItem = new BlockStateItem(NAMESPACE.id("bamboo_shoot"), bambooShootBlock.getDefaultState()).setTranslationKey(NAMESPACE, "bamboo");
         //bambooSpear
         //bambooMug
+
+        // Drinks
+        pinaColada = new PinaColadaItem(NAMESPACE.id("pina_colada")).setTranslationKey(NAMESPACE, "pina_colada");
+    }
+
+    public void registerDimension(DimensionRegistryEvent event) {
+        DimensionRegistry registry = event.registry;
+        event.registry.register(NAMESPACE.id("tropics"), new DimensionContainer<>(TropicsDimension::new));
     }
 }
