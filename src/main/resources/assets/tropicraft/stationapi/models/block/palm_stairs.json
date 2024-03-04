@@ -1,0 +1,6 @@
+{
+  "parent": "tropicraft:block/template/stairs",
+  "textures": {
+    "all": "tropicraft:block/palm_planks"
+  }
+}
