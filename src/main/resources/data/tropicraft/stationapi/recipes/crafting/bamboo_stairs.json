@@ -2,8 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "pattern":
   [
-    "p",
-    "pp",
+    "p  ",
+    "pp ",
     "ppp"
   ],
   "key":
@@ -16,6 +16,6 @@
   "result":
   {
     "item": "tropicraft:bamboo_stairs",
-    "count": 6
+    "count": 4
   }
 }
