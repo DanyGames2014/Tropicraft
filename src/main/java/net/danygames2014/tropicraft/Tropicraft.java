@@ -20,6 +20,7 @@ import net.modificationstation.stationapi.api.template.item.BlockStateItem;
 import net.modificationstation.stationapi.api.util.Namespace;
 import net.modificationstation.stationapi.api.util.Null;
 
+@SuppressWarnings("unused")
 public class Tropicraft {
     @Entrypoint.Namespace
     public static final Namespace NAMESPACE = Null.get();
