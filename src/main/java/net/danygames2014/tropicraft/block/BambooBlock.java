@@ -1,9 +1,8 @@
 package net.danygames2014.tropicraft.block;
 
-import net.danygames2014.tropicraft.util.RenderType;
+import net.danygames2014.tropicraft.Tropicraft;
 import net.minecraft.block.Block;
 import net.minecraft.block.Material;
-import net.minecraft.item.Item;
 import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
 import net.modificationstation.stationapi.api.template.block.TemplateBlock;
@@ -40,7 +39,7 @@ public class BambooBlock extends TemplateBlock {
     }
 
     @Override
-    public boolean canPlaceAt(World world, int x, int y, int z, int side) {
+    public boolean canPlaceAt(World world, int x, int y, int z) {
         int blockIdBelow = world.getBlockId(x, y - 1, z);
         if (blockIdBelow == this.id) {
             return true;
@@ -84,7 +83,7 @@ public class BambooBlock extends TemplateBlock {
 
     @Override
     public int getDroppedItemId(int blockMeta, Random random) {
-        return Item.SUGAR_CANE.id;
+        return Tropicraft.bambooItem.id;
     }
 
     @Override

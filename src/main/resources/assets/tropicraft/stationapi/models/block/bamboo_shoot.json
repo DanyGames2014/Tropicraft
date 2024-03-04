@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cross",
   "textures": {
-    "cross": "tropicraft:block/bamboo"
+    "cross": "tropicraft:block/bamboo_shoot"
   }
 }

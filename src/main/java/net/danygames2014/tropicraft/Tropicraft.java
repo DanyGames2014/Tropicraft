@@ -11,21 +11,15 @@ import net.modificationstation.stationapi.api.event.registry.BlockRegistryEvent;
 import net.modificationstation.stationapi.api.event.registry.ItemRegistryEvent;
 import net.modificationstation.stationapi.api.mod.entrypoint.Entrypoint;
 import net.modificationstation.stationapi.api.template.block.TemplateBlock;
-import net.modificationstation.stationapi.api.template.block.TemplateFenceBlock;
-import net.modificationstation.stationapi.api.template.item.TemplateBlockItem;
+import net.modificationstation.stationapi.api.template.item.BlockStateItem;
 import net.modificationstation.stationapi.api.util.Namespace;
 import net.modificationstation.stationapi.api.util.Null;
-import org.lwjgl.input.Controller;
-import org.lwjgl.input.Controllers;
-import org.lwjgl.input.Keyboard;
-
-import java.util.Arrays;
 
 public class Tropicraft {
     @Entrypoint.Namespace
     public static final Namespace NAMESPACE = Null.get();
 
-    public static Block bambooBlock;
+    public static Block bambooShoot;
     public static Block bambooPlanksBlock;
     public static Block bambooStairs;
     public static Block bambooSlab;
@@ -34,8 +28,8 @@ public class Tropicraft {
     public static Item bambooItem;
 
     @EventListener
-    public void registerBlocks(BlockRegistryEvent event){
-        bambooBlock = new BambooBlock(NAMESPACE.id("bamboo_block")).setTranslationKey(NAMESPACE, "bamboo_block").disableAutoItemRegistration();
+    public void registerBlocks(BlockRegistryEvent event) {
+        bambooShoot = new BambooBlock(NAMESPACE.id("bamboo_shoot")).setTranslationKey(NAMESPACE, "bamboo_block").disableAutoItemRegistration();
         bambooPlanksBlock = new TemplateBlock(NAMESPACE.id("bamboo_planks"), Material.WOOD).setTranslationKey(NAMESPACE, "bamboo_planks").setHardness(1.0F).setResistance(0.1F);
         bambooStairs = new StairsBlockTemplate(NAMESPACE.id("bamboo_stairs"), bambooPlanksBlock).setTranslationKey(NAMESPACE, "bamboo_stairs").setHardness(1.0F).setResistance(0.1F);
         bambooSlab = new SlabBlockTemplate(NAMESPACE.id("bamboo_slab"), bambooPlanksBlock).setTranslationKey(NAMESPACE, "bamboo_slab").setHardness(1.0F).setResistance(0.1F);
@@ -43,6 +37,7 @@ public class Tropicraft {
     }
 
     @EventListener
-    public void registerItems(ItemRegistryEvent event){
+    public void registerItems(ItemRegistryEvent event) {
+        bambooItem = new BlockStateItem(NAMESPACE.id("bamboo_shoot"), bambooShoot.getDefaultState()).setTranslationKey(NAMESPACE, "bamboo");
     }
 }
