@@ -83,7 +83,7 @@ public class BambooShootBlock extends TemplateBlock {
 
     @Override
     public int getDroppedItemId(int blockMeta, Random random) {
-        return Tropicraft.bambooItem.id;
+        return Tropicraft.bambooShootItem.id;
     }
 
     @Override
