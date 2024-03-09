@@ -5,6 +5,17 @@ tile.bamboo_planks.name=Bamboo Planks
 tile.bamboo_stairs.name=Bamboo Stairs
 tile.bamboo_slab.name=Bamboo Slab
 
+## Palm
+tile.palm_log.name=Palm Wood
+tile.palm_planks.name=Palm Planks
+tile.palm_stairs.name=Palm Stairs
+tile.palm_slab.name=Palm Slab
+tile.palm_leaves.name=Palm Leaves
+
 # Items
 ## Bamboo
 item.bamboo.name=Bamboo Shoot
+
+# Dimension
+dim.tropics.entering=Drifting into the Tropics!
+dim.tropics.leaving=Leaving the Tropics!
