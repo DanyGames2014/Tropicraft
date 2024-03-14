@@ -1,6 +1,7 @@
 package net.danygames2014.tropicraft;
 
 import net.danygames2014.tropicraft.block.BambooShootBlock;
+import net.danygames2014.tropicraft.block.TropiFlowerBlock;
 import net.danygames2014.tropicraft.block.template.SlabBlockTemplate;
 import net.danygames2014.tropicraft.block.template.StairsBlockTemplate;
 import net.danygames2014.tropicraft.item.food.PinaColadaItem;
@@ -42,6 +43,23 @@ public class Tropicraft {
     public static Block palmStairs;
     public static Block palmSlab;
 
+    // Flowers
+    public static Block commelinaDiffusa;
+    public static Block crocosmia;
+    public static Block orchid;
+    public static Block canna;
+    public static Block anemone;
+    public static Block orange_anthurium;
+    public static Block red_anthurium;
+    public static Block magic_mushroom;
+    public static Block pathos;
+    public static Block acai_vine;
+    public static Block croton;
+    public static Block dracaena;
+    public static Block fern;
+    public static Block foliage;
+    public static Block bromeliad;
+
     // Drinks
     public static Item pinaColada;
 
@@ -63,6 +81,23 @@ public class Tropicraft {
         palmPlanks = new TemplateBlock(NAMESPACE.id("palm_planks"), Material.WOOD).setTranslationKey(NAMESPACE, "palm_planks").setHardness(1.0F).setResistance(0.1F);
         palmStairs = new StairsBlockTemplate(NAMESPACE.id("palm_stairs"), palmPlanks).setTranslationKey(NAMESPACE, "palm_stairs").setHardness(1.0F).setResistance(0.1F);
         palmSlab = new SlabBlockTemplate(NAMESPACE.id("palm_slab"), palmPlanks).setTranslationKey(NAMESPACE, "palm_planks").setHardness(1.0F).setResistance(0.1F);
+
+        // Flowers
+        commelinaDiffusa = new TropiFlowerBlock(NAMESPACE.id("commelina_diffusa")).setTranslationKey(NAMESPACE, "commelina_diffusa");
+        crocosmia = new TropiFlowerBlock(NAMESPACE.id("crocosmia")).setTranslationKey(NAMESPACE, "crocosmia");
+        orchid = new TropiFlowerBlock(NAMESPACE.id("orchid")).setTranslationKey(NAMESPACE, "orchid");
+        canna = new TropiFlowerBlock(NAMESPACE.id("canna")).setTranslationKey(NAMESPACE, "canna");
+        anemone = new TropiFlowerBlock(NAMESPACE.id("anemone")).setTranslationKey(NAMESPACE, "anemone");
+        orange_anthurium = new TropiFlowerBlock(NAMESPACE.id("orange_anthurium")).setTranslationKey(NAMESPACE, "orange_anthurium");
+        red_anthurium = new TropiFlowerBlock(NAMESPACE.id("red_anthurium")).setTranslationKey(NAMESPACE, "red_anthurium");
+        magic_mushroom = new TropiFlowerBlock(NAMESPACE.id("magic_mushroom")).setTranslationKey(NAMESPACE, "magic_mushroom");
+        pathos = new TropiFlowerBlock(NAMESPACE.id("pathos")).setTranslationKey(NAMESPACE, "pathos");
+        acai_vine = new TropiFlowerBlock(NAMESPACE.id("acai_vine")).setTranslationKey(NAMESPACE, "acai_vine");
+        croton = new TropiFlowerBlock(NAMESPACE.id("croton")).setTranslationKey(NAMESPACE, "croton");
+        dracaena = new TropiFlowerBlock(NAMESPACE.id("dracaena")).setTranslationKey(NAMESPACE, "dracaena");
+        fern = new TropiFlowerBlock(NAMESPACE.id("fern")).setTranslationKey(NAMESPACE, "fern");
+        foliage = new TropiFlowerBlock(NAMESPACE.id("foliage")).setTranslationKey(NAMESPACE, "foliage");
+        bromeliad = new TropiFlowerBlock(NAMESPACE.id("bromeliad")).setTranslationKey(NAMESPACE, "bromeliad");
     }
 
     @EventListener
