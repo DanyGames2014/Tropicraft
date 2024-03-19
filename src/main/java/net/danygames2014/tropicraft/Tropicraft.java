@@ -35,6 +35,11 @@ public class Tropicraft {
     //public static Block bambooFence;
     public static Item bambooShootItem;
 
+    // Thatch
+    public static Block thatchBlock;
+    public static Block thatchStairs;
+    public static Block thatchSlab;
+
     // Palm
     public static Block palmLog;
     public static Block palmLeaves;
@@ -73,6 +78,11 @@ public class Tropicraft {
         //bambooFence = new TemplateFenceBlock(NAMESPACE.id("bamboo_fence"), 0).setTranslationKey(NAMESPACE, "bamboo_fence").setHardness(1.0F).setResistance(0.1F);
         //bambooFenceGate
         //bambooChest
+
+        // Thatch
+        thatchBlock = new TemplateBlock(NAMESPACE.id("thatch_block"), Material.WOOD).setTranslationKey(NAMESPACE, "thatch_block").setHardness(0.1F).setResistance(0.1F).setSoundGroup(Block.WOOD_SOUND_GROUP);
+        thatchStairs = new StairsBlockTemplate(NAMESPACE.id("thatch_stairs"), thatchBlock).setTranslationKey(NAMESPACE.id("thatch_stairs")).setHardness(0.1F).setResistance(0.1F).setSoundGroup(Block.WOOD_SOUND_GROUP);
+        //thatchSlab
 
         // Palm
         palmLog = new TemplateBlock(NAMESPACE.id("palm_log"), Material.WOOD).setTranslationKey(NAMESPACE, "palm_log").setHardness(1.0F).setResistance(0.1F).setSoundGroup(Block.WOOD_SOUND_GROUP);
