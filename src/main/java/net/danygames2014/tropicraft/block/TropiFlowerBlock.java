@@ -12,6 +12,7 @@ public class TropiFlowerBlock extends TemplateBlock {
         super(identifier, Material.field_988);
         float f = 0.2f;
         this.setBoundingBox(0.5f - f, 0.0f, 0.5f - f, 0.5f + f, f * 4.939f, 0.5f + f);
+        this.setSoundGroup(DIRT_SOUND_GROUP);
     }
 
     @Override
