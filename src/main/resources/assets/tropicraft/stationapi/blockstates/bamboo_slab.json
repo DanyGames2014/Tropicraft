@@ -10,7 +10,7 @@
     },
 
     "slab_type=double": {
-      "model": "tropicraft:block/bamboo_planks"
+      "model": "tropicraft:block/bamboo_bundle"
     }
   }
 }
