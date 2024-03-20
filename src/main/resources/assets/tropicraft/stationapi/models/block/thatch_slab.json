@@ -1,0 +1,6 @@
+{
+  "parent": "tropicraft:block/template/slab",
+  "textures": {
+    "all": "tropicraft:block/thatch"
+  }
+}

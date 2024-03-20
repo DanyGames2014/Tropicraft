@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    "ttt"
+  ],
+  "key":
+  {
+    "t":
+    {
+      "item": "tropicraft:thatch_bundle"
+    }
+  },
+  "result":
+  {
+    "item": "tropicraft:thatch_slab",
+    "count": 6
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    "ss",
+    "ss"
+  ],
+  "key":
+  {
+    "s":
+    {
+      "item": "minecraft:sugar_cane"
+    }
+  },
+  "result":
+  {
+    "item": "tropicraft:thatch_bundle",
+    "count": 2
+  }
+}
