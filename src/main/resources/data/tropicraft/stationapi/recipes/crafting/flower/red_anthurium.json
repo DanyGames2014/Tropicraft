@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients":
+  [
+    {
+      "item": "tropicraft:red_anthurium"
+    }
+  ],
+  "result": {
+    "item": "minecraft:dye",
+    "count": 2,
+    "damage": 1
+  }
+}
