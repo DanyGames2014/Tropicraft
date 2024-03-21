@@ -21,6 +21,9 @@
     "stationapi:event_bus_client": [
     ],
     "stationapi:event_bus_server": [
+    ],
+    "bhcreative:event_bus": [
+      "net.danygames2014.tropicraft.init.CreativeListener"
     ]
   },
   "mixins": [
