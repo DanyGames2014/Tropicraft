@@ -1,6 +1,7 @@
 package net.danygames2014.tropicraft;
 
 import net.danygames2014.tropicraft.block.BambooShootBlock;
+import net.danygames2014.tropicraft.block.CoconutBlock;
 import net.danygames2014.tropicraft.block.TropiFlowerBlock;
 import net.danygames2014.tropicraft.block.template.SlabBlockTemplate;
 import net.danygames2014.tropicraft.block.template.StairsBlockTemplate;
@@ -60,6 +61,7 @@ public class Tropicraft {
     public static Block palmSlab;
     // TODO : Palm Fence
     // TODO : Palm Fence Gate
+    public static Block coconut;
 
     // Flowers
     public static Block commelinaDiffusa;
@@ -101,6 +103,7 @@ public class Tropicraft {
         palmPlanks = new TemplateBlock(NAMESPACE.id("palm_planks"), Material.WOOD).setTranslationKey(NAMESPACE, "palm_planks").setHardness(1.0F).setResistance(0.1F).setSoundGroup(Block.WOOD_SOUND_GROUP);
         palmStairs = new StairsBlockTemplate(NAMESPACE.id("palm_stairs"), palmPlanks).setTranslationKey(NAMESPACE, "palm_stairs").setHardness(1.0F).setResistance(0.1F).setSoundGroup(Block.WOOD_SOUND_GROUP);
         palmSlab = new SlabBlockTemplate(NAMESPACE.id("palm_slab"), palmPlanks).setTranslationKey(NAMESPACE, "palm_planks").setHardness(1.0F).setResistance(0.1F).setSoundGroup(Block.WOOD_SOUND_GROUP);
+        coconut = new CoconutBlock(NAMESPACE.id("coconut"), Material.WOOD).setTranslationKey(NAMESPACE, "coconut").setHardness(0.5F).setResistance(0.1F).setSoundGroup(Block.WOOD_SOUND_GROUP);
 
         // Flowers
         commelinaDiffusa = new TropiFlowerBlock(NAMESPACE.id("commelina_diffusa")).setTranslationKey(NAMESPACE, "commelina_diffusa");
