@@ -11,8 +11,8 @@ public class BambooPatchFeature extends Feature {
     public static final int MIN_HEIGHT = 4;
     public static final int MAX_HEIGHT = 11;
 
-    public static final int MIN_BAMBOO = 40;
-    public static final int MAX_BAMBOO = 100;
+    public static final int MIN_BAMBOO = 60;
+    public static final int MAX_BAMBOO = 120;
 
     @Override
     public boolean generate(World world, Random random, int xPos, int yPos, int zPos) {
