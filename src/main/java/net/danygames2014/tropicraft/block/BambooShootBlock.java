@@ -3,6 +3,7 @@ package net.danygames2014.tropicraft.block;
 import net.danygames2014.tropicraft.Tropicraft;
 import net.minecraft.block.Block;
 import net.minecraft.block.Material;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
 import net.modificationstation.stationapi.api.template.block.TemplateBlock;
@@ -66,7 +67,7 @@ public class BambooShootBlock extends TemplateBlock {
 
     protected final void checkBlockCoordValid(World world, int x, int y, int z) {
         if (!this.canGrow(world, x, y, z)) {
-            this.dropStacks(world, x, y, z, world.getBlockMeta(x, y, z), 0);
+            this.dropStack(world,x,y,z, new ItemStack(this.getDroppedItemId(0, null), 1, 0));
             world.setBlock(x, y, z, 0);
         }
     }
