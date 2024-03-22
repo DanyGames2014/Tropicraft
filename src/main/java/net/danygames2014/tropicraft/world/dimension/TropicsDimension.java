@@ -1,4 +1,4 @@
-package net.danygames2014.tropicraft.world;
+package net.danygames2014.tropicraft.world.dimension;
 
 import net.danygames2014.tropicraft.Tropicraft;
 import net.minecraft.class_51;

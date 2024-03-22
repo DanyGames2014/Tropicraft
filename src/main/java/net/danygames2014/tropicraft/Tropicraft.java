@@ -7,7 +7,7 @@ import net.danygames2014.tropicraft.block.template.SlabBlockTemplate;
 import net.danygames2014.tropicraft.block.template.StairsBlockTemplate;
 import net.danygames2014.tropicraft.item.food.CoconutChunkItem;
 import net.danygames2014.tropicraft.item.food.PinaColadaItem;
-import net.danygames2014.tropicraft.world.TropicsDimension;
+import net.danygames2014.tropicraft.world.dimension.TropicsDimension;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.block.Block;
 import net.minecraft.block.Material;
