@@ -5,6 +5,7 @@ import net.danygames2014.tropicraft.block.CoconutBlock;
 import net.danygames2014.tropicraft.block.TropiFlowerBlock;
 import net.danygames2014.tropicraft.block.template.SlabBlockTemplate;
 import net.danygames2014.tropicraft.block.template.StairsBlockTemplate;
+import net.danygames2014.tropicraft.item.food.CoconutChunkItem;
 import net.danygames2014.tropicraft.item.food.PinaColadaItem;
 import net.danygames2014.tropicraft.world.TropicsDimension;
 import net.mine_diver.unsafeevents.listener.EventListener;
@@ -61,7 +62,9 @@ public class Tropicraft {
     public static Block palmSlab;
     // TODO : Palm Fence
     // TODO : Palm Fence Gate
+
     public static Block coconut;
+    public static Item coconutChunk;
 
     // Flowers
     public static Block commelinaDiffusa;
@@ -104,6 +107,7 @@ public class Tropicraft {
         palmStairs = new StairsBlockTemplate(NAMESPACE.id("palm_stairs"), palmPlanks).setTranslationKey(NAMESPACE, "palm_stairs").setHardness(1.0F).setResistance(0.1F).setSoundGroup(Block.WOOD_SOUND_GROUP);
         palmSlab = new SlabBlockTemplate(NAMESPACE.id("palm_slab"), palmPlanks).setTranslationKey(NAMESPACE, "palm_planks").setHardness(1.0F).setResistance(0.1F).setSoundGroup(Block.WOOD_SOUND_GROUP);
         coconut = new CoconutBlock(NAMESPACE.id("coconut"), Material.WOOD).setTranslationKey(NAMESPACE, "coconut").setHardness(0.5F).setResistance(0.1F).setSoundGroup(Block.WOOD_SOUND_GROUP);
+        coconutChunk = new CoconutChunkItem(NAMESPACE.id("coconut_chunk")).setTranslationKey(NAMESPACE, "coconut_chunk");
 
         // Flowers
         commelinaDiffusa = new TropiFlowerBlock(NAMESPACE.id("commelina_diffusa")).setTranslationKey(NAMESPACE, "commelina_diffusa");
