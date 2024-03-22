@@ -34,6 +34,8 @@ public class CreativeListener {
         add(palmStairs);
         add(palmSlab);
 
+        add(coconut);
+        add(coconutChunk);
         add(pinaColada);
 
         add(commelinaDiffusa);
