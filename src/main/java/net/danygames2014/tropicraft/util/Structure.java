@@ -19,7 +19,7 @@ public class Structure {
     // Checks if there are conflicting blocks which have the CollisionType.DONT_GENERATE type
     // Returns true if collision was found
     public boolean checkCollision(World world, int x, int y, int z) {
-        for (var block : Collections.unmodifiableList(this.blocks)) {
+        for (var block : this.blocks) {
             // If block isn't air and collision type is DONT_GENERATE, return true
             if ((world.getBlockId(x + block.xOffset, y + block.yOffset, z + block.zOffset) != 0) && block.collisionType == CollisionType.DONT_GENERATE) {
                 return true;
@@ -31,7 +31,7 @@ public class Structure {
     // Returns true if generation was succesfull
     public boolean generate(World world, int x, int y, int z) {
         this.checkCollision(world, x, y, z);
-        for (var block : Collections.unmodifiableList(this.blocks)) {
+        for (var block : this.blocks) {
             if (world.getBlockId(x + block.xOffset, y + block.yOffset, z + block.zOffset) == 0) {
                 world.setBlock(x + block.xOffset, y + block.yOffset, z + block.zOffset, BlockRegistry.INSTANCE.get(block.blockId).id);
             } else {
