@@ -21,6 +21,7 @@ public class ChunkDecorationListener {
         }
     }
 
+    // TODO : Rewrite this to use WorldModificationEvent
     public void decorateOverworld(WorldGenEvent.ChunkDecoration event) {
 //        int x = event.x + event.random.nextInt(0, 15);
 //        int z = event.z + event.random.nextInt(0, 15);

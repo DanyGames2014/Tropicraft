@@ -19,7 +19,7 @@ public class Structure {
     public boolean checkCollision(World world, int x, int y, int z) {
         for (var block : this.blocks) {
             // If block isn't air and collision type is DONT_GENERATE, return true
-            if ((world.getBlockId(x + block.xOffset, y + block.yOffset, z + block.zOffset) != 0) && block.collisionType == CollisionType.DONT_GENERATE) {
+            if (!world.getBlockState(x + block.xOffset, y + block.yOffset, z + block.zOffset).isAir() && block.collisionType == CollisionType.DONT_GENERATE) {
                 return true;
             }
         }
@@ -32,15 +32,15 @@ public class Structure {
             return false;
         }
         for (var block : this.blocks) {
-            if (world.getBlockId(x + block.xOffset, y + block.yOffset, z + block.zOffset) == 0) {
-                world.setBlock(x + block.xOffset, y + block.yOffset, z + block.zOffset, BlockRegistry.INSTANCE.get(block.blockId).id);
+            if (world.getBlockState(x + block.xOffset, y + block.yOffset, z + block.zOffset).isAir()) {
+                world.setBlockState(x + block.xOffset, y + block.yOffset, z + block.zOffset, BlockRegistry.INSTANCE.get(block.blockId).getDefaultState());
             } else {
                 switch (block.collisionType) {
                     case DONT_GENERATE -> {
                         return false;
                     }
                     case REPLACE_BLOCK -> {
-                        world.setBlock(x + block.xOffset, y + block.yOffset, z + block.zOffset, BlockRegistry.INSTANCE.get(block.blockId).id);
+                        world.setBlockState(x + block.xOffset, y + block.yOffset, z + block.zOffset, BlockRegistry.INSTANCE.get(block.blockId).getDefaultState());
                     }
                     case DONT_PLACE -> {
 

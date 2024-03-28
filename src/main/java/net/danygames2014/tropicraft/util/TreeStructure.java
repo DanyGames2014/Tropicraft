@@ -1,16 +1,19 @@
 package net.danygames2014.tropicraft.util;
 
 import net.minecraft.world.World;
+import net.modificationstation.stationapi.api.block.BlockState;
 import net.modificationstation.stationapi.api.registry.BlockRegistry;
 import net.modificationstation.stationapi.api.util.Identifier;
 
 @SuppressWarnings("DataFlowIssue")
 public class TreeStructure extends Structure {
     public Identifier trunkBlockId;
+    private final BlockState trunkBlockState;
     public CollisionType trunkCollisionType;
 
     public TreeStructure(Identifier trunkBlockId, CollisionType trunkCollisionType) {
         this.trunkBlockId = trunkBlockId;
+        this.trunkBlockState = BlockRegistry.INSTANCE.get(trunkBlockId).getDefaultState();
         this.trunkCollisionType = trunkCollisionType;
     }
 
@@ -18,7 +21,7 @@ public class TreeStructure extends Structure {
     // Returns true if collision was found
     public boolean checkCollision(World world, int x, int y, int z, int trunkHeight) {
         for (int i = 0; i < trunkHeight; i++) {
-            if ((world.getBlockId(x, y + i, z) != 0) && trunkCollisionType == CollisionType.DONT_GENERATE) {
+            if (!world.getBlockState  (x,y+i, z).isAir() && trunkCollisionType == CollisionType.DONT_GENERATE) {
                 return true;
             }
         }
@@ -32,15 +35,15 @@ public class TreeStructure extends Structure {
         }
 
         for (int i = 0; i < trunkHeight; i++) {
-            if (world.getBlockId(x, y + i, z) == 0) {
-                world.setBlock(x, y + i, z, BlockRegistry.INSTANCE.get(trunkBlockId).id);
+            if (world.getBlockState(x, y + i, z).isAir()) {
+                world.setBlockState(x, y + i, z, trunkBlockState);
             } else {
                 switch (trunkCollisionType) {
                     case DONT_GENERATE -> {
                         return false;
                     }
                     case REPLACE_BLOCK -> {
-                        world.setBlock(x, y + i, z, BlockRegistry.INSTANCE.get(trunkBlockId).id);
+                        world.setBlockState(x, y + i, z, trunkBlockState);
                     }
                     case DONT_PLACE -> {
 
