@@ -3,10 +3,8 @@ package net.danygames2014.tropicraft.block;
 import net.danygames2014.tropicraft.Tropicraft;
 import net.minecraft.block.Material;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
 import net.minecraft.item.SwordItem;
 import net.minecraft.world.World;
-import net.modificationstation.stationapi.api.registry.ItemRegistry;
 import net.modificationstation.stationapi.api.template.block.TemplateBlock;
 import net.modificationstation.stationapi.api.util.Identifier;
 
@@ -17,21 +15,21 @@ public class CoconutBlock extends TemplateBlock {
 
     public CoconutBlock(Identifier identifier, Material material) {
         super(identifier, material);
-        this.setBoundingBox(0.25F,0.15F,0.25F,0.75F, 0.775F,0.75F);
+        this.setBoundingBox(0.25F, 0.15F, 0.25F, 0.75F, 0.775F, 0.75F);
         chopped = false;
     }
 
     @Override
     public void onBlockBreakStart(World world, int x, int y, int z, PlayerEntity player) {
-        if((player.inventory.getSelectedItem() != null) && (player.inventory.getSelectedItem().getItem() instanceof SwordItem)){
+        if ((player.inventory.getSelectedItem() != null) && (player.inventory.getSelectedItem().getItem() instanceof SwordItem)) {
             chop(world, x, y, z);
         }
     }
 
-    public void chop(World world, int x, int y, int z){
+    public void chop(World world, int x, int y, int z) {
         chopped = true;
-        this.dropStacks(world,x,y,z, 1);
-        world.setBlock(x,y,z,0);
+        this.dropStacks(world, x, y, z, 1);
+        world.setBlock(x, y, z, 0);
         chopped = false;
     }
 

@@ -1,6 +1,5 @@
 package net.danygames2014.tropicraft.init;
 
-import net.danygames2014.tropicraft.Tropicraft;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;

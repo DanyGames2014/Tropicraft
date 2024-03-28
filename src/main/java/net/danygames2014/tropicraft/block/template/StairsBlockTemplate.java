@@ -43,7 +43,7 @@ public class StairsBlockTemplate extends TemplateBlock {
 //        if (facing.getAxis().isHorizontal() && false) {
 //            facing = Direction.fromRotation(player == null ? 0 : (player.yaw - 45.0F));
 //        } else {
-            facing = Direction.fromRotation(player == null ? 0 : player.yaw);
+        facing = Direction.fromRotation(player == null ? 0 : player.yaw);
 //        }
 
         return state.with(FACING, facing);

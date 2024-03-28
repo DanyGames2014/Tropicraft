@@ -67,7 +67,7 @@ public class BambooShootBlock extends TemplateBlock {
 
     protected final void checkBlockCoordValid(World world, int x, int y, int z) {
         if (!this.canGrow(world, x, y, z)) {
-            this.dropStack(world,x,y,z, new ItemStack(this.getDroppedItemId(0, null), 1, 0));
+            this.dropStack(world, x, y, z, new ItemStack(this.getDroppedItemId(0, null), 1, 0));
             world.setBlock(x, y, z, 0);
         }
     }

@@ -1,6 +1,5 @@
 package net.danygames2014.tropicraft.world.dimension;
 
-import net.danygames2014.tropicraft.Tropicraft;
 import net.minecraft.class_51;
 import net.minecraft.world.dimension.Dimension;
 import net.modificationstation.stationapi.api.client.world.dimension.TravelMessageProvider;

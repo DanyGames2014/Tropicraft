@@ -20,7 +20,6 @@ public class PalmTreeFeature extends Feature {
 
         this.palmTreeStructure = new TreeStructure(palmLogId, Structure.CollisionType.DONT_GENERATE);
 
-
         // Center Log and Leaf around it
         palmTreeStructure.addBlock(0, 0, 0, palmLogId);
         palmTreeStructure.addBlock(0, 1, 0, palmLeavesId);
@@ -62,7 +61,7 @@ public class PalmTreeFeature extends Feature {
     public boolean generate(World world, Random random, int x, int y, int z) {
         y = world.getTopY(x, z);
         if (world.getBlockId(x, y - 1, z) == Block.SAND.id) {
-            return palmTreeStructure.generate(world, x, y, z, random.nextInt(6,9)); //
+            return palmTreeStructure.generate(world, x, y, z, random.nextInt(6, 9)); //
         }
         return false;
     }

@@ -1,6 +1,5 @@
 package net.danygames2014.tropicraft.block.template;
 
-import net.modificationstation.stationapi.api.state.property.EnumProperty;
 import net.modificationstation.stationapi.api.util.StringIdentifiable;
 
 public enum SlabType implements StringIdentifiable {
