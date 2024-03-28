@@ -1,12 +1,10 @@
 package net.danygames2014.tropicraft.util;
 
-import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.modificationstation.stationapi.api.registry.BlockRegistry;
 import net.modificationstation.stationapi.api.util.Identifier;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 @SuppressWarnings("ALL")
 public class Structure {
@@ -30,7 +28,9 @@ public class Structure {
 
     // Returns true if generation was succesfull
     public boolean generate(World world, int x, int y, int z) {
-        this.checkCollision(world, x, y, z);
+        if (this.checkCollision(world, x, y, z)) {
+            return false;
+        }
         for (var block : this.blocks) {
             if (world.getBlockId(x + block.xOffset, y + block.yOffset, z + block.zOffset) == 0) {
                 world.setBlock(x + block.xOffset, y + block.yOffset, z + block.zOffset, BlockRegistry.INSTANCE.get(block.blockId).id);
