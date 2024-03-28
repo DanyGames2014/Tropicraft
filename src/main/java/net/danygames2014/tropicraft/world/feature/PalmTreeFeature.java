@@ -2,6 +2,7 @@ package net.danygames2014.tropicraft.world.feature;
 
 import net.danygames2014.tropicraft.Tropicraft;
 import net.danygames2014.tropicraft.util.Structure;
+import net.danygames2014.tropicraft.util.TreeStructure;
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.Feature;
@@ -11,33 +12,57 @@ import java.util.Random;
 
 public class PalmTreeFeature extends Feature {
 
-    Structure palmTreeStructure;
+    TreeStructure palmTreeStructure;
 
     public PalmTreeFeature() {
-        this.palmTreeStructure = new Structure();
-
         Identifier palmLogId = Tropicraft.NAMESPACE.id("palm_log");
-        palmTreeStructure.addBlock(0, 0, 0, palmLogId);
-        palmTreeStructure.addBlock(0, 1, 0, palmLogId);
-        palmTreeStructure.addBlock(0, 2, 0, palmLogId);
-        palmTreeStructure.addBlock(0, 3, 0, palmLogId);
-        palmTreeStructure.addBlock(0, 4, 0, palmLogId);
-        palmTreeStructure.addBlock(0, 5, 0, palmLogId);
-        palmTreeStructure.addBlock(0, 6, 0, palmLogId);
-        palmTreeStructure.addBlock(0, 7, 0, palmLogId);
-        palmTreeStructure.addBlock(0, 8, 0, palmLogId);
-        palmTreeStructure.addBlock(1, 8, 0, palmLogId);
-        palmTreeStructure.addBlock(-1, 8, 0, palmLogId);
-        palmTreeStructure.addBlock(0, 8, 1, palmLogId);
-        palmTreeStructure.addBlock(0, 8, -1, palmLogId);
+        Identifier palmLeavesId = Tropicraft.NAMESPACE.id("palm_leaves");
 
+        this.palmTreeStructure = new TreeStructure(palmLogId, Structure.CollisionType.DONT_GENERATE);
+
+
+        // Center Log and Leaf around it
+        palmTreeStructure.addBlock(0, 0, 0, palmLogId);
+        palmTreeStructure.addBlock(0, 1, 0, palmLeavesId);
+        palmTreeStructure.addBlock(1, 0, 0, palmLeavesId);
+        palmTreeStructure.addBlock(1, 0, 1, palmLeavesId);
+        palmTreeStructure.addBlock(1, 0, -1, palmLeavesId);
+        palmTreeStructure.addBlock(-1, 0, 0, palmLeavesId);
+        palmTreeStructure.addBlock(-1, 0, 1, palmLeavesId);
+        palmTreeStructure.addBlock(-1, 0, -1, palmLeavesId);
+        palmTreeStructure.addBlock(0, 0, 1, palmLeavesId);
+        palmTreeStructure.addBlock(0, 0, -1, palmLeavesId);
+
+        // Leaves to side
+        palmTreeStructure.addBlock(2, 0, 0, palmLeavesId);
+        palmTreeStructure.addBlock(3, 0, 0, palmLeavesId);
+        palmTreeStructure.addBlock(-2, 0, 0, palmLeavesId);
+        palmTreeStructure.addBlock(-3, 0, 0, palmLeavesId);
+        palmTreeStructure.addBlock(0, 0, 2, palmLeavesId);
+        palmTreeStructure.addBlock(0, 0, 3, palmLeavesId);
+        palmTreeStructure.addBlock(0, 0, -2, palmLeavesId);
+        palmTreeStructure.addBlock(0, 0, -3, palmLeavesId);
+        palmTreeStructure.addBlock(4, -1, 0, palmLeavesId);
+        palmTreeStructure.addBlock(-4, -1, 0, palmLeavesId);
+        palmTreeStructure.addBlock(0, -1, 4, palmLeavesId);
+        palmTreeStructure.addBlock(0, -1, -4, palmLeavesId);
+
+        // Diagonal leaves to side
+        palmTreeStructure.addBlock(2, 0, 2, palmLeavesId);
+        palmTreeStructure.addBlock(2, 0, -2, palmLeavesId);
+        palmTreeStructure.addBlock(-2, 0, 2, palmLeavesId);
+        palmTreeStructure.addBlock(-2, 0, -2, palmLeavesId);
+        palmTreeStructure.addBlock(3, -1, 3, palmLeavesId);
+        palmTreeStructure.addBlock(3, -1, -3, palmLeavesId);
+        palmTreeStructure.addBlock(-3, -1, 3, palmLeavesId);
+        palmTreeStructure.addBlock(-3, -1, -3, palmLeavesId);
     }
 
     @Override
     public boolean generate(World world, Random random, int x, int y, int z) {
         y = world.getTopY(x, z);
         if (world.getBlockId(x, y - 1, z) == Block.SAND.id) {
-            return palmTreeStructure.generate(world, x, y, z);
+            return palmTreeStructure.generate(world, x, y, z, random.nextInt(6,9)); //
         }
         return false;
     }
