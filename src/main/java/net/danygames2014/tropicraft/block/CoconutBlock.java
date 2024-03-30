@@ -15,7 +15,7 @@ public class CoconutBlock extends TemplateBlock {
 
     public CoconutBlock(Identifier identifier, Material material) {
         super(identifier, material);
-        this.setBoundingBox(0.25F, 0.15F, 0.25F, 0.75F, 0.775F, 0.75F);
+        this.setBoundingBox(0.25F, 0.15F, 0.25F, 0.75F, 0.85F, 0.75F);
         chopped = false;
     }
 
