@@ -2,6 +2,7 @@
   "values": [
     "minecraft:grass_block",
     "minecraft:dirt",
-    "minecraft:sand"
+    "minecraft:sand",
+    "tropicraft:bamboo_shoot"
   ]
 }

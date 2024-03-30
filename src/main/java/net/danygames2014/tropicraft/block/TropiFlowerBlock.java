@@ -1,9 +1,12 @@
 package net.danygames2014.tropicraft.block;
 
+import net.danygames2014.tropicraft.Tropicraft;
 import net.minecraft.block.Block;
 import net.minecraft.block.Material;
 import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
+import net.modificationstation.stationapi.api.registry.BlockRegistry;
+import net.modificationstation.stationapi.api.tag.TagKey;
 import net.modificationstation.stationapi.api.template.block.TemplateBlock;
 import net.modificationstation.stationapi.api.util.Identifier;
 
@@ -17,8 +20,7 @@ public class TropiFlowerBlock extends TemplateBlock {
 
     @Override
     public boolean canPlaceAt(World world, int x, int y, int z) {
-        int blockIdBelow = world.getBlockId(x, y - 1, z);
-        return super.canPlaceAt(world, x, y, z) && (blockIdBelow == Block.GRASS_BLOCK.id || blockIdBelow == Block.DIRT.id || blockIdBelow == Block.FARMLAND.id);
+        return super.canPlaceAt(world, x, y, z) && world.getBlockState(x, y - 1, z).isIn(TagKey.of(BlockRegistry.INSTANCE.getKey(), Tropicraft.NAMESPACE.id("flower_grows_on")));
     }
 
     @Override
