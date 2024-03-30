@@ -7,13 +7,9 @@ import net.minecraft.world.gen.feature.Feature;
 
 import java.util.Random;
 
+import static net.danygames2014.tropicraft.Tropicraft.WORLDGEN_CONFIG;
+
 public class BambooPatchFeature extends Feature {
-    public static final int MIN_HEIGHT = 4;
-    public static final int MAX_HEIGHT = 11;
-
-    public static final int MIN_BAMBOO = 60;
-    public static final int MAX_BAMBOO = 120;
-
     @Override
     public boolean generate(World world, Random random, int xPos, int yPos, int zPos) {
         int x = xPos + 8;
@@ -26,7 +22,7 @@ public class BambooPatchFeature extends Feature {
         }
 
         // Calculate the amount and spread used for this patch
-        int amount = random.nextInt(MAX_BAMBOO - MIN_BAMBOO) + MIN_BAMBOO;
+        int amount = random.nextInt( WORLDGEN_CONFIG.bamboo.maxBambooCount - WORLDGEN_CONFIG.bamboo.minBambooCount) + WORLDGEN_CONFIG.bamboo.minBambooCount;
         int spread = random.nextInt(3) - 1 + (int) (Math.sqrt(amount) / 2.0);
 
         // Spawn <amount> bamboo stalks
@@ -34,7 +30,7 @@ public class BambooPatchFeature extends Feature {
             int bambooX = x + random.nextInt(spread);
             int bambooZ = z + random.nextInt(spread);
             int bambooY = world.getTopY(bambooX, bambooZ) - 1;
-            int height = random.nextInt(MAX_HEIGHT - MIN_HEIGHT) + MIN_HEIGHT;
+            int height = random.nextInt(WORLDGEN_CONFIG.bamboo.maxBambooHeight - WORLDGEN_CONFIG.bamboo.minBambooHeight) + WORLDGEN_CONFIG.bamboo.minBambooHeight;
             BlockPos pos = new BlockPos(bambooX, bambooY, bambooZ);
             for (int h = 0; h < height; ++h) {
                 pos = pos.up();

@@ -8,6 +8,7 @@ import net.danygames2014.tropicraft.block.template.StairsBlockTemplate;
 import net.danygames2014.tropicraft.item.food.CoconutChunkItem;
 import net.danygames2014.tropicraft.item.food.PinaColadaItem;
 import net.danygames2014.tropicraft.world.dimension.TropicsDimension;
+import net.glasslauncher.mods.api.gcapi.api.GConfig;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.block.Block;
 import net.minecraft.block.Material;
@@ -27,6 +28,9 @@ import net.modificationstation.stationapi.api.util.Null;
 public class Tropicraft {
     @Entrypoint.Namespace
     public static final Namespace NAMESPACE = Null.get();
+
+    @GConfig(value = "worldgen", visibleName = "Worldgen")
+    public static final Config.WorldgenConfig WORLDGEN_CONFIG = new Config.WorldgenConfig();
 
     // Bamboo
     public static Block bambooShootBlock;
