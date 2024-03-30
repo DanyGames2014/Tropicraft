@@ -3,6 +3,7 @@ package net.danygames2014.tropicraft.world;
 import net.danygames2014.tropicraft.world.feature.BambooPatchFeature;
 import net.danygames2014.tropicraft.world.feature.PalmTreeFeature;
 import net.mine_diver.unsafeevents.listener.EventListener;
+import net.modificationstation.stationapi.api.event.world.WorldEvent;
 import net.modificationstation.stationapi.api.event.world.gen.WorldGenEvent;
 
 import static net.danygames2014.tropicraft.Tropicraft.WORLDGEN_CONFIG;
@@ -33,5 +34,11 @@ public class ChunkDecorationListener {
         if (WORLDGEN_CONFIG.palm.generatePalms && event.random.nextInt(WORLDGEN_CONFIG.palm.palmGenChance) == 0) {
             palmTreeFeature.generate(event.world, event.random, event.x, 0, event.z);
         }
+    }
+
+    @EventListener
+    public void initFeatures(WorldEvent.Init event){
+        bambooPatchFeature = new BambooPatchFeature();
+        palmTreeFeature = new PalmTreeFeature();
     }
 }
