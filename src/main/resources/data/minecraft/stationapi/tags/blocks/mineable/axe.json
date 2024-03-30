@@ -1,7 +1,15 @@
 {
   "values": [
-    "tropicraft:bamboo_planks",
+    "tropicraft:bamboo_bundle",
+    "tropicraft:bamboo_stairs",
     "tropicraft:bamboo_slab",
-    "tropicraft:bamboo_stairs"
+    "tropicraft:thatch_bundle",
+    "tropicraft:thatch_stairs",
+    "tropicraft:thatch_slab",
+    "tropicraft:palm_log",
+    "tropicraft:palm_leaves",
+    "tropicraft:palm_planks",
+    "tropicraft:palm_stairs",
+    "tropicraft:palm_slab"
   ]
 }
