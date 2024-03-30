@@ -1,20 +1,46 @@
 # Blocks
 ## Bamboo
 tile.bamboo_shoot.name=Bamboo Shoot
-tile.bamboo_planks.name=Bamboo Planks
+tile.bamboo_bundle.name=Bamboo Bundle
 tile.bamboo_stairs.name=Bamboo Stairs
 tile.bamboo_slab.name=Bamboo Slab
 
 ## Palm
 tile.palm_log.name=Palm Wood
+tile.palm_leaves.name=Palm Leaves
 tile.palm_planks.name=Palm Planks
 tile.palm_stairs.name=Palm Stairs
 tile.palm_slab.name=Palm Slab
-tile.palm_leaves.name=Palm Leaves
+tile.coconut.name=Coconut
+
+## Thatch
+tile.thatch_bundle.name=Thatch Bundle
+tile.thatch_stairs.name=Thatch Stairs
+tile.thatch_slab.name=Thatch Slab
+
+## Flowers
+tile.commelina_diffusa.name=Commelina Diffusa
+tile.crocosmia.name=Crocosmia
+tile.orchid.name=Orchid
+tile.canna.name=Canna
+tile.anemone.name=Anemone
+tile.orange_anthurium.name=Orange Anthurium
+tile.red_anthurium.name=Red Anthurium
+tile.magic_mushroom.name=Magic Mushroom
+tile.pathos.name=Pathos
+tile.acai_vine.name=Acai Vine
+tile.croton.name=Croton
+tile.dracaena.name=Dracaena
+tile.fern.name=Fern
+tile.foliage.name=Foliage
+tile.bromeliad.name=Bromeliad
 
 # Items
 ## Bamboo
 item.bamboo.name=Bamboo Shoot
+
+## Palm
+item.coconut_chunk.name=Coconut Chunk
 
 # Dimension
 dim.tropics.entering=Drifting into the Tropics!
