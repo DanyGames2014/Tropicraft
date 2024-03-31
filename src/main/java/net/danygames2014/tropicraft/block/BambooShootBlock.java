@@ -1,7 +1,6 @@
 package net.danygames2014.tropicraft.block;
 
 import net.danygames2014.tropicraft.Tropicraft;
-import net.minecraft.block.Block;
 import net.minecraft.block.Material;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.Box;
@@ -47,8 +46,8 @@ public class BambooShootBlock extends TemplateBlock {
     }
 
     @Override
-    public void neighborUpdate(World world, int i, int j, int k, int l) {
-        this.checkBlockCoordValid(world, i, j, k);
+    public void neighborUpdate(World world, int x, int y, int z, int l) {
+        this.checkBlockCoordValid(world, x, y, z);
     }
 
     protected final void checkBlockCoordValid(World world, int x, int y, int z) {
