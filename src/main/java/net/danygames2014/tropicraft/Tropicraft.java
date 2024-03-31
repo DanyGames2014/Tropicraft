@@ -117,21 +117,21 @@ public class Tropicraft {
         coconutChunk = new CoconutChunkItem(NAMESPACE.id("coconut_chunk")).setTranslationKey(NAMESPACE, "coconut_chunk");
 
         // Flowers
-        commelinaDiffusa = new TropiFlowerBlock(NAMESPACE.id("commelina_diffusa")).setTranslationKey(NAMESPACE, "commelina_diffusa");
-        crocosmia = new TropiFlowerBlock(NAMESPACE.id("crocosmia")).setTranslationKey(NAMESPACE, "crocosmia");
-        orchid = new TropiFlowerBlock(NAMESPACE.id("orchid")).setTranslationKey(NAMESPACE, "orchid");
-        canna = new TropiFlowerBlock(NAMESPACE.id("canna")).setTranslationKey(NAMESPACE, "canna");
-        anemone = new TropiFlowerBlock(NAMESPACE.id("anemone")).setTranslationKey(NAMESPACE, "anemone");
-        orange_anthurium = new TropiFlowerBlock(NAMESPACE.id("orange_anthurium")).setTranslationKey(NAMESPACE, "orange_anthurium");
-        red_anthurium = new TropiFlowerBlock(NAMESPACE.id("red_anthurium")).setTranslationKey(NAMESPACE, "red_anthurium");
-        magic_mushroom = new TropiFlowerBlock(NAMESPACE.id("magic_mushroom")).setTranslationKey(NAMESPACE, "magic_mushroom");
-        pathos = new TropiFlowerBlock(NAMESPACE.id("pathos")).setTranslationKey(NAMESPACE, "pathos");
-        acai_vine = new TropiFlowerBlock(NAMESPACE.id("acai_vine")).setTranslationKey(NAMESPACE, "acai_vine");
-        croton = new TropiFlowerBlock(NAMESPACE.id("croton")).setTranslationKey(NAMESPACE, "croton");
-        dracaena = new TropiFlowerBlock(NAMESPACE.id("dracaena")).setTranslationKey(NAMESPACE, "dracaena");
-        fern = new TropiFlowerBlock(NAMESPACE.id("fern")).setTranslationKey(NAMESPACE, "fern");
-        foliage = new TropiFlowerBlock(NAMESPACE.id("foliage")).setTranslationKey(NAMESPACE, "foliage");
-        bromeliad = new TropiFlowerBlock(NAMESPACE.id("bromeliad")).setTranslationKey(NAMESPACE, "bromeliad");
+        commelinaDiffusa = new FlowerBlock(NAMESPACE.id("commelina_diffusa")).setTranslationKey(NAMESPACE, "commelina_diffusa").setSoundGroup(Block.DIRT_SOUND_GROUP);
+        crocosmia = new FlowerBlock(NAMESPACE.id("crocosmia")).setTranslationKey(NAMESPACE, "crocosmia").setSoundGroup(Block.DIRT_SOUND_GROUP);
+        orchid = new FlowerBlock(NAMESPACE.id("orchid")).setTranslationKey(NAMESPACE, "orchid").setSoundGroup(Block.DIRT_SOUND_GROUP);
+        canna = new FlowerBlock(NAMESPACE.id("canna")).setTranslationKey(NAMESPACE, "canna").setSoundGroup(Block.DIRT_SOUND_GROUP);
+        anemone = new FlowerBlock(NAMESPACE.id("anemone")).setTranslationKey(NAMESPACE, "anemone").setSoundGroup(Block.DIRT_SOUND_GROUP);
+        orange_anthurium = new FlowerBlock(NAMESPACE.id("orange_anthurium")).setTranslationKey(NAMESPACE, "orange_anthurium").setSoundGroup(Block.DIRT_SOUND_GROUP);
+        red_anthurium = new FlowerBlock(NAMESPACE.id("red_anthurium")).setTranslationKey(NAMESPACE, "red_anthurium").setSoundGroup(Block.DIRT_SOUND_GROUP);
+        magic_mushroom = new FlowerBlock(NAMESPACE.id("magic_mushroom")).setTranslationKey(NAMESPACE, "magic_mushroom").setSoundGroup(Block.DIRT_SOUND_GROUP);
+        pathos = new FlowerBlock(NAMESPACE.id("pathos")).setTranslationKey(NAMESPACE, "pathos").setSoundGroup(Block.DIRT_SOUND_GROUP);
+        acai_vine = new FlowerBlock(NAMESPACE.id("acai_vine")).setTranslationKey(NAMESPACE, "acai_vine").setSoundGroup(Block.DIRT_SOUND_GROUP);
+        croton = new FlowerBlock(NAMESPACE.id("croton")).setTranslationKey(NAMESPACE, "croton").setSoundGroup(Block.DIRT_SOUND_GROUP);
+        dracaena = new FlowerBlock(NAMESPACE.id("dracaena")).setTranslationKey(NAMESPACE, "dracaena").setSoundGroup(Block.DIRT_SOUND_GROUP);
+        fern = new FlowerBlock(NAMESPACE.id("fern")).setTranslationKey(NAMESPACE, "fern").setSoundGroup(Block.DIRT_SOUND_GROUP);
+        foliage = new FlowerBlock(NAMESPACE.id("foliage")).setTranslationKey(NAMESPACE, "foliage").setSoundGroup(Block.DIRT_SOUND_GROUP);
+        bromeliad = new FlowerBlock(NAMESPACE.id("bromeliad")).setTranslationKey(NAMESPACE, "bromeliad").setSoundGroup(Block.DIRT_SOUND_GROUP);
         iris = new TallFlowerBlock(NAMESPACE.id("iris")).setTranslationKey(NAMESPACE, "iris").setSoundGroup(Block.DIRT_SOUND_GROUP);
 
         // Pineapple
