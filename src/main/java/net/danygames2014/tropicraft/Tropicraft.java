@@ -84,7 +84,7 @@ public class Tropicraft {
     public static Block fern;
     public static Block foliage;
     public static Block bromeliad;
-    // TODO : Iris
+    public static Block iris;
 
     // Pineapple
     public static Block pineapple;
@@ -132,6 +132,7 @@ public class Tropicraft {
         fern = new TropiFlowerBlock(NAMESPACE.id("fern")).setTranslationKey(NAMESPACE, "fern");
         foliage = new TropiFlowerBlock(NAMESPACE.id("foliage")).setTranslationKey(NAMESPACE, "foliage");
         bromeliad = new TropiFlowerBlock(NAMESPACE.id("bromeliad")).setTranslationKey(NAMESPACE, "bromeliad");
+        iris = new TallFlowerBlock(NAMESPACE.id("iris")).setTranslationKey(NAMESPACE, "iris").setSoundGroup(Block.DIRT_SOUND_GROUP);
 
         // Pineapple
         pineapple = new PineappleBlock(NAMESPACE.id("pineapple")).setTranslationKey(NAMESPACE, "pineapple").setSoundGroup(Block.DIRT_SOUND_GROUP);
