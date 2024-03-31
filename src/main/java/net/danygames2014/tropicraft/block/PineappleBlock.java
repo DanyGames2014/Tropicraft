@@ -42,6 +42,10 @@ public class PineappleBlock extends TemplateBlock {
 
     @Override
     public BlockState getPlacementState(ItemPlacementContext context) {
+        if (context.getWorld().getBlockState(context.getBlockPos().down()).isIn(TagKey.of(BlockRegistry.INSTANCE.getKey(), Tropicraft.NAMESPACE.id("chopping_blocks")))) {
+            return getDefaultState().with(PINEAPPLE_HALF, PineappleHalf.TOP);
+        }
+
         return getDefaultState().with(PINEAPPLE_HALF, PineappleHalf.BOTTOM);
     }
 
@@ -56,7 +60,8 @@ public class PineappleBlock extends TemplateBlock {
 
     @Override
     public boolean canPlaceAt(World world, int x, int y, int z, int side) {
-        return world.getBlockState(x, y - 1, z).isIn(TagKey.of(BlockRegistry.INSTANCE.getKey(), Tropicraft.NAMESPACE.id("can_place_pineapple_on")));
+        BlockState stateBelow = world.getBlockState(x, y - 1, z);
+        return stateBelow.isIn(TagKey.of(BlockRegistry.INSTANCE.getKey(), Tropicraft.NAMESPACE.id("can_place_pineapple_on"))) || stateBelow.isIn(TagKey.of(BlockRegistry.INSTANCE.getKey(), Tropicraft.NAMESPACE.id("chopping_blocks")));
     }
 
     @Override
@@ -65,6 +70,10 @@ public class PineappleBlock extends TemplateBlock {
     }
 
     protected final void checkValidPlacement(World world, int x, int y, int z) {
+        if (world.getBlockState(x, y - 1, z).isIn(TagKey.of(BlockRegistry.INSTANCE.getKey(), Tropicraft.NAMESPACE.id("chopping_blocks")))) {
+            return;
+        }
+
         if (!this.canGrow(world, x, y, z)) {
             if (world.getBlockState(x, y, z).get(PINEAPPLE_HALF) == PineappleHalf.TOP) {
                 this.dropStack(world, x, y, z, new ItemStack(Tropicraft.pineapple.asItem(), 1, 0));
