@@ -17,6 +17,7 @@ tile.coconut.name=Coconut
 tile.thatch_bundle.name=Thatch Bundle
 tile.thatch_stairs.name=Thatch Stairs
 tile.thatch_slab.name=Thatch Slab
+tile.thatch_roof.name=Thatch Roof
 
 ## Flowers
 tile.commelina_diffusa.name=Commelina Diffusa
@@ -34,6 +35,10 @@ tile.dracaena.name=Dracaena
 tile.fern.name=Fern
 tile.foliage.name=Foliage
 tile.bromeliad.name=Bromeliad
+tile.iris.name=Iris
+
+## Pineapple
+tile.pineapple.name=Pineapple
 
 # Items
 ## Bamboo
@@ -41,6 +46,9 @@ item.bamboo.name=Bamboo Shoot
 
 ## Palm
 item.coconut_chunk.name=Coconut Chunk
+
+## Pineapple
+item.pineapple_cubes.name=Pineapple Cubes
 
 # Dimension
 dim.tropics.entering=Drifting into the Tropics!
