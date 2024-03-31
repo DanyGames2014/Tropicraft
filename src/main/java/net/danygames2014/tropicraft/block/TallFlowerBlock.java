@@ -26,6 +26,7 @@ public class TallFlowerBlock extends TemplateBlock {
 
     public TallFlowerBlock(Identifier identifier) {
         super(identifier, Material.field_988);
+        this.setBoundingBox(0.2F, 0.0f, 0.2F, 0.8F, 1.0f, 0.8F);
     }
 
     @Override

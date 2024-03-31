@@ -31,6 +31,7 @@ public class PineappleBlock extends TemplateBlock {
     public PineappleBlock(Identifier identifier) {
         super(identifier, Material.field_988);
         this.setTickRandomly(true);
+        this.setBoundingBox(0.2F, 0.0f, 0.2F, 0.8F, 1.0f, 0.8F);
     }
 
     @Override
