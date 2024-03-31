@@ -53,7 +53,7 @@ public class Tropicraft {
     public static Block thatchBlock;
     public static Block thatchStairs;
     public static Block thatchSlab;
-    // TODO : Thatch Roof
+    public static Block thatchRoof;
     // TODO : Thatch Fence
     // TODO : Thatch Fence Gate
 
@@ -103,6 +103,7 @@ public class Tropicraft {
         thatchBlock = new TemplateBlock(NAMESPACE.id("thatch_bundle"), Material.WOOD).setTranslationKey(NAMESPACE, "thatch_bundle").setHardness(0.1F).setResistance(0.1F).setSoundGroup(Block.WOOD_SOUND_GROUP);
         thatchStairs = new StairsBlockTemplate(NAMESPACE.id("thatch_stairs"), thatchBlock).setTranslationKey(NAMESPACE.id("thatch_stairs")).setHardness(0.1F).setResistance(0.1F).setSoundGroup(Block.WOOD_SOUND_GROUP);
         thatchSlab = new SlabBlockTemplate(NAMESPACE.id("thatch_slab"), thatchBlock).setTranslationKey(NAMESPACE.id("thatch_slab")).setHardness(0.1F).setResistance(0.1F).setSoundGroup(Block.WOOD_SOUND_GROUP);
+        thatchRoof = new StairsBlockTemplate(NAMESPACE.id("thatch_roof"), thatchBlock).setTranslationKey(NAMESPACE.id("thatch_roof")).setHardness(0.1F).setResistance(0.1F).setSoundGroup(Block.DIRT_SOUND_GROUP);
 
         // Palm
         palmLog = new TemplateBlock(NAMESPACE.id("palm_log"), Material.WOOD).setTranslationKey(NAMESPACE, "palm_log").setHardness(1.0F).setResistance(0.1F).setSoundGroup(Block.WOOD_SOUND_GROUP);

@@ -1,0 +1,7 @@
+{
+  "parent": "tropicraft:block/template/roof",
+  "textures": {
+    "all": "tropicraft:block/thatch",
+    "roof": "tropicraft:block/thatch_grass"
+  }
+}

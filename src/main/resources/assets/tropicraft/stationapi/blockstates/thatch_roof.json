@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "tropicraft:block/thatch_roof"
+    },
+    "facing=east": {
+      "model": "tropicraft:block/thatch_roof",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "tropicraft:block/thatch_roof",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "tropicraft:block/thatch_roof",
+      "y": 270
+    }
+  }
+}
