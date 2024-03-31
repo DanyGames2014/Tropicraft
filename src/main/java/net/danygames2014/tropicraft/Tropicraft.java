@@ -1,11 +1,9 @@
 package net.danygames2014.tropicraft;
 
-import net.danygames2014.tropicraft.block.BambooShootBlock;
-import net.danygames2014.tropicraft.block.CoconutBlock;
-import net.danygames2014.tropicraft.block.TropiFlowerBlock;
+import net.danygames2014.tropicraft.block.*;
 import net.danygames2014.tropicraft.block.template.SlabBlockTemplate;
 import net.danygames2014.tropicraft.block.template.StairsBlockTemplate;
-import net.danygames2014.tropicraft.item.food.CoconutChunkItem;
+import net.danygames2014.tropicraft.item.food.FoodChunkItem;
 import net.danygames2014.tropicraft.item.food.PinaColadaItem;
 import net.danygames2014.tropicraft.world.dimension.TropicsDimension;
 import net.glasslauncher.mods.api.gcapi.api.GConfig;
@@ -88,6 +86,10 @@ public class Tropicraft {
     public static Block bromeliad;
     // TODO : Iris
 
+    // Pineapple
+    public static Block pineapple;
+    public static Item pineappleCubes;
+
     // Drinks
     public static Item pinaColada;
 
@@ -130,12 +132,19 @@ public class Tropicraft {
         fern = new TropiFlowerBlock(NAMESPACE.id("fern")).setTranslationKey(NAMESPACE, "fern");
         foliage = new TropiFlowerBlock(NAMESPACE.id("foliage")).setTranslationKey(NAMESPACE, "foliage");
         bromeliad = new TropiFlowerBlock(NAMESPACE.id("bromeliad")).setTranslationKey(NAMESPACE, "bromeliad");
+
+        // Pineapple
+        pineapple = new PineappleBlock(NAMESPACE.id("pineapple")).setTranslationKey(NAMESPACE, "pineapple").setSoundGroup(Block.DIRT_SOUND_GROUP);
     }
 
     @EventListener
     public void registerItems(ItemRegistryEvent event) {
         // Bamboo
         bambooShootItem = new BlockStateItem(NAMESPACE.id("bamboo_shoot"), bambooShootBlock.getDefaultState()).setTranslationKey(NAMESPACE, "bamboo");
+
+
+        // Pineapple
+        pineappleCubes = new FoodChunkItem(NAMESPACE.id("pineapple_cubes")).setTranslationKey(NAMESPACE, "pineapple_cubes");
 
         // Drinks
         pinaColada = new PinaColadaItem(NAMESPACE.id("pina_colada")).setTranslationKey(NAMESPACE, "pina_colada");
