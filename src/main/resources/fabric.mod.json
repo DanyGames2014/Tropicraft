@@ -4,7 +4,7 @@
   "version": "${version}",
 
   "name": "Tropicraft",
-  "description": "A port of Tropicraft 3.0.5 for Minecraft 1.2.5 to StationAPI",
+  "description": "Get ready for the vacation of a lifetime! Tropicraft is a mod that doesn't yet add a tropical dimension to your Minecraft world. This is mostly an reimplementation and not a direct port so there will be some differences and creative liberties, there is also no exact version on which im basing this reimplementation, altho most things come from the b1.7.3, r1.2.5 and r1.12.2 versions of Tropicraft.",
   "authors": [
     "DanyGames2014"
   ],
