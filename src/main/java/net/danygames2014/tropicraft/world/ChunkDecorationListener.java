@@ -3,6 +3,7 @@ package net.danygames2014.tropicraft.world;
 import net.danygames2014.tropicraft.world.feature.BambooPatchFeature;
 import net.danygames2014.tropicraft.world.feature.FlowerPatchFeature;
 import net.danygames2014.tropicraft.world.feature.PalmTreeFeature;
+import net.danygames2014.tropicraft.world.feature.PineapplePatchFeature;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.modificationstation.stationapi.api.event.world.WorldEvent;
 import net.modificationstation.stationapi.api.event.world.gen.WorldGenEvent;
@@ -13,6 +14,7 @@ public class ChunkDecorationListener {
     public static BambooPatchFeature bambooPatchFeature;
     public static PalmTreeFeature palmTreeFeature;
     public static FlowerPatchFeature flowerPatchFeature;
+    public static PineapplePatchFeature pineapplePatchFeature;
 
     @EventListener
     public void decorate(WorldGenEvent.ChunkDecoration event) {
@@ -39,6 +41,11 @@ public class ChunkDecorationListener {
         if (WORLDGEN_CONFIG.flower.generateFlowers && event.random.nextInt(WORLDGEN_CONFIG.flower.flowerGenChance) == 0) {
             flowerPatchFeature.generate(event.world, event.random, event.x, 0, event.z);
         }
+
+        // Pineapple
+        if (WORLDGEN_CONFIG.pineapple.generatePineapples && event.random.nextInt(WORLDGEN_CONFIG.pineapple.pineappleGenChance) == 0){
+            pineapplePatchFeature.generate(event.world, event.random, event.x, 0, event.z);
+        }
     }
 
     @EventListener
@@ -46,5 +53,6 @@ public class ChunkDecorationListener {
         bambooPatchFeature = new BambooPatchFeature();
         palmTreeFeature = new PalmTreeFeature();
         flowerPatchFeature = new FlowerPatchFeature();
+        pineapplePatchFeature = new PineapplePatchFeature();
     }
 }

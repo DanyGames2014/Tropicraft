@@ -17,6 +17,9 @@ public class Config {
         @ConfigCategory("Flower")
         public FlowerWorldgenConfig flower = new FlowerWorldgenConfig();
 
+        @ConfigCategory("Pineapple")
+        public PineappleWorldgenConfig pineapple = new PineappleWorldgenConfig();
+
         public static class PalmWorldgenConfig {
             @ConfigName("Generate Palms")
             public Boolean generatePalms = true;
@@ -60,6 +63,21 @@ public class Config {
 
             @ConfigName("Maximum Flowers")
             public Integer maximumFlowers = 15;
+        }
+
+        public static class PineappleWorldgenConfig {
+            @ConfigName("Generate Pineapples")
+            public Boolean generatePineapples = true;
+
+            @ConfigName("Pineapple Generation Chance")
+            @Comment("Chance is 1/value. Ex: 5 -> 1/5 = 20%")
+            public Integer pineappleGenChance = 10;
+
+            @ConfigName("Minimum Pineapples")
+            public Integer minimumPineapples = 1;
+
+            @ConfigName("Maximum Pineapples")
+            public Integer maximumPineapples = 5;
         }
     }
 }
