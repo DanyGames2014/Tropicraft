@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    "s",
+    "s"
+  ],
+  "key":
+  {
+    "s":
+    {
+      "item": "tropicraft:bamboo_shoot"
+    }
+  },
+  "result":
+  {
+    "item": "tropicraft:bamboo_stick",
+    "count": 4
+  }
+}

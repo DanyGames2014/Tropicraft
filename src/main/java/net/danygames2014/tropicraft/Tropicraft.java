@@ -19,6 +19,7 @@ import net.modificationstation.stationapi.api.registry.DimensionContainer;
 import net.modificationstation.stationapi.api.registry.DimensionRegistry;
 import net.modificationstation.stationapi.api.template.block.TemplateBlock;
 import net.modificationstation.stationapi.api.template.item.BlockStateItem;
+import net.modificationstation.stationapi.api.template.item.TemplateItem;
 import net.modificationstation.stationapi.api.util.Namespace;
 import net.modificationstation.stationapi.api.util.Null;
 
@@ -42,7 +43,8 @@ public class Tropicraft {
     // TODO : Bamboo Door
     // TODO : ???Bamboo Item Frame???
     public static Item bambooShootItem;
-    // TODO : Bamboo Stick
+    public static Item bambooStickItem;
+
     // TODO : Bamboo Mug
     // TODO : Bamboo Spear
     // TODO : Bamboo Fishing Rod
@@ -141,6 +143,7 @@ public class Tropicraft {
     public void registerItems(ItemRegistryEvent event) {
         // Bamboo
         bambooShootItem = new BlockStateItem(NAMESPACE.id("bamboo_shoot"), bambooShootBlock.getDefaultState()).setTranslationKey(NAMESPACE, "bamboo");
+        bambooStickItem = new TemplateItem(NAMESPACE.id("bamboo_stick")).setTranslationKey(NAMESPACE, "bamboo_stick");
 
         // Coconut
         coconutChunk = new FoodChunkItem(NAMESPACE.id("coconut_chunk")).setTranslationKey(NAMESPACE, "coconut_chunk");
