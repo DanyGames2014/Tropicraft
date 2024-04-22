@@ -14,13 +14,16 @@ public class Config {
         @ConfigCategory("Bamboo")
         public BambooWorldgenConfig bamboo = new BambooWorldgenConfig();
 
+        @ConfigCategory("Flower")
+        public FlowerWorldgenConfig flower = new FlowerWorldgenConfig();
+
         public static class PalmWorldgenConfig {
             @ConfigName("Generate Palms")
             public Boolean generatePalms = true;
 
             @ConfigName("Palm Generation Chance")
             @Comment("Chance is 1/value. Ex: 5 -> 1/5 = 20%")
-            public int palmGenChance = 3;
+            public Integer palmGenChance = 3;
         }
 
         public static class BambooWorldgenConfig {
@@ -29,19 +32,34 @@ public class Config {
 
             @ConfigName("Bamboo Generation Chance")
             @Comment("Chance is 1/value. Ex: 5 -> 1/5 = 20%")
-            public int bambooGenChance = 20;
+            public Integer bambooGenChance = 20;
 
             @ConfigName("Minimum Bamboo Height")
-            public int minBambooHeight = 4;
+            public Integer minBambooHeight = 4;
 
             @ConfigName("Maximum Bamboo Height")
-            public int maxBambooHeight = 11;
+            public Integer maxBambooHeight = 11;
 
             @ConfigName("Minimum Bamboo Count")
-            public int minBambooCount = 60;
+            public Integer minBambooCount = 60;
 
             @ConfigName("Maximum Bamboo Count")
-            public int maxBambooCount = 120;
+            public Integer maxBambooCount = 120;
+        }
+
+        public static class FlowerWorldgenConfig {
+            @ConfigName("Generate Flowers")
+            public Boolean generateFlowers = true;
+
+            @ConfigName("Flower Generation Chance")
+            @Comment("Chance is 1/value. Ex: 5 -> 1/5 = 20%")
+            public Integer flowerGenChance = 10;
+
+            @ConfigName("Minimum Flowers")
+            public Integer minimumFlowers = 7;
+
+            @ConfigName("Maximum Flowers")
+            public Integer maximumFlowers = 15;
         }
     }
 }
