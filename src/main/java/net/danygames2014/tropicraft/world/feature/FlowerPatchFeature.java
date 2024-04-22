@@ -1,35 +1,36 @@
 package net.danygames2014.tropicraft.world.feature;
 
 import net.danygames2014.tropicraft.Tropicraft;
-import net.minecraft.block.Block;
+import net.danygames2014.tropicraft.block.TallFlowerBlock;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.Feature;
+import net.modificationstation.stationapi.api.block.BlockState;
 import net.modificationstation.stationapi.api.registry.BlockRegistry;
 import net.modificationstation.stationapi.api.tag.TagKey;
 
 import java.util.Random;
 
 public class FlowerPatchFeature extends Feature {
-    public Block[] flowers;
+    public BlockState[] flowers;
 
     public FlowerPatchFeature() {
-        flowers = new Block[]{
-                Tropicraft.commelinaDiffusa,
-                Tropicraft.crocosmia,
-                Tropicraft.orchid,
-                Tropicraft.canna,
-                Tropicraft.anemone,
-                Tropicraft.orange_anthurium,
-                Tropicraft.red_anthurium,
-                Tropicraft.magic_mushroom,
-                Tropicraft.pathos,
-                Tropicraft.acai_vine,
-                Tropicraft.croton,
-                Tropicraft.dracaena,
-                Tropicraft.fern,
-                Tropicraft.foliage,
-                Tropicraft.bromeliad,
-                Tropicraft.iris
+        flowers = new BlockState[]{
+                Tropicraft.commelinaDiffusa.getDefaultState(),
+                Tropicraft.crocosmia.getDefaultState(),
+                Tropicraft.orchid.getDefaultState(),
+                Tropicraft.canna.getDefaultState(),
+                Tropicraft.anemone.getDefaultState(),
+                Tropicraft.orange_anthurium.getDefaultState(),
+                Tropicraft.red_anthurium.getDefaultState(),
+                Tropicraft.magic_mushroom.getDefaultState(),
+                Tropicraft.pathos.getDefaultState(),
+                Tropicraft.acai_vine.getDefaultState(),
+                Tropicraft.croton.getDefaultState(),
+                Tropicraft.dracaena.getDefaultState(),
+                Tropicraft.fern.getDefaultState(),
+                Tropicraft.foliage.getDefaultState(),
+                Tropicraft.bromeliad.getDefaultState(),
+                Tropicraft.iris.getDefaultState().with(TallFlowerBlock.FLOWER_HALF, TallFlowerBlock.FlowerHalf.BOTTOM)
         };
     }
 
@@ -42,7 +43,7 @@ public class FlowerPatchFeature extends Feature {
             int y = world.getTopY(x, z);
 
             if (world.getBlockState(x, y - 1, z).isIn(TagKey.of(BlockRegistry.INSTANCE.getKey(), Tropicraft.NAMESPACE.id("flower_grows_on")))) {
-                world.setBlockState(x, y, z, flowers[random.nextInt(0, 16)].getDefaultState());
+                world.setBlockState(x, y, z, flowers[random.nextInt(0, 16)]);
             } else {
                 if (retriesRemaining > 0) {
                     i--;
