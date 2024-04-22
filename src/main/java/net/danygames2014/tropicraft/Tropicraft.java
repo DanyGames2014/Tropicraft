@@ -3,6 +3,8 @@ package net.danygames2014.tropicraft;
 import net.danygames2014.tropicraft.block.*;
 import net.danygames2014.tropicraft.block.template.SlabBlockTemplate;
 import net.danygames2014.tropicraft.block.template.StairsBlockTemplate;
+import net.danygames2014.tropicraft.entity.BeachChairEntity;
+import net.danygames2014.tropicraft.entity.renderer.BeachChairRenderer;
 import net.danygames2014.tropicraft.item.food.FoodChunkItem;
 import net.danygames2014.tropicraft.item.food.PinaColadaItem;
 import net.danygames2014.tropicraft.world.dimension.TropicsDimension;
@@ -11,12 +13,16 @@ import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.block.Block;
 import net.minecraft.block.Material;
 import net.minecraft.item.Item;
+import net.modificationstation.stationapi.api.client.event.render.entity.EntityRendererRegisterEvent;
+import net.modificationstation.stationapi.api.event.entity.EntityRegister;
 import net.modificationstation.stationapi.api.event.registry.BlockRegistryEvent;
 import net.modificationstation.stationapi.api.event.registry.DimensionRegistryEvent;
+import net.modificationstation.stationapi.api.event.registry.EntityHandlerRegistryEvent;
 import net.modificationstation.stationapi.api.event.registry.ItemRegistryEvent;
 import net.modificationstation.stationapi.api.mod.entrypoint.Entrypoint;
 import net.modificationstation.stationapi.api.registry.DimensionContainer;
 import net.modificationstation.stationapi.api.registry.DimensionRegistry;
+import net.modificationstation.stationapi.api.registry.Registry;
 import net.modificationstation.stationapi.api.template.block.TemplateBlock;
 import net.modificationstation.stationapi.api.template.item.BlockStateItem;
 import net.modificationstation.stationapi.api.template.item.TemplateItem;
@@ -159,5 +165,20 @@ public class Tropicraft {
     public void registerDimension(DimensionRegistryEvent event) {
         DimensionRegistry registry = event.registry;
         event.registry.register(NAMESPACE.id("tropics"), new DimensionContainer<>(TropicsDimension::new));
+    }
+
+    @EventListener
+    public void registerEntities(EntityRegister event){
+        event.register(BeachChairEntity.class, "BeachChair");
+    }
+
+    @EventListener
+    public void registerEntityHandlers(EntityHandlerRegistryEvent event){
+        Registry.register(event.registry, NAMESPACE.id("BeachChair"), BeachChairEntity::new);
+    }
+
+    @EventListener
+    public void registerEntityRenderer(EntityRendererRegisterEvent event){
+        event.renderers.put(BeachChairEntity.class, new BeachChairRenderer());
     }
 }
