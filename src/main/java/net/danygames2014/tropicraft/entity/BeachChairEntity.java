@@ -34,7 +34,6 @@ public class BeachChairEntity extends Entity implements EntitySpawnDataProvider 
                 if (this.field_1594 != null && this.field_1594 instanceof PlayerEntity player) {
                     LivingEntityAccessor playerA = (LivingEntityAccessor) player;
                     if (playerA.jumping()) {
-                        System.out.println(playerA.rightMovement());
                         if (playerA.rightMovement() > 0.9F) {
                             this.yaw -= random.nextFloat(5.0F, 10.0F);
                             this.method_1322(0, 0.2D, 0);
