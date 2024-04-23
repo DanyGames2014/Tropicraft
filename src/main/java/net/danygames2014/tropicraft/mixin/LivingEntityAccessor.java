@@ -8,4 +8,10 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 public interface LivingEntityAccessor {
     @Accessor("jumping")
     boolean jumping();
+
+    @Accessor("field_1060")
+    float rightMovement();
+
+    @Accessor("field_1029")
+    float frontMovement();
 }

@@ -2,6 +2,7 @@ package net.danygames2014.tropicraft.entity;
 
 import net.danygames2014.tropicraft.Tropicraft;
 import net.danygames2014.tropicraft.mixin.LivingEntityAccessor;
+import net.danygames2014.tropicraft.util.MathHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
@@ -25,18 +26,53 @@ public class BeachChairEntity extends Entity implements EntitySpawnDataProvider 
 
     @Override
     public void tick() {
-        this.method_1322(0, -0.05D, 0);
         super.tick();
-        this.move(this.velocityX, this.velocityY, this.velocityZ);
-        this.yaw += 1F;
 
-
-        if (this.field_1594 != null && this.field_1594 instanceof PlayerEntity player) {
-            System.out.println("PLAYER");
-            if (((LivingEntityAccessor) player).jumping()) {
-                System.out.println("JUMP");
-                this.method_1322(0, 0.1D, 0);
+        if(!world.isRemote){
+            // If on ground, allow the chair jumping code to run
+            if (this.field_1623) {
+                if (this.field_1594 != null && this.field_1594 instanceof PlayerEntity player) {
+                    LivingEntityAccessor playerA = (LivingEntityAccessor) player;
+                    if (playerA.jumping()) {
+                        System.out.println(playerA.rightMovement());
+                        if (playerA.rightMovement() > 0.9F) {
+                            this.yaw -= random.nextFloat(5.0F, 10.0F);
+                            this.method_1322(0, 0.2D, 0);
+                        } else if (playerA.rightMovement() < -0.9F) {
+                            this.yaw += random.nextFloat(5.0F, 10.0F);
+                            this.method_1322(0, 0.2D, 0);
+                        }
+                    }
+                }
             }
+
+            // If not on ground apply some gravity
+            if (!this.field_1623) { // onGround
+                this.method_1322(0, -0.07d, 0);
+            }
+
+            // If on ground, lower the velocity
+            if (this.field_1623) {
+                this.velocityX *= 0.7F;
+                this.velocityZ *= 0.7F;
+
+                if (Math.abs(this.velocityX) < 0.05F) {
+                    this.velocityX = 0F;
+                }
+
+                if (Math.abs(this.velocityZ) < 0.05F) {
+                    this.velocityZ = 0F;
+                }
+            }
+
+
+            // Cap the velocity at 0.5d on each axis
+            this.velocityX = MathHelper.clamp(this.velocityX, -0.5, 0.5);
+            this.velocityY = MathHelper.clamp(this.velocityY, -0.5, 0.5);
+            this.velocityZ = MathHelper.clamp(this.velocityZ, -0.5, 0.5);
+
+            // Move
+            this.move(this.velocityX, this.velocityY, this.velocityZ);
         }
     }
 
