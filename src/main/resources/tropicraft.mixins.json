@@ -4,6 +4,7 @@
   "package": "net.danygames2014.tropicraft.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "LivingEntityAccessor"
   ],
   "server": [
   ],
