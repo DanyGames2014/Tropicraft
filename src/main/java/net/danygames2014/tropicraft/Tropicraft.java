@@ -164,17 +164,17 @@ public class Tropicraft {
     @EventListener
     public void registerDimension(DimensionRegistryEvent event) {
         DimensionRegistry registry = event.registry;
-        event.registry.register(NAMESPACE.id("tropics"), new DimensionContainer<>(TropicsDimension::new));
+//        event.registry.register(NAMESPACE.id("tropics"), new DimensionContainer<>(TropicsDimension::new));
     }
 
     @EventListener
     public void registerEntities(EntityRegister event){
-        event.register(BeachChairEntity.class, "BeachChair");
+        event.register(BeachChairEntity.class, "beach_chair");
     }
 
     @EventListener
     public void registerEntityHandlers(EntityHandlerRegistryEvent event){
-        Registry.register(event.registry, NAMESPACE.id("BeachChair"), BeachChairEntity::new);
+        Registry.register(event.registry, NAMESPACE.id("beach_chair"), BeachChairEntity::new);
     }
 
     @EventListener

@@ -4,7 +4,10 @@ import net.danygames2014.tropicraft.entity.model.BeachChairModel;
 import net.minecraft.client.render.entity.EntityRenderer;
 import net.minecraft.client.render.entity.model.EntityModel;
 import net.minecraft.entity.Entity;
+import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.GL11;
+
+import java.nio.FloatBuffer;
 
 public class BeachChairRenderer extends EntityRenderer {
 

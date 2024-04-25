@@ -4,13 +4,17 @@ import net.danygames2014.tropicraft.Tropicraft;
 import net.danygames2014.tropicraft.mixin.LivingEntityAccessor;
 import net.danygames2014.tropicraft.util.MathHelper;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
 import net.modificationstation.stationapi.api.server.entity.EntitySpawnDataProvider;
+import net.modificationstation.stationapi.api.server.entity.HasTrackingParameters;
 import net.modificationstation.stationapi.api.util.Identifier;
+import net.modificationstation.stationapi.api.util.TriState;
 
+@HasTrackingParameters(updatePeriod = 5, sendVelocity = TriState.TRUE, trackingDistance = 30)
 public class BeachChairEntity extends Entity implements EntitySpawnDataProvider {
 
     public BeachChairEntity(World world) {
@@ -21,19 +25,23 @@ public class BeachChairEntity extends Entity implements EntitySpawnDataProvider 
 
     public BeachChairEntity(World world, Double x, Double y, Double z) {
         super(world);
-        //this.method_1340(x,y,z);
+        this.setBoundingBoxSpacing(0.5F, 0.5F);
+        this.method_1340(x,y,z);
+        this.eyeHeight = this.spacingY / 2.0F;
     }
 
     @Override
     public void tick() {
         super.tick();
-
         if(!world.isRemote){
             // If on ground, allow the chair jumping code to run
             if (this.field_1623) {
                 if (this.field_1594 != null && this.field_1594 instanceof PlayerEntity player) {
                     LivingEntityAccessor playerA = (LivingEntityAccessor) player;
                     if (playerA.jumping()) {
+                        System.out.println("JUMP");
+                        System.out.println(playerA.rightMovement());
+                        System.out.println(playerA.frontMovement());
                         if (playerA.rightMovement() > 0.9F) {
                             this.yaw -= random.nextFloat(5.0F, 10.0F);
                             this.method_1322(0, 0.2D, 0);
