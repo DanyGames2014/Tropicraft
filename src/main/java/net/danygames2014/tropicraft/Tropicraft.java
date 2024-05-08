@@ -4,7 +4,9 @@ import net.danygames2014.tropicraft.block.*;
 import net.danygames2014.tropicraft.block.template.SlabBlockTemplate;
 import net.danygames2014.tropicraft.block.template.StairsBlockTemplate;
 import net.danygames2014.tropicraft.entity.BeachChairEntity;
+import net.danygames2014.tropicraft.entity.IguanaEntity;
 import net.danygames2014.tropicraft.entity.renderer.BeachChairRenderer;
+import net.danygames2014.tropicraft.entity.renderer.IguanaRenderer;
 import net.danygames2014.tropicraft.item.food.FoodChunkItem;
 import net.danygames2014.tropicraft.item.food.PinaColadaItem;
 import net.danygames2014.tropicraft.world.dimension.TropicsDimension;
@@ -15,13 +17,11 @@ import net.minecraft.block.Material;
 import net.minecraft.item.Item;
 import net.modificationstation.stationapi.api.client.event.render.entity.EntityRendererRegisterEvent;
 import net.modificationstation.stationapi.api.event.entity.EntityRegister;
-import net.modificationstation.stationapi.api.event.registry.BlockRegistryEvent;
-import net.modificationstation.stationapi.api.event.registry.DimensionRegistryEvent;
-import net.modificationstation.stationapi.api.event.registry.EntityHandlerRegistryEvent;
-import net.modificationstation.stationapi.api.event.registry.ItemRegistryEvent;
+import net.modificationstation.stationapi.api.event.registry.*;
 import net.modificationstation.stationapi.api.mod.entrypoint.Entrypoint;
 import net.modificationstation.stationapi.api.registry.DimensionContainer;
 import net.modificationstation.stationapi.api.registry.DimensionRegistry;
+import net.modificationstation.stationapi.api.registry.MobHandlerRegistry;
 import net.modificationstation.stationapi.api.registry.Registry;
 import net.modificationstation.stationapi.api.template.block.TemplateBlock;
 import net.modificationstation.stationapi.api.template.item.BlockStateItem;
@@ -170,15 +170,22 @@ public class Tropicraft {
     @EventListener
     public void registerEntities(EntityRegister event){
         event.register(BeachChairEntity.class, "beach_chair");
+        event.register(IguanaEntity.class,"iguana");
     }
 
     @EventListener
     public void registerEntityHandlers(EntityHandlerRegistryEvent event){
         Registry.register(event.registry, NAMESPACE.id("beach_chair"), BeachChairEntity::new);
+
+    }
+
+    public void registerMobHandlers(MobHandlerRegistryEvent event){
+        Registry.register(event.registry, NAMESPACE.id("iguana"), IguanaEntity::new);
     }
 
     @EventListener
     public void registerEntityRenderer(EntityRendererRegisterEvent event){
         event.renderers.put(BeachChairEntity.class, new BeachChairRenderer());
+        event.renderers.put(IguanaEntity.class, new IguanaRenderer());
     }
 }

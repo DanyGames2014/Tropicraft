@@ -7,7 +7,6 @@
     "LivingEntityAccessor"
   ],
   "server": [
-    "PlayerMixin"
   ],
   "client": [
   ],
