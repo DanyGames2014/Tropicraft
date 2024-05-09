@@ -9,31 +9,35 @@ public class IguanaModel extends EntityModel {
     public TropiModelPart backRightLeg = new TropiModelPart(0, 21, true);
     public TropiModelPart frontLeftLeg = new TropiModelPart(24, 21, true);
     public TropiModelPart backLeftLeg = new TropiModelPart(24, 21, true);
+    public TropiModelPart topBase = new TropiModelPart(0, 0);
+    public TropiModelPart topMiddle = new TropiModelPart(32, 0);
+    public TropiModelPart topPeak = new TropiModelPart(32, 7);
+    public TropiModelPart tailFirstSegment = new TropiModelPart(46, 0);
+    public TropiModelPart tailMiddleSegment = new TropiModelPart(48, 7);
+    public TropiModelPart tailTailSegment = new TropiModelPart(52, 14);
+    public TropiModelPart head = new TropiModelPart(36, 23);
+    public TropiModelPart headSpikeBottom = new TropiModelPart(32, 7);
+    public TropiModelPart headSpikeTop = new TropiModelPart(0, 0);
+    public TropiModelPart headUnderpartTop = new TropiModelPart(0, 11);
+    public TropiModelPart headUnderpartBottom = new TropiModelPart(0, 4);
 
     public IguanaModel() {
         this.body.addCube(-2.5F, 1.0F, -6.5F, 5, 3, 13, 0.0F, 0.0F, 0.0F);
-//        this.body.addCuboid(-2.5F, 1.0F, -6.5F, 5, 3, 13);
-//        this.body.setPivot(0.0F, 0.0F, 0.0F);
-
-//        this.frontRightLeg.addCube(2.5F, 0.0F, -5.5F, 2, 3, 3, 3.0F, 2.5F, -4.0F);
-
-//        this.frontRightLeg.addCuboid(2.5F, 0.0F, -5.5F, 2, 3, 3);
-//        this.frontRightLeg.setPivot(3.0F, 2.5F, -4.0F);
-
-        this.frontRightLeg.addCuboid(-0.5F, -0.5F, -1.5F, 2, 3, 3);
-        this.frontRightLeg.setPivot(3.0F, 2.5F, -4.0F);
-
+        this.frontRightLeg.addCube(2.5F, 0.0F, -5.5F, 2, 3, 3, 3.0F, 2.5F, -4.0F);
         this.backRightLeg.addCube(2.5F, 0.0F, 2.5F, 2, 3, 3, 3.0F, 2.5F, 4.0F);
-//        this.backRightLeg.addCuboid(2.5F, 0.0F, 2.5F, 2, 3, 3);
-//        this.backRightLeg.setPivot(3.0F, 2.5F, 4.0F);
-
         this.frontLeftLeg.addCube(-4.5F, 0.0F, -5.5F, 2, 3, 3, -3.0F, 2.5F, -4.0F);
-//        this.frontLeftLeg.addCuboid(-4.5F, 0.0F, -5.5F, 2, 3, 3);
-//        this.frontLeftLeg.setPivot(-3.0F, 2.5F, -4.0F);
-
         this.backLeftLeg.addCube(-4.5F, 0.0F, 2.5F, 2, 3, 3, -3.0F, 2.5F, 4.0F);
-//        this.backLeftLeg.addCuboid(-4.5F, 0.0F, 2.5F, 2, 3, 3);
-//        this.backLeftLeg.setPivot(-3.0F, 2.5F, 4.0F);
+        this.topBase.addCube(-1.5F, 4.0F, -5.0F, 3, 1, 10, 0.0F, 0.0F, 0.0F);
+        this.topMiddle.addCube(-0.5F, 5.0F, -3.0F, 1, 1, 6, 0.0F, 0.0F, 0.0F);
+        this.topPeak.addCube(-0.5F, 6.0F, -2.0F, 1, 1, 4, 0.0F, 0.0F, 0.0F);
+        this.tailFirstSegment.addCube(-1.5F, 2.0F, 6.0F, 3, 1, 6, 0.0F, 2.5F, 6.0F);
+        this.tailMiddleSegment.addCube(-1.0F, 2.0F, 12.0F, 2, 1, 6, 0.0F, 2.5F, 12.0F);
+        this.tailTailSegment.addCube(-0.5F, 2.0F, 18.0F, 1, 1, 5, 0.0F, 2.5F, 18.0F);
+        this.head.addCube(-2.5F, 3.0F, -12.0F, 5, 3, 6, 0.0F, 4.0F, -6.0F);
+        this.headSpikeBottom.addCube(-0.5F, 6.0F, -11.0F, 1, 1, 4, 0.0F, 4.0F, -6.0F);
+        this.headSpikeTop.addCube(-0.5F, 7.0F, -10.0F, 1, 1, 2, 0.0F, 4.0F, -6.0F);
+        this.headUnderpartTop.addCube(-1.0F, 2.0F, -10.0F, 2, 1, 4, 0.0F, 4.0F, -6.0F);
+        this.headUnderpartBottom.addCube(-0.5F, 1.0F, -9.0F, 1, 1, 3, 0.0F, 4.0F, -6.0F);
     }
 
     @Override
@@ -44,5 +48,16 @@ public class IguanaModel extends EntityModel {
         this.backRightLeg.render(scale);
         this.frontLeftLeg.render(scale);
         this.backLeftLeg.render(scale);
+        this.topBase.render(scale);
+        this.topMiddle.render(scale);
+        this.topPeak.render(scale);
+        this.tailFirstSegment.render(scale);
+        this.tailMiddleSegment.render(scale);
+        this.tailTailSegment.render(scale);
+        this.head.render(scale);
+        this.headSpikeBottom.render(scale);
+        this.headSpikeTop.render(scale);
+        this.headUnderpartTop.render(scale);
+        this.headUnderpartBottom.render(scale);
     }
 }

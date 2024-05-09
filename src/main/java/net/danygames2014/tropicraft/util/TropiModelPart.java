@@ -16,9 +16,14 @@ public class TropiModelPart extends ModelPart {
     }
 
     public void addCube(float x, float y, float z, int sizeX, int sizeY, int sizeZ, float pivotX, float pivotY, float pivotZ) {
+        y = -y;
+
         x -= pivotX;
         y -= pivotY;
         z -= pivotZ;
+
+        y -= sizeY - 1;
+
         this.addCuboid(x, y, z, sizeX, sizeY, sizeZ);
         this.setPivot(pivotX, pivotY, pivotZ);
     }
