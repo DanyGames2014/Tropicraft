@@ -1,55 +1,59 @@
 # Blocks
 ## Bamboo
-tile.bamboo_shoot.name=Bamboo Shoot
-tile.bamboo_bundle.name=Bamboo Bundle
-tile.bamboo_stairs.name=Bamboo Stairs
-tile.bamboo_slab.name=Bamboo Slab
+tile.tropicraft.bamboo_shoot.name=Bamboo Shoot
+tile.tropicraft.bamboo_bundle.name=Bamboo Bundle
+tile.tropicraft.bamboo_stairs.name=Bamboo Stairs
+tile.tropicraft.bamboo_slab.name=Bamboo Slab
 
 ## Palm
-tile.palm_log.name=Palm Wood
-tile.palm_leaves.name=Palm Leaves
-tile.palm_planks.name=Palm Planks
-tile.palm_stairs.name=Palm Stairs
-tile.palm_slab.name=Palm Slab
-tile.coconut.name=Coconut
+tile.tropicraft.palm_log.name=Palm Wood
+tile.tropicraft.palm_leaves.name=Palm Leaves
+tile.tropicraft.palm_planks.name=Palm Planks
+tile.tropicraft.palm_stairs.name=Palm Stairs
+tile.tropicraft.palm_slab.name=Palm Slab
+tile.tropicraft.coconut.name=Coconut
 
 ## Thatch
-tile.thatch_bundle.name=Thatch Bundle
-tile.thatch_stairs.name=Thatch Stairs
-tile.thatch_slab.name=Thatch Slab
-tile.thatch_roof.name=Thatch Roof
+tile.tropicraft.thatch_bundle.name=Thatch Bundle
+tile.tropicraft.thatch_stairs.name=Thatch Stairs
+tile.tropicraft.thatch_slab.name=Thatch Slab
+tile.tropicraft.thatch_roof.name=Thatch Roof
 
 ## Flowers
-tile.commelina_diffusa.name=Commelina Diffusa
-tile.crocosmia.name=Crocosmia
-tile.orchid.name=Orchid
-tile.canna.name=Canna
-tile.anemone.name=Anemone
-tile.orange_anthurium.name=Orange Anthurium
-tile.red_anthurium.name=Red Anthurium
-tile.magic_mushroom.name=Magic Mushroom
-tile.pathos.name=Pathos
-tile.acai_vine.name=Acai Vine
-tile.croton.name=Croton
-tile.dracaena.name=Dracaena
-tile.fern.name=Fern
-tile.foliage.name=Foliage
-tile.bromeliad.name=Bromeliad
-tile.iris.name=Iris
+tile.tropicraft.commelina_diffusa.name=Commelina Diffusa
+tile.tropicraft.crocosmia.name=Crocosmia
+tile.tropicraft.orchid.name=Orchid
+tile.tropicraft.canna.name=Canna
+tile.tropicraft.anemone.name=Anemone
+tile.tropicraft.orange_anthurium.name=Orange Anthurium
+tile.tropicraft.red_anthurium.name=Red Anthurium
+tile.tropicraft.magic_mushroom.name=Magic Mushroom
+tile.tropicraft.pathos.name=Pathos
+tile.tropicraft.acai_vine.name=Acai Vine
+tile.tropicraft.croton.name=Croton
+tile.tropicraft.dracaena.name=Dracaena
+tile.tropicraft.fern.name=Fern
+tile.tropicraft.foliage.name=Foliage
+tile.tropicraft.bromeliad.name=Bromeliad
+tile.tropicraft.iris.name=Iris
 
 ## Pineapple
-tile.pineapple.name=Pineapple
+tile.tropicraft.pineapple.name=Pineapple
 
 # Items
 ## Bamboo
-item.bamboo.name=Bamboo Shoot
+item.tropicraft.bamboo.name=Bamboo Shoot
 
 ## Palm
-item.coconut_chunk.name=Coconut Chunk
+item.tropicraft.coconut_chunk.name=Coconut Chunk
 
 ## Pineapple
-item.pineapple_cubes.name=Pineapple Cubes
+item.tropicraft.pineapple_cubes.name=Pineapple Cubes
+
+## Iguana
+item.tropicraft.scale.name=Scale
 
 # Dimension
-dim.tropics.entering=Drifting into the Tropics!
-dim.tropics.leaving=Leaving the Tropics!
+dim.tropicraft.tropics.entering=Drifting into the Tropics!
+dim.tropicraft.tropics.leaving=Leaving the Tropics!
+
