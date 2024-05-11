@@ -2,6 +2,7 @@ package net.danygames2014.tropicraft.entity.model;
 
 import net.danygames2014.tropicraft.util.TropiModelPart;
 import net.minecraft.client.render.entity.model.EntityModel;
+import net.minecraft.util.math.MathHelper;
 
 public class IguanaModel extends EntityModel {
     public TropiModelPart body = new TropiModelPart(0, 16);
@@ -59,5 +60,50 @@ public class IguanaModel extends EntityModel {
         this.headSpikeTop.render(scale);
         this.headUnderpartTop.render(scale);
         this.headUnderpartBottom.render(scale);
+    }
+
+    public float tailAngle1 = 0.0F;
+    public float tailAngle2 = 0.0F;
+    public float tailAngle3 = 0.0F;
+
+    @Override
+    public void setAngles(float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch, float scale) {
+        this.head.angleHead(headPitch, headYaw);
+        this.headSpikeTop.angleHead(headPitch, headYaw);
+        this.headSpikeBottom.angleHead(headPitch, headYaw);
+        this.headUnderpartTop.angleHead(headPitch, headYaw);
+        this.headUnderpartBottom.angleHead(headPitch, headYaw);
+
+        this.frontRightLeg.angleLeg(limbAngle, limbDistance, true);
+        this.backRightLeg.angleLeg(limbAngle, limbDistance);
+        this.frontLeftLeg.angleLeg(limbAngle, limbDistance);
+        this.backLeftLeg.angleLeg(limbAngle, limbDistance, true);
+
+        tailAngle1 += 1.2F;
+        tailAngle2 += 1.5F;
+        tailAngle3 += 1.7F;
+
+        tailAngle1 = tailAngle1 % 360F;
+        tailAngle2 = tailAngle2 % 360F;
+        tailAngle3 = tailAngle3 % 360F;
+
+        setTailAngle(tailAngle1, tailAngle2, tailAngle3);
+    }
+
+    // tailangle 0 - 360
+    public void setTailAngle(float firstSegmentAngle, float secondSegmentAngle, float thirdSegmentAngle) {
+        // First Segment
+        this.tailFirstSegment.yaw = MathHelper.cos(firstSegmentAngle * 0.01745328627F);
+
+        // Second Segment
+        this.tailMiddleSegment.yaw = MathHelper.cos(secondSegmentAngle * 0.01745328627F);
+        this.tailMiddleSegment.pivotX = MathHelper.sin(this.tailFirstSegment.yaw) * 6F;
+        this.tailMiddleSegment.pivotZ = (MathHelper.cos(this.tailFirstSegment.yaw) * 6F) + 6F;
+
+        // Third Segment
+        this.tailTailSegment.yaw = MathHelper.cos(thirdSegmentAngle * 0.01745328627F);
+        this.tailTailSegment.pivotX = this.tailMiddleSegment.pivotX + (MathHelper.sin(this.tailMiddleSegment.yaw) * 6F);
+        this.tailTailSegment.pivotZ = this.tailMiddleSegment.pivotZ + (MathHelper.cos(this.tailMiddleSegment.yaw) * 6F);
+
     }
 }
