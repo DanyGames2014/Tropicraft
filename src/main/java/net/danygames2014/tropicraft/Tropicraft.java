@@ -9,7 +9,6 @@ import net.danygames2014.tropicraft.entity.renderer.BeachChairRenderer;
 import net.danygames2014.tropicraft.entity.renderer.IguanaRenderer;
 import net.danygames2014.tropicraft.item.food.FoodChunkItem;
 import net.danygames2014.tropicraft.item.food.PinaColadaItem;
-import net.danygames2014.tropicraft.world.dimension.TropicsDimension;
 import net.glasslauncher.mods.api.gcapi.api.GConfig;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.block.Block;
@@ -19,9 +18,7 @@ import net.modificationstation.stationapi.api.client.event.render.entity.EntityR
 import net.modificationstation.stationapi.api.event.entity.EntityRegister;
 import net.modificationstation.stationapi.api.event.registry.*;
 import net.modificationstation.stationapi.api.mod.entrypoint.Entrypoint;
-import net.modificationstation.stationapi.api.registry.DimensionContainer;
 import net.modificationstation.stationapi.api.registry.DimensionRegistry;
-import net.modificationstation.stationapi.api.registry.MobHandlerRegistry;
 import net.modificationstation.stationapi.api.registry.Registry;
 import net.modificationstation.stationapi.api.template.block.TemplateBlock;
 import net.modificationstation.stationapi.api.template.item.BlockStateItem;
@@ -101,6 +98,9 @@ public class Tropicraft {
     // Drinks
     public static Item pinaColada;
 
+    // Iguana
+    public static Item scale;
+
     @EventListener
     public void registerBlocks(BlockRegistryEvent event) {
         // Bamboo
@@ -159,6 +159,9 @@ public class Tropicraft {
 
         // Drinks
         pinaColada = new PinaColadaItem(NAMESPACE.id("pina_colada")).setTranslationKey(NAMESPACE, "pina_colada");
+
+        // Iguana
+        scale = new TemplateItem(NAMESPACE.id("scale")).setTranslationKey(NAMESPACE, "scale");
     }
 
     @EventListener
