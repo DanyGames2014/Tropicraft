@@ -14,7 +14,7 @@ public class BeachChairRenderer extends EntityRenderer {
     public EntityModel beachChairModel;
 
     public BeachChairRenderer() {
-        this.field_2678 = 0.5F; // shadowRadius
+        this.shadowRadius = 0.5F;
         this.beachChairModel = new BeachChairModel();
     }
 
