@@ -7,6 +7,7 @@ import net.danygames2014.tropicraft.entity.BeachChairEntity;
 import net.danygames2014.tropicraft.entity.IguanaEntity;
 import net.danygames2014.tropicraft.entity.renderer.BeachChairRenderer;
 import net.danygames2014.tropicraft.entity.renderer.IguanaRenderer;
+import net.danygames2014.tropicraft.item.TropiRecordItem;
 import net.danygames2014.tropicraft.item.armor.ScaleArmorItem;
 import net.danygames2014.tropicraft.item.food.FoodChunkItem;
 import net.danygames2014.tropicraft.item.food.PinaColadaItem;
@@ -106,6 +107,14 @@ public class Tropicraft {
     public static Item scaleLeggings;
     public static Item scaleBoots;
 
+    // Records
+    public static Item easternIslesRecord;
+    public static Item buriedTreasureRecord;
+    public static Item lowTideRecord;
+    public static Item summeringRecord;
+    public static Item theTribeRecord;
+    public static Item tradeWindsRecord;
+
     @EventListener
     public void registerBlocks(BlockRegistryEvent event) {
         // Bamboo
@@ -171,6 +180,14 @@ public class Tropicraft {
         scaleChestplate = new ScaleArmorItem(NAMESPACE.id("scale_chestplate"), 2, 1).setTranslationKey(NAMESPACE, "scale_chestplate");
         scaleLeggings = new ScaleArmorItem(NAMESPACE.id("scale_leggings"), 2, 2).setTranslationKey(NAMESPACE, "scale_leggings");
         scaleBoots = new ScaleArmorItem(NAMESPACE.id("scale_boots"), 2, 3).setTranslationKey(NAMESPACE, "scale_boots");
+
+        // Records
+        easternIslesRecord = new TropiRecordItem(NAMESPACE.id("eastern_isles_record"), "tropicraft:eastern_isles", "Frox - Eastern Isles").setTranslationKey(NAMESPACE.id("eastern_isles_record"));
+        buriedTreasureRecord = new TropiRecordItem(NAMESPACE.id("buried_treasure_record"), "tropicraft:buried_treasure", "Punchaface - Buried Treasure").setTranslationKey(NAMESPACE.id("buried_treasure_record"));
+        lowTideRecord = new TropiRecordItem(NAMESPACE.id("low_tide_record"), "tropicraft:low_tide", "Punchaface - Low Tide").setTranslationKey(NAMESPACE.id("low_tide_record"));
+        summeringRecord = new TropiRecordItem(NAMESPACE.id("summering_record"), "tropicraft:summering", "Billy Christiansen - Summering").setTranslationKey(NAMESPACE.id("summering_record"));
+        theTribeRecord = new TropiRecordItem(NAMESPACE.id("the_tribe_record"), "tropicraft:the_tribe", "Emile Van Krieken - The Tribe").setTranslationKey(NAMESPACE.id("the_tribe_record"));
+        tradeWindsRecord = new TropiRecordItem(NAMESPACE.id("trade_winds_record"), "tropicraft:trade_winds", "Frox - Trade Winds").setTranslationKey(NAMESPACE.id("trade_winds_record"));
 
     }
 

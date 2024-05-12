@@ -58,6 +58,14 @@ item.tropicraft.scale_chestplate.name=Scale Chestplate
 item.tropicraft.scale_leggings.name=Scale Leggings
 item.tropicraft.scale_boots.name=Scale Boots
 
+## Records
+item.tropicraft.eastern_isles_record.name=Eastern Isles
+item.tropicraft.buried_treasure_record.name=Buried Treasure
+item.tropicraft.low_tide_record.name=Low Tide
+item.tropicraft.summering_record.name=Summering
+item.tropicraft.the_tribe_record.name=The Tribe
+item.tropicraft.trade_winds_record.name=Trade Winds
+
 # Dimension
 dim.tropicraft.tropics.entering=Drifting into the Tropics!
 dim.tropicraft.tropics.leaving=Leaving the Tropics!
