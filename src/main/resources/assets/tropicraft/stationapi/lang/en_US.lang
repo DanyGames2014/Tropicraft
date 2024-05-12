@@ -43,6 +43,7 @@ tile.tropicraft.pineapple.name=Pineapple
 # Items
 ## Bamboo
 item.tropicraft.bamboo.name=Bamboo Shoot
+item.tropicraft.bamboo_stick.name=Bamboo Stick
 
 ## Palm
 item.tropicraft.coconut_chunk.name=Coconut Chunk
@@ -50,8 +51,12 @@ item.tropicraft.coconut_chunk.name=Coconut Chunk
 ## Pineapple
 item.tropicraft.pineapple_cubes.name=Pineapple Cubes
 
-## Iguana
+## Scale
 item.tropicraft.scale.name=Scale
+item.tropicraft.scale_helmet.name=Scale Helmet
+item.tropicraft.scale_chestplate.name=Scale Chestplate
+item.tropicraft.scale_leggings.name=Scale Leggings
+item.tropicraft.scale_boots.name=Scale Boots
 
 # Dimension
 dim.tropicraft.tropics.entering=Drifting into the Tropics!

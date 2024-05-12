@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    "sss",
+    "s s",
+    "s s"
+  ],
+  "key":
+  {
+    "s":
+    {
+      "item": "tropicraft:scale"
+    }
+  },
+  "result":
+  {
+    "item": "tropicraft:scale_leggings",
+    "count": 1
+  }
+}
