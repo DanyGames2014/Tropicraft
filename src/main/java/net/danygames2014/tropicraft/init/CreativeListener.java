@@ -22,10 +22,12 @@ public class CreativeListener {
         add(bambooBundle);
         add(bambooStairs);
         add(bambooSlab);
+        add(bambooStickItem);
 
         add(thatchBlock);
         add(thatchStairs);
         add(thatchSlab);
+        add(thatchRoof);
 
         add(palmLog);
         add(palmLeaves);
@@ -33,6 +35,8 @@ public class CreativeListener {
         add(palmStairs);
         add(palmSlab);
 
+        add(pineapple);
+        add(pineappleCubes);
         add(coconut);
         add(coconutChunk);
         add(pinaColada);
@@ -52,6 +56,20 @@ public class CreativeListener {
         add(fern);
         add(foliage);
         add(bromeliad);
+        add(iris);
+
+        add(scale);
+        add(scaleHelmet);
+        add(scaleChestplate);
+        add(scaleLeggings);
+        add(scaleBoots);
+
+        add(easternIslesRecord);
+        add(buriedTreasureRecord);
+        add(tradeWindsRecord);
+        add(lowTideRecord);
+        add(summeringRecord);
+        add(theTribeRecord);
     }
 
     private static void add(Block block) {
