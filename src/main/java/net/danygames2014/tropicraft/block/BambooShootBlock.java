@@ -83,9 +83,4 @@ public class BambooShootBlock extends TemplateBlock {
     public boolean isFullCube() {
         return false;
     }
-
-    //    @Override
-//    public int getRenderType() {
-//        return RenderType.CROSS.renderType;
-//    }
 }

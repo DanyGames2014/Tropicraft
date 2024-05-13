@@ -1,4 +1,4 @@
-package net.danygames2014.tropicraft.util;
+package net.danygames2014.tropicraft.world.structure;
 
 import net.minecraft.world.World;
 import net.modificationstation.stationapi.api.block.BlockState;

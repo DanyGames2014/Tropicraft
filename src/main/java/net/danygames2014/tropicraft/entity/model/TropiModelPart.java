@@ -1,4 +1,4 @@
-package net.danygames2014.tropicraft.util;
+package net.danygames2014.tropicraft.entity.model;
 
 import net.minecraft.client.model.ModelPart;
 import net.minecraft.util.math.MathHelper;

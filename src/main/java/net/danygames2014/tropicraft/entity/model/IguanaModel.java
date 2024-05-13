@@ -1,6 +1,5 @@
 package net.danygames2014.tropicraft.entity.model;
 
-import net.danygames2014.tropicraft.util.TropiModelPart;
 import net.minecraft.client.render.entity.model.EntityModel;
 import net.minecraft.util.math.MathHelper;
 

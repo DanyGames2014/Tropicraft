@@ -1,8 +1,8 @@
 package net.danygames2014.tropicraft.world.feature;
 
 import net.danygames2014.tropicraft.Tropicraft;
-import net.danygames2014.tropicraft.util.Structure;
-import net.danygames2014.tropicraft.util.TreeStructure;
+import net.danygames2014.tropicraft.world.structure.Structure;
+import net.danygames2014.tropicraft.world.structure.TreeStructure;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.Feature;
 import net.modificationstation.stationapi.api.registry.BlockRegistry;
