@@ -1,9 +1,7 @@
 package net.danygames2014.tropicraft.block;
 
 import net.danygames2014.tropicraft.Tropicraft;
-import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.block.Material;
-import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.Box;
 import net.minecraft.world.World;

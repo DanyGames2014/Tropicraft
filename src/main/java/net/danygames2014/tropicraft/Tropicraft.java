@@ -1,8 +1,11 @@
 package net.danygames2014.tropicraft;
 
 import net.danygames2014.tropicraft.block.*;
+import net.danygames2014.tropicraft.block.sifter.SifterBlock;
 import net.danygames2014.tropicraft.block.template.SlabBlockTemplate;
 import net.danygames2014.tropicraft.block.template.StairsBlockTemplate;
+import net.danygames2014.tropicraft.block.sifter.SifterBlockEntity;
+import net.danygames2014.tropicraft.block.sifter.SifterBlockEntityRenderer;
 import net.danygames2014.tropicraft.entity.BeachChairEntity;
 import net.danygames2014.tropicraft.entity.IguanaEntity;
 import net.danygames2014.tropicraft.entity.renderer.BeachChairRenderer;
@@ -16,7 +19,9 @@ import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.block.Block;
 import net.minecraft.block.Material;
 import net.minecraft.item.Item;
+import net.modificationstation.stationapi.api.client.event.block.entity.BlockEntityRendererRegisterEvent;
 import net.modificationstation.stationapi.api.client.event.render.entity.EntityRendererRegisterEvent;
+import net.modificationstation.stationapi.api.event.block.entity.BlockEntityRegisterEvent;
 import net.modificationstation.stationapi.api.event.entity.EntityRegister;
 import net.modificationstation.stationapi.api.event.registry.*;
 import net.modificationstation.stationapi.api.mod.entrypoint.Entrypoint;
@@ -79,6 +84,9 @@ public class Tropicraft {
     public static Block chunkOHead;
     public static Block chunkOSlab;
     public static Block chunkOStairs;
+
+    // Sifter
+    public static Block sifter;
 
     // Flowers
     public static Block commelinaDiffusa;
@@ -167,6 +175,9 @@ public class Tropicraft {
 
         // Pineapple
         pineapple = new PineappleBlock(NAMESPACE.id("pineapple")).setTranslationKey(NAMESPACE, "pineapple").setSoundGroup(Block.DIRT_SOUND_GROUP);
+
+        // Sifter
+        sifter = new SifterBlock(NAMESPACE.id("sifter"), Material.WOOD).setTranslationKey(NAMESPACE, "sifter").setSoundGroup(Block.WOOD_SOUND_GROUP);
     }
 
     @EventListener
@@ -227,5 +238,15 @@ public class Tropicraft {
     public void registerEntityRenderer(EntityRendererRegisterEvent event) {
         event.renderers.put(BeachChairEntity.class, new BeachChairRenderer());
         event.renderers.put(IguanaEntity.class, new IguanaRenderer());
+    }
+
+    @EventListener
+    public void registerBlockEntity(BlockEntityRegisterEvent event){
+        event.register(SifterBlockEntity.class, "sifter");
+    }
+
+    @EventListener
+    public void registerBlockEntityRenderer(BlockEntityRendererRegisterEvent event){
+        event.renderers.put(SifterBlockEntity.class, new SifterBlockEntityRenderer());
     }
 }
