@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "slab_type=bottom": {
+      "model": "tropicraft:block/chunk_o_slab"
+    },
+
+    "slab_type=top": {
+      "model": "tropicraft:block/chunk_o_slab",
+      "x": 180
+    },
+
+    "slab_type=double": {
+      "model": "tropicraft:block/chunk_o_head"
+    }
+  }
+}

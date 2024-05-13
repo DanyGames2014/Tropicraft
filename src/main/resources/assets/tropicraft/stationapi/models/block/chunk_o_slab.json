@@ -1,0 +1,6 @@
+{
+  "parent": "tropicraft:block/template/slab",
+  "textures": {
+    "all": "tropicraft:block/chunk_o_head"
+  }
+}

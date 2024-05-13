@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "tropicraft:block/chunk_o_stairs"
+    },
+    "facing=east": {
+      "model": "tropicraft:block/chunk_o_stairs",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "tropicraft:block/chunk_o_stairs",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "tropicraft:block/chunk_o_stairs",
+      "y": 270
+    }
+  }
+}

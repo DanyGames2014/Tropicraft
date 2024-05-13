@@ -75,6 +75,11 @@ public class Tropicraft {
     public static Block coconut;
     public static Item coconutChunk;
 
+    // Chunk o' Head
+    public static Block chunkOHead;
+    public static Block chunkOSlab;
+    public static Block chunkOStairs;
+
     // Flowers
     public static Block commelinaDiffusa;
     public static Block crocosmia;
@@ -136,6 +141,11 @@ public class Tropicraft {
         palmStairs = new StairsBlockTemplate(NAMESPACE.id("palm_stairs"), palmPlanks).setTranslationKey(NAMESPACE, "palm_stairs").setHardness(1.0F).setResistance(0.1F).setSoundGroup(Block.WOOD_SOUND_GROUP);
         palmSlab = new SlabBlockTemplate(NAMESPACE.id("palm_slab"), palmPlanks).setTranslationKey(NAMESPACE, "palm_slab").setHardness(1.0F).setResistance(0.1F).setSoundGroup(Block.WOOD_SOUND_GROUP);
         coconut = new CoconutBlock(NAMESPACE.id("coconut"), Material.WOOD).setTranslationKey(NAMESPACE, "coconut").setHardness(0.5F).setResistance(0.1F).setSoundGroup(Block.WOOD_SOUND_GROUP);
+
+        // Chunk o' Head
+        chunkOHead = new TemplateBlock(NAMESPACE.id("chunk_o_head"), Material.STONE).setTranslationKey(NAMESPACE, "chunk_o_head").setHardness(2.0F).setResistance(30.0F).setSoundGroup(Block.STONE_SOUND_GROUP);
+        chunkOSlab = new SlabBlockTemplate(NAMESPACE.id("chunk_o_slab"), chunkOHead).setTranslationKey(NAMESPACE, "chunk_o_slab").setHardness(2.0F).setResistance(30.0F).setSoundGroup(Block.STONE_SOUND_GROUP);
+        chunkOStairs = new StairsBlockTemplate(NAMESPACE.id("chunk_o_stairs"), chunkOHead).setTranslationKey(NAMESPACE, "chunk_o_stairs").setHardness(2.0F).setResistance(30.0F).setSoundGroup(Block.STONE_SOUND_GROUP);
 
         // Flowers
         commelinaDiffusa = new FlowerBlock(NAMESPACE.id("commelina_diffusa")).setTranslationKey(NAMESPACE, "commelina_diffusa").setSoundGroup(Block.DIRT_SOUND_GROUP);

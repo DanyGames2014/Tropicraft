@@ -19,6 +19,11 @@ tile.tropicraft.thatch_stairs.name=Thatch Stairs
 tile.tropicraft.thatch_slab.name=Thatch Slab
 tile.tropicraft.thatch_roof.name=Thatch Roof
 
+## Chunk o' Head
+tile.tropicraft.chunk_o_head.name=Chunk o' Head
+tile.tropicraft.chunk_o_slab.name=Chunk o' Slab
+tile.tropicraft.chunk_o_stairs.name=Chunk o' Stairs
+
 ## Flowers
 tile.tropicraft.commelina_diffusa.name=Commelina Diffusa
 tile.tropicraft.crocosmia.name=Crocosmia
