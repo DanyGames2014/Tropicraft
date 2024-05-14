@@ -3,13 +3,14 @@ package net.danygames2014.tropicraft.block.sifter;
 import net.minecraft.block.Material;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.modificationstation.stationapi.api.template.block.TemplateBlockWithEntity;
 import net.modificationstation.stationapi.api.util.Identifier;
 
 public class SifterBlock extends TemplateBlockWithEntity {
-    public SifterBlock(Identifier identifier, Material material) {
-        super(identifier, material);
+    public SifterBlock(Identifier identifier) {
+        super(identifier, Material.STONE);
     }
 
     @Override
@@ -21,7 +22,7 @@ public class SifterBlock extends TemplateBlockWithEntity {
     public boolean onUse(World world, int x, int y, int z, PlayerEntity player) {
         SifterBlockEntity blockEntity = ((SifterBlockEntity)world.getBlockEntity(x,y,z));
 
-        if(blockEntity.sift(player.getHand())){
+        if(blockEntity.sift(player.getHand().split(1))){
             player.getHand().count--;
             return true;
         }
@@ -35,6 +36,11 @@ public class SifterBlock extends TemplateBlockWithEntity {
 
     @Override
     public boolean isFullCube() {
-        return false;
+        return true;
+    }
+
+    @Override
+    public int getRenderLayer() {
+        return 0;
     }
 }

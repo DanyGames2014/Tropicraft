@@ -10,6 +10,7 @@ import net.danygames2014.tropicraft.entity.BeachChairEntity;
 import net.danygames2014.tropicraft.entity.IguanaEntity;
 import net.danygames2014.tropicraft.entity.renderer.BeachChairRenderer;
 import net.danygames2014.tropicraft.entity.renderer.IguanaRenderer;
+import net.danygames2014.tropicraft.event.SiftingRecipeRegisterEvent;
 import net.danygames2014.tropicraft.item.TropiRecordItem;
 import net.danygames2014.tropicraft.item.armor.ScaleArmorItem;
 import net.danygames2014.tropicraft.item.food.FoodChunkItem;
@@ -19,6 +20,7 @@ import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.block.Block;
 import net.minecraft.block.Material;
 import net.minecraft.item.Item;
+import net.modificationstation.stationapi.api.StationAPI;
 import net.modificationstation.stationapi.api.client.event.block.entity.BlockEntityRendererRegisterEvent;
 import net.modificationstation.stationapi.api.client.event.render.entity.EntityRendererRegisterEvent;
 import net.modificationstation.stationapi.api.event.block.entity.BlockEntityRegisterEvent;
@@ -177,7 +179,7 @@ public class Tropicraft {
         pineapple = new PineappleBlock(NAMESPACE.id("pineapple")).setTranslationKey(NAMESPACE, "pineapple").setSoundGroup(Block.DIRT_SOUND_GROUP);
 
         // Sifter
-        sifter = new SifterBlock(NAMESPACE.id("sifter"), Material.WOOD).setTranslationKey(NAMESPACE, "sifter").setSoundGroup(Block.WOOD_SOUND_GROUP);
+        sifter = new SifterBlock(NAMESPACE.id("sifter")).setTranslationKey(NAMESPACE, "sifter").setSoundGroup(Block.WOOD_SOUND_GROUP);
     }
 
     @EventListener
@@ -248,5 +250,10 @@ public class Tropicraft {
     @EventListener
     public void registerBlockEntityRenderer(BlockEntityRendererRegisterEvent event){
         event.renderers.put(SifterBlockEntity.class, new SifterBlockEntityRenderer());
+    }
+
+    @EventListener
+    public void sendSiftingRecipeRegisterEvent(AfterBlockAndItemRegisterEvent event){
+        StationAPI.EVENT_BUS.post(new SiftingRecipeRegisterEvent());
     }
 }

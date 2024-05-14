@@ -10,6 +10,7 @@ public class SifterBlockEntity extends BlockEntity {
     public int siftTimeRemaining;
 
     public ItemStack siftedItem;
+    public ItemEntity renderedItem;
 
     public double yaw = 0.0D;
     public double yaw2 = 0.0D;
@@ -29,25 +30,26 @@ public class SifterBlockEntity extends BlockEntity {
         this.yaw += 4.545454502105713D;
 
         if(!world.isRemote && siftTimeRemaining == 0){
-            finishSifting(this.siftedItem);
-            this.siftedItem = null;
-            siftTimeRemaining = -1;
+            finishSifting();
         }
     }
 
     public boolean sift(ItemStack item){
-        if(this.siftTimeRemaining == -1 && item != null){
-            this.siftedItem = item;
+        if(siftTimeRemaining == -1 && item != null){
+            siftedItem = item;
             // TODO: Customize Sifting time using a Sifting Recipe Registry
-            this.siftTimeRemaining = 100;
+            siftTimeRemaining = 100;
             return true;
         }
         return false;
     }
 
-    public void finishSifting(ItemStack siftedItem){
+    public void finishSifting(){
         // TODO: proper handling of finished sifting via Sifting Recipe Reigstry
         world.method_210(new ItemEntity(world, x, y+1, z, new ItemStack(Item.DIAMOND, 10)));
+        renderedItem = null;
+        siftedItem = null;
+        siftTimeRemaining = -1;
     }
 
     @Override

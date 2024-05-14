@@ -16,7 +16,8 @@
   "entrypoints": {
     "stationapi:event_bus": [
       "net.danygames2014.tropicraft.Tropicraft",
-      "net.danygames2014.tropicraft.world.ChunkDecorationListener"
+      "net.danygames2014.tropicraft.world.ChunkDecorationListener",
+      "net.danygames2014.tropicraft.init.RecipeListener"
     ],
     "stationapi:event_bus_client": [
     ],
