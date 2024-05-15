@@ -3,15 +3,12 @@ package net.danygames2014.tropicraft.block.sifter;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.loader.api.FabricLoader;
-import net.minecraft.block.Block;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.render.block.entity.BlockEntityRenderer;
 import net.minecraft.client.render.entity.EntityRenderDispatcher;
-import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
 import org.lwjgl.opengl.GL11;
 
 @Environment(EnvType.CLIENT)

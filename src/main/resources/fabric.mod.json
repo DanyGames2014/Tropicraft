@@ -17,7 +17,7 @@
     "stationapi:event_bus": [
       "net.danygames2014.tropicraft.Tropicraft",
       "net.danygames2014.tropicraft.world.ChunkDecorationListener",
-      "net.danygames2014.tropicraft.init.RecipeListener"
+      "net.danygames2014.tropicraft.init.InitListener"
     ],
     "stationapi:event_bus_client": [
     ],
@@ -28,6 +28,9 @@
     ],
     "gcapi": [
       "net.danygames2014.tropicraft.Tropicraft"
+    ],
+    "tropicraft:event_bus": [
+      "net.danygames2014.tropicraft.init.RecipeListener"
     ]
   },
   "mixins": [

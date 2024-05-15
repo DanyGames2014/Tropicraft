@@ -22,7 +22,7 @@ public class SifterBlock extends TemplateBlockWithEntity {
     public boolean onUse(World world, int x, int y, int z, PlayerEntity player) {
         SifterBlockEntity blockEntity = ((SifterBlockEntity)world.getBlockEntity(x,y,z));
 
-        if(blockEntity.sift(player.getHand().split(1))){
+        if(blockEntity.sift(player.getHand().copy())){
             player.getHand().count--;
             return true;
         }

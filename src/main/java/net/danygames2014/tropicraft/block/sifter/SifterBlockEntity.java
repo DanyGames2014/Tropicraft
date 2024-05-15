@@ -1,8 +1,9 @@
 package net.danygames2014.tropicraft.block.sifter;
 
+import net.danygames2014.tropicraft.recipe.SiftingRecipeOutput;
+import net.danygames2014.tropicraft.recipe.SiftingRecipeRegistry;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.ItemEntity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 
@@ -22,31 +23,35 @@ public class SifterBlockEntity extends BlockEntity {
 
     @Override
     public void tick() {
-        if(siftTimeRemaining > 0){
+        if (siftTimeRemaining > 0) {
             siftTimeRemaining--;
         }
 
         this.yaw2 = this.yaw2 % 360.0D;
         this.yaw += 4.545454502105713D;
 
-        if(!world.isRemote && siftTimeRemaining == 0){
+        if (!world.isRemote && siftTimeRemaining == 0) {
             finishSifting();
         }
     }
 
-    public boolean sift(ItemStack item){
-        if(siftTimeRemaining == -1 && item != null){
+    public boolean sift(ItemStack item) {
+        if (siftTimeRemaining == -1 && item != null && SiftingRecipeRegistry.hasRecipe(item.getItem())) {
             siftedItem = item;
-            // TODO: Customize Sifting time using a Sifting Recipe Registry
-            siftTimeRemaining = 100;
+            siftedItem.count = 1;
+            siftTimeRemaining = SiftingRecipeRegistry.getRecipe(item.getItem()).siftingTime;
             return true;
         }
         return false;
     }
 
-    public void finishSifting(){
-        // TODO: proper handling of finished sifting via Sifting Recipe Reigstry
-        world.method_210(new ItemEntity(world, x, y+1, z, new ItemStack(Item.DIAMOND, 10)));
+    public void finishSifting() {
+        for (SiftingRecipeOutput output : SiftingRecipeRegistry.getRecipe(siftedItem.getItem()).outputs) {
+            if (world.field_214.nextInt(output.chance) == 0) {
+                world.method_210(new ItemEntity(world, x, y+3, z, output.stack));
+            }
+        }
+
         renderedItem = null;
         siftedItem = null;
         siftTimeRemaining = -1;
@@ -56,7 +61,7 @@ public class SifterBlockEntity extends BlockEntity {
     public void writeNbt(NbtCompound nbt) {
         super.writeNbt(nbt);
         nbt.putInt("siftTimeRemaining", siftTimeRemaining);
-        if(siftTimeRemaining >= 0){
+        if (siftTimeRemaining >= 0) {
             nbt.put("siftedItem", siftedItem.writeNbt(new NbtCompound()));
         }
     }
@@ -65,7 +70,7 @@ public class SifterBlockEntity extends BlockEntity {
     public void readNbt(NbtCompound nbt) {
         super.readNbt(nbt);
         siftTimeRemaining = nbt.getInt("siftTimeRemaining");
-        if(siftTimeRemaining >= 0){
+        if (siftTimeRemaining >= 0) {
             siftedItem = new ItemStack(nbt.getCompound("siftedItem"));
         }
     }
