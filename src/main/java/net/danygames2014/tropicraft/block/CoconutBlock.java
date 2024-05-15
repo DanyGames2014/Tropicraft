@@ -1,7 +1,7 @@
 package net.danygames2014.tropicraft.block;
 
 import net.danygames2014.tropicraft.Tropicraft;
-import net.minecraft.block.Material;
+import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.SwordItem;
 import net.minecraft.world.World;

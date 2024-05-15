@@ -2,7 +2,7 @@ package net.danygames2014.tropicraft.block;
 
 import net.danygames2014.tropicraft.Tropicraft;
 import net.minecraft.block.Block;
-import net.minecraft.block.Material;
+import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.SwordItem;
@@ -29,7 +29,7 @@ public class PineappleBlock extends TemplateBlock {
     public static final EnumProperty<PineappleHalf> PINEAPPLE_HALF = EnumProperty.of("half", PineappleHalf.class);
 
     public PineappleBlock(Identifier identifier) {
-        super(identifier, Material.field_988);
+        super(identifier, Material.PLANT);
         this.setTickRandomly(true);
         this.setBoundingBox(0.2F, 0.0f, 0.2F, 0.8F, 1.0f, 0.8F);
     }

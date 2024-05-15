@@ -1,7 +1,7 @@
 package net.danygames2014.tropicraft.block;
 
 import net.danygames2014.tropicraft.Tropicraft;
-import net.minecraft.block.Material;
+import net.minecraft.block.material.Material;
 import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
 import net.modificationstation.stationapi.api.registry.BlockRegistry;
@@ -11,7 +11,7 @@ import net.modificationstation.stationapi.api.util.Identifier;
 
 public class FlowerBlock extends TemplateBlock {
     public FlowerBlock(Identifier identifier) {
-        super(identifier, Material.field_988);
+        super(identifier, Material.PLANT);
         float f = 0.2f;
         this.setBoundingBox(0.5f - f, 0.0f, 0.5f - f, 0.5f + f, f * 4.939f, 0.5f + f);
         this.setSoundGroup(DIRT_SOUND_GROUP);

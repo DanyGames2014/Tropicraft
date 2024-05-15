@@ -1,7 +1,7 @@
 package net.danygames2014.tropicraft.block;
 
 import net.danygames2014.tropicraft.Tropicraft;
-import net.minecraft.block.Material;
+import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
@@ -15,7 +15,7 @@ import java.util.Random;
 public class BambooShootBlock extends TemplateBlock {
 
     public BambooShootBlock(Identifier identifier) {
-        super(identifier, Material.field_988);
+        super(identifier, Material.PLANT);
         float f = 0.375f;
         this.setBoundingBox(0.5f - f, 0.0f, 0.5f - f, 0.5f + f, 1.0f, 0.5f + f);
         this.setTickRandomly(true);
