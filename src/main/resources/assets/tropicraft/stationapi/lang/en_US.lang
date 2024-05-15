@@ -71,6 +71,15 @@ item.tropicraft.summering_record.name=Summering
 item.tropicraft.the_tribe_record.name=The Tribe
 item.tropicraft.trade_winds_record.name=Trade Winds
 
+## Shells & Pearls
+item.tropicraft.frox_shell.name=Frox Shell
+item.tropicraft.pab_shell.name=Pab Shell
+item.tropicraft.rube_shell.name=Rube Shell
+item.tropicraft.solonox_shell.name=Solonox Shell
+item.tropicraft.starfish_shell.name=Starfish Shell
+item.tropicraft.white_pearl.name=White Pearl
+item.tropicraft.black_pearl.name=Black Pearl
+
 # Dimension
 dim.tropicraft.tropics.entering=Drifting into the Tropics!
 dim.tropicraft.tropics.leaving=Leaving the Tropics!

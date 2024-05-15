@@ -11,6 +11,7 @@ import net.danygames2014.tropicraft.entity.IguanaEntity;
 import net.danygames2014.tropicraft.entity.renderer.BeachChairRenderer;
 import net.danygames2014.tropicraft.entity.renderer.IguanaRenderer;
 import net.danygames2014.tropicraft.event.SiftingRecipeRegisterEvent;
+import net.danygames2014.tropicraft.item.ShellItem;
 import net.danygames2014.tropicraft.item.TropiRecordItem;
 import net.danygames2014.tropicraft.item.armor.ScaleArmorItem;
 import net.danygames2014.tropicraft.item.food.FoodChunkItem;
@@ -130,6 +131,15 @@ public class Tropicraft {
     public static Item theTribeRecord;
     public static Item tradeWindsRecord;
 
+    // Shells & Pearls
+    public static Item froxShell;
+    public static Item pabShell;
+    public static Item rubeShell;
+    public static Item solonoxShell;
+    public static Item starfishShell;
+    public static Item whitePearl;
+    public static Item blackPearl;
+
     @EventListener
     public void registerBlocks(BlockRegistryEvent event) {
         // Bamboo
@@ -211,6 +221,15 @@ public class Tropicraft {
         summeringRecord = new TropiRecordItem(NAMESPACE.id("summering_record"), "tropicraft:summering", "Billy Christiansen - Summering").setTranslationKey(NAMESPACE.id("summering_record"));
         theTribeRecord = new TropiRecordItem(NAMESPACE.id("the_tribe_record"), "tropicraft:the_tribe", "Emile Van Krieken - The Tribe").setTranslationKey(NAMESPACE.id("the_tribe_record"));
         tradeWindsRecord = new TropiRecordItem(NAMESPACE.id("trade_winds_record"), "tropicraft:trade_winds", "Frox - Trade Winds").setTranslationKey(NAMESPACE.id("trade_winds_record"));
+
+        // Shells and Pearls
+        froxShell = new ShellItem(NAMESPACE.id("frox_shell")).setTranslationKey(NAMESPACE, "frox_shell");
+        pabShell = new ShellItem(NAMESPACE.id("pab_shell")).setTranslationKey(NAMESPACE, "pab_shell");
+        rubeShell = new ShellItem(NAMESPACE.id("rube_shell")).setTranslationKey(NAMESPACE, "rube_shell");
+        solonoxShell = new ShellItem(NAMESPACE.id("solonox_shell")).setTranslationKey(NAMESPACE, "solonox_shell");
+        starfishShell = new ShellItem(NAMESPACE.id("starfish_shell")).setTranslationKey(NAMESPACE, "starfish_shell");
+        whitePearl = new TemplateItem(NAMESPACE.id("white_pearl")).setTranslationKey(NAMESPACE, "white_pearl");
+        blackPearl = new TemplateItem(NAMESPACE.id("black_pearl")).setTranslationKey(NAMESPACE, "black_pearl");
 
     }
 
