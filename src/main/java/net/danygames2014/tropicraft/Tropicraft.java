@@ -31,6 +31,7 @@ import net.modificationstation.stationapi.api.mod.entrypoint.Entrypoint;
 import net.modificationstation.stationapi.api.registry.DimensionRegistry;
 import net.modificationstation.stationapi.api.registry.Registry;
 import net.modificationstation.stationapi.api.template.block.TemplateBlock;
+import net.modificationstation.stationapi.api.template.block.TemplateSandBlock;
 import net.modificationstation.stationapi.api.template.item.BlockStateItem;
 import net.modificationstation.stationapi.api.template.item.TemplateItem;
 import net.modificationstation.stationapi.api.util.Namespace;
@@ -90,6 +91,7 @@ public class Tropicraft {
 
     // Sifter
     public static Block sifter;
+    public static Block purifiedSand;
 
     // Flowers
     public static Block commelinaDiffusa;
@@ -190,6 +192,8 @@ public class Tropicraft {
 
         // Sifter
         sifter = new SifterBlock(NAMESPACE.id("sifter")).setTranslationKey(NAMESPACE, "sifter").setSoundGroup(Block.WOOD_SOUND_GROUP);
+        // TODO: Fix the falling texture of the Purified Sand
+        purifiedSand = new TemplateSandBlock(NAMESPACE.id("purified_sand"), 0).setTranslationKey(NAMESPACE, "purified_sand").setSoundGroup(Block.SAND_SOUND_GROUP);
     }
 
     @EventListener

@@ -1,5 +1,6 @@
 package net.danygames2014.tropicraft.block.sifter;
 
+import net.danygames2014.tropicraft.Tropicraft;
 import net.danygames2014.tropicraft.recipe.SiftingRecipeOutput;
 import net.danygames2014.tropicraft.recipe.SiftingRecipeRegistry;
 import net.minecraft.block.entity.BlockEntity;
@@ -30,7 +31,7 @@ public class SifterBlockEntity extends BlockEntity {
         this.yaw2 = this.yaw2 % 360.0D;
         this.yaw += 4.545454502105713D;
 
-        if (!world.isRemote && siftTimeRemaining == 0) {
+        if (siftTimeRemaining == 0) {
             finishSifting();
         }
     }
@@ -46,9 +47,12 @@ public class SifterBlockEntity extends BlockEntity {
     }
 
     public void finishSifting() {
-        for (SiftingRecipeOutput output : SiftingRecipeRegistry.getRecipe(siftedItem.getItem()).outputs) {
-            if (world.field_214.nextInt(output.chance) == 0) {
-                world.method_210(new ItemEntity(world, x, y+3, z, output.stack));
+        if(!world.isRemote){
+            for (SiftingRecipeOutput output : SiftingRecipeRegistry.getRecipe(siftedItem.getItem()).outputs) {
+                if (world.field_214.nextInt(output.chance) == 0) {
+                    // Thank you mine_diver for helping me figure out a bug here
+                    world.method_210(new ItemEntity(world, x, y+1, z, output.stack.copy()));
+                }
             }
         }
 

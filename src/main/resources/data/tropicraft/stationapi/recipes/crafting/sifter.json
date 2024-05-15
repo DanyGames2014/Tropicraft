@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    "ppp",
+    "pgp",
+    "ppp"
+  ],
+  "key":
+  {
+    "p":
+    {
+      "tag": "minecraft:planks"
+    },
+    "g":
+    {
+      "item": "minecraft:glass"
+    }
+  },
+  "result":
+  {
+    "item": "tropicraft:sifter",
+    "count": 1
+  }
+}
