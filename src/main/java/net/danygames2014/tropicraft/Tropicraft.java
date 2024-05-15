@@ -7,8 +7,10 @@ import net.danygames2014.tropicraft.block.template.StairsBlockTemplate;
 import net.danygames2014.tropicraft.block.sifter.SifterBlockEntity;
 import net.danygames2014.tropicraft.block.sifter.SifterBlockEntityRenderer;
 import net.danygames2014.tropicraft.entity.BeachChairEntity;
+import net.danygames2014.tropicraft.entity.EIHEntity;
 import net.danygames2014.tropicraft.entity.IguanaEntity;
 import net.danygames2014.tropicraft.entity.renderer.BeachChairRenderer;
+import net.danygames2014.tropicraft.entity.renderer.EIHRenderer;
 import net.danygames2014.tropicraft.entity.renderer.IguanaRenderer;
 import net.danygames2014.tropicraft.event.SiftingRecipeRegisterEvent;
 import net.danygames2014.tropicraft.item.ShellItem;
@@ -247,6 +249,7 @@ public class Tropicraft {
     public void registerEntities(EntityRegister event) {
         event.register(BeachChairEntity.class, "beach_chair");
         event.register(IguanaEntity.class, "iguana");
+        event.register(EIHEntity.class, "eih");
     }
 
     @EventListener
@@ -257,12 +260,14 @@ public class Tropicraft {
 
     public void registerMobHandlers(MobHandlerRegistryEvent event) {
         Registry.register(event.registry, NAMESPACE.id("iguana"), IguanaEntity::new);
+        Registry.register(event.registry, NAMESPACE.id("eih"), EIHEntity::new);
     }
 
     @EventListener
     public void registerEntityRenderer(EntityRendererRegisterEvent event) {
         event.renderers.put(BeachChairEntity.class, new BeachChairRenderer());
         event.renderers.put(IguanaEntity.class, new IguanaRenderer());
+        event.renderers.put(EIHEntity.class, new EIHRenderer());
     }
 
     @EventListener
