@@ -13,7 +13,7 @@ public class EIHEntity extends AnimalEntity implements EntitySpawnDataProvider {
     public EIHEntity(World world) {
         super(world);
         this.setBoundingBoxSpacing(1.0F, 3.0F);
-        this.eyeHeight = 0.5F;
+        this.standingEyeHeight = 0.5F;
     }
 
 

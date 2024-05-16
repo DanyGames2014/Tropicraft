@@ -24,7 +24,7 @@ public class SifterBlockEntityRenderer extends BlockEntityRenderer {
 
             if(sifter.renderedItem == null){
                 sifter.renderedItem = new ItemEntity(player.world);
-                sifter.renderedItem.method_1340(player.x, player.y, player.z);
+                sifter.renderedItem.setPos(player.x, player.y, player.z);
                 sifter.renderedItem.stack = sifter.siftedItem;
             }
 

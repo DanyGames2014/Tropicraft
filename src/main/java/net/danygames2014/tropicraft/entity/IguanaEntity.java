@@ -1,7 +1,6 @@
 package net.danygames2014.tropicraft.entity;
 
 import net.danygames2014.tropicraft.Tropicraft;
-import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.world.World;
 import net.modificationstation.stationapi.api.server.entity.EntitySpawnDataProvider;
@@ -14,7 +13,7 @@ public class IguanaEntity extends AnimalEntity implements EntitySpawnDataProvide
     public IguanaEntity(World world) {
         super(world);
         this.setBoundingBoxSpacing(0.5F, 0.5F);
-        this.eyeHeight = 0.25F;
+        this.standingEyeHeight = 0.25F;
     }
 
     public IguanaEntity(World world, Double x, Double y, Double z) {

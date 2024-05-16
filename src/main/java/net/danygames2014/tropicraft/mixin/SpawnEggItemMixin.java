@@ -9,8 +9,8 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 @Mixin(SpawnEggItem.class)
 public class SpawnEggItemMixin {
 
-    @Redirect(method = "spawnEntity", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/Entity;method_1340(DDD)V"))
+    @Redirect(method = "spawnEntity", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/Entity;setPos(DDD)V"))
     public void a(Entity entity, double x, double y, double z) {
-        entity.method_1340(x, y + Math.min(entity.spacingY, 0.5F), z);
+        entity.setPos(x, y + Math.min(entity.height, 0.5F), z);
     }
 }

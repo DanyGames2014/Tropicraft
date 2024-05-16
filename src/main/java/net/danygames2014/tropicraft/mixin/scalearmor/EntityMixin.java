@@ -17,7 +17,7 @@ public class EntityMixin {
         return original.call(instance);
     }
 
-    @WrapOperation(method = "method_1332", at = @At(value = "FIELD", opcode = Opcodes.GETFIELD, target = "Lnet/minecraft/entity/Entity;fireImmune:Z"))
+    @WrapOperation(method = "setOnFire", at = @At(value = "FIELD", opcode = Opcodes.GETFIELD, target = "Lnet/minecraft/entity/Entity;fireImmune:Z"))
     public boolean entity_method_1332(Entity instance, Operation<Boolean> original){
         return original.call(instance);
     }

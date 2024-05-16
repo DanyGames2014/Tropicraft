@@ -22,7 +22,7 @@ public class TropiEntityRenderer extends LivingEntityRenderer {
             this.field_910.handWingProgress = this.model.handWingProgress;
         }
 
-        this.model.riding = entity.method_1360(); // isRiding
+        this.model.riding = entity.hasVehicle();
         if (this.field_910 != null) {
             this.field_910.riding = this.model.riding;
         }
@@ -70,7 +70,7 @@ public class TropiEntityRenderer extends LivingEntityRenderer {
 //            }
 //
 //            this.method_827(entity, delta); // renderPlayerEffects
-            float brightness = entity.method_1394(delta);
+            float brightness = entity.getBrightnessAtEyes(delta);
             int color = this.method_817(entity, brightness, delta); // getColor
 
             // Hurt Animation Rendering

@@ -20,14 +20,14 @@ public class BeachChairEntity extends Entity implements EntitySpawnDataProvider 
     public BeachChairEntity(World world) {
         super(world);
         this.setBoundingBoxSpacing(1.0F, 1.0F);
-        this.eyeHeight = this.spacingY / 2.0F;
+        this.standingEyeHeight = this.height / 2.0F;
     }
 
     public BeachChairEntity(World world, Double x, Double y, Double z) {
         super(world);
         this.setBoundingBoxSpacing(0.5F, 0.5F);
-        this.method_1340(x,y,z);
-        this.eyeHeight = this.spacingY / 2.0F;
+        this.setPos(x,y,z);
+        this.standingEyeHeight = this.height / 2.0F;
     }
 
     @Override
@@ -35,8 +35,8 @@ public class BeachChairEntity extends Entity implements EntitySpawnDataProvider 
         super.tick();
         if(!world.isRemote){
             // If on ground, allow the chair jumping code to run
-            if (this.field_1623) {
-                if (this.field_1594 != null && this.field_1594 instanceof PlayerEntity player) {
+            if (this.onGround) {
+                if (this.passenger != null && this.passenger instanceof PlayerEntity player) {
                     LivingEntityAccessor playerA = (LivingEntityAccessor) player;
                     if (playerA.jumping()) {
                         System.out.println("JUMP");
@@ -44,22 +44,22 @@ public class BeachChairEntity extends Entity implements EntitySpawnDataProvider 
                         System.out.println(playerA.frontMovement());
                         if (playerA.rightMovement() > 0.9F) {
                             this.yaw -= random.nextFloat(5.0F, 10.0F);
-                            this.method_1322(0, 0.2D, 0);
+                            this.addVelocity(0, 0.2D, 0);
                         } else if (playerA.rightMovement() < -0.9F) {
                             this.yaw += random.nextFloat(5.0F, 10.0F);
-                            this.method_1322(0, 0.2D, 0);
+                            this.addVelocity(0, 0.2D, 0);
                         }
                     }
                 }
             }
 
             // If not on ground apply some gravity
-            if (!this.field_1623) { // onGround
-                this.method_1322(0, -0.07d, 0);
+            if (!this.onGround) { // onGround
+                this.addVelocity(0, -0.07d, 0);
             }
 
             // If on ground, lower the velocity
-            if (this.field_1623) {
+            if (this.onGround) {
                 this.velocityX *= 0.7F;
                 this.velocityZ *= 0.7F;
 
@@ -89,7 +89,7 @@ public class BeachChairEntity extends Entity implements EntitySpawnDataProvider 
     }
 
     @Override
-    public Box method_1381() {
+    public Box getBoundingBox() {
         return this.boundingBox;
     }
 
@@ -99,36 +99,36 @@ public class BeachChairEntity extends Entity implements EntitySpawnDataProvider 
     }
 
     @Override
-    public boolean method_1380() { // canBePushed
+    public boolean isPushable() {
         return true;
     }
 
     @Override
-    public double method_1357() { // getMountedYOffset
+    public double getPassengerRidingHeight() {
         return -0.2125;
     }
 
     @Override
-    public boolean method_1356() { // canBeCollidedWith
+    public boolean isCollidable() {
         return !this.dead;
     }
 
     @Override
-    public void method_1382() { // updateRiderPosition
-        if (this.field_1594 == null) {
+    public void updatePassengerPosition() {
+        if (this.passenger == null) {
             return;
         }
         double d = Math.cos((double) this.yaw * Math.PI / 45.0) * 0.0;
         double d1 = Math.sin((double) this.yaw * Math.PI / 45.0) * 0.0;
-        this.field_1594.method_1340(this.x + d, this.y + this.method_1357() + this.field_1594.method_1385(), this.z + d1);
+        this.passenger.setPos(this.x + d, this.y + this.getPassengerRidingHeight() + this.passenger.getStandingEyeHeight(), this.z + d1);
     }
 
     public boolean method_1323(PlayerEntity entityplayer) {
-        if (this.field_1594 != null && this.field_1594 instanceof PlayerEntity && this.field_1594 != entityplayer) {
+        if (this.passenger != null && this.passenger instanceof PlayerEntity && this.passenger != entityplayer) {
             return true;
         }
         if (!this.world.isRemote) {
-            entityplayer.method_1376((Entity) this);
+            entityplayer.setVehicle((Entity) this);
         }
         return true;
     }
