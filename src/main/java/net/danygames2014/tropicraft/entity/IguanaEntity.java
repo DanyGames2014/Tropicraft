@@ -2,6 +2,7 @@ package net.danygames2014.tropicraft.entity;
 
 import net.danygames2014.tropicraft.Tropicraft;
 import net.minecraft.entity.passive.AnimalEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.modificationstation.stationapi.api.server.entity.EntitySpawnDataProvider;
 import net.modificationstation.stationapi.api.server.entity.HasTrackingParameters;
@@ -24,5 +25,15 @@ public class IguanaEntity extends AnimalEntity implements EntitySpawnDataProvide
     @Override
     public Identifier getHandlerIdentifier() {
         return Tropicraft.NAMESPACE.id("iguana");
+    }
+
+    @Override
+    protected void drop() {
+        int count = this.random.nextInt(3) + 1;
+
+        for(int i = 0; i < count; ++i) {
+            this.dropItem(new ItemStack(Tropicraft.scale, 1), 0.0F);
+        }
+
     }
 }
