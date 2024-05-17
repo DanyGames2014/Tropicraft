@@ -17,7 +17,8 @@
     "stationapi:event_bus": [
       "net.danygames2014.tropicraft.Tropicraft",
       "net.danygames2014.tropicraft.world.ChunkDecorationListener",
-      "net.danygames2014.tropicraft.init.InitListener"
+      "net.danygames2014.tropicraft.init.InitListener",
+      "net.danygames2014.tropicraft.init.EntitySpawnListener"
     ],
     "stationapi:event_bus_client": [
     ],
