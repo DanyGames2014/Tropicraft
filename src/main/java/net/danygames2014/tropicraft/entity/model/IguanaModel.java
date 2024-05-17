@@ -1,6 +1,8 @@
 package net.danygames2014.tropicraft.entity.model;
 
+import net.danygames2014.tropicraft.entity.IguanaEntity;
 import net.minecraft.client.render.entity.model.EntityModel;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.math.MathHelper;
 
 public class IguanaModel extends EntityModel {
@@ -61,10 +63,6 @@ public class IguanaModel extends EntityModel {
         this.headUnderpartBottom.render(scale);
     }
 
-    public float tailAngle1 = 0.0F;
-    public float tailAngle2 = 0.0F;
-    public float tailAngle3 = 0.0F;
-
     @Override
     public void setAngles(float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch, float scale) {
         this.head.angleHead(headPitch, headYaw);
@@ -77,16 +75,24 @@ public class IguanaModel extends EntityModel {
         this.backRightLeg.angleLeg(limbAngle, limbDistance);
         this.frontLeftLeg.angleLeg(limbAngle, limbDistance);
         this.backLeftLeg.angleLeg(limbAngle, limbDistance, true);
+    }
 
-        tailAngle1 += 1.2F;
-        tailAngle2 += 1.5F;
-        tailAngle3 += 1.7F;
+//    float lastGlobalTime = 0f;
+//    float deltaTime = 0f;
+//    float time = 0f;
+    @Override
+    public void animateModel(LivingEntity entity, float limbAngle, float limbDistance, float tickDelta) {
+        IguanaEntity iguana = (IguanaEntity)entity;
 
-        tailAngle1 = tailAngle1 % 360F;
-        tailAngle2 = tailAngle2 % 360F;
-        tailAngle3 = tailAngle3 % 360F;
+//        time = entity.world.getTime() + tickDelta;
+//        deltaTime = time - lastGlobalTime;
+//        lastGlobalTime = time;
+//
+//        iguana.tailAngle1 = cycleClampUp(iguana.tailAngle1, (1.2F * deltaTime), 360F);
+//        iguana.tailAngle2 = cycleClampUp(iguana.tailAngle2, (1.5F * deltaTime), 360F);
+//        iguana.tailAngle3 = cycleClampUp(iguana.tailAngle3, (1.7F * deltaTime), 360F);
 
-        setTailAngle(tailAngle1, tailAngle2, tailAngle3);
+        setTailAngle(iguana.tailAngle1, iguana.tailAngle2, iguana.tailAngle3);
     }
 
     // tailangle 0 - 360
@@ -103,6 +109,5 @@ public class IguanaModel extends EntityModel {
         this.tailTailSegment.yaw = MathHelper.cos(thirdSegmentAngle * 0.01745328627F);
         this.tailTailSegment.pivotX = this.tailMiddleSegment.pivotX + (MathHelper.sin(this.tailMiddleSegment.yaw) * 6F);
         this.tailTailSegment.pivotZ = this.tailMiddleSegment.pivotZ + (MathHelper.cos(this.tailMiddleSegment.yaw) * 6F);
-
     }
 }
