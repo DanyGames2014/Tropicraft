@@ -13,6 +13,7 @@ import org.lwjgl.opengl.GL11;
 
 @Environment(EnvType.CLIENT)
 public class SifterBlockEntityRenderer extends BlockEntityRenderer {
+    @SuppressWarnings("deprecation")
     private static final Minecraft minecraft = (Minecraft) FabricLoader.getInstance().getGameInstance();
 
     @Override

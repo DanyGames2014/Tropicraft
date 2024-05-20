@@ -67,4 +67,19 @@ public class IguanaEntity extends AnimalEntity implements EntitySpawnDataProvide
             this.dropItem(new ItemStack(Tropicraft.scale, 1), 0.0F);
         }
     }
+
+    @Override
+    protected String getRandomSound() {
+        return "tropicraft:entity.iguana.random";
+    }
+
+    @Override
+    protected String getHurtSound() {
+        return "tropicraft:entity.iguana.hurt";
+    }
+
+    @Override
+    protected String getDeathSound() {
+        return "tropicraft:entity.iguana.death";
+    }
 }
