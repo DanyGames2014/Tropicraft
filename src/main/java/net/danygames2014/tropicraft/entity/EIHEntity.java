@@ -70,9 +70,11 @@ public class EIHEntity extends AnimalEntity implements EntitySpawnDataProvider {
             ItemStack heldItem = player.getHand();
             if (heldItem == null || !heldItem.isSuitableFor(Block.IRON_BLOCK.getDefaultState())) {
                 if (random.nextInt(2) == 0) {
-                    world.playSound(damageSource, "tropicraft:entity.eih.laugh1", 1.0F, 1.2F / (random.nextFloat() * 0.2F + 0.9F));
+                    System.out.print("LAUGH1");
+                    world.playSound(this, "tropicraft:entity.eih.laugh1", 1.0F, 1.2F / (random.nextFloat() * 0.2F + 0.9F));
                 } else {
-                    world.playSound(damageSource, "tropicraft:entity.eih.laugh2", 1.0F, 1.2F / (random.nextFloat() * 0.2F + 0.9F));
+                    System.out.print("LAUGH2");
+                    world.playSound(this, "tropicraft:entity.eih.laugh2", 1.0F, 1.2F / (random.nextFloat() * 0.2F + 0.9F));
                 }
 
             } else {
@@ -101,6 +103,11 @@ public class EIHEntity extends AnimalEntity implements EntitySpawnDataProvider {
         }
 
         return null;
+    }
+
+    @Override
+    public int getMinAmbientSoundDelay() {
+        return 10;
     }
 
     @Override
