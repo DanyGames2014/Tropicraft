@@ -86,12 +86,6 @@ public class EIHEntity extends AttackingAnimalEntity implements EntitySpawnDataP
     }
 
     @Override
-    public boolean interact(PlayerEntity player) {
-        player.method_490("Mood: " + this.getMood());
-        return true;
-    }
-
-    @Override
     public boolean damage(Entity damageSource, int amount) {
         if (damageSource instanceof PlayerEntity player) {
             ItemStack heldItem = player.getHand();
@@ -120,6 +114,16 @@ public class EIHEntity extends AttackingAnimalEntity implements EntitySpawnDataP
         super.attack(other, distance);
     }
 
+    // Mob Drop
+    @Override
+    protected void drop() {
+        int count = this.random.nextInt(2) + 1;
+
+        for (int i = 0; i < count; ++i) {
+            this.dropItem(new ItemStack(Tropicraft.chunkOHead, 1), 0.0F);
+        }
+    }
+
     // Sounds
     @Override
     protected String getRandomSound() {
@@ -132,11 +136,6 @@ public class EIHEntity extends AttackingAnimalEntity implements EntitySpawnDataP
         }
 
         return null;
-    }
-
-    @Override
-    public int getMinAmbientSoundDelay() {
-        return 10;
     }
 
     @Override
