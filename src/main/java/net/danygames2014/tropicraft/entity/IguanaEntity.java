@@ -19,7 +19,7 @@ import static net.danygames2014.tropicraft.util.MathHelper.cycleClampUp;
 import static net.danygames2014.tropicraft.util.MathHelper.pushBack;
 
 @HasTrackingParameters(updatePeriod = 5, sendVelocity = TriState.TRUE, trackingDistance = 30)
-public class IguanaEntity extends AnimalEntity implements EntitySpawnDataProvider {
+public class IguanaEntity extends AttackingAnimalEntity implements EntitySpawnDataProvider {
     public float tailAngle1;
     public float tailAngle2;
     public float tailAngle3;
@@ -92,16 +92,7 @@ public class IguanaEntity extends AnimalEntity implements EntitySpawnDataProvide
             return;
         }
 
-        if (distance > 2.0F && distance < 6.0F && this.random.nextInt(10) == 0 && this.onGround) {
-            double distanceX = other.x - this.x;
-            double distanceZ = other.z - this.z;
-            float distance2 = MathHelper.sqrt(distanceX * distanceX + distanceZ * distanceZ);
-            this.velocityX = ((distanceX / (double) distance2) * 0.5D * 0.8D) + (this.velocityX * 0.2D);
-            this.velocityZ = ((distanceZ / (double) distance2) * 0.5D * 0.8D) + (this.velocityZ * 0.2D);
-            this.velocityY = 0.4D;
-        } else {
-            super.attack(other, distance);
-        }
+        super.attack(other, distance);
     }
 
     // Animations

@@ -3,7 +3,6 @@ package net.danygames2014.tropicraft.entity;
 import net.danygames2014.tropicraft.Tropicraft;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
@@ -15,7 +14,9 @@ import net.modificationstation.stationapi.api.util.TriState;
 
 @SuppressWarnings("UnnecessaryBoxing")
 @HasTrackingParameters(updatePeriod = 5, sendVelocity = TriState.TRUE, trackingDistance = 30)
-public class EIHEntity extends AnimalEntity implements EntitySpawnDataProvider {
+public class EIHEntity extends AttackingAnimalEntity implements EntitySpawnDataProvider {
+
+    public PlayerEntity observedPlayer;
 
     public EIHEntity(World world) {
         super(world);
@@ -40,16 +41,42 @@ public class EIHEntity extends AnimalEntity implements EntitySpawnDataProvider {
     public void tick() {
         super.tick();
 
-        // Prevent rotating when sleeping
-        if (getMood() == Mood.SLEEPING.value) {
-            pitch = prevPitch;
-            yaw = prevYaw;
+        /// Stage 1 : Deciding mood
+        // If there is no target, get the closest player
+        if (observedPlayer == null) {
+            observedPlayer = world.getClosestPlayer(this.x, this.y, this.z, 10D);
+        } else if (getDistance(observedPlayer) > 16) {
+            observedPlayer = null;
         }
 
-        if (world.getClosestPlayer(x, y, z, 4D) != null) {
-            setMood(Mood.AWAKE);
-        } else {
+        // If there is a target and the head is not angry, decide if it should be angry
+        if (observedPlayer != null && !isAngry()) {
+            // If a player gets close, awake
+            if (getDistance(observedPlayer) < 10F) {
+                setMood(Mood.AWAKE);
+
+                // If a player holds a chunk o' head, become angry
+                if (observedPlayer.getHand() != null && observedPlayer.getHand().isOf(Tropicraft.chunkOHead.asItem())) {
+                    becomeAngryAt(observedPlayer);
+                }
+            }
+
+            // If a player gets too close, become angry
+            if (getDistance(observedPlayer) < 3F && world.field_213 >= 1) {
+                becomeAngryAt(observedPlayer);
+            }
+        }
+
+        // No Observed Player? Go to sleep
+        if (observedPlayer == null) {
             setMood(Mood.SLEEPING);
+        }
+
+        // Prevent rotating when sleeping
+        if (isSleeping()) {
+            pitch = prevPitch;
+            yaw = prevYaw;
+            this.target = null;
         }
     }
 
@@ -69,14 +96,7 @@ public class EIHEntity extends AnimalEntity implements EntitySpawnDataProvider {
         if (damageSource instanceof PlayerEntity player) {
             ItemStack heldItem = player.getHand();
             if (heldItem == null || !heldItem.isSuitableFor(Block.IRON_BLOCK.getDefaultState())) {
-                if (random.nextInt(2) == 0) {
-                    System.out.print("LAUGH1");
-                    world.playSound(this, "tropicraft:entity.eih.laugh1", 1.0F, 1.2F / (random.nextFloat() * 0.2F + 0.9F));
-                } else {
-                    System.out.print("LAUGH2");
-                    world.playSound(this, "tropicraft:entity.eih.laugh2", 1.0F, 1.2F / (random.nextFloat() * 0.2F + 0.9F));
-                }
-
+                world.playSound(this, "tropicraft:entity.eih.laugh", 1.0F, 1.2F / (random.nextFloat() * 0.2F + 0.9F));
             } else {
                 super.damage(damageSource, amount);
             }
@@ -86,19 +106,28 @@ public class EIHEntity extends AnimalEntity implements EntitySpawnDataProvider {
         return true;
     }
 
-    public void becomeAngryAt(Entity target){
+    public void becomeAngryAt(Entity target) {
         setMood(Mood.ANGRY);
         this.target = target;
+    }
+
+    @Override
+    protected void attack(Entity other, float distance) {
+        if (!isAngry()) {
+            return;
+        }
+
+        super.attack(other, distance);
     }
 
     // Sounds
     @Override
     protected String getRandomSound() {
-        if (getMood() == Mood.ANGRY.value) {
+        if (isAngry()) {
             return random.nextInt(10) == 0 ? "tropicraft:entity.eih.random_long" : null;
         }
 
-        if (getMood() == Mood.AWAKE.value) {
+        if (isAwake()) {
             return random.nextInt(10) == 0 ? "tropicraft:entity.eih.random_short" : null;
         }
 
@@ -156,5 +185,18 @@ public class EIHEntity extends AnimalEntity implements EntitySpawnDataProvider {
         Mood(int value) {
             this.value = value;
         }
+
+    }
+
+    public boolean isSleeping(){
+        return getMood() == Mood.SLEEPING.value;
+    }
+
+    public boolean isAwake(){
+        return getMood() == Mood.AWAKE.value;
+    }
+
+    public boolean isAngry(){
+        return getMood() == Mood.ANGRY.value;
     }
 }
