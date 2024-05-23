@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    "sps",
+    "sps"
+  ],
+  "key":
+  {
+    "p":
+    {
+      "item": "tropicraft:palm_planks"
+    },
+    "s":
+    {
+      "item": "minecraft:stick"
+    }
+  },
+  "result":
+  {
+    "item": "tropicraft:palm_fence_gate",
+    "count": 1
+  }
+}

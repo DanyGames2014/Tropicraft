@@ -4,6 +4,8 @@ tile.tropicraft.bamboo_shoot.name=Bamboo Shoot
 tile.tropicraft.bamboo_bundle.name=Bamboo Bundle
 tile.tropicraft.bamboo_stairs.name=Bamboo Stairs
 tile.tropicraft.bamboo_slab.name=Bamboo Slab
+tile.tropicraft.bamboo_fence.name=Bamboo Fence
+tile.tropicraft.bamboo_fence_gate.name=Bamboo Fence Gate
 
 ## Palm
 tile.tropicraft.palm_log.name=Palm Wood
@@ -11,6 +13,8 @@ tile.tropicraft.palm_leaves.name=Palm Leaves
 tile.tropicraft.palm_planks.name=Palm Planks
 tile.tropicraft.palm_stairs.name=Palm Stairs
 tile.tropicraft.palm_slab.name=Palm Slab
+tile.tropicraft.palm_fence.name=Palm Fence
+tile.tropicraft.palm_fence_gate.name=Palm Fence Gate
 tile.tropicraft.coconut.name=Coconut
 
 ## Thatch
@@ -18,6 +22,8 @@ tile.tropicraft.thatch_bundle.name=Thatch Bundle
 tile.tropicraft.thatch_stairs.name=Thatch Stairs
 tile.tropicraft.thatch_slab.name=Thatch Slab
 tile.tropicraft.thatch_roof.name=Thatch Roof
+tile.tropicraft.thatch_fence.name=Thatch Fence
+tile.tropicraft.thatch_fence_gate.name=Thatch Fence Gate
 
 ## Chunk o' Head
 tile.tropicraft.chunk_o_head.name=Chunk o' Head

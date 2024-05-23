@@ -3,14 +3,20 @@
     "tropicraft:bamboo_bundle",
     "tropicraft:bamboo_stairs",
     "tropicraft:bamboo_slab",
+    "tropicraft:bamboo_fence",
+    "tropicraft:bamboo_fence_gate",
     "tropicraft:thatch_bundle",
     "tropicraft:thatch_stairs",
     "tropicraft:thatch_slab",
     "tropicraft:thatch_roof",
+    "tropicraft:thatch_fence",
+    "tropicraft:thatch_fence_gate",
     "tropicraft:palm_log",
     "tropicraft:palm_leaves",
     "tropicraft:palm_planks",
     "tropicraft:palm_stairs",
-    "tropicraft:palm_slab"
+    "tropicraft:palm_slab",
+    "tropicraft:palm_fence",
+    "tropicraft:palm_fence_gate"
   ]
 }

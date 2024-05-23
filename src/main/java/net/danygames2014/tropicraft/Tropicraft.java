@@ -2,6 +2,8 @@ package net.danygames2014.tropicraft;
 
 import net.danygames2014.tropicraft.block.*;
 import net.danygames2014.tropicraft.block.sifter.SifterBlock;
+import net.danygames2014.tropicraft.block.template.FenceBlockTemplate;
+import net.danygames2014.tropicraft.block.template.FenceGateBlockTemplate;
 import net.danygames2014.tropicraft.block.template.SlabBlockTemplate;
 import net.danygames2014.tropicraft.block.template.StairsBlockTemplate;
 import net.danygames2014.tropicraft.block.sifter.SifterBlockEntity;
@@ -52,8 +54,8 @@ public class Tropicraft {
     public static Block bambooBundle;
     public static Block bambooStairs;
     public static Block bambooSlab;
-    // TODO : Bamboo Fence
-    // TODO : Bamboo Fence Gate
+    public static Block bambooFence;
+    public static Block bambooFenceGate;
     // TODO : Bamboo Chest
     // TODO : Bamboo Ladder
     // TODO : Bamboo Door
@@ -70,8 +72,8 @@ public class Tropicraft {
     public static Block thatchStairs;
     public static Block thatchSlab;
     public static Block thatchRoof;
-    // TODO : Thatch Fence
-    // TODO : Thatch Fence Gate
+    public static Block thatchFence;
+    public static Block thatchFenceGate;
 
     // Palm
     public static Block palmLog;
@@ -80,9 +82,8 @@ public class Tropicraft {
     public static Block palmPlanks;
     public static Block palmStairs;
     public static Block palmSlab;
-    // TODO : Palm Fence
-    // TODO : Palm Fence Gate
-
+    public static Block palmFence;
+    public static Block palmFenceGate;
     public static Block coconut;
     public static Item coconutChunk;
 
@@ -151,12 +152,17 @@ public class Tropicraft {
         bambooBundle = new TemplateBlock(NAMESPACE.id("bamboo_bundle"), Material.WOOD).setTranslationKey(NAMESPACE, "bamboo_bundle").setHardness(1.0F).setResistance(0.1F).setSoundGroup(Block.WOOD_SOUND_GROUP);
         bambooStairs = new StairsBlockTemplate(NAMESPACE.id("bamboo_stairs"), bambooBundle).setTranslationKey(NAMESPACE, "bamboo_stairs").setHardness(1.0F).setResistance(0.1F).setSoundGroup(Block.WOOD_SOUND_GROUP);
         bambooSlab = new SlabBlockTemplate(NAMESPACE.id("bamboo_slab"), bambooBundle).setTranslationKey(NAMESPACE, "bamboo_slab").setHardness(1.0F).setResistance(0.1F).setSoundGroup(Block.WOOD_SOUND_GROUP);
+        bambooFence = new FenceBlockTemplate(NAMESPACE.id("bamboo_fence"), bambooBundle).setTranslationKey(NAMESPACE, "bamboo_fence").setHardness(1.0F).setResistance(0.1F).setSoundGroup(Block.WOOD_SOUND_GROUP);
+        bambooFenceGate = new FenceGateBlockTemplate(NAMESPACE.id("bamboo_fence_gate"), bambooBundle).setTranslationKey(NAMESPACE, "bamboo_fence_gate").setHardness(1.0F).setResistance(0.1F).setSoundGroup(Block.WOOD_SOUND_GROUP);
 
         // Thatch
         thatchBlock = new TemplateBlock(NAMESPACE.id("thatch_bundle"), Material.WOOD).setTranslationKey(NAMESPACE, "thatch_bundle").setHardness(0.1F).setResistance(0.1F).setSoundGroup(Block.DIRT_SOUND_GROUP);
         thatchStairs = new StairsBlockTemplate(NAMESPACE.id("thatch_stairs"), thatchBlock).setTranslationKey(NAMESPACE.id("thatch_stairs")).setHardness(0.1F).setResistance(0.1F).setSoundGroup(Block.DIRT_SOUND_GROUP);
         thatchSlab = new SlabBlockTemplate(NAMESPACE.id("thatch_slab"), thatchBlock).setTranslationKey(NAMESPACE.id("thatch_slab")).setHardness(0.1F).setResistance(0.1F).setSoundGroup(Block.DIRT_SOUND_GROUP);
         thatchRoof = new StairsBlockTemplate(NAMESPACE.id("thatch_roof"), thatchBlock).setTranslationKey(NAMESPACE.id("thatch_roof")).setHardness(0.1F).setResistance(0.1F).setSoundGroup(Block.DIRT_SOUND_GROUP);
+        thatchFence = new FenceBlockTemplate(NAMESPACE.id("thatch_fence"), thatchBlock).setTranslationKey(NAMESPACE, "thatch_fence").setHardness(0.1F).setResistance(0.1F).setSoundGroup(Block.DIRT_SOUND_GROUP);
+        thatchFenceGate = new FenceGateBlockTemplate(NAMESPACE.id("thatch_fence_gate"), thatchBlock).setTranslationKey(NAMESPACE, "thatch_fence_gate").setHardness(0.1F).setResistance(0.1F).setSoundGroup(Block.DIRT_SOUND_GROUP);
+
 
         // Palm
         palmLog = new TemplateBlock(NAMESPACE.id("palm_log"), Material.WOOD).setTranslationKey(NAMESPACE, "palm_log").setHardness(1.0F).setResistance(0.1F).setSoundGroup(Block.WOOD_SOUND_GROUP);
@@ -164,6 +170,8 @@ public class Tropicraft {
         palmPlanks = new TemplateBlock(NAMESPACE.id("palm_planks"), Material.WOOD).setTranslationKey(NAMESPACE, "palm_planks").setHardness(1.0F).setResistance(0.1F).setSoundGroup(Block.WOOD_SOUND_GROUP);
         palmStairs = new StairsBlockTemplate(NAMESPACE.id("palm_stairs"), palmPlanks).setTranslationKey(NAMESPACE, "palm_stairs").setHardness(1.0F).setResistance(0.1F).setSoundGroup(Block.WOOD_SOUND_GROUP);
         palmSlab = new SlabBlockTemplate(NAMESPACE.id("palm_slab"), palmPlanks).setTranslationKey(NAMESPACE, "palm_slab").setHardness(1.0F).setResistance(0.1F).setSoundGroup(Block.WOOD_SOUND_GROUP);
+        palmFence = new FenceBlockTemplate(NAMESPACE.id("palm_fence"), palmPlanks).setTranslationKey(NAMESPACE, "palm_fence").setHardness(1.0F).setResistance(0.1F).setSoundGroup(Block.WOOD_SOUND_GROUP);
+        palmFenceGate = new FenceGateBlockTemplate(NAMESPACE.id("palm_fence_gate"), palmPlanks).setTranslationKey(NAMESPACE, "palm_fence_gate").setHardness(1.0F).setResistance(0.1F).setSoundGroup(Block.WOOD_SOUND_GROUP);
         coconut = new CoconutBlock(NAMESPACE.id("coconut"), Material.WOOD).setTranslationKey(NAMESPACE, "coconut").setHardness(0.5F).setResistance(0.1F).setSoundGroup(Block.WOOD_SOUND_GROUP);
 
         // Chunk o' Head

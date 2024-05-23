@@ -1,0 +1,6 @@
+{
+  "parent": "tropicraft:block/template/fence_gate_closed",
+  "textures": {
+    "texture": "tropicraft:block/palm_planks"
+  }
+}

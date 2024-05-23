@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    "bsb",
+    "bsb"
+  ],
+  "key":
+  {
+    "b":
+    {
+      "item": "tropicraft:bamboo_bundle"
+    },
+    "s":
+    {
+      "item": "minecraft:stick"
+    }
+  },
+  "result":
+  {
+    "item": "tropicraft:bamboo_fence",
+    "count": 3
+  }
+}

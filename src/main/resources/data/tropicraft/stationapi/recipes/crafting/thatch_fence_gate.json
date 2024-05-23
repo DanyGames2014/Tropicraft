@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    "sts",
+    "sts"
+  ],
+  "key":
+  {
+    "t":
+    {
+      "item": "tropicraft:thatch_bundle"
+    },
+    "s":
+    {
+      "item": "minecraft:stick"
+    }
+  },
+  "result":
+  {
+    "item": "tropicraft:thatch_fence_gate",
+    "count": 1
+  }
+}
