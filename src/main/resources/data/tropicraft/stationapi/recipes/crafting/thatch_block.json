@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "tropicraft:thatch_bundle"
+    }
+  ],
+  "result": {
+    "item": "tropicraft:thatch_block"
+  }
+}

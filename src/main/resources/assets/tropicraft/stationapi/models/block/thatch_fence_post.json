@@ -1,6 +1,7 @@
 {
   "parent": "tropicraft:block/template/fence_post",
   "textures": {
-    "texture": "tropicraft:block/thatch"
+    "side": "tropicraft:block/thatch",
+    "end": "tropicraft:block/thatch_end"
   }
 }

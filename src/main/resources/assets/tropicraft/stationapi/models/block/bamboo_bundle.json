@@ -1,6 +1,7 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "minecraft:block/cube_column",
   "textures": {
-    "all": "tropicraft:block/bamboo_bundle"
+    "side": "tropicraft:block/bamboo_bundle_side",
+    "end": "tropicraft:block/bamboo_bundle_end"
   }
 }

@@ -2,10 +2,7 @@ package net.danygames2014.tropicraft;
 
 import net.danygames2014.tropicraft.block.*;
 import net.danygames2014.tropicraft.block.sifter.SifterBlock;
-import net.danygames2014.tropicraft.block.template.FenceBlockTemplate;
-import net.danygames2014.tropicraft.block.template.FenceGateBlockTemplate;
-import net.danygames2014.tropicraft.block.template.SlabBlockTemplate;
-import net.danygames2014.tropicraft.block.template.StairsBlockTemplate;
+import net.danygames2014.tropicraft.block.template.*;
 import net.danygames2014.tropicraft.block.sifter.SifterBlockEntity;
 import net.danygames2014.tropicraft.block.sifter.SifterBlockEntityRenderer;
 import net.danygames2014.tropicraft.entity.BeachChairEntity;
@@ -52,6 +49,7 @@ public class Tropicraft {
     // Bamboo
     public static Block bambooShootBlock;
     public static Block bambooBundle;
+    public static Block bambooPlanks;
     public static Block bambooStairs;
     public static Block bambooSlab;
     public static Block bambooFence;
@@ -68,6 +66,7 @@ public class Tropicraft {
     // TODO : Bamboo Fishing Rod
 
     // Thatch
+    public static Block thatchBundle;
     public static Block thatchBlock;
     public static Block thatchStairs;
     public static Block thatchSlab;
@@ -149,14 +148,16 @@ public class Tropicraft {
     public void registerBlocks(BlockRegistryEvent event) {
         // Bamboo
         bambooShootBlock = new BambooShootBlock(NAMESPACE.id("bamboo_shoot")).setTranslationKey(NAMESPACE, "bamboo_block").disableAutoItemRegistration().setSoundGroup(Block.DIRT_SOUND_GROUP);
-        bambooBundle = new TemplateBlock(NAMESPACE.id("bamboo_bundle"), Material.WOOD).setTranslationKey(NAMESPACE, "bamboo_bundle").setHardness(1.0F).setResistance(0.1F).setSoundGroup(Block.WOOD_SOUND_GROUP);
+        bambooBundle = new RotateableBlockTemplate(NAMESPACE.id("bamboo_bundle"), Material.WOOD).setTranslationKey(NAMESPACE, "bamboo_bundle").setHardness(1.0F).setResistance(0.1F).setSoundGroup(Block.WOOD_SOUND_GROUP);
+        bambooPlanks = new TemplateBlock(NAMESPACE.id("bamboo_planks"), Material.WOOD). setTranslationKey(NAMESPACE, "bamboo_planks").setHardness(1.0F).setResistance(0.1F).setSoundGroup(Block.WOOD_SOUND_GROUP);
         bambooStairs = new StairsBlockTemplate(NAMESPACE.id("bamboo_stairs"), bambooBundle).setTranslationKey(NAMESPACE, "bamboo_stairs").setHardness(1.0F).setResistance(0.1F).setSoundGroup(Block.WOOD_SOUND_GROUP);
         bambooSlab = new SlabBlockTemplate(NAMESPACE.id("bamboo_slab"), bambooBundle).setTranslationKey(NAMESPACE, "bamboo_slab").setHardness(1.0F).setResistance(0.1F).setSoundGroup(Block.WOOD_SOUND_GROUP);
         bambooFence = new FenceBlockTemplate(NAMESPACE.id("bamboo_fence"), bambooBundle).setTranslationKey(NAMESPACE, "bamboo_fence").setHardness(1.0F).setResistance(0.1F).setSoundGroup(Block.WOOD_SOUND_GROUP);
         bambooFenceGate = new FenceGateBlockTemplate(NAMESPACE.id("bamboo_fence_gate"), bambooBundle).setTranslationKey(NAMESPACE, "bamboo_fence_gate").setHardness(1.0F).setResistance(0.1F).setSoundGroup(Block.WOOD_SOUND_GROUP);
 
         // Thatch
-        thatchBlock = new TemplateBlock(NAMESPACE.id("thatch_bundle"), Material.WOOD).setTranslationKey(NAMESPACE, "thatch_bundle").setHardness(0.1F).setResistance(0.1F).setSoundGroup(Block.DIRT_SOUND_GROUP);
+        thatchBundle = new RotateableBlockTemplate(NAMESPACE.id("thatch_bundle"), Material.WOOD).setTranslationKey(NAMESPACE, "thatch_bundle").setHardness(0.1F).setResistance(0.1F).setSoundGroup(Block.DIRT_SOUND_GROUP);
+        thatchBlock = new TemplateBlock(NAMESPACE.id("thatch_block"), Material.WOOD).setTranslationKey(NAMESPACE, "thatch_block").setHardness(0.1F).setResistance(0.1F).setSoundGroup(Block.DIRT_SOUND_GROUP);
         thatchStairs = new StairsBlockTemplate(NAMESPACE.id("thatch_stairs"), thatchBlock).setTranslationKey(NAMESPACE.id("thatch_stairs")).setHardness(0.1F).setResistance(0.1F).setSoundGroup(Block.DIRT_SOUND_GROUP);
         thatchSlab = new SlabBlockTemplate(NAMESPACE.id("thatch_slab"), thatchBlock).setTranslationKey(NAMESPACE.id("thatch_slab")).setHardness(0.1F).setResistance(0.1F).setSoundGroup(Block.DIRT_SOUND_GROUP);
         thatchRoof = new StairsBlockTemplate(NAMESPACE.id("thatch_roof"), thatchBlock).setTranslationKey(NAMESPACE.id("thatch_roof")).setHardness(0.1F).setResistance(0.1F).setSoundGroup(Block.DIRT_SOUND_GROUP);

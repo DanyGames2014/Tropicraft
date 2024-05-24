@@ -1,5 +1,5 @@
 {
-  "parent": "tropicraft:block/template/slab",
+  "parent": "minecraft:block/cube_all",
   "textures": {
     "all": "tropicraft:block/bamboo_bundle_side"
   }
