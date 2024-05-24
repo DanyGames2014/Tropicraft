@@ -2,8 +2,10 @@
   "textures": {
     "particle": "#side"
   },
+  "ambientocclusion": false,
   "elements": [
-    {   "from": [ 6, 0, 6 ],
+    {
+      "from": [ 6, 0, 6 ],
       "to": [ 10, 16, 10 ],
       "faces": {
         "down":  { "uv": [ 6, 6, 10, 10 ], "texture": "#end", "cullface": "down" },
