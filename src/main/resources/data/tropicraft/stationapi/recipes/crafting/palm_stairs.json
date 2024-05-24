@@ -2,23 +2,20 @@
   "type": "minecraft:crafting_shaped",
   "pattern":
   [
-    "sps",
-    "sps"
+    "p  ",
+    "pp ",
+    "ppp"
   ],
   "key":
   {
     "p":
     {
       "tag": "minecraft:planks/palm"
-    },
-    "s":
-    {
-      "item": "minecraft:stick"
     }
   },
   "result":
   {
-    "item": "tropicraft:palm_fence_gate",
-    "count": 1
+    "item": "tropicraft:palm_stairs",
+    "count": 4
   }
 }

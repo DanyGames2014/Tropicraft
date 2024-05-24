@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    "c  ",
+    "cc ",
+    "ccc"
+  ],
+  "key":
+  {
+    "c":
+    {
+      "item": "tropicraft:chunk_o_head"
+    }
+  },
+  "result":
+  {
+    "item": "tropicraft:chunk_o_stairs",
+    "count": 4
+  }
+}

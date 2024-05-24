@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    "s  ",
+    "ts ",
+    "tts"
+  ],
+  "key":
+  {
+    "t":
+    {
+      "tag": "tropicraft:bundles/thatch"
+    },
+    "s":
+    {
+      "item": "minecraft:sugar_cane"
+    }
+  },
+  "result":
+  {
+    "item": "tropicraft:thatch_roof",
+    "count": 4
+  }
+}

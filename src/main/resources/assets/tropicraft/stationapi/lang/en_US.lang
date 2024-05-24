@@ -2,6 +2,7 @@
 ## Bamboo
 tile.tropicraft.bamboo_shoot.name=Bamboo Shoot
 tile.tropicraft.bamboo_bundle.name=Bamboo Bundle
+tile.tropicraft.bamboo_planks.name=Bamboo Planks
 tile.tropicraft.bamboo_stairs.name=Bamboo Stairs
 tile.tropicraft.bamboo_slab.name=Bamboo Slab
 tile.tropicraft.bamboo_fence.name=Bamboo Fence
@@ -19,6 +20,7 @@ tile.tropicraft.coconut.name=Coconut
 
 ## Thatch
 tile.tropicraft.thatch_bundle.name=Thatch Bundle
+tile.tropicraft.thatch_block.name=Thatch Block
 tile.tropicraft.thatch_stairs.name=Thatch Stairs
 tile.tropicraft.thatch_slab.name=Thatch Slab
 tile.tropicraft.thatch_roof.name=Thatch Roof
