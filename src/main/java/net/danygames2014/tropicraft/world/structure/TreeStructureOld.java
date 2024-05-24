@@ -5,13 +5,14 @@ import net.modificationstation.stationapi.api.block.BlockState;
 import net.modificationstation.stationapi.api.registry.BlockRegistry;
 import net.modificationstation.stationapi.api.util.Identifier;
 
+@Deprecated
 @SuppressWarnings("DataFlowIssue")
-public class TreeStructure extends Structure {
+public class TreeStructureOld extends StructureOld {
     public Identifier trunkBlockId;
     private final BlockState trunkBlockState;
-    public CollisionType trunkCollisionType;
+    public CollisionTypeOld trunkCollisionType;
 
-    public TreeStructure(Identifier trunkBlockId, CollisionType trunkCollisionType) {
+    public TreeStructureOld(Identifier trunkBlockId, CollisionTypeOld trunkCollisionType) {
         this.trunkBlockId = trunkBlockId;
         this.trunkBlockState = BlockRegistry.INSTANCE.get(trunkBlockId).getDefaultState();
         this.trunkCollisionType = trunkCollisionType;
@@ -21,7 +22,7 @@ public class TreeStructure extends Structure {
     // Returns true if collision was found
     public boolean checkCollision(World world, int x, int y, int z, int trunkHeight) {
         for (int i = 0; i < trunkHeight; i++) {
-            if (!world.getBlockState  (x,y+i, z).isAir() && trunkCollisionType == CollisionType.DONT_GENERATE) {
+            if (!world.getBlockState  (x,y+i, z).isAir() && trunkCollisionType == CollisionTypeOld.DONT_GENERATE) {
                 return true;
             }
         }

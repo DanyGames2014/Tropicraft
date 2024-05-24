@@ -1,8 +1,8 @@
 package net.danygames2014.tropicraft.world.feature;
 
 import net.danygames2014.tropicraft.Tropicraft;
-import net.danygames2014.tropicraft.world.structure.Structure;
-import net.danygames2014.tropicraft.world.structure.TreeStructure;
+import net.danygames2014.tropicraft.world.structure.StructureOld;
+import net.danygames2014.tropicraft.world.structure.TreeStructureOld;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.Feature;
 import net.modificationstation.stationapi.api.registry.BlockRegistry;
@@ -13,13 +13,13 @@ import java.util.Random;
 
 public class PalmTreeFeature extends Feature {
 
-    TreeStructure palmTreeStructure;
+    TreeStructureOld palmTreeStructure;
 
     public PalmTreeFeature() {
         Identifier palmLogId = Tropicraft.NAMESPACE.id("palm_log");
         Identifier palmLeavesId = Tropicraft.NAMESPACE.id("palm_leaves");
 
-        this.palmTreeStructure = new TreeStructure(palmLogId, Structure.CollisionType.DONT_GENERATE);
+        this.palmTreeStructure = new TreeStructureOld(palmLogId, StructureOld.CollisionTypeOld.DONT_GENERATE);
 
         // Center Log and Leaf around it
         palmTreeStructure.addBlock(0, 0, 0, palmLogId);
