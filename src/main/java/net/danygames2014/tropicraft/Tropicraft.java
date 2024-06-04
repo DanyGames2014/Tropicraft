@@ -203,8 +203,7 @@ public class Tropicraft {
 
         // Sifter
         sifter = new SifterBlock(NAMESPACE.id("sifter")).setTranslationKey(NAMESPACE, "sifter").setSoundGroup(Block.WOOD_SOUND_GROUP);
-        // TODO: Fix the falling texture of the Purified Sand
-        purifiedSand = new TemplateSandBlock(NAMESPACE.id("purified_sand"), 0).setTranslationKey(NAMESPACE, "purified_sand").setSoundGroup(Block.SAND_SOUND_GROUP);
+        purifiedSand = new TemplateSandBlock(NAMESPACE.id("purified_sand"), 18).setTranslationKey(NAMESPACE, "purified_sand").setSoundGroup(Block.SAND_SOUND_GROUP); // Falling texture is just regular sand, better than nothing
     }
 
     @EventListener
