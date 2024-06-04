@@ -29,6 +29,7 @@ public class StructureOld {
 
     // Returns true if generation was succesfull
     public boolean generate(World world, int x, int y, int z) {
+        var startTime = System.nanoTime();
         if (this.checkCollision(world, x, y, z)) {
             return false;
         }
@@ -49,6 +50,7 @@ public class StructureOld {
                 }
             }
         }
+        System.out.println(this.getClass().getCanonicalName() + " GENERATION TOOK " + (System.nanoTime() - startTime) / 1000 + "uS");
         return true;
     }
 

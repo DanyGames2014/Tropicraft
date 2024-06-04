@@ -8,7 +8,7 @@ public class StructureBlockEntry {
     public byte yOffset;
     public byte zOffset;
     public BlockState state;
-    CollisionType collisionType;
+    public CollisionType collisionType;
 
     // Default Constructor
     public StructureBlockEntry(byte xOffset, byte yOffset, byte zOffset, BlockState state, CollisionType collisionType) {
