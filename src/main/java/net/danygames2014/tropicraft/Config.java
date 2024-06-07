@@ -20,6 +20,9 @@ public class Config {
         @ConfigCategory("Pineapple")
         public PineappleWorldgenConfig pineapple = new PineappleWorldgenConfig();
 
+        @ConfigCategory("Island Head")
+        public IslandHeadWorldgenConfig islandHead = new IslandHeadWorldgenConfig();
+
         public static class PalmWorldgenConfig {
             @ConfigName("Generate Palms")
             public Boolean generatePalms = true;
@@ -78,6 +81,15 @@ public class Config {
 
             @ConfigName("Maximum Pineapples")
             public Integer maximumPineapples = 5;
+        }
+
+        public static class IslandHeadWorldgenConfig {
+            @ConfigName("Generate Island Heads")
+            public Boolean generateIslandHeads = true;
+
+            @ConfigName("Island Head Generation Chance")
+            @Comment("Chance is 1/value. Ex: 5 -> 1/100 = 1%")
+            public Integer islandHeadGenChance = 200;
         }
     }
 }
