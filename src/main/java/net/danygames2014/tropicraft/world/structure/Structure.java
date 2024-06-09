@@ -75,18 +75,12 @@ public class Structure {
             return false;
         }
 
-        additionalGeneration(world, x, y, z);
-
         for (StructureBlockEntry block : this.blocks) {
             placeBlock(world, x, y, z, block);
         }
 
         System.out.println(this.getClass().getCanonicalName() + " GENERATION TOOK " + (System.nanoTime() - startTime) / 1000 + "uS");
         return true;
-    }
-
-    public void additionalGeneration(World world, int x, int y, int z) {
-
     }
 
     /**
