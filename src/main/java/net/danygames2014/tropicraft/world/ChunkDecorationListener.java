@@ -54,7 +54,7 @@ public class ChunkDecorationListener {
     @EventListener
     public void initFeatures(WorldEvent.Init event) {
         bambooPatchFeature = new BambooPatchFeature();
-        palmTreeFeature = new PalmTreeFeature();
+        palmTreeFeature = new PalmTreeFeature(event.world);
         flowerPatchFeature = new FlowerPatchFeature();
         pineapplePatchFeature = new PineapplePatchFeature();
         islandHeadFeature = new IslandHeadFeature(event.world);
