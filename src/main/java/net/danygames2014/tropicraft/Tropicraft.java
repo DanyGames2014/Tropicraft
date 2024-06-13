@@ -1,6 +1,9 @@
 package net.danygames2014.tropicraft;
 
+import net.danygames2014.tropicraft.achievement.TropicraftAchievementPage;
+import net.danygames2014.tropicraft.achievement.TropicraftAchievements;
 import net.danygames2014.tropicraft.block.*;
+import net.danygames2014.tropicraft.block.bamboochest.BambooChestBlock;
 import net.danygames2014.tropicraft.block.sifter.SifterBlock;
 import net.danygames2014.tropicraft.block.template.*;
 import net.danygames2014.tropicraft.block.sifter.SifterBlockEntity;
@@ -19,12 +22,19 @@ import net.danygames2014.tropicraft.item.food.FoodChunkItem;
 import net.danygames2014.tropicraft.item.food.PinaColadaItem;
 import net.glasslauncher.mods.api.gcapi.api.GConfig;
 import net.mine_diver.unsafeevents.listener.EventListener;
+import net.minecraft.achievement.Achievement;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
+import net.minecraft.stat.Stat;
 import net.modificationstation.stationapi.api.StationAPI;
 import net.modificationstation.stationapi.api.client.event.block.entity.BlockEntityRendererRegisterEvent;
 import net.modificationstation.stationapi.api.client.event.render.entity.EntityRendererRegisterEvent;
+import net.modificationstation.stationapi.api.client.event.texture.TextureRegisterEvent;
+import net.modificationstation.stationapi.api.client.texture.atlas.Atlas;
+import net.modificationstation.stationapi.api.client.texture.atlas.Atlases;
+import net.modificationstation.stationapi.api.client.texture.atlas.ExpandableAtlas;
+import net.modificationstation.stationapi.api.event.achievement.AchievementRegisterEvent;
 import net.modificationstation.stationapi.api.event.block.entity.BlockEntityRegisterEvent;
 import net.modificationstation.stationapi.api.event.entity.EntityRegister;
 import net.modificationstation.stationapi.api.event.registry.*;
@@ -46,6 +56,9 @@ public class Tropicraft {
     @GConfig(value = "worldgen", visibleName = "Worldgen")
     public static final Config.WorldgenConfig WORLDGEN_CONFIG = new Config.WorldgenConfig();
 
+    // Achievement Page
+    public static TropicraftAchievementPage achievementPage;
+
     // Bamboo
     public static Block bambooShootBlock;
     public static Block bambooBundle;
@@ -54,7 +67,7 @@ public class Tropicraft {
     public static Block bambooSlab;
     public static Block bambooFence;
     public static Block bambooFenceGate;
-    // TODO : Bamboo Chest
+    public static Block bambooChest;
     // TODO : Bamboo Ladder
     // TODO : Bamboo Door
     // TODO : ???Bamboo Item Frame???
@@ -154,6 +167,7 @@ public class Tropicraft {
         bambooSlab = new SlabBlockTemplate(NAMESPACE.id("bamboo_slab"), bambooBundle).setTranslationKey(NAMESPACE, "bamboo_slab").setHardness(1.0F).setResistance(0.1F).setSoundGroup(Block.WOOD_SOUND_GROUP);
         bambooFence = new FenceBlockTemplate(NAMESPACE.id("bamboo_fence"), bambooBundle).setTranslationKey(NAMESPACE, "bamboo_fence").setHardness(1.0F).setResistance(0.1F).setSoundGroup(Block.WOOD_SOUND_GROUP);
         bambooFenceGate = new FenceGateBlockTemplate(NAMESPACE.id("bamboo_fence_gate"), bambooBundle).setTranslationKey(NAMESPACE, "bamboo_fence_gate").setHardness(1.0F).setResistance(0.1F).setSoundGroup(Block.WOOD_SOUND_GROUP);
+        bambooChest = new BambooChestBlock(NAMESPACE.id("bamboo_chest")).setTranslationKey(NAMESPACE, "bamboo_chest").setHardness(1.0F).setResistance(0.1F).setSoundGroup(Block.WOOD_SOUND_GROUP);
 
         // Thatch
         thatchBundle = new RotateableBlockTemplate(NAMESPACE.id("thatch_bundle"), Material.WOOD).setTranslationKey(NAMESPACE, "thatch_bundle").setHardness(0.1F).setResistance(0.1F).setSoundGroup(Block.DIRT_SOUND_GROUP);
@@ -163,7 +177,6 @@ public class Tropicraft {
         thatchRoof = new StairsBlockTemplate(NAMESPACE.id("thatch_roof"), thatchBlock).setTranslationKey(NAMESPACE.id("thatch_roof")).setHardness(0.1F).setResistance(0.1F).setSoundGroup(Block.DIRT_SOUND_GROUP);
         thatchFence = new FenceBlockTemplate(NAMESPACE.id("thatch_fence"), thatchBlock).setTranslationKey(NAMESPACE, "thatch_fence").setHardness(0.1F).setResistance(0.1F).setSoundGroup(Block.DIRT_SOUND_GROUP);
         thatchFenceGate = new FenceGateBlockTemplate(NAMESPACE.id("thatch_fence_gate"), thatchBlock).setTranslationKey(NAMESPACE, "thatch_fence_gate").setHardness(0.1F).setResistance(0.1F).setSoundGroup(Block.DIRT_SOUND_GROUP);
-
 
         // Palm
         palmLog = new RotateableBlockTemplate(NAMESPACE.id("palm_log"), Material.WOOD).setTranslationKey(NAMESPACE, "palm_log").setHardness(1.0F).setResistance(0.1F).setSoundGroup(Block.WOOD_SOUND_GROUP);
@@ -291,5 +304,21 @@ public class Tropicraft {
     @EventListener
     public void sendSiftingRecipeRegisterEvent(AfterBlockAndItemRegisterEvent event){
         StationAPI.EVENT_BUS.post(new SiftingRecipeRegisterEvent());
+    }
+
+    @EventListener
+    public void registerAchievements(AchievementRegisterEvent event){
+        achievementPage = new TropicraftAchievementPage(NAMESPACE.id("tropicraft"));
+        event.achievements.addAll(TropicraftAchievements.ACHIEVEMENTS);
+        achievementPage.addAchievements(TropicraftAchievements.ACHIEVEMENTS.toArray(Achievement[]::new));
+        TropicraftAchievements.ACHIEVEMENTS.forEach(Stat::addStat);
+    }
+
+    @EventListener
+    public void onTextureRegister(TextureRegisterEvent event){
+        ExpandableAtlas atlas = Atlases.getTerrain();
+
+        achievementPage.updateTextures(atlas);
+
     }
 }
