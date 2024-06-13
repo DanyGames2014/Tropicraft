@@ -1,5 +1,6 @@
 package net.danygames2014.tropicraft.block.sifter;
 
+import net.danygames2014.tropicraft.achievement.TropicraftAchievements;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.PlayerEntity;
@@ -23,6 +24,10 @@ public class SifterBlock extends TemplateBlockWithEntity {
 
         if(blockEntity.sift(player.getHand().copy())){
             player.getHand().count--;
+
+            // Sand Job Achievement
+            player.increaseStat(TropicraftAchievements.SAND_JOB,1);
+
             return true;
         }
         return false;
