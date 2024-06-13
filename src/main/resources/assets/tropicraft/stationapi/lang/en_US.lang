@@ -92,3 +92,14 @@ item.tropicraft.black_pearl.name=Black Pearl
 dim.tropicraft.tropics.entering=Drifting into the Tropics!
 dim.tropicraft.tropics.leaving=Leaving the Tropics!
 
+# Achievements
+achievement.tropicraft.bamboozled=Bamboozled!
+achievement.tropicraft.bamboozled.desc=Get some bamboo, the most important material in Tropicraft
+achievement.tropicraft.escape=If you like Pina Coladas
+achievement.tropicraft.escape.desc=getting caught in the rain
+achievement.tropicraft.sand_job=Sand Job
+achievement.tropicraft.sand_job.desc=Sift some sand in the sifter, you might get something nice, but not expensive
+achievement.tropicraft.steamed_clams=Steamed Clams
+achievement.tropicraft.steamed_clams.desc=Mmmm, steamed clams!
+achievement.tropicraft.mine_diving=Mine Diving
+achievement.tropicraft.mine_diving.desc=Make some diving equipment and head under the wa'er
