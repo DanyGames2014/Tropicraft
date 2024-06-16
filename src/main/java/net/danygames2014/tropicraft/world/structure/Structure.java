@@ -69,6 +69,19 @@ public class Structure {
      * @return Returns true if the structure was placed succesfully
      */
     public boolean generate(World world, int x, int y, int z) {
+        return this.generate(world, x, y, z, false, false);
+    }
+
+    /**
+     * Generate the structure
+     *
+     * @param world The world to generate it in
+     * @param x     The X coordinate of the structure
+     * @param y     The Y coordinate of the structure
+     * @param z     The Z coordinate of the structure
+     * @return Returns true if the structure was placed succesfully
+     */
+    public boolean generate(World world, int x, int y, int z, boolean mirrorX, boolean mirrorY) {
         var startTime = System.nanoTime();
 
         if (!checkCollision(world, x, y, z)) {
@@ -92,30 +105,30 @@ public class Structure {
      * @return true if the block placement was succesfull
      */
     public boolean placeBlock(World world, int x, int y, int z, StructureBlockEntry block) {
-        if (!isReplaceable(world, x + block.xOffset, y + block.yOffset, z + block.zOffset)) {
+        if (isReplaceable(world, x + block.xOffset, y + block.yOffset, z + block.zOffset)) {
+            world.setBlockState(x + block.xOffset, y + block.yOffset, z + block.zOffset, block.getState(this, world, x, y, z, block));
+            return true;
+        } else {
             if (block.collisionType == CollisionType.REPLACE_BLOCK) {
                 world.setBlockState(x + block.xOffset, y + block.yOffset, z + block.zOffset, block.getState(this, world, x, y, z, block));
                 return true;
             } else {
                 return false;
             }
-        } else {
-            world.setBlockState(x + block.xOffset, y + block.yOffset, z + block.zOffset, block.getState(this, world, x, y, z, block));
-            return true;
         }
     }
 
     public boolean placeState(World world, int x, int y, int z, BlockState state, CollisionType collisionType) {
-        if (!isReplaceable(world, x, y, z)) {
+        if (isReplaceable(world, x, y, z)) {
+            world.setBlockState(x, y, z, state);
+            return true;
+        } else {
             if (collisionType == CollisionType.REPLACE_BLOCK) {
                 world.setBlockState(x, y, z, state);
                 return true;
             } else {
                 return false;
             }
-        } else {
-            world.setBlockState(x, y, z, state);
-            return true;
         }
     }
 

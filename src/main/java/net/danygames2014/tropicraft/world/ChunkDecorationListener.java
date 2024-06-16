@@ -5,11 +5,14 @@ import net.mine_diver.unsafeevents.listener.EventListener;
 import net.modificationstation.stationapi.api.event.world.WorldEvent;
 import net.modificationstation.stationapi.api.event.world.gen.WorldGenEvent;
 
+import java.util.Random;
+
 import static net.danygames2014.tropicraft.Tropicraft.WORLDGEN_CONFIG;
 
 public class ChunkDecorationListener {
     public static BambooPatchFeature bambooPatchFeature;
-    public static PalmTreeFeature palmTreeFeature;
+    public static SmallPalmTreeFeature smallPalmTreeFeature;
+    public static CurvedPalmTreeFeature curvedPalmTreeFeature;
     public static FlowerPatchFeature flowerPatchFeature;
     public static PineapplePatchFeature pineapplePatchFeature;
     public static IslandHeadFeature islandHeadFeature;
@@ -32,7 +35,15 @@ public class ChunkDecorationListener {
 
         // Palms
         if (WORLDGEN_CONFIG.palm.generatePalms && event.random.nextInt(WORLDGEN_CONFIG.palm.palmGenChance) == 0) {
-            palmTreeFeature.generate(event.world, event.random, event.x, 0, event.z);
+            switch(event.random.nextInt(1,2)){
+                case 0 -> {
+                    smallPalmTreeFeature.generate(event.world, event.random, event.x, 0, event.z);
+                }
+                case 1 -> {
+                    curvedPalmTreeFeature.generate(event.world, event.random, event.x, 0, event.z);
+                }
+            }
+
         }
 
         // Flowers
@@ -54,9 +65,10 @@ public class ChunkDecorationListener {
     @EventListener
     public void initFeatures(WorldEvent.Init event) {
         bambooPatchFeature = new BambooPatchFeature();
-        palmTreeFeature = new PalmTreeFeature(event.world);
+        smallPalmTreeFeature = new SmallPalmTreeFeature(event.world);
         flowerPatchFeature = new FlowerPatchFeature();
         pineapplePatchFeature = new PineapplePatchFeature();
         islandHeadFeature = new IslandHeadFeature(event.world);
+        curvedPalmTreeFeature = new CurvedPalmTreeFeature(event.world);
     }
 }
