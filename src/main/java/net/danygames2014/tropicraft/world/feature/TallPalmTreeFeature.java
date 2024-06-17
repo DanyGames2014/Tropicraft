@@ -191,6 +191,10 @@ public class TallPalmTreeFeature extends Feature {
         structure.addBlock(-4,1,-5, palmLeaves);
 
         structure.addBlock(-5,0,-5, palmLeaves);
+
+        for (var block : structure.blocks) {
+            block.collisionType = CollisionType.DONT_GENERATE;
+        }
     }
 
     @Override

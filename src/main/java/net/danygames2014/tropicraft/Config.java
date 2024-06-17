@@ -29,7 +29,7 @@ public class Config {
 
             @ConfigName("Palm Generation Chance")
             @Comment("Chance is 1/value. Ex: 5 -> 1/5 = 20%")
-            public Integer palmGenChance = 3;
+            public Integer palmGenChance = 4;
         }
 
         public static class BambooWorldgenConfig {
@@ -38,7 +38,7 @@ public class Config {
 
             @ConfigName("Bamboo Generation Chance")
             @Comment("Chance is 1/value. Ex: 5 -> 1/5 = 20%")
-            public Integer bambooGenChance = 20;
+            public Integer bambooGenChance = 30;
 
             @ConfigName("Minimum Bamboo Height")
             public Integer minBambooHeight = 4;
@@ -59,7 +59,7 @@ public class Config {
 
             @ConfigName("Flower Generation Chance")
             @Comment("Chance is 1/value. Ex: 5 -> 1/5 = 20%")
-            public Integer flowerGenChance = 10;
+            public Integer flowerGenChance = 8;
 
             @ConfigName("Minimum Flowers")
             public Integer minimumFlowers = 7;

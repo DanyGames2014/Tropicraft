@@ -17,12 +17,12 @@ public class BambooPatchFeature extends Feature {
         int y = world.getTopY(x, z);
 
         // If the block isn't air, return
-        if (!world.method_234(x, y, z)) {
+        if (!world.getBlockState(x, y, z).isAir()) {
             return false;
         }
 
         // Calculate the amount and spread used for this patch
-        int amount = random.nextInt( WORLDGEN_CONFIG.bamboo.maxBambooCount - WORLDGEN_CONFIG.bamboo.minBambooCount) + WORLDGEN_CONFIG.bamboo.minBambooCount;
+        int amount = random.nextInt(WORLDGEN_CONFIG.bamboo.maxBambooCount - WORLDGEN_CONFIG.bamboo.minBambooCount) + WORLDGEN_CONFIG.bamboo.minBambooCount;
         int spread = random.nextInt(3) - 1 + (int) (Math.sqrt(amount) / 2.0);
 
         // Spawn <amount> bamboo stalks
@@ -35,10 +35,11 @@ public class BambooPatchFeature extends Feature {
             for (int h = 0; h < height; ++h) {
                 pos = pos.up();
                 // If the block isn't air or bamboo can't grow on it, continue
-                if (!world.method_234(pos.x, pos.y, pos.z) || !Tropicraft.bambooShootBlock.canGrow(world, pos.x, pos.y, pos.z)) {
-                    continue;
+                if (!world.getBlockState(pos.x, pos.y, pos.z).isAir() || !Tropicraft.bambooShootBlock.canGrow(world, pos.x, pos.y, pos.z)) {
+                    break;
+                    //continue; This should probably not continue
                 }
-                world.setBlock(pos.x, pos.y, pos.z, Tropicraft.bambooShootBlock.id);
+                world.setBlockState(pos.x, pos.y, pos.z, Tropicraft.bambooShootBlock.getDefaultState());
             }
         }
         return true;

@@ -2,10 +2,9 @@ package net.danygames2014.tropicraft.world;
 
 import net.danygames2014.tropicraft.world.feature.*;
 import net.mine_diver.unsafeevents.listener.EventListener;
+import net.minecraft.world.biome.Biome;
 import net.modificationstation.stationapi.api.event.world.WorldEvent;
 import net.modificationstation.stationapi.api.event.world.gen.WorldGenEvent;
-
-import java.util.Random;
 
 import static net.danygames2014.tropicraft.Tropicraft.WORLDGEN_CONFIG;
 
@@ -27,27 +26,33 @@ public class ChunkDecorationListener {
 
     // TODO : Rewrite this to use WorldModificationEvent
     public void decorateOverworld(WorldGenEvent.ChunkDecoration event) {
-        // Bamboo Patch
-        if (WORLDGEN_CONFIG.bamboo.generateBamboo && (event.random.nextInt(WORLDGEN_CONFIG.bamboo.bambooGenChance) == 0)) {
-            if ((event.world.method_1781().method_1786(event.x, event.z) > 0.5D)) { // Temperature is above 0.5
-                bambooPatchFeature.generate(event.world, event.random, event.x + 8, 0, event.z + 8);
-            }
+        /// Features that can generate in Cold Biomes
+        // Island Heads
+        if (WORLDGEN_CONFIG.islandHead.generateIslandHeads && event.random.nextInt(WORLDGEN_CONFIG.islandHead.islandHeadGenChance) == 0) {
+            islandHeadFeature.generate(event.world, event.random, event.x, 0, event.z);
+        }
+
+        /// Features that cannot generate in Cold Biomes
+        // Temporary replacement for this check:
+        // if ((event.world.method_1781().method_1786(event.x, event.z) > 0.5D)) { // Temperature is above 0.5
+        if (event.biome == Biome.TUNDRA || event.biome == Biome.TAIGA) {
+            return;
         }
 
         // Palms
         if (WORLDGEN_CONFIG.palm.generatePalms && event.random.nextInt(WORLDGEN_CONFIG.palm.palmGenChance) == 0) {
-            switch(event.random.nextInt(1,3)){
-                case 0 -> {
+            System.out.println(event.biome.name);
+            switch (event.random.nextInt(1, 6)) {
+                case 0, 1, 2 -> {
                     smallPalmTreeFeature.generate(event.world, event.random, event.x, 0, event.z);
                 }
-                case 1 -> {
+                case 3, 4 -> {
                     curvedPalmTreeFeature.generate(event.world, event.random, event.x, 0, event.z);
                 }
-                case 2 -> {
+                case 5 -> {
                     tallPalmTreeFeature.generate(event.world, event.random, event.x, 0, event.z);
                 }
             }
-
         }
 
         // Flowers
@@ -56,13 +61,13 @@ public class ChunkDecorationListener {
         }
 
         // Pineapple
-        if (WORLDGEN_CONFIG.pineapple.generatePineapples && event.random.nextInt(WORLDGEN_CONFIG.pineapple.pineappleGenChance) == 0){
+        if (WORLDGEN_CONFIG.pineapple.generatePineapples && event.random.nextInt(WORLDGEN_CONFIG.pineapple.pineappleGenChance) == 0) {
             pineapplePatchFeature.generate(event.world, event.random, event.x, 0, event.z);
         }
 
-        // Island Heads
-        if (WORLDGEN_CONFIG.islandHead.generateIslandHeads && event.random.nextInt(WORLDGEN_CONFIG.islandHead.islandHeadGenChance) == 0) {
-            islandHeadFeature.generate(event.world, event.random, event.x, 0, event.z);
+        // Bamboo Patch
+        if (WORLDGEN_CONFIG.bamboo.generateBamboo && (event.random.nextInt(WORLDGEN_CONFIG.bamboo.bambooGenChance) == 0)) {
+            bambooPatchFeature.generate(event.world, event.random, event.x + 8, 0, event.z + 8);
         }
     }
 

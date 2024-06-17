@@ -41,7 +41,7 @@ public class ChunkProviderTropics implements class_51 { // class_51 = WorldSourc
     }
 
     @Override
-    public String method_1808() { // makeString / toString / getName
+    public String method_1808() { // makeString / toString / getName / getDebugString
         return null;
     }
 }
