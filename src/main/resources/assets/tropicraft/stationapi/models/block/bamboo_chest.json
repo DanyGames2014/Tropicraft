@@ -3,7 +3,7 @@
   "textures": {
     "particle": "minecraft:block/diamond_block",
     "down": "minecraft:block/dirt",
-    "up": "minecraft:block/tnt_top",
+    "up": "tropicraft:block/bamboo_chest_single_top",
     "north": "minecraft:block/diamond_block",
     "east": "minecraft:block/gold_block",
     "south": "minecraft:block/gold_block",

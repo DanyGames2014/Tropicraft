@@ -1,19 +1,49 @@
 {
   "variants": {
-    "facing=north": {
-      "model": "tropicraft:block/bamboo_chest",
+    "chest_type=single,facing=north": {
+      "model": "tropicraft:block/bamboo_chest_single",
       "y": 90
     },
-    "facing=south": {
-      "model": "tropicraft:block/bamboo_chest",
+    "chest_type=single,facing=south": {
+      "model": "tropicraft:block/bamboo_chest_single",
       "y": 270
     },
-    "facing=east": {
-      "model": "tropicraft:block/bamboo_chest",
+    "chest_type=single,facing=east": {
+      "model": "tropicraft:block/bamboo_chest_single",
       "y": 180
     },
-    "facing=west": {
-      "model": "tropicraft:block/bamboo_chest"
+    "chest_type=single,facing=west": {
+      "model": "tropicraft:block/bamboo_chest_single"
+    },
+    "chest_type=left,facing=north": {
+      "model": "tropicraft:block/bamboo_chest_left",
+      "y": 90
+    },
+    "chest_type=left,facing=south": {
+      "model": "tropicraft:block/bamboo_chest_left",
+      "y": 270
+    },
+    "chest_type=left,facing=east": {
+      "model": "tropicraft:block/bamboo_chest_left",
+      "y": 180
+    },
+    "chest_type=left,facing=west": {
+      "model": "tropicraft:block/bamboo_chest_left"
+    },
+    "chest_type=right,facing=north": {
+      "model": "tropicraft:block/bamboo_chest_right",
+      "y": 90
+    },
+    "chest_type=right,facing=south": {
+      "model": "tropicraft:block/bamboo_chest_right",
+      "y": 270
+    },
+    "chest_type=right,facing=east": {
+      "model": "tropicraft:block/bamboo_chest_right",
+      "y": 180
+    },
+    "chest_type=right,facing=west": {
+      "model": "tropicraft:block/bamboo_chest_right"
     }
   }
 }

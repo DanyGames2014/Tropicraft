@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "particle": "tropicraft:block/bamboo_chest_right_top",
+    "down": "tropicraft:block/bamboo_chest_right_bottom",
+    "up": "tropicraft:block/bamboo_chest_right_top",
+    "north": "tropicraft:block/bamboo_chest_single_side",
+    "east": "tropicraft:block/bamboo_chest_single_side",
+    "south": "tropicraft:block/bamboo_chest_single_side",
+    "west": "tropicraft:block/bamboo_chest_right_front"
+  }
+}
