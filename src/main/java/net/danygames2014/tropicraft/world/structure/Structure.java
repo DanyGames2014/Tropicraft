@@ -1,6 +1,7 @@
 package net.danygames2014.tropicraft.world.structure;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.entity.SignBlockEntity;
 import net.minecraft.world.World;
 import net.modificationstation.stationapi.api.block.BlockState;
 
@@ -69,7 +70,7 @@ public class Structure {
      * @return Returns true if the structure was placed succesfully
      */
     public boolean generate(World world, int x, int y, int z) {
-        return this.generate(world, x, y, z, false, false);
+        return this.generate(world, x, y, z, Rotation.NONE);
     }
 
     /**
@@ -81,7 +82,7 @@ public class Structure {
      * @param z     The Z coordinate of the structure
      * @return Returns true if the structure was placed succesfully
      */
-    public boolean generate(World world, int x, int y, int z, boolean mirrorX, boolean mirrorY) {
+    public boolean generate(World world, int x, int y, int z, Rotation rotation) {
         var startTime = System.nanoTime();
 
         if (!checkCollision(world, x, y, z)) {
@@ -89,12 +90,13 @@ public class Structure {
         }
 
         for (StructureBlockEntry block : this.blocks) {
-            placeBlock(world, x, y, z, block);
+            placeBlock(world, x, y, z, block, rotation);
         }
 
         System.out.println(this.getClass().getCanonicalName() + " GENERATION TOOK " + (System.nanoTime() - startTime) / 1000 + "uS");
         return true;
     }
+
 
     /**
      * @param world The world the to place the block in
@@ -105,16 +107,36 @@ public class Structure {
      * @return true if the block placement was succesfull
      */
     public boolean placeBlock(World world, int x, int y, int z, StructureBlockEntry block) {
-        if (isReplaceable(world, x + block.xOffset, y + block.yOffset, z + block.zOffset)) {
-            world.setBlockState(x + block.xOffset, y + block.yOffset, z + block.zOffset, block.getState(this, world, x, y, z, block));
-            return true;
+        return this.placeBlock(world, x, y, z, block, Rotation.NONE);
+    }
+
+    /**
+     * @param world The world the to place the block in
+     * @param x     The X coordinate of the structure
+     * @param y     The Y coordinate of the structure
+     * @param z     The Z coordinate of the structure
+     * @param block The block to place
+     * @return true if the block placement was succesfull
+     */
+    public boolean placeBlock(World world, int x, int y, int z, StructureBlockEntry block, Rotation rotation) {
+        if (rotation.swapXZ) {
+            return placeState(
+                    world,
+                    x + (block.zOffset * rotation.getXMultiplier()),
+                    y + block.yOffset,
+                    z + (block.xOffset * rotation.getZMultiplier()),
+                    block.getState(this, world, x, y, z, block),
+                    block.collisionType
+            );
         } else {
-            if (block.collisionType == CollisionType.REPLACE_BLOCK) {
-                world.setBlockState(x + block.xOffset, y + block.yOffset, z + block.zOffset, block.getState(this, world, x, y, z, block));
-                return true;
-            } else {
-                return false;
-            }
+            return placeState(
+                    world,
+                    x + (block.xOffset * rotation.getXMultiplier()),
+                    y + block.yOffset,
+                    z + (block.zOffset * rotation.getZMultiplier()),
+                    block.getState(this, world, x, y, z, block),
+                    block.collisionType
+            );
         }
     }
 
