@@ -1,16 +1,14 @@
 package net.danygames2014.tropicraft.world.structure;
 
 import net.danygames2014.tropicraft.Tropicraft;
-import net.danygames2014.tropicraft.block.PalmSaplingBlock;
 import net.minecraft.block.Block;
-import net.minecraft.block.entity.SignBlockEntity;
 import net.minecraft.world.World;
 import net.modificationstation.stationapi.api.block.BlockState;
 
 import java.util.ArrayList;
 import java.util.Random;
 
-@SuppressWarnings({"UnusedReturnValue", "BooleanMethodIsAlwaysInverted"})
+@SuppressWarnings({"UnusedReturnValue", "BooleanMethodIsAlwaysInverted", "unused"})
 public class Structure {
     public ArrayList<StructureBlockEntry> blocks;
     public Random random;

@@ -8,6 +8,7 @@ import net.modificationstation.stationapi.api.event.world.gen.WorldGenEvent;
 
 import static net.danygames2014.tropicraft.Tropicraft.WORLDGEN_CONFIG;
 
+@SuppressWarnings({"RedundantLabeledSwitchRuleCodeBlock", "unused"})
 public class ChunkDecorationListener {
     public static BambooPatchFeature bambooPatchFeature;
     public static SmallPalmTreeFeature smallPalmTreeFeature;
