@@ -12,7 +12,7 @@ import net.modificationstation.stationapi.api.tag.TagKey;
 import java.util.Random;
 
 public class CurvedPalmTreeFeature extends Feature {
-    Structure structure;
+    public Structure structure;
 
     public CurvedPalmTreeFeature(World world) {
         BlockState palmLog = Tropicraft.palmLog.getDefaultState();
@@ -108,10 +108,18 @@ public class CurvedPalmTreeFeature extends Feature {
 
     @Override
     public boolean generate(World world, Random random, int x, int y, int z) {
-        y = world.getTopY(x, z);
-        if (world.getBlockState(x, y - 1, z).isIn(TagKey.of(BlockRegistry.INSTANCE.getKey(), Tropicraft.NAMESPACE.id("palm_grows_on")))) {
+        return generate(world, random, x, y, z, false);
+    }
+
+    public boolean generate(World world, Random random, int x, int y, int z, boolean fromSapling) {
+        if (!fromSapling) {
+            y = world.getTopY(x, z);
+        }
+
+        if (world.getBlockState(x, y - 1, z).isIn(TagKey.of(BlockRegistry.INSTANCE.getKey(), Tropicraft.NAMESPACE.id("palm_generates_on"))) || fromSapling) {
             return structure.generate(world, x, y, z, Rotation.getRotation(random.nextInt(0, 4)));
         }
+
         return false;
     }
 }

@@ -13,13 +13,13 @@ import java.util.Random;
 
 public class SmallPalmTreeFeature extends Feature {
 
-    TreeStructure structure;
+    public TreeStructure structure;
 
     public SmallPalmTreeFeature(World world) {
         BlockState palmLog = Tropicraft.palmLog.getDefaultState();
         BlockState palmLeaves = Tropicraft.palmLeaves.getDefaultState();
 
-        this.structure = new TreeStructure(world,palmLog, CollisionType.DONT_GENERATE);
+        this.structure = new TreeStructure(world, palmLog, CollisionType.DONT_GENERATE);
 
         // Center Log and Leaf around it
         structure.addBlock(0, 0, 0, palmLog);
@@ -60,10 +60,18 @@ public class SmallPalmTreeFeature extends Feature {
 
     @Override
     public boolean generate(World world, Random random, int x, int y, int z) {
-        y = world.getTopY(x, z);
-        if (world.getBlockState(x, y - 1, z).isIn(TagKey.of(BlockRegistry.INSTANCE.getKey(), Tropicraft.NAMESPACE.id("palm_grows_on")))) {
+        return generate(world, random, x, y, z, false);
+    }
+
+    public boolean generate(World world, Random random, int x, int y, int z, boolean fromSapling) {
+        if (!fromSapling) {
+            y = world.getTopY(x, z);
+        }
+
+        if (world.getBlockState(x, y - 1, z).isIn(TagKey.of(BlockRegistry.INSTANCE.getKey(), Tropicraft.NAMESPACE.id("palm_generates_on"))) || fromSapling) {
             return structure.generate(world, x, y, z, random.nextInt(6, 9));
         }
+
         return false;
     }
 }

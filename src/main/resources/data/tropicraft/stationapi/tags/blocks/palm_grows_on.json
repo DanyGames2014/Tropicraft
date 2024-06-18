@@ -1,5 +1,7 @@
 {
   "values": [
-    "minecraft:sand"
+    "#tropicraft:palm_generates_on",
+    "minecraft:dirt",
+    "minecraft:grass_block"
   ]
 }

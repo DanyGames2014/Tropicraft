@@ -42,7 +42,7 @@ public class ChunkDecorationListener {
         // Palms
         if (WORLDGEN_CONFIG.palm.generatePalms && event.random.nextInt(WORLDGEN_CONFIG.palm.palmGenChance) == 0) {
             System.out.println(event.biome.name);
-            switch (event.random.nextInt(1, 6)) {
+            switch (event.random.nextInt(6)) {
                 case 0, 1, 2 -> {
                     smallPalmTreeFeature.generate(event.world, event.random, event.x, 0, event.z);
                 }

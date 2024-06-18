@@ -1,5 +1,7 @@
 package net.danygames2014.tropicraft.world.structure;
 
+import net.danygames2014.tropicraft.Tropicraft;
+import net.danygames2014.tropicraft.block.PalmSaplingBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.entity.SignBlockEntity;
 import net.minecraft.world.World;
@@ -156,6 +158,6 @@ public class Structure {
 
     // Helper method to see if material is either air or replaceable
     public boolean isReplaceable(World world, int x, int y, int z) {
-        return world.getBlockState(x, y, z).isAir() || world.getMaterial(x, y, z).isReplaceable();
+        return world.getBlockState(x, y, z).isAir() || world.getMaterial(x, y, z).isReplaceable() || world.getBlockState(x,y,z).isOf(Tropicraft.palmSapling);
     }
 }

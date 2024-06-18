@@ -90,7 +90,7 @@ public class Tropicraft {
     // Palm
     public static Block palmLog;
     public static Block palmLeaves;
-    // TODO : Palm Sapling
+    public static Block palmSapling;
     public static Block palmPlanks;
     public static Block palmStairs;
     public static Block palmSlab;
@@ -181,6 +181,7 @@ public class Tropicraft {
         // Palm
         palmLog = new RotateableBlockTemplate(NAMESPACE.id("palm_log"), Material.WOOD).setTranslationKey(NAMESPACE, "palm_log").setHardness(1.0F).setResistance(0.1F).setSoundGroup(Block.WOOD_SOUND_GROUP);
         palmLeaves = new TemplateBlock(NAMESPACE.id("palm_leaves"), Material.LEAVES).setTranslationKey(NAMESPACE, "palm_leaves").setHardness(0.2F).setResistance(0.1F).setSoundGroup(Block.DIRT_SOUND_GROUP);
+        palmSapling = new PalmSaplingBlock(NAMESPACE.id("palm_sapling"), Material.PLANT).setTranslationKey(NAMESPACE, "palm_sapling").setHardness(0.0F).setResistance(0.0F).setSoundGroup(Block.DIRT_SOUND_GROUP);
         palmPlanks = new TemplateBlock(NAMESPACE.id("palm_planks"), Material.WOOD).setTranslationKey(NAMESPACE, "palm_planks").setHardness(1.0F).setResistance(0.1F).setSoundGroup(Block.WOOD_SOUND_GROUP);
         palmStairs = new StairsBlockTemplate(NAMESPACE.id("palm_stairs"), palmPlanks).setTranslationKey(NAMESPACE, "palm_stairs").setHardness(1.0F).setResistance(0.1F).setSoundGroup(Block.WOOD_SOUND_GROUP);
         palmSlab = new SlabBlockTemplate(NAMESPACE.id("palm_slab"), palmPlanks).setTranslationKey(NAMESPACE, "palm_slab").setHardness(1.0F).setResistance(0.1F).setSoundGroup(Block.WOOD_SOUND_GROUP);
