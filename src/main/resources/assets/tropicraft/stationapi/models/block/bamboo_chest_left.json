@@ -4,9 +4,9 @@
     "particle": "tropicraft:block/bamboo_chest_left_top",
     "down": "tropicraft:block/bamboo_chest_left_bottom",
     "up": "tropicraft:block/bamboo_chest_left_top",
-    "north": "tropicraft:block/bamboo_chest_single_side",
+    "north": "tropicraft:block/bamboo_chest_left_back",
     "east": "tropicraft:block/bamboo_chest_single_side",
-    "south": "tropicraft:block/bamboo_chest_single_side",
-    "west": "tropicraft:block/bamboo_chest_left_front"
+    "south": "tropicraft:block/bamboo_chest_left_front",
+    "west": "tropicraft:block/bamboo_chest_single_side"
   }
 }

@@ -2,88 +2,88 @@
   "sources": [
     {
       "type": "unstitch",
-      "resource": "/atlas/bamboo_chest.png",
+      "resource": "atlas/bamboo_chest",
       "regions": [
         {
-          "sprite": "block/bamboo_chest_single_top",
+          "sprite": "tropicraft:block/bamboo_chest_single_top",
           "x": 0,
           "y": 0,
           "width": 1,
           "height": 1
         },
         {
-          "sprite": "block/bamboo_chest_single_front",
+          "sprite": "tropicraft:block/bamboo_chest_single_front",
           "x": 1,
           "y": 0,
           "width": 1,
           "height": 1
         },
         {
-          "sprite": "block/bamboo_chest_single_side",
+          "sprite": "tropicraft:block/bamboo_chest_single_side",
           "x": 2,
           "y": 0,
           "width": 1,
           "height": 1
         },
         {
-          "sprite": "block/bamboo_chest_single_bottom",
+          "sprite": "tropicraft:block/bamboo_chest_single_bottom",
           "x": 0,
           "y": 1,
           "width": 1,
           "height": 1
         },
         {
-          "sprite": "block/bamboo_chest_left_top",
+          "sprite": "tropicraft:block/bamboo_chest_right_top",
           "x": 5,
           "y": 0,
           "width": 1,
           "height": 1
         },
         {
-          "sprite": "block/bamboo_chest_right_top",
-          "x": 6,
+          "sprite": "tropicraft:block/bamboo_chest_left_top",
+          "x": 4,
           "y": 0,
           "width": 1,
           "height": 1
         },
         {
-          "sprite": "block/bamboo_chest_left_front",
+          "sprite": "tropicraft:block/bamboo_chest_right_front",
           "x": 5,
           "y": 1,
           "width": 1,
           "height": 1
         },
         {
-          "sprite": "block/bamboo_chest_right_front",
-          "x": 6,
+          "sprite": "tropicraft:block/bamboo_chest_left_front",
+          "x": 4,
           "y": 1,
           "width": 1,
           "height": 1
         },
         {
-          "sprite": "block/bamboo_chest_left_bottom",
+          "sprite": "tropicraft:block/bamboo_chest_right_bottom",
           "x": 5,
           "y": 2,
           "width": 1,
           "height": 1
         },
         {
-          "sprite": "block/bamboo_chest_right_bottom",
-          "x": 6,
+          "sprite": "tropicraft:block/bamboo_chest_left_bottom",
+          "x": 4,
           "y": 2,
           "width": 1,
           "height": 1
         },
         {
-          "sprite": "block/bamboo_chest_right_back",
+          "sprite": "tropicraft:block/bamboo_chest_right_back",
+          "x": 6,
+          "y": 1,
+          "width": 1,
+          "height": 1
+        },
+        {
+          "sprite": "tropicraft:block/bamboo_chest_left_back",
           "x": 7,
-          "y": 1,
-          "width": 1,
-          "height": 1
-        },
-        {
-          "sprite": "block/bamboo_chest_left_back",
-          "x": 8,
           "y": 1,
           "width": 1,
           "height": 1
