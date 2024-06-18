@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    "sss",
+    "s s",
+    "sss"
+  ],
+  "key":
+  {
+    "s":
+    {
+      "item": "tropicraft:bamboo_shoot"
+    }
+  },
+  "result":
+  {
+    "item": "tropicraft:bamboo_chest",
+    "count": 1
+  }
+}
