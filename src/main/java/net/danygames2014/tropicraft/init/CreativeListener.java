@@ -13,6 +13,7 @@ import static net.danygames2014.tropicraft.Tropicraft.*;
 public class CreativeListener {
     public static CreativeTab tropicraftTab;
 
+    @SuppressWarnings("DuplicatedCode")
     @EventListener
     public void onTabInit(TabRegistryEvent event) {
         tropicraftTab = new SimpleTab(NAMESPACE.id("tropicraft"), bambooShootItem);
@@ -20,26 +21,43 @@ public class CreativeListener {
 
         add(bambooShootItem);
         add(bambooBundle);
+        add(bambooPlanks);
         add(bambooStairs);
         add(bambooSlab);
+        add(bambooFence);
+        add(bambooFenceGate);
+        add(bambooChest);
         add(bambooStickItem);
 
+        add(thatchBundle);
         add(thatchBlock);
         add(thatchStairs);
         add(thatchSlab);
         add(thatchRoof);
+        add(thatchFence);
+        add(thatchFenceGate);
 
         add(palmLog);
         add(palmLeaves);
+        add(palmSapling);
         add(palmPlanks);
         add(palmStairs);
         add(palmSlab);
+        add(palmFence);
+        add(palmFenceGate);
+
+        add(chunkOHead);
+        add(chunkOSlab);
+        add(chunkOStairs);
+
+        add(sifter);
+        add(purifiedSand);
 
         add(pineapple);
         add(pineappleCubes);
         add(coconut);
         add(coconutChunk);
-        add(pinaColada);
+        //add(pinaColada);
 
         add(commelinaDiffusa);
         add(crocosmia);
@@ -70,6 +88,14 @@ public class CreativeListener {
         add(lowTideRecord);
         add(summeringRecord);
         add(theTribeRecord);
+
+        add(froxShell);
+        add(pabShell);
+        add(rubeShell);
+        add(solonoxShell);
+        add(starfishShell);
+        add(whitePearl);
+        add(blackPearl);
     }
 
     private static void add(Block block) {
