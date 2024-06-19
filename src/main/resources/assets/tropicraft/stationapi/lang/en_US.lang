@@ -88,9 +88,20 @@ item.tropicraft.starfish_shell.name=Starfish Shell
 item.tropicraft.white_pearl.name=White Pearl
 item.tropicraft.black_pearl.name=Black Pearl
 
+# Entity
+entity.spawneggs.iguana.name=Iguana
+entity.spawneggs.eih.name=Easter Island Head
+entity.spawneggs.frog.name=Green Frog
+entity.spawneggs.red_poison_frog.name=Red Poisonous Frog
+entity.spawneggs.blue_poison_frog.name=Blue Poisonous Frog
+entity.spawneggs.yellow_poison_frog.name=Yellow Poisonous Frog
+
 # Dimension
 dim.tropicraft.tropics.entering=Drifting into the Tropics!
 dim.tropicraft.tropics.leaving=Leaving the Tropics!
+
+# Creative Tab
+tab.tropicraft.tropicraft.name=Tropicraft
 
 # Achievements
 achievement.tropicraft.bamboozled=Bamboozled!
