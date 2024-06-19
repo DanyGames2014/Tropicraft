@@ -43,7 +43,7 @@ public class TropiEntityRenderer extends LivingEntityRenderer {
             GL11.glScalef(-1.0F, -1.0F, 1.0F);
             this.method_823(entity, delta); // preRender
 
-//            GL11.glTranslatef(0.0F, entity.eyeHeight / 2, 0.0F);
+            GL11.glTranslatef(0.0F, -0.06F, 0.0F);
 
 //            GL11.glTranslatef(0.0F, -24.0F * scale - 0.0078125F, 0.0F);
 //            GL11.glTranslatef(0.0F, -2.0F, 0.0F);

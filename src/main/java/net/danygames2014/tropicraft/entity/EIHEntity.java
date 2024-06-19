@@ -21,7 +21,6 @@ public class EIHEntity extends AttackingAnimalEntity implements EntitySpawnDataP
     public EIHEntity(World world) {
         super(world);
         this.setBoundingBoxSpacing(1.0F, 3.0F);
-        this.standingEyeHeight = 0.5F;
     }
 
     @Override

@@ -32,7 +32,6 @@ public class IguanaEntity extends AttackingAnimalEntity implements EntitySpawnDa
     public IguanaEntity(World world) {
         super(world);
         this.setBoundingBoxSpacing(0.5F, 0.5F);
-        this.standingEyeHeight = 0.25F;
         this.fireImmune = true;
         this.maxHealth = 10;
     }
