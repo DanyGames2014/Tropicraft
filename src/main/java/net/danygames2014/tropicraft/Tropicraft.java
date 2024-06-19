@@ -8,12 +8,11 @@ import net.danygames2014.tropicraft.block.sifter.SifterBlock;
 import net.danygames2014.tropicraft.block.template.*;
 import net.danygames2014.tropicraft.block.sifter.SifterBlockEntity;
 import net.danygames2014.tropicraft.block.sifter.SifterBlockEntityRenderer;
-import net.danygames2014.tropicraft.entity.BeachChairEntity;
-import net.danygames2014.tropicraft.entity.EIHEntity;
-import net.danygames2014.tropicraft.entity.IguanaEntity;
+import net.danygames2014.tropicraft.entity.*;
 import net.danygames2014.tropicraft.entity.renderer.BeachChairRenderer;
 import net.danygames2014.tropicraft.entity.renderer.EIHRenderer;
 import net.danygames2014.tropicraft.entity.renderer.IguanaRenderer;
+import net.danygames2014.tropicraft.entity.renderer.FrogRenderer;
 import net.danygames2014.tropicraft.event.SiftingRecipeRegisterEvent;
 import net.danygames2014.tropicraft.item.ShellItem;
 import net.danygames2014.tropicraft.item.TropiRecordItem;
@@ -46,6 +45,8 @@ import net.modificationstation.stationapi.api.template.item.BlockStateItem;
 import net.modificationstation.stationapi.api.template.item.TemplateItem;
 import net.modificationstation.stationapi.api.util.Namespace;
 import net.modificationstation.stationapi.api.util.Null;
+
+import static net.danygames2014.tropicraft.entity.PoisonousFrogEntity.*;
 
 @SuppressWarnings("unused")
 public class Tropicraft {
@@ -271,17 +272,24 @@ public class Tropicraft {
         event.register(BeachChairEntity.class, "beach_chair");
         event.register(IguanaEntity.class, "iguana");
         event.register(EIHEntity.class, "eih");
+        event.register(FrogEntity.class,"frog");
+        event.register(RedPoisonousFrogEntity.class, "red_poison_frog");
+        event.register(BluePoisonousFrogEntity.class, "blue_poison_frog");
+        event.register(YellowPoisonousFrogEntity.class, "yellow_poison_frog");
     }
 
     @EventListener
     public void registerEntityHandlers(EntityHandlerRegistryEvent event) {
         Registry.register(event.registry, NAMESPACE.id("beach_chair"), BeachChairEntity::new);
-
     }
 
     public void registerMobHandlers(MobHandlerRegistryEvent event) {
         Registry.register(event.registry, NAMESPACE.id("iguana"), IguanaEntity::new);
         Registry.register(event.registry, NAMESPACE.id("eih"), EIHEntity::new);
+        Registry.register(event.registry, NAMESPACE.id("frog"), FrogEntity::new);
+        Registry.register(event.registry, NAMESPACE.id("red_poison_frog"), RedPoisonousFrogEntity::new);
+        Registry.register(event.registry, NAMESPACE.id("blue_poison_frog"), BluePoisonousFrogEntity::new);
+        Registry.register(event.registry, NAMESPACE.id("yellow_poison_frog"), YellowPoisonousFrogEntity::new);
     }
 
     @EventListener
@@ -289,6 +297,10 @@ public class Tropicraft {
         event.renderers.put(BeachChairEntity.class, new BeachChairRenderer());
         event.renderers.put(IguanaEntity.class, new IguanaRenderer());
         event.renderers.put(EIHEntity.class, new EIHRenderer());
+        event.renderers.put(FrogEntity.class, new FrogRenderer(FrogType.GREEN));
+        event.renderers.put(RedPoisonousFrogEntity.class, new FrogRenderer(FrogType.RED));
+        event.renderers.put(BluePoisonousFrogEntity.class, new FrogRenderer(FrogType.BLUE));
+        event.renderers.put(YellowPoisonousFrogEntity.class, new FrogRenderer(FrogType.YELLOW));
     }
 
     @EventListener
