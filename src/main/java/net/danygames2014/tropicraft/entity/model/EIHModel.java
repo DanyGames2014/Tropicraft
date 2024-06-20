@@ -1,7 +1,10 @@
 package net.danygames2014.tropicraft.entity.model;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.model.EntityModel;
 
+@Environment(EnvType.CLIENT)
 public class EIHModel extends EntityModel {
     public TropiModelPart base = new TropiModelPart(0,0);
     public TropiModelPart body = new TropiModelPart(34, 8);

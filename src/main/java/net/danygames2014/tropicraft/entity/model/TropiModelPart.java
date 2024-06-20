@@ -1,8 +1,11 @@
 package net.danygames2014.tropicraft.entity.model;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.model.ModelPart;
 import net.minecraft.util.math.MathHelper;
 
+@Environment(EnvType.CLIENT)
 public class TropiModelPart extends ModelPart {
 
     public float defaultPitch;

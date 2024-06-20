@@ -1,6 +1,8 @@
 package net.danygames2014.tropicraft.entity.renderer;
 
 import net.danygames2014.tropicraft.entity.model.BeachChairModel;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.EntityRenderer;
 import net.minecraft.client.render.entity.model.EntityModel;
 import net.minecraft.entity.Entity;
@@ -9,6 +11,7 @@ import org.lwjgl.opengl.GL11;
 
 import java.nio.FloatBuffer;
 
+@Environment(EnvType.CLIENT)
 public class BeachChairRenderer extends EntityRenderer {
 
     public EntityModel beachChairModel;

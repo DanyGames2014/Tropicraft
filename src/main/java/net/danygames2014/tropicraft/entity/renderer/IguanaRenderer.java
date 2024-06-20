@@ -1,6 +1,8 @@
 package net.danygames2014.tropicraft.entity.renderer;
 
 import net.danygames2014.tropicraft.entity.model.IguanaModel;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.EntityRenderer;
 import net.minecraft.client.render.entity.LivingEntityRenderer;
 import net.minecraft.client.render.entity.model.EntityModel;
@@ -8,6 +10,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import org.lwjgl.opengl.GL11;
 
+@Environment(EnvType.CLIENT)
 public class IguanaRenderer extends TropiEntityRenderer {
 
     public IguanaRenderer() {

@@ -1,9 +1,12 @@
 package net.danygames2014.tropicraft.entity.model;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.model.EntityModel;
 import net.minecraft.util.math.MathHelper;
 
-public class TreeFrogModel extends EntityModel {
+@Environment(EnvType.CLIENT)
+public class FrogModel extends EntityModel {
     public TropiModelPart body = new TropiModelPart(28,8);
     public TropiModelPart frontRightLeg = new TropiModelPart(12,14);
     public TropiModelPart frontLeftLeg = new TropiModelPart(12,19);
@@ -12,7 +15,7 @@ public class TreeFrogModel extends EntityModel {
     public TropiModelPart rightEye = new TropiModelPart(0,0,true);
     public TropiModelPart leftEye = new TropiModelPart(0,4, true);
 
-    public TreeFrogModel() {
+    public FrogModel() {
         body.addCube(-2,4,1,4,9,4,0,3,4);
         body.pitch = (float) (Math.PI / 2F);
         frontRightLeg.addCube(0,0,-6,4,1,4,1,1,-3);

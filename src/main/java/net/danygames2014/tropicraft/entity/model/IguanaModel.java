@@ -1,10 +1,13 @@
 package net.danygames2014.tropicraft.entity.model;
 
 import net.danygames2014.tropicraft.entity.IguanaEntity;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.model.EntityModel;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.math.MathHelper;
 
+@Environment(EnvType.CLIENT)
 public class IguanaModel extends EntityModel {
     public TropiModelPart body = new TropiModelPart(0, 16);
     public TropiModelPart frontRightLeg = new TropiModelPart(0, 21, true);

@@ -2,9 +2,12 @@ package net.danygames2014.tropicraft.entity.renderer;
 
 import net.danygames2014.tropicraft.entity.EIHEntity;
 import net.danygames2014.tropicraft.entity.model.EIHModel;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.entity.LivingEntity;
 import org.lwjgl.opengl.GL11;
 
+@Environment(EnvType.CLIENT)
 public class EIHRenderer extends TropiEntityRenderer {
     public EIHRenderer() {
         super(new EIHModel(), 0.5F, "/assets/tropicraft/stationapi/textures/entity/eih/normal.png");

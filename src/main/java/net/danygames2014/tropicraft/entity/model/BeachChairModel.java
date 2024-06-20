@@ -1,8 +1,11 @@
 package net.danygames2014.tropicraft.entity.model;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.model.ModelPart;
 import net.minecraft.client.render.entity.model.EntityModel;
 
+@Environment(EnvType.CLIENT)
 public class BeachChairModel extends EntityModel {
     public ModelPart New_Shape1 = new ModelPart(0, 0);
     public ModelPart New_Shape2;

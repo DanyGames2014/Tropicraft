@@ -1,10 +1,13 @@
 package net.danygames2014.tropicraft.entity.renderer;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.LivingEntityRenderer;
 import net.minecraft.client.render.entity.model.EntityModel;
 import net.minecraft.entity.LivingEntity;
 import org.lwjgl.opengl.GL11;
 
+@Environment(EnvType.CLIENT)
 public class TropiEntityRenderer extends LivingEntityRenderer {
     public String texture;
 
@@ -74,13 +77,13 @@ public class TropiEntityRenderer extends LivingEntityRenderer {
             int color = this.method_817(entity, brightness, delta); // getColor
 
             // Hurt Animation Rendering
-            if ((color >> 24 & 255) > 0 || entity.hurtTime > 0 || entity.field_1041 > 0) {
+            if ((color >> 24 & 255) > 0 || entity.hurtTime > 0 || entity.deathTime > 0) {
                 GL11.glDisable(GL11.GL_TEXTURE_2D);
                 GL11.glDisable(GL11.GL_ALPHA_TEST);
                 GL11.glEnable(GL11.GL_BLEND);
                 GL11.glBlendFunc(770, 771);
                 GL11.glDepthFunc(514);
-                if (entity.hurtTime > 0 || entity.field_1041 > 0) { // 1041 = deathTime
+                if (entity.hurtTime > 0 || entity.deathTime > 0) {
                     GL11.glColor4f(brightness, 0.0F, 0.0F, 0.4F);
                     this.model.render(nextLimbAngle, nextLimbDistance, animationProgress, headYaw - bodyYaw, headPitch, scale);
 
