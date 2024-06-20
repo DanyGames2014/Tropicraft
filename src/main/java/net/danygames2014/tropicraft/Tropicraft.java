@@ -43,6 +43,7 @@ import net.modificationstation.stationapi.api.template.block.TemplateBlock;
 import net.modificationstation.stationapi.api.template.block.TemplateSandBlock;
 import net.modificationstation.stationapi.api.template.item.BlockStateItem;
 import net.modificationstation.stationapi.api.template.item.TemplateItem;
+import net.modificationstation.stationapi.api.template.item.TemplateStackableFoodItem;
 import net.modificationstation.stationapi.api.util.Namespace;
 import net.modificationstation.stationapi.api.util.Null;
 
@@ -132,6 +133,14 @@ public class Tropicraft {
 
     // Drinks
     public static Item pinaColada;
+    
+    // Food
+    public static Block frogBlock;
+    public static Item frogLeg;
+    public static Item cookedFrogLeg;
+    
+    // Mob Drops
+    public static Item poisonousFrogSkin;
 
     // Scale
     public static Item scale;
@@ -215,6 +224,9 @@ public class Tropicraft {
         // Pineapple
         pineapple = new PineappleBlock(NAMESPACE.id("pineapple")).setTranslationKey(NAMESPACE, "pineapple").setSoundGroup(Block.DIRT_SOUND_GROUP);
 
+        // Frog
+        frogBlock = new FrogBlock(NAMESPACE.id("frog_block")).setTranslationKey(NAMESPACE, "frog_block").setSoundGroup(Block.DIRT_SOUND_GROUP);
+
         // Sifter
         sifter = new SifterBlock(NAMESPACE.id("sifter")).setTranslationKey(NAMESPACE, "sifter").setSoundGroup(Block.WOOD_SOUND_GROUP);
         purifiedSand = new TemplateSandBlock(NAMESPACE.id("purified_sand"), 18).setTranslationKey(NAMESPACE, "purified_sand").setSoundGroup(Block.SAND_SOUND_GROUP); // Falling texture is just regular sand, better than nothing
@@ -234,6 +246,13 @@ public class Tropicraft {
 
         // Drinks
         pinaColada = new PinaColadaItem(NAMESPACE.id("pina_colada")).setTranslationKey(NAMESPACE, "pina_colada");
+
+        // Food
+        frogLeg = new TemplateItem(NAMESPACE.id("frog_leg")).setTranslationKey(NAMESPACE, "frog_leg");
+        cookedFrogLeg = new TemplateStackableFoodItem(NAMESPACE.id("cooked_frog_leg"),3,true,16).setTranslationKey(NAMESPACE, "cooked_frog_leg");
+
+        // Mob Drops
+        poisonousFrogSkin = new TemplateItem(NAMESPACE.id("poisonous_frog_skin")).setTranslationKey(NAMESPACE, "poisonous_frog_skin");
 
         // Iguana
         scale = new TemplateItem(NAMESPACE.id("scale")).setTranslationKey(NAMESPACE, "scale");

@@ -7,6 +7,7 @@ tile.tropicraft.bamboo_stairs.name=Bamboo Stairs
 tile.tropicraft.bamboo_slab.name=Bamboo Slab
 tile.tropicraft.bamboo_fence.name=Bamboo Fence
 tile.tropicraft.bamboo_fence_gate.name=Bamboo Fence Gate
+tile.tropicraft.bamboo_chest.name=Bamboo Chest
 
 ## Palm
 tile.tropicraft.palm_log.name=Palm Wood
@@ -53,7 +54,15 @@ tile.tropicraft.iris.name=Iris
 ## Pineapple
 tile.tropicraft.pineapple.name=Pineapple
 
+## Misc
+tile.tropicraft.sifter.name=Sifter
+tile.tropicraft.purified_sand.name=Purified Sand
+tile.tropicraft.frog_block.name=Block of Frog
+
 # Items
+## Debug
+item.tropicraft.pina_colada.name=Pina Colada
+
 ## Bamboo
 item.tropicraft.bamboo.name=Bamboo Shoot
 item.tropicraft.bamboo_stick.name=Bamboo Stick
@@ -63,6 +72,11 @@ item.tropicraft.coconut_chunk.name=Coconut Chunk
 
 ## Pineapple
 item.tropicraft.pineapple_cubes.name=Pineapple Cubes
+
+## Frog
+item.tropicraft.frog_leg.name=Frog Leg
+item.tropicraft.cooked_frog_leg.name=Cooked Frog Leg
+item.tropicraft.poisonous_frog_skin.name=Poisonous Frog Skin
 
 ## Scale
 item.tropicraft.scale.name=Scale
