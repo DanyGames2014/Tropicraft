@@ -65,6 +65,10 @@ public class IguanaEntity extends AttackingAnimalEntity implements EntitySpawnDa
     @SuppressWarnings("unchecked")
     @Override
     public boolean damage(Entity damageSource, int amount) {
+        if (world.isRemote) {
+            return false;
+        }
+
         if (damageSource instanceof PlayerEntity player) {
             List<Entity> nearbyEntities = this.world.getEntities(this, this.boundingBox.expand(32.0D, 32.0D, 32.0D));
 

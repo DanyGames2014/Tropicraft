@@ -86,6 +86,10 @@ public class EIHEntity extends AttackingAnimalEntity implements EntitySpawnDataP
 
     @Override
     public boolean damage(Entity damageSource, int amount) {
+        if(world.isRemote) {
+            return false;
+        }
+
         if (damageSource instanceof PlayerEntity player) {
             ItemStack heldItem = player.getHand();
             if (heldItem == null || !heldItem.isSuitableFor(Block.IRON_BLOCK.getDefaultState())) {
