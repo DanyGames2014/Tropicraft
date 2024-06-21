@@ -24,6 +24,7 @@ import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.achievement.Achievement;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.render.entity.ArrowEntityRenderer;
 import net.minecraft.item.Item;
 import net.minecraft.stat.Stat;
 import net.modificationstation.stationapi.api.StationAPI;
@@ -295,11 +296,13 @@ public class Tropicraft {
         event.register(RedPoisonousFrogEntity.class, "red_poison_frog");
         event.register(BluePoisonousFrogEntity.class, "blue_poison_frog");
         event.register(YellowPoisonousFrogEntity.class, "yellow_poison_frog");
+        event.register(PoisonBlotEntity.class,"poison_blot");
     }
 
     @EventListener
     public void registerEntityHandlers(EntityHandlerRegistryEvent event) {
         Registry.register(event.registry, NAMESPACE.id("beach_chair"), BeachChairEntity::new);
+        Registry.register(event.registry, NAMESPACE.id("posion_blot"), PoisonBlotEntity::new);
     }
 
     public void registerMobHandlers(MobHandlerRegistryEvent event) {
@@ -320,6 +323,7 @@ public class Tropicraft {
         event.renderers.put(RedPoisonousFrogEntity.class, new FrogRenderer(FrogType.RED));
         event.renderers.put(BluePoisonousFrogEntity.class, new FrogRenderer(FrogType.BLUE));
         event.renderers.put(YellowPoisonousFrogEntity.class, new FrogRenderer(FrogType.YELLOW));
+        event.renderers.put(PoisonBlotEntity.class, new ArrowEntityRenderer());
     }
 
     @EventListener
