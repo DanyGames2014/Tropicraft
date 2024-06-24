@@ -9,10 +9,7 @@ import net.danygames2014.tropicraft.block.template.*;
 import net.danygames2014.tropicraft.block.sifter.SifterBlockEntity;
 import net.danygames2014.tropicraft.block.sifter.SifterBlockEntityRenderer;
 import net.danygames2014.tropicraft.entity.*;
-import net.danygames2014.tropicraft.entity.renderer.BeachChairRenderer;
-import net.danygames2014.tropicraft.entity.renderer.EIHRenderer;
-import net.danygames2014.tropicraft.entity.renderer.IguanaRenderer;
-import net.danygames2014.tropicraft.entity.renderer.FrogRenderer;
+import net.danygames2014.tropicraft.entity.renderer.*;
 import net.danygames2014.tropicraft.event.SiftingRecipeRegisterEvent;
 import net.danygames2014.tropicraft.item.ShellItem;
 import net.danygames2014.tropicraft.item.TropiRecordItem;
@@ -297,6 +294,7 @@ public class Tropicraft {
         event.register(BluePoisonousFrogEntity.class, "blue_poison_frog");
         event.register(YellowPoisonousFrogEntity.class, "yellow_poison_frog");
         event.register(PoisonBlotEntity.class,"poison_blot");
+        event.register(TropiCreeperEntity.class,"tropicreeper");
     }
 
     @EventListener
@@ -312,6 +310,7 @@ public class Tropicraft {
         Registry.register(event.registry, NAMESPACE.id("red_poison_frog"), RedPoisonousFrogEntity::new);
         Registry.register(event.registry, NAMESPACE.id("blue_poison_frog"), BluePoisonousFrogEntity::new);
         Registry.register(event.registry, NAMESPACE.id("yellow_poison_frog"), YellowPoisonousFrogEntity::new);
+        Registry.register(event.registry, NAMESPACE.id("tropicreeper"), TropiCreeperEntity::new);
     }
 
     @EventListener
@@ -323,7 +322,8 @@ public class Tropicraft {
         event.renderers.put(RedPoisonousFrogEntity.class, new FrogRenderer(FrogType.RED));
         event.renderers.put(BluePoisonousFrogEntity.class, new FrogRenderer(FrogType.BLUE));
         event.renderers.put(YellowPoisonousFrogEntity.class, new FrogRenderer(FrogType.YELLOW));
-        event.renderers.put(PoisonBlotEntity.class, new ArrowEntityRenderer());
+        event.renderers.put(PoisonBlotEntity.class, new PoisonBlotRenderer());
+        event.renderers.put(TropiCreeperEntity.class, new TropiCreeperRenderer());
     }
 
     @EventListener

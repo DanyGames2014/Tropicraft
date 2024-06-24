@@ -13,6 +13,7 @@
   "icon": "assets/tropicraft/icon.png",
 
   "environment": "*",
+  "accessWidener": "tropicraft.accesswidener",
   "entrypoints": {
     "stationapi:event_bus": [
       "net.danygames2014.tropicraft.Tropicraft",
