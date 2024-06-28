@@ -295,6 +295,7 @@ public class Tropicraft {
         event.register(YellowPoisonousFrogEntity.class, "yellow_poison_frog");
         event.register(PoisonBlotEntity.class,"poison_blot");
         event.register(TropiCreeperEntity.class,"tropicreeper");
+        event.register(TropiSkeletonEntity.class, "tropiskeleton");
     }
 
     @EventListener
@@ -311,6 +312,7 @@ public class Tropicraft {
         Registry.register(event.registry, NAMESPACE.id("blue_poison_frog"), BluePoisonousFrogEntity::new);
         Registry.register(event.registry, NAMESPACE.id("yellow_poison_frog"), YellowPoisonousFrogEntity::new);
         Registry.register(event.registry, NAMESPACE.id("tropicreeper"), TropiCreeperEntity::new);
+        Registry.register(event.registry, NAMESPACE.id("tropiskeleton"), TropiSkeletonEntity::new);
     }
 
     @EventListener
@@ -324,6 +326,7 @@ public class Tropicraft {
         event.renderers.put(YellowPoisonousFrogEntity.class, new FrogRenderer(FrogType.YELLOW));
         event.renderers.put(PoisonBlotEntity.class, new PoisonBlotRenderer());
         event.renderers.put(TropiCreeperEntity.class, new TropiCreeperRenderer());
+        event.renderers.put(TropiSkeletonEntity.class, new TropiSkeletonRenderer());
     }
 
     @EventListener
