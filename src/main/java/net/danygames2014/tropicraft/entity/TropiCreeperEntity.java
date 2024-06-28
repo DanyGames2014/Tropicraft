@@ -20,7 +20,7 @@ public class TropiCreeperEntity extends CreeperEntity {
             int fuseSpeed = this.getFuseSpeed();
             if (fuseSpeed <= 0 && distance < 3.0F || fuseSpeed > 0 && distance < 7.0F) {
                 if (this.fuseTime == 0) {
-                    this.world.playSound(this, "tropicraft:entity.tropicreeper.fuse", 1.0F, 0.5F);
+                    this.world.playSound(this, "tropicraft:entity.tropicreeper.fuse", 1.0F, 1.0F);
                 }
 
                 this.setFuseSpeed(1);
@@ -43,6 +43,6 @@ public class TropiCreeperEntity extends CreeperEntity {
     }
 
     public void explode(World world, Entity entity, double x, double y, double z, boolean charged){
-
+        // TODO: Flower explosion
     }
 }

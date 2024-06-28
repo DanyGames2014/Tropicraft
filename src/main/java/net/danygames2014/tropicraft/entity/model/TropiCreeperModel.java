@@ -1,6 +1,5 @@
 package net.danygames2014.tropicraft.entity.model;
 
-import net.minecraft.client.model.ModelPart;
 import net.minecraft.client.render.entity.model.CreeperEntityModel;
 
 public class TropiCreeperModel extends CreeperEntityModel {
