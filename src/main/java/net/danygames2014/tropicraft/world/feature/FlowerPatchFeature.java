@@ -11,7 +11,7 @@ import net.modificationstation.stationapi.api.tag.TagKey;
 import java.util.Random;
 
 public class FlowerPatchFeature extends Feature {
-    public BlockState[] flowers;
+    public static BlockState[] flowers;
 
     public FlowerPatchFeature() {
         flowers = new BlockState[]{

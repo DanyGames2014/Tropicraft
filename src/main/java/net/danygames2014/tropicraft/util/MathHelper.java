@@ -36,4 +36,11 @@ public class MathHelper {
     public static float pushBack(float value, float min, float max) {
         return pushBack(value, min, max, 1.0F);
     }
+
+    public static double distance(int x1, int y1, int z1, int x2, int y2, int z2) {
+        int x = x1 - x2;
+        int y = y1 - y2;
+        int z = z1 - z2;
+        return Math.sqrt(x * x + y * y + z * z);
+    }
 }

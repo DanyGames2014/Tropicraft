@@ -1,8 +1,15 @@
 package net.danygames2014.tropicraft.entity;
 
+import net.danygames2014.tropicraft.Tropicraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.mob.CreeperEntity;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
+import net.modificationstation.stationapi.api.registry.BlockRegistry;
+import net.modificationstation.stationapi.api.tag.TagKey;
+
+import static net.danygames2014.tropicraft.util.MathHelper.distance;
+import static net.danygames2014.tropicraft.world.feature.FlowerPatchFeature.flowers;
 
 public class TropiCreeperEntity extends CreeperEntity {
     public TropiCreeperEntity(World world) {
@@ -26,7 +33,7 @@ public class TropiCreeperEntity extends CreeperEntity {
                 this.setFuseSpeed(1);
                 ++this.fuseTime;
                 if (this.fuseTime >= 30) {
-                    this.explode(world, this, this.x, this.y, this.z, isCharged());
+                    this.explode(world, this, MathHelper.floor(this.x), MathHelper.floor(this.y), MathHelper.floor(this.z), isCharged());
                     this.markDead();
                 }
 
@@ -42,7 +49,29 @@ public class TropiCreeperEntity extends CreeperEntity {
         }
     }
 
-    public void explode(World world, Entity entity, double x, double y, double z, boolean charged){
+    public void explode(World world, Entity entity, int x, int y, int z, boolean charged) {
         // TODO: Flower explosion
+
+        int yPos;
+
+        for (int xOffset = -3; xOffset < 4; xOffset++) {
+            for (int zOffset = -3; zOffset < 4; zOffset++) {
+                yPos = world.getTopY(x + xOffset, z + zOffset);
+
+                if(!world.getBlockState(x + xOffset, yPos, z + zOffset).isAir()){
+                    continue;
+                }
+
+                if(!world.getBlockState(x + xOffset, yPos - 1, z + zOffset).isIn(TagKey.of(BlockRegistry.INSTANCE.getKey(), Tropicraft.NAMESPACE.id("flower_grows_on")))){
+                    continue;
+                }
+
+                if (distance(x, y, z, x + xOffset, yPos, z + zOffset) > 2.5D) {
+                    continue;
+                }
+
+                world.setBlockStateWithNotify(x + xOffset, yPos, z + zOffset, flowers[random.nextInt(0, 16)]);
+            }
+        }
     }
 }
