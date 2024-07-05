@@ -50,27 +50,25 @@ public class TropiCreeperEntity extends CreeperEntity {
     }
 
     public void explode(World world, Entity entity, int x, int y, int z, boolean charged) {
-        // TODO: Flower explosion
-
-        int yPos;
-
         for (int xOffset = -3; xOffset < 4; xOffset++) {
             for (int zOffset = -3; zOffset < 4; zOffset++) {
-                yPos = world.getTopY(x + xOffset, z + zOffset);
+                for (int yOffset = -2; yOffset < 3; yOffset++) {
+                    if (!world.getBlockState(x + xOffset, y + yOffset, z + zOffset).isAir()) {
+                        continue;
+                    }
 
-                if(!world.getBlockState(x + xOffset, yPos, z + zOffset).isAir()){
-                    continue;
+                    if (!world.getBlockState(x + xOffset, (y + yOffset) - 1, z + zOffset).isIn(TagKey.of(BlockRegistry.INSTANCE.getKey(), Tropicraft.NAMESPACE.id("flower_grows_on")))) {
+                        continue;
+                    }
+
+                    if (distance(x, y, z, x + xOffset, y + yOffset, z + zOffset) > 3.6D) {
+                        continue;
+                    }
+
+                    if (random.nextInt(3) == 0) {
+                        world.setBlockStateWithNotify(x + xOffset, y + yOffset, z + zOffset, flowers[random.nextInt(0, 16)]);
+                    }
                 }
-
-                if(!world.getBlockState(x + xOffset, yPos - 1, z + zOffset).isIn(TagKey.of(BlockRegistry.INSTANCE.getKey(), Tropicraft.NAMESPACE.id("flower_grows_on")))){
-                    continue;
-                }
-
-                if (distance(x, y, z, x + xOffset, yPos, z + zOffset) > 2.5D) {
-                    continue;
-                }
-
-                world.setBlockStateWithNotify(x + xOffset, yPos, z + zOffset, flowers[random.nextInt(0, 16)]);
             }
         }
     }
