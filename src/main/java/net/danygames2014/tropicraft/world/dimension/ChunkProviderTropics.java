@@ -1,47 +1,56 @@
 package net.danygames2014.tropicraft.world.dimension;
 
-import net.minecraft.class_51;
-import net.minecraft.class_62;
+import net.minecraft.client.gui.screen.LoadingDisplay;
+import net.minecraft.world.World;
 import net.minecraft.world.chunk.Chunk;
+import net.minecraft.world.chunk.ChunkManager;
 
-public class ChunkProviderTropics implements class_51 { // class_51 = WorldSource
+import java.util.Random;
+
+public class ChunkProviderTropics implements ChunkManager { // class_51 = WorldSource
+    public Random random;
+
+    public ChunkProviderTropics(World world, long seed) {
+        this.random = new Random(seed);
+    }
+
     @Override
-    public boolean method_1802(int i, int j) { // isChunkLoaded
+    public boolean isChunkLoaded(int x, int z) { // isChunkLoaded
         return false;
     }
 
     @Override
-    public Chunk method_1806(int i, int j) { // provideChunk / getChunk
+    public Chunk getChunk(int x, int z) { // provideChunk / getChunk
         return null;
     }
 
     @Override
-    public Chunk method_1807(int i, int j) { // prepareChunk / loadChunk
+    public Chunk loadChunk(int x, int z) { // prepareChunk / loadChunk
         return null;
     }
 
     @Override
-    public void method_1803(class_51 arg, int i, int j) { // decorate / populate
+    public void decorate(ChunkManager manager, int x, int z) { // decorate / populate
 
     }
 
     @Override
-    public boolean method_1804(boolean bl, class_62 arg) { // deleteCache
+    public boolean save(boolean flag, LoadingDisplay loadingDisplay) { // deleteCache
+        return true;
+    }
+
+    @Override
+    public boolean tick() { // unload100OldestChunks, validateEmpty
         return false;
     }
 
     @Override
-    public boolean method_1801() { // unload100OldestChunks, validateEmpty
-        return false;
+    public boolean canSave() { // canSave, isClean, hasEntries
+        return true;
     }
 
     @Override
-    public boolean method_1805() { // canSave, isClean, hasEntries
-        return false;
-    }
-
-    @Override
-    public String method_1808() { // makeString / toString / getName / getDebugString
-        return null;
+    public String getDebugInfo() { // makeString / toString / getName / getDebugString
+        return "TropicsChunkManager";
     }
 }

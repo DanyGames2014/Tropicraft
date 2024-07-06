@@ -23,7 +23,7 @@ public class PoisonousFrogEntity extends FrogEntity {
             return false;
         }
 
-        if (damageSource instanceof PlayerEntity && world.field_213 >= 1) {
+        if (damageSource instanceof PlayerEntity && world.difficulty >= 1) {
             this.target = damageSource;
         }
 
@@ -38,7 +38,7 @@ public class PoisonousFrogEntity extends FrogEntity {
             return;
         }
 
-        if (world.field_213 >= 1) {
+        if (world.difficulty >= 1) {
             if (target != null) {
                 if (getDistance(this.target) > 16F) {
                     target = null;
@@ -53,7 +53,7 @@ public class PoisonousFrogEntity extends FrogEntity {
 
     @Override
     protected void attack(Entity other, float distance) {
-        if (world.isRemote || world.field_213 == 0 || distance > 4F) {
+        if (world.isRemote || world.difficulty == 0 || distance > 4F) {
             return;
         }
 

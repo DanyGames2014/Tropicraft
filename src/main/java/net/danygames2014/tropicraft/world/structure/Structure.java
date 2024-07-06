@@ -15,7 +15,7 @@ public class Structure {
 
     public Structure(World world) {
         this.blocks = new ArrayList<>();
-        this.random = world.field_214;
+        this.random = world.random;
     }
 
     /*

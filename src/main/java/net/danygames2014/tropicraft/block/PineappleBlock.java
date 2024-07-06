@@ -112,7 +112,7 @@ public class PineappleBlock extends TemplateBlock {
 
         if (state.get(PINEAPPLE_HALF) == PineappleHalf.TOP) {
             if (chopped) {
-                drops.add(new ItemStack(Tropicraft.pineappleCubes, getRandomCubeCount(world.field_214)));
+                drops.add(new ItemStack(Tropicraft.pineappleCubes, getRandomCubeCount(world.random)));
             } else {
                 drops.add(new ItemStack(this, 1));
             }

@@ -23,7 +23,7 @@ public class BambooShootBlock extends TemplateBlock {
 
     @Override
     public void onTick(World world, int x, int y, int z, Random random) {
-        if (world.method_234(x, y + 1, z)) {
+        if (world.isAir(x, y + 1, z)) {
             int l = 1;
             while (world.getBlockId(x, y - l, z) == this.id) {
                 ++l;
@@ -32,9 +32,9 @@ public class BambooShootBlock extends TemplateBlock {
                 int i1 = world.getBlockMeta(x, y, z);
                 if (i1 == 8) {
                     world.setBlock(x, y + 1, z, this.id);
-                    world.method_215(x, y, z, 0);
+                    world.setBlockMeta(x, y, z, 0);
                 } else {
-                    world.method_215(x, y, z, i1 + 1);
+                    world.setBlockMeta(x, y, z, i1 + 1);
                 }
             }
         }

@@ -99,16 +99,6 @@ public class BambooChestBlock extends TemplateChestBlock {
         }
     }
 
-    @Override
-    public boolean canEmitRedstonePower() {
-        return true;
-    }
-
-    @Override
-    public boolean isEmittingRedstonePower(BlockView blockView, int x, int y, int z, int meta) {
-        return true;
-    }
-
     public boolean canConnectTo(World world, int x, int y, int z, BlockState otherChest) {
         BlockState state = world.getBlockState(x, y, z);
         if (state.isOf(this) && otherChest.isOf(this)) {

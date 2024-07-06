@@ -20,7 +20,7 @@ public class PalmSaplingBlock extends TemplateBlock {
 
     @Override
     public boolean onBonemealUse(World world, int x, int y, int z, BlockState state) {
-        return generateTree(world,world.field_214, x, y, z);
+        return generateTree(world,world.random, x, y, z);
     }
 
     @Override

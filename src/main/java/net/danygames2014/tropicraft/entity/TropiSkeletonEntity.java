@@ -32,7 +32,7 @@ public class TropiSkeletonEntity extends MonsterEntity {
                 spawnX,
                 (spawnY = MathHelper.floor(this.boundingBox.minY)) - 1,
                 spawnZ = MathHelper.floor(this.z)
-        ) == Block.SAND.id && this.world.method_252(spawnX, spawnY, spawnZ) > 8;
+        ) == Block.SAND.id && this.world.getBrightness(spawnX, spawnY, spawnZ) > 8;
     }
 
     @Override
