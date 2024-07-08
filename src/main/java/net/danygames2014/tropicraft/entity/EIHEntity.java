@@ -61,7 +61,7 @@ public class EIHEntity extends AttackingAnimalEntity implements EntitySpawnDataP
             }
 
             // If a player gets too close, become angry
-            if (getDistance(observedPlayer) < 3F && world.field_213 >= 1) {
+            if (getDistance(observedPlayer) < 3F && world.difficulty >= 1) {
                 becomeAngryAt(observedPlayer);
             }
         }

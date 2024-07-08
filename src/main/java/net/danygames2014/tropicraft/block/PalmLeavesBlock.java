@@ -23,7 +23,7 @@ public class PalmLeavesBlock extends TemplateBlock {
             return;
         }
 
-        if (world.field_214.nextInt(20) == 0) {
+        if (world.random.nextInt(20) == 0) {
             this.dropStack(world, x, y, z, new ItemStack(Tropicraft.palmSapling, 1));
         }
     }

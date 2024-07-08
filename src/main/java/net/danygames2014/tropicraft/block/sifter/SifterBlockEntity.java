@@ -49,7 +49,7 @@ public class SifterBlockEntity extends BlockEntity {
     public void finishSifting() {
         if(!world.isRemote){
             for (SiftingRecipeOutput output : SiftingRecipeRegistry.getRecipe(siftedItem.getItem()).outputs) {
-                if (world.field_214.nextInt(output.chance) == 0) {
+                if (world.random.nextInt(output.chance) == 0) {
                     // Thank you mine_diver for helping me figure out a bug here
                     world.spawnEntity(new ItemEntity(world, x, y+1, z, output.stack.copy()));
                 }

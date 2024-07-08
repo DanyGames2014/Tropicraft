@@ -38,7 +38,7 @@ public class FenceGateBlockTemplate extends TemplateBlock {
     public boolean onUse(World world, int x, int y, int z, PlayerEntity player) {
         BlockState state = world.getBlockState(x, y, z);
         world.setBlockState(x, y, z, state.with(OPEN, !state.get(OPEN)));
-        world.method_246(x, y, z);
+        world.setBlockDirty(x, y, z);
         return true;
     }
 

@@ -16,8 +16,8 @@ public class MusicDiscItemMixin extends Item {
         super(id);
     }
 
-    @WrapWithCondition(method = "useOnBlock", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;method_173(Lnet/minecraft/entity/player/PlayerEntity;IIIII)V"))
-    public boolean cancelSendingJukeboxMessage(World world, PlayerEntity player, int eventId, int x, int y, int z, int id) {
+    @WrapWithCondition(method = "useOnBlock", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;worldEvent(Lnet/minecraft/entity/player/PlayerEntity;IIIII)V"))
+    public boolean cancelSendingJukeboxMessage(World world, PlayerEntity player, int eventId, int x, int y, int z, int data) {
         return !(this.asItem() instanceof TropiRecordItem);
     }
 }

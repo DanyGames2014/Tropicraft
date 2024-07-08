@@ -93,7 +93,7 @@ public class PoisonBlotEntity extends ArrowEntity {
 
         Vec3d var16 = Vec3d.createCached(this.x, this.y, this.z);
         Vec3d var17 = Vec3d.createCached(this.x + this.velocityX, this.y + this.velocityY, this.z + this.velocityZ);
-        HitResult hitResult = this.world.method_162(var16, var17, false, true);
+        HitResult hitResult = this.world.raycast(var16, var17, false, true);
         var16 = Vec3d.createCached(this.x, this.y, this.z);
         var17 = Vec3d.createCached(this.x + this.velocityX, this.y + this.velocityY, this.z + this.velocityZ);
         if (hitResult != null) {
