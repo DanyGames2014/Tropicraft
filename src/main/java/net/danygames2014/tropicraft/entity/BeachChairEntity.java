@@ -105,7 +105,7 @@ public class BeachChairEntity extends Entity implements EntitySpawnDataProvider 
 
     @Override
     public double getPassengerRidingHeight() {
-        return -0.2125;
+        return -0.2125D;
     }
 
     @Override
@@ -118,12 +118,15 @@ public class BeachChairEntity extends Entity implements EntitySpawnDataProvider 
         if (this.passenger == null) {
             return;
         }
-        double d = Math.cos((double) this.yaw * Math.PI / 45.0) * 0.0;
-        double d1 = Math.sin((double) this.yaw * Math.PI / 45.0) * 0.0;
-        this.passenger.setPos(this.x + d, this.y + this.getPassengerRidingHeight() + this.passenger.getStandingEyeHeight(), this.z + d1);
+
+        double xOffset = -Math.sin(this.yaw * (Math.PI / 180)) * 0.4;
+        double zOffset = Math.cos(this.yaw * (Math.PI / 180)) * 0.4;
+
+        this.passenger.setPos(this.x + xOffset, this.y + this.getPassengerRidingHeight() + this.passenger.getStandingEyeHeight(), this.z + zOffset);
     }
 
-    public boolean method_1323(PlayerEntity entityplayer) {
+    @Override
+    public boolean interact(PlayerEntity entityplayer) {
         if (this.passenger != null && this.passenger instanceof PlayerEntity && this.passenger != entityplayer) {
             return true;
         }

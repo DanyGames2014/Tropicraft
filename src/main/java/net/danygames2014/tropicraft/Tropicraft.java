@@ -22,7 +22,6 @@ import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.achievement.Achievement;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.render.entity.ArrowEntityRenderer;
 import net.minecraft.item.Item;
 import net.minecraft.stat.Stat;
 import net.modificationstation.stationapi.api.StationAPI;
