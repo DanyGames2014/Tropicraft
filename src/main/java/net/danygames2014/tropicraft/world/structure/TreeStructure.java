@@ -33,7 +33,7 @@ public class TreeStructure extends Structure {
         }
 
         for (StructureBlockEntry block : this.blocks) {
-            placeBlock(world, x, y+trunkHeight, z, block);
+            placeBlock(world, x, y+trunkHeight, z, block, Rotation.NONE);
         }
 
         return true;
