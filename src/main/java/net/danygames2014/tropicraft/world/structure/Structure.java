@@ -83,8 +83,6 @@ public class Structure {
      * @return Returns true if the structure was placed succesfully
      */
     public boolean generate(World world, int x, int y, int z, Rotation rotation) {
-        var startTime = System.nanoTime();
-
         if (!checkCollision(world, x, y, z)) {
             return false;
         }
@@ -93,7 +91,6 @@ public class Structure {
             placeBlock(world, x, y, z, block, rotation);
         }
 
-        System.out.println(this.getClass().getCanonicalName() + " GENERATION TOOK " + (System.nanoTime() - startTime) / 1000 + "uS");
         return true;
     }
 

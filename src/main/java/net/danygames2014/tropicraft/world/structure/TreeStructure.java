@@ -24,8 +24,6 @@ public class TreeStructure extends Structure {
     }
 
     public boolean generate(World world, int x, int y, int z, int trunkHeight) {
-        var startTime = System.currentTimeMillis();
-
         if (!checkCollision(world, x, y, z, trunkHeight)) {
             return false;
         }
@@ -38,7 +36,6 @@ public class TreeStructure extends Structure {
             placeBlock(world, x, y+trunkHeight, z, block);
         }
 
-        System.out.println(this.getClass().getCanonicalName() + " GENERATION TOOK " + (System.currentTimeMillis() - startTime) + "ms");
         return true;
     }
 }
