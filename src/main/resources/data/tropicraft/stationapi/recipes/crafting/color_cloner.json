@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    "ppp",
+    "rgb",
+    "ppp"
+  ],
+  "key":
+  {
+    "p":
+    {
+      "item": "minecraft:paper"
+    },
+    "r":
+    {
+      "item": "minecraft:dye",
+      "damage": 1
+    },
+    "g":
+    {
+      "item": "minecraft:dye",
+      "damage": 2
+    },
+    "b":
+    {
+      "item": "minecraft:dye",
+      "damage": 4
+    }
+  },
+  "result":
+  {
+    "item": "tropicraft:color_cloner",
+    "count": 1,
+    "damage": -1
+  }
+}

@@ -5,6 +5,7 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "LivingEntityAccessor",
+    "PlayerEntityMixin",
     "achievements.ItemEntityMixin",
     "scalearmor.EntityMixin",
     "scalearmor.LivingEntityMixin",

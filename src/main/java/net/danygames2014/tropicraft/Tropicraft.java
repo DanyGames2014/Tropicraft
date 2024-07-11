@@ -11,6 +11,7 @@ import net.danygames2014.tropicraft.block.sifter.SifterBlockEntityRenderer;
 import net.danygames2014.tropicraft.entity.*;
 import net.danygames2014.tropicraft.entity.renderer.*;
 import net.danygames2014.tropicraft.event.SiftingRecipeRegisterEvent;
+import net.danygames2014.tropicraft.item.ColorClonerItem;
 import net.danygames2014.tropicraft.item.ShellItem;
 import net.danygames2014.tropicraft.item.TropiRecordItem;
 import net.danygames2014.tropicraft.item.armor.ScaleArmorItem;
@@ -137,7 +138,10 @@ public class Tropicraft {
     public static Block frogBlock;
     public static Item frogLeg;
     public static Item cookedFrogLeg;
-    
+
+    // Beach Equipment
+    public static Item colorCloner;
+
     // Mob Drops
     public static Item poisonousFrogSkin;
 
@@ -249,6 +253,9 @@ public class Tropicraft {
         // Food
         frogLeg = new TemplateItem(NAMESPACE.id("frog_leg")).setTranslationKey(NAMESPACE, "frog_leg");
         cookedFrogLeg = new TemplateStackableFoodItem(NAMESPACE.id("cooked_frog_leg"),3,true,16).setTranslationKey(NAMESPACE, "cooked_frog_leg");
+
+        // Beach Equipment
+        colorCloner = new ColorClonerItem(NAMESPACE.id("color_cloner")).setTranslationKey(NAMESPACE, "color_cloner");
 
         // Mob Drops
         poisonousFrogSkin = new TemplateItem(NAMESPACE.id("poisonous_frog_skin")).setTranslationKey(NAMESPACE, "poisonous_frog_skin");

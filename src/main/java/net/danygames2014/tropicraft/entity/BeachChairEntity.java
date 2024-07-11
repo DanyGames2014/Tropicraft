@@ -17,7 +17,7 @@ import net.modificationstation.stationapi.api.util.TriState;
 
 @SuppressWarnings("UnnecessaryBoxing")
 @HasTrackingParameters(updatePeriod = 5, sendVelocity = TriState.TRUE, trackingDistance = 30)
-public class BeachChairEntity extends Entity implements EntitySpawnDataProvider {
+public class BeachChairEntity extends Entity implements EntitySpawnDataProvider, Dyeable {
     public BeachChairEntity(World world) {
         super(world);
         this.setBoundingBoxSpacing(1.0F, 1.0F);
@@ -145,10 +145,12 @@ public class BeachChairEntity extends Entity implements EntitySpawnDataProvider 
         return true;
     }
 
+    @Override
     public int getColor() {
         return this.dataTracker.getInt(16);
     }
 
+    @Override
     public void setColor(int color) {
         this.dataTracker.set(16, Integer.valueOf(color));
     }
