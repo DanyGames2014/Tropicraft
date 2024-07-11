@@ -16,8 +16,8 @@ public class BeachChairModel extends EntityModel {
     public TropiModelPart rightArm = new TropiModelPart(0,29);
 
     public BeachChairModel() {
-        seat.addCube(-8, 4, -8, 16, 1, 16, -7, 4, -17);
-        back.addCube(-8, 5, 8, 16, 1, 16, 0, 5, 9);
+        seat.addCube(-8, 4, -8, 16, 1, 16, -7, 4, -7);
+        back.addCube(-8, 5, 7, 16, 1, 16, 0, 5, 8);
         back.pitch = 1.17809725F; // 67.5°
         backRightLeg.addCube(8.0F, 0.5F, 9.3F, 1, 10, 1, 9.0F, 0.5F, 10.3F);
         backRightLeg.pitch = 0.453785606F; // 26°
