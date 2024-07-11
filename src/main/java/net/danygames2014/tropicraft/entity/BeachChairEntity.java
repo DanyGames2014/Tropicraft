@@ -2,10 +2,11 @@ package net.danygames2014.tropicraft.entity;
 
 import net.danygames2014.tropicraft.Tropicraft;
 import net.danygames2014.tropicraft.mixin.LivingEntityAccessor;
+import net.danygames2014.tropicraft.util.ColorHelper;
 import net.danygames2014.tropicraft.util.MathHelper;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
@@ -14,26 +15,25 @@ import net.modificationstation.stationapi.api.server.entity.HasTrackingParameter
 import net.modificationstation.stationapi.api.util.Identifier;
 import net.modificationstation.stationapi.api.util.TriState;
 
+@SuppressWarnings("UnnecessaryBoxing")
 @HasTrackingParameters(updatePeriod = 5, sendVelocity = TriState.TRUE, trackingDistance = 30)
 public class BeachChairEntity extends Entity implements EntitySpawnDataProvider {
-
     public BeachChairEntity(World world) {
         super(world);
         this.setBoundingBoxSpacing(1.0F, 1.0F);
         this.standingEyeHeight = this.height / 2.0F;
+        this.setColor(ColorHelper.getColor(random.nextFloat(), random.nextFloat(), random.nextFloat()));
     }
 
     public BeachChairEntity(World world, Double x, Double y, Double z) {
-        super(world);
-        this.setBoundingBoxSpacing(0.5F, 0.5F);
-        this.setPos(x,y,z);
-        this.standingEyeHeight = this.height / 2.0F;
+        this(world);
+        this.setPos(x, y, z);
     }
 
     @Override
     public void tick() {
         super.tick();
-        if(!world.isRemote){
+        if (!world.isRemote) {
             // If on ground, allow the chair jumping code to run
             if (this.onGround) {
                 if (this.passenger != null && this.passenger instanceof PlayerEntity player) {
@@ -137,18 +137,40 @@ public class BeachChairEntity extends Entity implements EntitySpawnDataProvider 
     }
 
     @Override
-    protected void initDataTracker() {
+    public boolean damage(Entity damageSource, int amount) {
+        this.dropItem(new ItemStack(Tropicraft.bambooStickItem, 1), 0.1F);
+        this.dropItem(new ItemStack(Tropicraft.bambooStickItem, 1), 0.3F);
+        this.dropItem(new ItemStack(Tropicraft.bambooStickItem, 1), 0.25F);
+        this.markDead();
+        return true;
+    }
 
+    public int getColor() {
+        return this.dataTracker.getInt(16);
+    }
+
+    public void setColor(int color) {
+        this.dataTracker.set(16, Integer.valueOf(color));
+    }
+
+    @Override
+    protected void initDataTracker() {
+        this.dataTracker.startTracking(16, Integer.valueOf(0));
     }
 
     @Override
     protected void readNbt(NbtCompound nbt) {
+        if (nbt.contains("color")) {
+            this.setColor(nbt.getInt("color"));
+        } else {
+            this.setColor(ColorHelper.getColor(random.nextFloat(), random.nextFloat(), random.nextFloat()));
+        }
 
     }
 
     @Override
     protected void writeNbt(NbtCompound nbt) {
-
+        nbt.putInt("color", this.getColor());
     }
 
     @Override

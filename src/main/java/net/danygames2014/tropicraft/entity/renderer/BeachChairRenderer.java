@@ -1,6 +1,8 @@
 package net.danygames2014.tropicraft.entity.renderer;
 
+import net.danygames2014.tropicraft.entity.BeachChairEntity;
 import net.danygames2014.tropicraft.entity.model.BeachChairModel;
+import net.danygames2014.tropicraft.util.ColorHelper;
 import net.minecraft.client.render.entity.EntityRenderer;
 import net.minecraft.entity.Entity;
 import org.lwjgl.BufferUtils;
@@ -21,17 +23,23 @@ public class BeachChairRenderer extends EntityRenderer {
         model = new BeachChairModel();
     }
 
+    int chairColor = 0;
+    float chairBrightness = 1.0F;
+
     @Override
     public void render(Entity entity, double x, double y, double z, float f, float g) {
         // Retrieve chair color
-        red = 0.0F;
-        green = 0.4F;
-        blue = 0.6F;
+        chairColor = ((BeachChairEntity) entity).getColor();
+        chairBrightness = entity.getBrightnessAtEyes(0F);
+
+        red = ColorHelper.getRed(chairColor) * chairBrightness;
+        green = ColorHelper.getGreen(chairColor) * chairBrightness;
+        blue = ColorHelper.getBlue(chairColor) * chairBrightness;
 
         // Position the chair in world
         GL11.glPushMatrix();
         GL11.glTranslatef((float) x, (float) (y - 0.4375F), (float) z);
-        GL11.glRotatef(f + (180 - f)*2, 0.0F, 1.0F, 0.0F);
+        GL11.glRotatef(f + (180 - f) * 2, 0.0F, 1.0F, 0.0F);
 
         // Render the base texture of the chair (bamboo parts)
         this.bindTexture("/assets/tropicraft/stationapi/textures/entity/beach_chair/base.png");
