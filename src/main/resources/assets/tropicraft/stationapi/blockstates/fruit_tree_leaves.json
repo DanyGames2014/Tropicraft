@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "varaint=generic,has_fruit=false": {
+      "model": "tropicraft:block/fruit_leaves/generic"
+    },
+    "varaint=grapefruit,has_fruit=false": {
+      "model": "tropicraft:block/fruit_leaves/generic"
+    },
+    "varaint=lemon,has_fruit=false": {
+      "model": "tropicraft:block/fruit_leaves/generic"
+    },
+    "varaint=orange,has_fruit=false": {
+      "model": "tropicraft:block/fruit_leaves/generic"
+    },
+    "varaint=lime,has_fruit=false": {
+      "model": "tropicraft:block/fruit_leaves/generic"
+    },
+    "varaint=generic,has_fruit=true": {
+      "model": "tropicraft:block/fruit_leaves/generic"
+    },
+    "varaint=grapefruit,has_fruit=true": {
+      "model": "tropicraft:block/fruit_leaves/grapefruit"
+    },
+    "varaint=lemon,has_fruit=true": {
+      "model": "tropicraft:block/fruit_leaves/lemon"
+    },
+    "varaint=orange,has_fruit=true": {
+      "model": "tropicraft:block/fruit_leaves/orange"
+    },
+    "varaint=lime,has_fruit=true": {
+      "model": "tropicraft:block/fruit_leaves/lime"
+    }
+  }
+}

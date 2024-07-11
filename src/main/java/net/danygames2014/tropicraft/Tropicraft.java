@@ -101,6 +101,9 @@ public class Tropicraft {
     public static Block coconut;
     public static Item coconutChunk;
 
+    // Fruit Tree
+    public static Block fruitTreeLeaves;
+
     // Chunk o' Head
     public static Block chunkOHead;
     public static Block chunkOSlab;
@@ -202,6 +205,9 @@ public class Tropicraft {
         palmFence = new FenceBlockTemplate(NAMESPACE.id("palm_fence"), palmPlanks).setTranslationKey(NAMESPACE, "palm_fence").setHardness(1.0F).setResistance(0.1F).setSoundGroup(Block.WOOD_SOUND_GROUP);
         palmFenceGate = new FenceGateBlockTemplate(NAMESPACE.id("palm_fence_gate"), palmPlanks).setTranslationKey(NAMESPACE, "palm_fence_gate").setHardness(1.0F).setResistance(0.1F).setSoundGroup(Block.WOOD_SOUND_GROUP);
         coconut = new CoconutBlock(NAMESPACE.id("coconut"), Material.WOOD).setTranslationKey(NAMESPACE, "coconut").setHardness(0.5F).setResistance(0.1F).setSoundGroup(Block.WOOD_SOUND_GROUP);
+
+        // Fruit Leaves
+        fruitTreeLeaves = new FruitTreeLeavesBlock(NAMESPACE.id("fruit_tree_leaves")).setTranslationKey(NAMESPACE, "fruit_tree_leaves").setHardness(0.2F).setResistance(0.1F).setSoundGroup(Block.DIRT_SOUND_GROUP);
 
         // Chunk o' Head
         chunkOHead = new TemplateBlock(NAMESPACE.id("chunk_o_head"), Material.STONE).setTranslationKey(NAMESPACE, "chunk_o_head").setHardness(2.0F).setResistance(30.0F).setSoundGroup(Block.STONE_SOUND_GROUP);
