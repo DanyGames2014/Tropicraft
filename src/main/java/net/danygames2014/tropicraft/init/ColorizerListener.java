@@ -8,7 +8,7 @@ public class ColorizerListener {
     @EventListener
     public void registerColorizers(ItemColorsRegisterEvent event){
         event.itemColors.register((itemStack, layer) -> {
-            return layer == 1 ? itemStack.getDamage() : 16777215;
+            return layer == 1 ? (itemStack.getStationNbt().contains("color") ? itemStack.getStationNbt().getInt("color") : 16777215) : 16777215;
         }, Tropicraft.colorCloner);
     }
 }
