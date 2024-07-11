@@ -1,9 +1,12 @@
 package net.danygames2014.tropicraft.entity;
 
+import net.danygames2014.tropicraft.Tropicraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
+import net.modificationstation.stationapi.api.registry.BlockRegistry;
+import net.modificationstation.stationapi.api.tag.TagKey;
 
 public class AttackingAnimalEntity extends AnimalEntity {
     public int attackDamage = 1;
@@ -14,6 +17,14 @@ public class AttackingAnimalEntity extends AnimalEntity {
 
     public void setAttackDamage(int attackDamage){
         this.attackDamage = attackDamage;
+    }
+
+    @Override
+    public boolean canSpawn() {
+        int blockX = MathHelper.floor(this.x);
+        int blockY = MathHelper.floor(this.boundingBox.minY);
+        int blockZ = MathHelper.floor(this.z);
+        return this.world.getBlockState(blockX, blockY -1, blockZ).isIn(TagKey.of(BlockRegistry.INSTANCE.getKey(), Tropicraft.NAMESPACE.id("bamboo_grows_on"))) && this.world.getBrightness(blockX, blockY, blockZ) > 8;
     }
 
     @Override

@@ -35,6 +35,11 @@ public class EIHEntity extends AttackingAnimalEntity implements EntitySpawnDataP
         dataTracker.startTracking(16, Integer.valueOf(0));
     }
 
+    @Override
+    public int getLimitPerChunk() {
+        return 1;
+    }
+
     // Behaviour
     @Override
     public void tick() {
