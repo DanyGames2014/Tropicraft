@@ -78,6 +78,7 @@ public class Tropicraft {
     // TODO : Bamboo Mug
     // TODO : Bamboo Spear
     // TODO : Bamboo Fishing Rod
+    public static Block tikiTorch;
 
     // Thatch
     public static Block thatchBundle;
@@ -180,6 +181,7 @@ public class Tropicraft {
         bambooFence = new FenceBlockTemplate(NAMESPACE.id("bamboo_fence"), bambooBundle).setTranslationKey(NAMESPACE, "bamboo_fence").setHardness(1.0F).setResistance(0.1F).setSoundGroup(Block.WOOD_SOUND_GROUP);
         bambooFenceGate = new FenceGateBlockTemplate(NAMESPACE.id("bamboo_fence_gate"), bambooBundle).setTranslationKey(NAMESPACE, "bamboo_fence_gate").setHardness(1.0F).setResistance(0.1F).setSoundGroup(Block.WOOD_SOUND_GROUP);
         bambooChest = new BambooChestBlock(NAMESPACE.id("bamboo_chest")).setTranslationKey(NAMESPACE, "bamboo_chest").setHardness(1.0F).setResistance(0.1F).setSoundGroup(Block.WOOD_SOUND_GROUP);
+        tikiTorch = new TikiTorchBlock(NAMESPACE.id("tiki_torch")).setTranslationKey(NAMESPACE, "tiki_torch").setHardness(0.0F).setResistance(0.1F).setSoundGroup(Block.WOOD_SOUND_GROUP);
 
         // Thatch
         thatchBundle = new RotateableBlockTemplate(NAMESPACE.id("thatch_bundle"), Material.WOOD).setTranslationKey(NAMESPACE, "thatch_bundle").setHardness(0.1F).setResistance(0.1F).setSoundGroup(Block.DIRT_SOUND_GROUP);
