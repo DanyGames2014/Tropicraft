@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    "sws",
+    "sws",
+    "sws"
+  ],
+  "key":
+  {
+    "s":
+    {
+      "item": "tropicraft:bamboo_stick"
+    },
+    "w":
+    {
+      "item": "minecraft:wool",
+      "damage": 0
+    }
+  },
+  "result":
+  {
+    "item": "tropicraft:beach_chair",
+    "damage": 15,
+    "count": 1
+  }
+}
