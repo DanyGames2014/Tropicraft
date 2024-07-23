@@ -11,6 +11,7 @@ import net.danygames2014.tropicraft.block.sifter.SifterBlockEntityRenderer;
 import net.danygames2014.tropicraft.entity.*;
 import net.danygames2014.tropicraft.entity.renderer.*;
 import net.danygames2014.tropicraft.event.SiftingRecipeRegisterEvent;
+import net.danygames2014.tropicraft.item.BeachChairItem;
 import net.danygames2014.tropicraft.item.ColorClonerItem;
 import net.danygames2014.tropicraft.item.ShellItem;
 import net.danygames2014.tropicraft.item.TropiRecordItem;
@@ -145,6 +146,7 @@ public class Tropicraft {
 
     // Beach Equipment
     public static Item colorCloner;
+    public static Item beachChair;
 
     // Mob Drops
     public static Item poisonousFrogSkin;
@@ -264,6 +266,7 @@ public class Tropicraft {
 
         // Beach Equipment
         colorCloner = new ColorClonerItem(NAMESPACE.id("color_cloner")).setTranslationKey(NAMESPACE, "color_cloner");
+        beachChair = new BeachChairItem(NAMESPACE.id("beach_chair")).setTranslationKey(NAMESPACE, "beach_chair");
 
         // Mob Drops
         poisonousFrogSkin = new TemplateItem(NAMESPACE.id("poisonous_frog_skin")).setTranslationKey(NAMESPACE, "poisonous_frog_skin");

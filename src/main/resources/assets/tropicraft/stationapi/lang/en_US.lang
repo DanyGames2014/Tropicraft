@@ -67,6 +67,25 @@ item.tropicraft.pina_colada.name=Pina Colada
 item.tropicraft.bamboo.name=Bamboo Shoot
 item.tropicraft.bamboo_stick.name=Bamboo Stick
 
+## Beach Equipment
+item.tropicraft.black_beach_chair.name=Black Beach Chair
+item.tropicraft.red_beach_chair.name=Red Beach Chair
+item.tropicraft.green_beach_chair.name=Green Beach Chair
+item.tropicraft.brown_beach_chair.name=Brown Beach Chair
+item.tropicraft.blue_beach_chair.name=Blue Beach Chair
+item.tropicraft.purple_beach_chair.name=Purple Beach Chair
+item.tropicraft.cyan_beach_chair.name=Cyan Beach Chair
+item.tropicraft.silver_beach_chair.name=Light Gray Beach Chair
+item.tropicraft.gray_beach_chair.name=Gray Beach Chair
+item.tropicraft.pink_beach_chair.name=Pink Beach Chair
+item.tropicraft.lime_beach_chair.name=Lime Beach Chair
+item.tropicraft.yellow_beach_chair.name=Yellow Beach Chair
+item.tropicraft.lightBlue_beach_chair.name=Light Blue Beach Chair
+item.tropicraft.magenta_beach_chair.name=Magenta Beach Chair
+item.tropicraft.orange_beach_chair.name=Orange Beach Chair
+item.tropicraft.white_beach_chair.name=White Beach Chair
+item.tropicraft.random_beach_chair.name=Random Beach Chair
+
 ## Palm
 item.tropicraft.coconut_chunk.name=Coconut Chunk
 

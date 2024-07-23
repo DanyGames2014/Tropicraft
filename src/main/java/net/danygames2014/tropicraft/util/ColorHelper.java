@@ -1,5 +1,10 @@
 package net.danygames2014.tropicraft.util;
 
+import com.google.common.collect.Lists;
+import net.minecraft.item.DyeItem;
+
+import java.util.ArrayList;
+
 public class ColorHelper {
     public static float getRed(int color) {
         return (float)(color >> 16 & 255) / 255.0F;
@@ -23,4 +28,7 @@ public class ColorHelper {
     public static int getColor(float red, float green, float blue) {
         return ((int)(red * 255) << 16) | ((int)(green * 255) << 8) | (int)(blue * 255);
     }
+
+    /** List of integer color values, each index is the color associated with that metadata value */
+    private static ArrayList<Integer> colorValues = Lists.newArrayList();
 }
