@@ -56,12 +56,12 @@ public class TropiSkeletonEntity extends MonsterEntity implements MobSpawnDataPr
     }
 
     @Override
-    protected int getDroppedId() {
+    protected int getDroppedItemId() {
         return Item.ARROW.id;
     }
 
     @Override
-    protected void drop() {
+    protected void dropItems() {
         int amount = this.random.nextInt(3);
         for (int i = 0; i < amount; ++i) {
             this.dropItem(Item.BONE.id, 1);

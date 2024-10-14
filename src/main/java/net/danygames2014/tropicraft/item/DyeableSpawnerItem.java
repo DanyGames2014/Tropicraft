@@ -66,7 +66,7 @@ public class DyeableSpawnerItem extends TemplateItem {
             }
 
             // Set the Entity position
-            entity.setPos(x, y, z);
+            entity.setPosition(x, y, z);
 
             // Spawn the Entity
             world.spawnEntity(entity);

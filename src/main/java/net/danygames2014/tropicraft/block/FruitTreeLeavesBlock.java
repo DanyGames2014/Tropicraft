@@ -36,8 +36,8 @@ public class FruitTreeLeavesBlock extends TemplateBlock {
 
     @Override
     public int getColorMultiplier(BlockView blockView, int x, int y, int z) {
-        blockView.method_1781().method_1788(x, z, 1, 1);
-        return FoliageColors.getColor(blockView.method_1781().field_2235[0], blockView.method_1781().field_2236[0]);
+        blockView.method_1781().getBiomesInArea(x, z, 1, 1);
+        return FoliageColors.getColor(blockView.method_1781().temperatureMap[0], blockView.method_1781().downfallMap[0]);
     }
 
     @Override

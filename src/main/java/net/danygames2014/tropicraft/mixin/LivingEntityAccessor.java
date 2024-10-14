@@ -9,9 +9,9 @@ public interface LivingEntityAccessor {
     @Accessor("jumping")
     boolean jumping();
 
-    @Accessor("field_1060")
+    @Accessor("sidewaysSpeed")
     float rightMovement();
 
-    @Accessor("field_1029")
+    @Accessor("forwardSpeed")
     float frontMovement();
 }

@@ -14,7 +14,7 @@ public class EIHRenderer extends TropiEntityRenderer {
     }
 
     @Override
-    protected void method_823(LivingEntity entity, float f) {
+    protected void applyScale(LivingEntity entity, float f) {
         switch (((EIHEntity) entity).getMood()) {
             case 1 -> this.texture = "/assets/tropicraft/stationapi/textures/entity/eih/aware.png";
             case 2 -> this.texture = "/assets/tropicraft/stationapi/textures/entity/eih/angry.png";

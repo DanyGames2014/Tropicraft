@@ -124,7 +124,7 @@ public class EIHEntity extends AttackingAnimalEntity implements MobSpawnDataProv
 
     // Mob Drop
     @Override
-    protected void drop() {
+    protected void dropItems() {
         int count = this.random.nextInt(2) + 1;
 
         for (int i = 0; i < count; ++i) {

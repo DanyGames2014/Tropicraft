@@ -117,7 +117,7 @@ public class IguanaEntity extends AttackingAnimalEntity implements MobSpawnDataP
 
     // Mob Drop
     @Override
-    protected void drop() {
+    protected void dropItems() {
         int count = this.random.nextInt(3) + 1;
 
         for (int i = 0; i < count; ++i) {

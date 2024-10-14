@@ -18,7 +18,7 @@ public class PoisonousFrogEntity extends FrogEntity implements MobSpawnDataProvi
     }
 
     @Override
-    protected int getDroppedId() {
+    protected int getDroppedItemId() {
         return Tropicraft.poisonousFrogSkin.id;
     }
 

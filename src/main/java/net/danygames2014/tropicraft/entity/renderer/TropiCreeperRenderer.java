@@ -14,7 +14,7 @@ public class TropiCreeperRenderer extends LivingEntityRenderer {
     }
 
     @Override
-    protected void method_823(LivingEntity livingEntity, float f) {
+    protected void applyScale(LivingEntity livingEntity, float f) {
         this.preRenderScale((TropiCreeperEntity) livingEntity, f);
     }
 
@@ -37,7 +37,7 @@ public class TropiCreeperRenderer extends LivingEntityRenderer {
     }
 
     @Override
-    protected int method_817(LivingEntity livingEntity, float f, float g) {
+    protected int getOverlayColor(LivingEntity livingEntity, float f, float g) {
         return this.preRenderColor((TropiCreeperEntity) livingEntity, f, g);
     }
 
@@ -63,7 +63,7 @@ public class TropiCreeperRenderer extends LivingEntityRenderer {
     }
 
     @Override
-    protected boolean method_825(LivingEntity livingEntity, int i, float f) {
+    protected boolean bindTexture(LivingEntity livingEntity, int i, float f) {
         return this.renderOuterLayer((TropiCreeperEntity) livingEntity, i, f);
     }
 
@@ -77,7 +77,7 @@ public class TropiCreeperRenderer extends LivingEntityRenderer {
                 float var5 = var4 * 0.01F;
                 float var6 = var4 * 0.01F;
                 GL11.glTranslatef(var5, var6, 0.0F);
-                this.method_815(this.model);
+                this.setDecorationModel(this.model);
                 GL11.glMatrixMode(5888);
                 GL11.glEnable(3042);
                 float var7 = 0.5F;
@@ -100,7 +100,7 @@ public class TropiCreeperRenderer extends LivingEntityRenderer {
     }
 
     @Override
-    protected boolean method_819(LivingEntity livingEntity, int i, float f) {
+    protected boolean bindDecorationTexture(LivingEntity livingEntity, int i, float f) {
         return false;
     }
 }

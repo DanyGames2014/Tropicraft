@@ -28,7 +28,7 @@ public class BeachChairEntity extends Entity implements EntitySpawnDataProvider,
 
     public BeachChairEntity(World world, Double x, Double y, Double z) {
         this(world);
-        this.setPos(x, y, z);
+        this.setPosition(x, y, z);
     }
 
     @Override
@@ -95,7 +95,7 @@ public class BeachChairEntity extends Entity implements EntitySpawnDataProvider,
     }
 
     @Override
-    public Box method_1379(Entity arg) {
+    public Box getCollisionAgainstShape(Entity other) {
         return this.boundingBox;
     }
 
@@ -123,7 +123,7 @@ public class BeachChairEntity extends Entity implements EntitySpawnDataProvider,
         double xOffset = -Math.sin(this.yaw * (Math.PI / 180)) * 0.4;
         double zOffset = Math.cos(this.yaw * (Math.PI / 180)) * 0.4;
 
-        this.passenger.setPos(this.x + xOffset, this.y + this.getPassengerRidingHeight() + this.passenger.getStandingEyeHeight(), this.z + zOffset);
+        this.passenger.setPosition(this.x + xOffset, this.y + this.getPassengerRidingHeight() + this.passenger.getStandingEyeHeight(), this.z + zOffset);
     }
 
     @Override
@@ -136,7 +136,7 @@ public class BeachChairEntity extends Entity implements EntitySpawnDataProvider,
         }
 
         if (player.isSneaking()) {
-            player.method_490(FabricLoader.getInstance().getEnvironmentType().name() + " Color: " + this.getColor());
+            player.sendMessage(FabricLoader.getInstance().getEnvironmentType().name() + " Color: " + this.getColor());
         }
         return true;
     }

@@ -21,7 +21,7 @@ public class FrogEntity extends AttackingAnimalEntity implements MobSpawnDataPro
     }
 
     @Override
-    protected int getDroppedId() {
+    protected int getDroppedItemId() {
         return Tropicraft.frogLeg.id;
     }
 

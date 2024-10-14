@@ -25,14 +25,14 @@ public class SifterBlockEntityRenderer extends BlockEntityRenderer {
 
             if(sifter.renderedItem == null){
                 sifter.renderedItem = new ItemEntity(player.world);
-                sifter.renderedItem.setPos(player.x, player.y, player.z);
+                sifter.renderedItem.setPosition(player.x, player.y, player.z);
                 sifter.renderedItem.stack = sifter.siftedItem;
             }
 
             GL11.glPushMatrix();
             GL11.glTranslatef((float)x + 0.5F, (float)y+0.3F, (float)z + 0.5F);
             GL11.glRotatef((float)(sifter.yaw2 + (sifter.yaw - sifter.yaw2) * (double)rotation) * 10.0F, 0.0F, 1.0F, 0.0F);
-            EntityRenderDispatcher.field_2489.method_1920(sifter.renderedItem, 0.0, 0.0, 0.0, 0.0F, 0.0F);
+            EntityRenderDispatcher.INSTANCE.render(sifter.renderedItem, 0.0, 0.0, 0.0, 0.0F, 0.0F);
             GL11.glPopMatrix();
         }
     }

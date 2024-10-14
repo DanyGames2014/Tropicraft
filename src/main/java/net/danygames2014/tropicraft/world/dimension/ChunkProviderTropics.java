@@ -3,11 +3,11 @@ package net.danygames2014.tropicraft.world.dimension;
 import net.minecraft.client.gui.screen.LoadingDisplay;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.Chunk;
-import net.minecraft.world.chunk.ChunkManager;
+import net.minecraft.world.chunk.ChunkSource;
 
 import java.util.Random;
 
-public class ChunkProviderTropics implements ChunkManager { // class_51 = WorldSource
+public class ChunkProviderTropics implements ChunkSource { // class_51 = WorldSource
     public Random random;
 
     public ChunkProviderTropics(World world, long seed) {
@@ -30,7 +30,7 @@ public class ChunkProviderTropics implements ChunkManager { // class_51 = WorldS
     }
 
     @Override
-    public void decorate(ChunkManager manager, int x, int z) { // decorate / populate
+    public void decorate(ChunkSource source, int x, int z) { // decorate / populate
 
     }
 

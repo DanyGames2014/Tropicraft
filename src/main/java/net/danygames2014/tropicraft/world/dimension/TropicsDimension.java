@@ -2,7 +2,7 @@ package net.danygames2014.tropicraft.world.dimension;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.EnvironmentInterface;
-import net.minecraft.world.chunk.ChunkManager;
+import net.minecraft.world.chunk.ChunkSource;
 import net.minecraft.world.dimension.Dimension;
 import net.modificationstation.stationapi.api.client.world.dimension.TravelMessageProvider;
 
@@ -24,7 +24,7 @@ public class TropicsDimension extends Dimension implements TravelMessageProvider
 
     // Chunk Provider
     @Override
-    public ChunkManager method_1772() {
+    public ChunkSource createChunkGenerator() {
         return new ChunkProviderTropics(this.world, this.world.getSeed());
     }
 

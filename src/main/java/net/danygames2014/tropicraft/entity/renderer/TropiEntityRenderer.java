@@ -20,39 +20,39 @@ public class TropiEntityRenderer extends LivingEntityRenderer {
         GL11.glPushMatrix();
         GL11.glDisable(GL11.GL_CULL_FACE);
 
-        this.model.handWingProgress = this.method_820(entity, delta); // this.getHandSwing
-        if (this.field_910 != null) {
-            this.field_910.handWingProgress = this.model.handWingProgress;
+        this.model.handSwingProgress = this.getHandSwingProgress(entity, delta);
+        if (this.decorationModel != null) {
+            this.decorationModel.handSwingProgress = this.model.handSwingProgress;
         }
 
         this.model.riding = entity.hasVehicle();
-        if (this.field_910 != null) {
-            this.field_910.riding = this.model.riding;
+        if (this.decorationModel != null) {
+            this.decorationModel.riding = this.model.riding;
         }
 
         try {
             // Calculate Rotation
-            float bodyYaw = entity.field_1013 + (entity.field_1012 - entity.field_1013) * delta;
+            float bodyYaw = entity.lastBodyYaw + (entity.bodyYaw - entity.lastBodyYaw) * delta;
             float headYaw = entity.prevYaw + (entity.yaw - entity.prevYaw) * delta;
             float headPitch = entity.prevPitch + (entity.pitch - entity.prevPitch) * delta;
 
             // "Set Rendering Position in World"
             GL11.glTranslated(x,y,z);
 
-            float animationProgress = this.method_828(entity, delta);
-            this.method_824(entity, animationProgress, bodyYaw, delta);
+            float animationProgress = this.getHeadBob(entity, delta);
+            this.getHandSwingProgress(entity, animationProgress, bodyYaw, delta);
             float scale = 0.0625F;
             GL11.glEnable(32826);
             GL11.glScalef(-1.0F, -1.0F, 1.0F);
-            this.method_823(entity, delta); // preRender
+            this.applyScale(entity, delta); // preRender
 
             GL11.glTranslatef(0.0F, -0.06F, 0.0F);
 
 //            GL11.glTranslatef(0.0F, -24.0F * scale - 0.0078125F, 0.0F);
 //            GL11.glTranslatef(0.0F, -2.0F, 0.0F);
 
-            float nextLimbDistance = entity.field_1048 + (entity.field_1049 - entity.field_1048) * delta;
-            float nextLimbAngle = entity.field_1050 - entity.field_1049 * (1.0F - delta);
+            float nextLimbDistance = entity.lastWalkAnimationSpeed + (entity.walkAnimationSpeed - entity.lastWalkAnimationSpeed) * delta;
+            float nextLimbAngle = entity.walkAnimationProgress - entity.walkAnimationSpeed * (1.0F - delta);
             if (nextLimbDistance > 1.0F) {
                 nextLimbDistance = 1.0F;
             }
@@ -74,7 +74,7 @@ public class TropiEntityRenderer extends LivingEntityRenderer {
 //
 //            this.method_827(entity, delta); // renderPlayerEffects
             float brightness = entity.getBrightnessAtEyes(delta);
-            int color = this.method_817(entity, brightness, delta); // getColor
+            int color = this.getOverlayColor(entity, brightness, delta); // getColor
 
             // Hurt Animation Rendering
             if ((color >> 24 & 255) > 0 || entity.hurtTime > 0 || entity.deathTime > 0) {
@@ -124,6 +124,6 @@ public class TropiEntityRenderer extends LivingEntityRenderer {
 
         GL11.glEnable(GL11.GL_CULL_FACE);
         GL11.glPopMatrix();
-        this.method_821(entity, x, y, z); // Render Entity Name
+        this.renderNameTag(entity, x, y, z); // Render Entity Name
     }
 }

@@ -32,7 +32,7 @@ public class PoisonBlotEntity extends ArrowEntity implements EntitySpawnDataProv
 
     public PoisonBlotEntity(World world, double x, double y, double z) {
         this(world);
-        this.setPos(x, y, z);
+        this.setPosition(x, y, z);
     }
 
     public PoisonBlotEntity(World world, LivingEntity owner) {
@@ -44,7 +44,7 @@ public class PoisonBlotEntity extends ArrowEntity implements EntitySpawnDataProv
         this.x -= MathHelper.cos(this.yaw / 180.0F * 3.1415927F) * 0.16F;
         this.y -= 0.1D;
         this.z -= MathHelper.sin(this.yaw / 180.0F * 3.1415927F) * 0.16F;
-        this.setPos(this.x, this.y, this.z);
+        this.setPosition(this.x, this.y, this.z);
 
         this.velocityX = -MathHelper.sin(this.yaw / 180.0F * 3.1415927F) * MathHelper.cos(this.pitch / 180.0F * 3.1415927F);
         this.velocityZ = MathHelper.cos(this.yaw / 180.0F * 3.1415927F) * MathHelper.cos(this.pitch / 180.0F * 3.1415927F);
@@ -175,7 +175,7 @@ public class PoisonBlotEntity extends ArrowEntity implements EntitySpawnDataProv
         this.velocityY *= 0.99F;
         this.velocityZ *= 0.99F;
         this.velocityY -= 0.03F;
-        this.setPos(this.x, this.y, this.z);
+        this.setPosition(this.x, this.y, this.z);
     }
 
     public void writeNbt(NbtCompound nbt) {
