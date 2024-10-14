@@ -20,21 +20,25 @@ public class PalmSaplingBlock extends TemplateBlock {
 
     @Override
     public boolean onBonemealUse(World world, int x, int y, int z, BlockState state) {
-        return generateTree(world,world.random, x, y, z);
+        return generateTree(world, world.random, x, y, z);
     }
 
     @Override
     public void onTick(World world, int x, int y, int z, Random random) {
-        generateTree(world,random, x, y, z);
+        generateTree(world, random, x, y, z);
     }
 
     public boolean generateTree(World world, Random random, int x, int y, int z) {
+        if (world.isRemote) {
+            return false;
+        }
+
         if (world.getBlockState(x, y - 1, z).isIn(TagKey.of(BlockRegistry.INSTANCE.getKey(), Tropicraft.NAMESPACE.id("palm_grows_on")))) {
-            switch(random.nextInt(6)) {
-                case 0,1,2 -> {
+            switch (random.nextInt(6)) {
+                case 0, 1, 2 -> {
                     return ChunkDecorationListener.smallPalmTreeFeature.generate(world, random, x, y, z, true);
                 }
-                case 3,4 -> {
+                case 3, 4 -> {
                     return ChunkDecorationListener.curvedPalmTreeFeature.generate(world, random, x, y, z, true);
                 }
                 case 5 -> {
