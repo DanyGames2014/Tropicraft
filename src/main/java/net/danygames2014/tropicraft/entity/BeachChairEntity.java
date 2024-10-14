@@ -131,7 +131,7 @@ public class BeachChairEntity extends Entity implements EntitySpawnDataProvider,
             return true;
         }
         if (!this.world.isRemote) {
-            entityplayer.setVehicle((Entity) this);
+            entityplayer.setVehicle(this);
         }
 
         if (!this.world.isRemote && entityplayer.isSneaking()) {

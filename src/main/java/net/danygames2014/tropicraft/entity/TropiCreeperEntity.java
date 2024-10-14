@@ -6,7 +6,6 @@ import net.minecraft.entity.mob.CreeperEntity;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.modificationstation.stationapi.api.registry.BlockRegistry;
-import net.modificationstation.stationapi.api.server.entity.EntitySpawnDataProvider;
 import net.modificationstation.stationapi.api.server.entity.HasTrackingParameters;
 import net.modificationstation.stationapi.api.server.entity.MobSpawnDataProvider;
 import net.modificationstation.stationapi.api.tag.TagKey;
@@ -56,6 +55,7 @@ public class TropiCreeperEntity extends CreeperEntity implements MobSpawnDataPro
         }
     }
 
+    @SuppressWarnings("unused")
     public void explode(World world, Entity entity, int x, int y, int z, boolean charged) {
         for (int xOffset = -3; xOffset < 4; xOffset++) {
             for (int zOffset = -3; zOffset < 4; zOffset++) {

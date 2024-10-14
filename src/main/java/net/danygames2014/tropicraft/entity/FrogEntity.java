@@ -1,14 +1,9 @@
 package net.danygames2014.tropicraft.entity;
 
 import net.danygames2014.tropicraft.Tropicraft;
-import net.minecraft.block.Block;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
-import net.modificationstation.stationapi.api.registry.BlockRegistry;
-import net.modificationstation.stationapi.api.server.entity.EntitySpawnDataProvider;
 import net.modificationstation.stationapi.api.server.entity.HasTrackingParameters;
 import net.modificationstation.stationapi.api.server.entity.MobSpawnDataProvider;
-import net.modificationstation.stationapi.api.tag.TagKey;
 import net.modificationstation.stationapi.api.util.Identifier;
 import net.modificationstation.stationapi.api.util.TriState;
 

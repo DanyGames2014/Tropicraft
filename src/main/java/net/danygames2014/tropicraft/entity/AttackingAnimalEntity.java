@@ -19,6 +19,7 @@ public class AttackingAnimalEntity extends AnimalEntity {
         this.setBoundingBoxSpacing(0.9F, 1.3F);
     }
 
+    @SuppressWarnings("unused")
     public void setAttackDamage(int attackDamage){
         this.attackDamage = attackDamage;
     }

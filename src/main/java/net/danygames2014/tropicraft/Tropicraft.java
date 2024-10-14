@@ -18,7 +18,6 @@ import net.danygames2014.tropicraft.item.TropiRecordItem;
 import net.danygames2014.tropicraft.item.armor.ScaleArmorItem;
 import net.danygames2014.tropicraft.item.food.FoodChunkItem;
 import net.danygames2014.tropicraft.item.food.PinaColadaItem;
-import net.danygames2014.tropicraft.world.dimension.TropicsDimension;
 import net.glasslauncher.mods.gcapi3.api.ConfigRoot;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.achievement.Achievement;
@@ -37,7 +36,6 @@ import net.modificationstation.stationapi.api.event.block.entity.BlockEntityRegi
 import net.modificationstation.stationapi.api.event.entity.EntityRegister;
 import net.modificationstation.stationapi.api.event.registry.*;
 import net.modificationstation.stationapi.api.mod.entrypoint.Entrypoint;
-import net.modificationstation.stationapi.api.registry.DimensionContainer;
 import net.modificationstation.stationapi.api.registry.DimensionRegistry;
 import net.modificationstation.stationapi.api.registry.Registry;
 import net.modificationstation.stationapi.api.template.block.TemplateBlock;

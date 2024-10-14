@@ -2,13 +2,10 @@ package net.danygames2014.tropicraft.entity;
 
 import net.danygames2014.tropicraft.Tropicraft;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
-import net.modificationstation.stationapi.api.server.entity.EntitySpawnDataProvider;
 import net.modificationstation.stationapi.api.server.entity.HasTrackingParameters;
 import net.modificationstation.stationapi.api.server.entity.MobSpawnDataProvider;
 import net.modificationstation.stationapi.api.util.Identifier;
@@ -37,6 +34,7 @@ public class IguanaEntity extends AttackingAnimalEntity implements MobSpawnDataP
         this.maxHealth = 10;
     }
 
+    @SuppressWarnings("unused")
     public IguanaEntity(World world, Double x, Double y, Double z) {
         this(world);
     }
@@ -70,7 +68,7 @@ public class IguanaEntity extends AttackingAnimalEntity implements MobSpawnDataP
             return false;
         }
 
-        if (damageSource instanceof PlayerEntity player) {
+        if (damageSource instanceof PlayerEntity) {
             List<Entity> nearbyEntities = this.world.getEntities(this, this.boundingBox.expand(32.0D, 32.0D, 32.0D));
 
             for (Entity entity : nearbyEntities) {
