@@ -4,6 +4,7 @@ import net.danygames2014.tropicraft.Tropicraft;
 import net.danygames2014.tropicraft.mixin.LivingEntityAccessor;
 import net.danygames2014.tropicraft.util.ColorHelper;
 import net.danygames2014.tropicraft.util.MathHelper;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -126,16 +127,16 @@ public class BeachChairEntity extends Entity implements EntitySpawnDataProvider,
     }
 
     @Override
-    public boolean interact(PlayerEntity entityplayer) {
-        if (this.passenger != null && this.passenger instanceof PlayerEntity && this.passenger != entityplayer) {
+    public boolean interact(PlayerEntity player) {
+        if (this.passenger != null && this.passenger instanceof PlayerEntity && this.passenger != player) {
             return true;
         }
-        if (!this.world.isRemote) {
-            entityplayer.setVehicle(this);
+        if (!this.world.isRemote && !player.isSneaking()) {
+            player.setVehicle(this);
         }
 
-        if (!this.world.isRemote && entityplayer.isSneaking()) {
-            entityplayer.method_490("Color: " + this.getColor());
+        if (player.isSneaking()) {
+            player.method_490(FabricLoader.getInstance().getEnvironmentType().name() + " Color: " + this.getColor());
         }
         return true;
     }
