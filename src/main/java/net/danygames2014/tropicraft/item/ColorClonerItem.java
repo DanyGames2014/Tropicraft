@@ -5,10 +5,11 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
+import net.modificationstation.stationapi.api.client.item.CustomTooltipProvider;
 import net.modificationstation.stationapi.api.template.item.TemplateItem;
 import net.modificationstation.stationapi.api.util.Identifier;
 
-public class ColorClonerItem extends TemplateItem implements EntityInteractor {
+public class ColorClonerItem extends TemplateItem implements EntityInteractor, CustomTooltipProvider {
     public ColorClonerItem(Identifier identifier) {
         super(identifier);
         this.setMaxCount(1);
@@ -28,5 +29,11 @@ public class ColorClonerItem extends TemplateItem implements EntityInteractor {
                 }
             }
         }
+    }
+
+
+    @Override
+    public String[] getTooltip(ItemStack stack, String originalTooltip) {
+        return new String[]{originalTooltip, "Color: " + stack.getStationNbt().getInt("color")};
     }
 }

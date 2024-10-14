@@ -6,14 +6,21 @@ import net.minecraft.entity.mob.CreeperEntity;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.modificationstation.stationapi.api.registry.BlockRegistry;
+import net.modificationstation.stationapi.api.server.entity.EntitySpawnDataProvider;
+import net.modificationstation.stationapi.api.server.entity.HasTrackingParameters;
+import net.modificationstation.stationapi.api.server.entity.MobSpawnDataProvider;
 import net.modificationstation.stationapi.api.tag.TagKey;
+import net.modificationstation.stationapi.api.util.Identifier;
+import net.modificationstation.stationapi.api.util.TriState;
 
 import static net.danygames2014.tropicraft.util.MathHelper.distance;
 import static net.danygames2014.tropicraft.world.feature.FlowerPatchFeature.flowers;
 
-public class TropiCreeperEntity extends CreeperEntity {
+@HasTrackingParameters(updatePeriod = 2, sendVelocity = TriState.TRUE, trackingDistance = 30)
+public class TropiCreeperEntity extends CreeperEntity implements MobSpawnDataProvider {
     public TropiCreeperEntity(World world) {
         super(world);
+        this.setBoundingBoxSpacing(0.9F, 1.3F);
     }
 
     @Override
@@ -71,5 +78,10 @@ public class TropiCreeperEntity extends CreeperEntity {
                 }
             }
         }
+    }
+
+    @Override
+    public Identifier getHandlerIdentifier() {
+        return Tropicraft.NAMESPACE.id("tropicreeper");
     }
 }

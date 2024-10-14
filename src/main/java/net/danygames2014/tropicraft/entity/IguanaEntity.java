@@ -10,6 +10,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.modificationstation.stationapi.api.server.entity.EntitySpawnDataProvider;
 import net.modificationstation.stationapi.api.server.entity.HasTrackingParameters;
+import net.modificationstation.stationapi.api.server.entity.MobSpawnDataProvider;
 import net.modificationstation.stationapi.api.util.Identifier;
 import net.modificationstation.stationapi.api.util.TriState;
 
@@ -18,8 +19,8 @@ import java.util.List;
 import static net.danygames2014.tropicraft.util.MathHelper.cycleClampUp;
 import static net.danygames2014.tropicraft.util.MathHelper.pushBack;
 
-@HasTrackingParameters(updatePeriod = 5, sendVelocity = TriState.TRUE, trackingDistance = 30)
-public class IguanaEntity extends AttackingAnimalEntity implements EntitySpawnDataProvider {
+@HasTrackingParameters(updatePeriod = 2, sendVelocity = TriState.TRUE, trackingDistance = 30)
+public class IguanaEntity extends AttackingAnimalEntity implements MobSpawnDataProvider {
     public float tailAngle1;
     public float tailAngle2;
     public float tailAngle3;
@@ -37,7 +38,7 @@ public class IguanaEntity extends AttackingAnimalEntity implements EntitySpawnDa
     }
 
     public IguanaEntity(World world, Double x, Double y, Double z) {
-        super(world);
+        this(world);
     }
 
     @Override

@@ -1,94 +1,87 @@
 package net.danygames2014.tropicraft;
 
-import blue.endless.jankson.Comment;
-import net.glasslauncher.mods.api.gcapi.api.ConfigCategory;
-import net.glasslauncher.mods.api.gcapi.api.ConfigName;
-import net.glasslauncher.mods.api.gcapi.api.ValueOnNoGCAPIServer;
+import net.glasslauncher.mods.gcapi3.api.ConfigCategory;
+import net.glasslauncher.mods.gcapi3.api.ConfigEntry;
 
 public class Config {
     public static class WorldgenConfig {
 
-        @ConfigCategory("Palms")
+        @ConfigCategory(name = "Palms")
         public PalmWorldgenConfig palm = new PalmWorldgenConfig();
 
-        @ConfigCategory("Bamboo")
+        @ConfigCategory(name = "Bamboo")
         public BambooWorldgenConfig bamboo = new BambooWorldgenConfig();
 
-        @ConfigCategory("Flower")
+        @ConfigCategory(name = "Flower")
         public FlowerWorldgenConfig flower = new FlowerWorldgenConfig();
 
-        @ConfigCategory("Pineapple")
+        @ConfigCategory(name = "Pineapple")
         public PineappleWorldgenConfig pineapple = new PineappleWorldgenConfig();
 
-        @ConfigCategory("Island Head")
+        @ConfigCategory(name = "Island Head")
         public IslandHeadWorldgenConfig islandHead = new IslandHeadWorldgenConfig();
 
         public static class PalmWorldgenConfig {
-            @ConfigName("Generate Palms")
+            @ConfigEntry(name = "Generate Palms")
             public Boolean generatePalms = true;
 
-            @ConfigName("Palm Generation Chance")
-            @Comment("Chance is 1/value. Ex: 5 -> 1/5 = 20%")
+            @ConfigEntry(name = "Palm Generation Chance", comment = "Chance is 1/value. Ex: 5 -> 1/5 = 20%")
             public Integer palmGenChance = 4;
         }
 
         public static class BambooWorldgenConfig {
-            @ConfigName("Generate Bamboo")
+            @ConfigEntry(name = "Generate Bamboo")
             public Boolean generateBamboo = true;
 
-            @ConfigName("Bamboo Generation Chance")
-            @Comment("Chance is 1/value. Ex: 5 -> 1/5 = 20%")
+            @ConfigEntry(name = "Bamboo Generation Chance", comment = "Chance is 1/value. Ex: 5 -> 1/5 = 20%")
             public Integer bambooGenChance = 30;
 
-            @ConfigName("Minimum Bamboo Height")
+            @ConfigEntry(name = "Minimum Bamboo Height")
             public Integer minBambooHeight = 4;
 
-            @ConfigName("Maximum Bamboo Height")
+            @ConfigEntry(name = "Maximum Bamboo Height")
             public Integer maxBambooHeight = 11;
 
-            @ConfigName("Minimum Bamboo Count")
+            @ConfigEntry(name = "Minimum Bamboo Count")
             public Integer minBambooCount = 60;
 
-            @ConfigName("Maximum Bamboo Count")
+            @ConfigEntry(name = "Maximum Bamboo Count")
             public Integer maxBambooCount = 120;
         }
 
         public static class FlowerWorldgenConfig {
-            @ConfigName("Generate Flowers")
+            @ConfigEntry(name = "Generate Flowers")
             public Boolean generateFlowers = true;
 
-            @ConfigName("Flower Generation Chance")
-            @Comment("Chance is 1/value. Ex: 5 -> 1/5 = 20%")
+            @ConfigEntry(name = "Flower Generation Chance", comment = "Chance is 1/value. Ex: 5 -> 1/5 = 20%")
             public Integer flowerGenChance = 8;
 
-            @ConfigName("Minimum Flowers")
+            @ConfigEntry(name = "Minimum Flowers")
             public Integer minimumFlowers = 7;
 
-            @ConfigName("Maximum Flowers")
+            @ConfigEntry(name = "Maximum Flowers")
             public Integer maximumFlowers = 15;
         }
 
         public static class PineappleWorldgenConfig {
-            @ConfigName("Generate Pineapples")
+            @ConfigEntry(name = "Generate Pineapples")
             public Boolean generatePineapples = true;
 
-            @ConfigName("Pineapple Generation Chance")
-            @Comment("Chance is 1/value. Ex: 5 -> 1/5 = 20%")
+            @ConfigEntry(name = "Pineapple Generation Chance", comment = "Chance is 1/value. Ex: 5 -> 1/5 = 20%")
             public Integer pineappleGenChance = 10;
 
-            @ConfigName("Minimum Pineapples")
+            @ConfigEntry(name = "Minimum Pineapples")
             public Integer minimumPineapples = 1;
 
-            @ConfigName("Maximum Pineapples")
+            @ConfigEntry(name = "Maximum Pineapples")
             public Integer maximumPineapples = 5;
         }
 
         public static class IslandHeadWorldgenConfig {
-            @ConfigName("Generate Island Heads")
+            @ConfigEntry(name = "Generate Island Heads")
             public Boolean generateIslandHeads = true;
 
-            @ConfigName("Island Head Generation Chance")
-            @Comment("Chance is 1/value. Ex: 5 -> 1/100 = 1%")
+            @ConfigEntry(name = "Island Head Generation Chance", comment = "Chance is 1/value. Ex: 5 -> 1/100 = 1%")
             public Integer islandHeadGenChance = 200;
         }
     }

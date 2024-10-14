@@ -9,12 +9,13 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.world.World;
 import net.modificationstation.stationapi.api.server.entity.EntitySpawnDataProvider;
 import net.modificationstation.stationapi.api.server.entity.HasTrackingParameters;
+import net.modificationstation.stationapi.api.server.entity.MobSpawnDataProvider;
 import net.modificationstation.stationapi.api.util.Identifier;
 import net.modificationstation.stationapi.api.util.TriState;
 
 @SuppressWarnings("UnnecessaryBoxing")
-@HasTrackingParameters(updatePeriod = 5, sendVelocity = TriState.TRUE, trackingDistance = 30)
-public class EIHEntity extends AttackingAnimalEntity implements EntitySpawnDataProvider {
+@HasTrackingParameters(updatePeriod = 2, sendVelocity = TriState.TRUE, trackingDistance = 30)
+public class EIHEntity extends AttackingAnimalEntity implements MobSpawnDataProvider {
 
     public PlayerEntity observedPlayer;
 

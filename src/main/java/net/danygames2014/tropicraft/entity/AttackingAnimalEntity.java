@@ -6,13 +6,17 @@ import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.modificationstation.stationapi.api.registry.BlockRegistry;
+import net.modificationstation.stationapi.api.server.entity.HasTrackingParameters;
 import net.modificationstation.stationapi.api.tag.TagKey;
+import net.modificationstation.stationapi.api.util.TriState;
 
+@HasTrackingParameters(updatePeriod = 2, sendVelocity = TriState.TRUE, trackingDistance = 30)
 public class AttackingAnimalEntity extends AnimalEntity {
     public int attackDamage = 1;
 
     public AttackingAnimalEntity(World world) {
         super(world);
+        this.setBoundingBoxSpacing(0.9F, 1.3F);
     }
 
     public void setAttackDamage(int attackDamage){

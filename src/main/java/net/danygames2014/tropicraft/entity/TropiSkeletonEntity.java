@@ -7,8 +7,14 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
+import net.modificationstation.stationapi.api.server.entity.EntitySpawnDataProvider;
+import net.modificationstation.stationapi.api.server.entity.HasTrackingParameters;
+import net.modificationstation.stationapi.api.server.entity.MobSpawnDataProvider;
+import net.modificationstation.stationapi.api.util.Identifier;
+import net.modificationstation.stationapi.api.util.TriState;
 
-public class TropiSkeletonEntity extends MonsterEntity {
+@HasTrackingParameters(updatePeriod = 2, sendVelocity = TriState.TRUE, trackingDistance = 30)
+public class TropiSkeletonEntity extends MonsterEntity implements MobSpawnDataProvider {
     public static ItemStack defaultHeldItem = new ItemStack(Tropicraft.bambooStickItem, 1);
 
     public TropiSkeletonEntity(World world) {
@@ -66,5 +72,10 @@ public class TropiSkeletonEntity extends MonsterEntity {
     @Override
     public ItemStack getHeldItem() {
         return defaultHeldItem;
+    }
+
+    @Override
+    public Identifier getHandlerIdentifier() {
+        return Tropicraft.NAMESPACE.id("tropiskeleton");
     }
 }

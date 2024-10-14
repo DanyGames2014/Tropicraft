@@ -83,7 +83,7 @@ public class DyeableSpawnerItem extends TemplateItem {
     }
 
     public void dyeEntity(ItemStack stack, Entity entity) {
-        if (entity instanceof Dyeable dyeable) {
+        if (entity instanceof Dyeable dyeable && !entity.world.isRemote) {
             dyeable.setColor(DyeItem.colors[stack.getDamage()]);
         }
     }

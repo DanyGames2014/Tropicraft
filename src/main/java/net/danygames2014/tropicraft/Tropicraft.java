@@ -19,7 +19,7 @@ import net.danygames2014.tropicraft.item.armor.ScaleArmorItem;
 import net.danygames2014.tropicraft.item.food.FoodChunkItem;
 import net.danygames2014.tropicraft.item.food.PinaColadaItem;
 import net.danygames2014.tropicraft.world.dimension.TropicsDimension;
-import net.glasslauncher.mods.api.gcapi.api.GConfig;
+import net.glasslauncher.mods.gcapi3.api.ConfigRoot;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.achievement.Achievement;
 import net.minecraft.block.Block;
@@ -55,7 +55,7 @@ public class Tropicraft {
     @Entrypoint.Namespace
     public static final Namespace NAMESPACE = Null.get();
 
-    @GConfig(value = "worldgen", visibleName = "Worldgen")
+    @ConfigRoot(value = "worldgen", visibleName = "Worldgen")
     public static final Config.WorldgenConfig WORLDGEN_CONFIG = new Config.WorldgenConfig();
 
     // Achievement Page
@@ -300,7 +300,7 @@ public class Tropicraft {
     @EventListener
     public void registerDimension(DimensionRegistryEvent event) {
         DimensionRegistry registry = event.registry;
-        event.registry.register(NAMESPACE.id("tropics"), new DimensionContainer<>(TropicsDimension::new));
+        //event.registry.register(NAMESPACE.id("tropics"), new DimensionContainer<>(TropicsDimension::new));
     }
 
     @EventListener
@@ -320,9 +320,10 @@ public class Tropicraft {
     @EventListener
     public void registerEntityHandlers(EntityHandlerRegistryEvent event) {
         Registry.register(event.registry, NAMESPACE.id("beach_chair"), BeachChairEntity::new);
-        Registry.register(event.registry, NAMESPACE.id("posion_blot"), PoisonBlotEntity::new);
+        Registry.register(event.registry, NAMESPACE.id("poison_blot"), PoisonBlotEntity::new);
     }
 
+    @EventListener
     public void registerMobHandlers(MobHandlerRegistryEvent event) {
         Registry.register(event.registry, NAMESPACE.id("iguana"), IguanaEntity::new);
         Registry.register(event.registry, NAMESPACE.id("eih"), EIHEntity::new);

@@ -1,5 +1,6 @@
 package net.danygames2014.tropicraft.entity;
 
+import net.danygames2014.tropicraft.Tropicraft;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.entity.Entity;
@@ -12,10 +13,15 @@ import net.minecraft.util.math.Box;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+import net.modificationstation.stationapi.api.server.entity.EntitySpawnDataProvider;
+import net.modificationstation.stationapi.api.server.entity.HasTrackingParameters;
+import net.modificationstation.stationapi.api.util.Identifier;
+import net.modificationstation.stationapi.api.util.TriState;
 
 import java.util.List;
 
-public class PoisonBlotEntity extends ArrowEntity {
+@HasTrackingParameters(updatePeriod = 2, sendVelocity = TriState.TRUE, trackingDistance = 30)
+public class PoisonBlotEntity extends ArrowEntity implements EntitySpawnDataProvider {
     private int inAirTime = 0;
 
     public PoisonBlotEntity(World world) {
@@ -181,5 +187,10 @@ public class PoisonBlotEntity extends ArrowEntity {
     @Override
     public void onPlayerInteraction(PlayerEntity player) {
         // We are not picking up poison from the ground :-)
+    }
+
+    @Override
+    public Identifier getHandlerIdentifier() {
+        return Tropicraft.NAMESPACE.id("poison_blot");
     }
 }

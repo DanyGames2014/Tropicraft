@@ -16,13 +16,13 @@ import net.modificationstation.stationapi.api.util.Identifier;
 import net.modificationstation.stationapi.api.util.TriState;
 
 @SuppressWarnings("UnnecessaryBoxing")
-@HasTrackingParameters(updatePeriod = 5, sendVelocity = TriState.TRUE, trackingDistance = 30)
+@HasTrackingParameters(updatePeriod = 4, sendVelocity = TriState.TRUE, trackingDistance = 30)
 public class BeachChairEntity extends Entity implements EntitySpawnDataProvider, Dyeable {
     public BeachChairEntity(World world) {
         super(world);
-        this.setBoundingBoxSpacing(1.0F, 1.0F);
+        this.setBoundingBoxSpacing(0.8F, 0.8F);
         this.standingEyeHeight = this.height / 2.0F;
-        this.setColor(ColorHelper.getColor(random.nextFloat(), random.nextFloat(), random.nextFloat()));
+        //this.setColor(ColorHelper.getColor(random.nextFloat(), random.nextFloat(), random.nextFloat()));
     }
 
     public BeachChairEntity(World world, Double x, Double y, Double z) {
@@ -133,14 +133,20 @@ public class BeachChairEntity extends Entity implements EntitySpawnDataProvider,
         if (!this.world.isRemote) {
             entityplayer.setVehicle((Entity) this);
         }
+
+        if (!this.world.isRemote && entityplayer.isSneaking()) {
+            entityplayer.method_490("Color: " + this.getColor());
+        }
         return true;
     }
 
     @Override
     public boolean damage(Entity damageSource, int amount) {
-        this.dropItem(new ItemStack(Tropicraft.bambooStickItem, 1), 0.1F);
-        this.dropItem(new ItemStack(Tropicraft.bambooStickItem, 1), 0.3F);
-        this.dropItem(new ItemStack(Tropicraft.bambooStickItem, 1), 0.25F);
+        if (!world.isRemote) {
+            this.dropItem(new ItemStack(Tropicraft.bambooStickItem, 1), 0.1F);
+            this.dropItem(new ItemStack(Tropicraft.bambooStickItem, 1), 0.3F);
+            this.dropItem(new ItemStack(Tropicraft.bambooStickItem, 1), 0.25F);
+        }
         this.markDead();
         return true;
     }
@@ -152,7 +158,9 @@ public class BeachChairEntity extends Entity implements EntitySpawnDataProvider,
 
     @Override
     public void setColor(int color) {
-        this.dataTracker.set(16, Integer.valueOf(color));
+        if (!this.world.isRemote) {
+            this.dataTracker.set(16, Integer.valueOf(color));
+        }
     }
 
     @Override
@@ -167,7 +175,6 @@ public class BeachChairEntity extends Entity implements EntitySpawnDataProvider,
         } else {
             this.setColor(ColorHelper.getColor(random.nextFloat(), random.nextFloat(), random.nextFloat()));
         }
-
     }
 
     @Override

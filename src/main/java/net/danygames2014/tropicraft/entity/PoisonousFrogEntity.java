@@ -5,8 +5,14 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
+import net.modificationstation.stationapi.api.server.entity.EntitySpawnDataProvider;
+import net.modificationstation.stationapi.api.server.entity.HasTrackingParameters;
+import net.modificationstation.stationapi.api.server.entity.MobSpawnDataProvider;
+import net.modificationstation.stationapi.api.util.Identifier;
+import net.modificationstation.stationapi.api.util.TriState;
 
-public class PoisonousFrogEntity extends FrogEntity {
+@HasTrackingParameters(updatePeriod = 2, sendVelocity = TriState.TRUE, trackingDistance = 30)
+public class PoisonousFrogEntity extends FrogEntity implements MobSpawnDataProvider {
 
     public PoisonousFrogEntity(World world) {
         super(world);
@@ -78,21 +84,44 @@ public class PoisonousFrogEntity extends FrogEntity {
         }
     }
 
-    public static class RedPoisonousFrogEntity extends PoisonousFrogEntity {
+    @Override
+    public Identifier getHandlerIdentifier() {
+        return Tropicraft.NAMESPACE.id("poison_frog");
+    }
+
+    @HasTrackingParameters(updatePeriod = 2, sendVelocity = TriState.TRUE, trackingDistance = 30)
+    public static class RedPoisonousFrogEntity extends PoisonousFrogEntity implements MobSpawnDataProvider{
         public RedPoisonousFrogEntity(World world) {
             super(world);
         }
-    }
-
-    public static class BluePoisonousFrogEntity extends PoisonousFrogEntity {
-        public BluePoisonousFrogEntity(World world) {
-            super(world);
+        
+        @Override
+        public Identifier getHandlerIdentifier() {
+            return Tropicraft.NAMESPACE.id("red_poison_frog");
         }
     }
 
-    public static class YellowPoisonousFrogEntity extends PoisonousFrogEntity {
+    @HasTrackingParameters(updatePeriod = 2, sendVelocity = TriState.TRUE, trackingDistance = 30)
+    public static class BluePoisonousFrogEntity extends PoisonousFrogEntity implements MobSpawnDataProvider{
+        public BluePoisonousFrogEntity(World world) {
+            super(world);
+        }
+
+        @Override
+        public Identifier getHandlerIdentifier() {
+            return Tropicraft.NAMESPACE.id("blue_poison_frog");
+        }
+    }
+
+    @HasTrackingParameters(updatePeriod = 2, sendVelocity = TriState.TRUE, trackingDistance = 30)
+    public static class YellowPoisonousFrogEntity extends PoisonousFrogEntity implements MobSpawnDataProvider{
         public YellowPoisonousFrogEntity(World world) {
             super(world);
+        }
+
+        @Override
+        public Identifier getHandlerIdentifier() {
+            return Tropicraft.NAMESPACE.id("yellow_poison_frog");
         }
     }
 }
