@@ -11,6 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
+import net.modificationstation.stationapi.api.network.packet.MessagePacket;
 import net.modificationstation.stationapi.api.server.entity.EntitySpawnDataProvider;
 import net.modificationstation.stationapi.api.server.entity.HasTrackingParameters;
 import net.modificationstation.stationapi.api.util.Identifier;
@@ -181,6 +182,23 @@ public class BeachChairEntity extends Entity implements EntitySpawnDataProvider,
     @Override
     protected void writeNbt(NbtCompound nbt) {
         nbt.putInt("color", this.getColor());
+    }
+
+    @Override
+    public void writeToMessage(MessagePacket message) {
+        message.ints = new int[]{
+            message.ints[0],
+            message.ints[1],
+            message.ints[2],
+            message.ints[3],
+            message.ints[4],
+            this.getColor()
+        };
+    }
+
+    @Override
+    public void readFromMessage(MessagePacket message) {
+        this.dataTracker.set(16, Integer.valueOf(message.ints[5]));
     }
 
     @Override
