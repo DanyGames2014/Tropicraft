@@ -18,6 +18,8 @@ import net.danygames2014.tropicraft.item.TropiRecordItem;
 import net.danygames2014.tropicraft.item.armor.ScaleArmorItem;
 import net.danygames2014.tropicraft.item.food.FoodChunkItem;
 import net.danygames2014.tropicraft.item.food.PinaColadaItem;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.glasslauncher.mods.gcapi3.api.ConfigRoot;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.achievement.Achievement;
@@ -207,7 +209,7 @@ public class Tropicraft {
         coconut = new CoconutBlock(NAMESPACE.id("coconut"), Material.WOOD).setTranslationKey(NAMESPACE, "coconut").setHardness(0.5F).setResistance(0.1F).setSoundGroup(Block.WOOD_SOUND_GROUP);
 
         // Fruit Leaves
-        fruitTreeLeaves = new FruitTreeLeavesBlock(NAMESPACE.id("fruit_tree_leaves")).setTranslationKey(NAMESPACE, "fruit_tree_leaves").setHardness(0.2F).setResistance(0.1F).setSoundGroup(Block.DIRT_SOUND_GROUP);
+        //fruitTreeLeaves = new FruitTreeLeavesBlock(NAMESPACE.id("fruit_tree_leaves")).setTranslationKey(NAMESPACE, "fruit_tree_leaves").setHardness(0.2F).setResistance(0.1F).setSoundGroup(Block.DIRT_SOUND_GROUP);
 
         // Chunk o' Head
         chunkOHead = new TemplateBlock(NAMESPACE.id("chunk_o_head"), Material.STONE).setTranslationKey(NAMESPACE, "chunk_o_head").setHardness(2.0F).setResistance(30.0F).setSoundGroup(Block.STONE_SOUND_GROUP);
@@ -370,6 +372,7 @@ public class Tropicraft {
         TropicraftAchievements.ACHIEVEMENTS.forEach(Stat::addStat);
     }
 
+    @Environment(EnvType.CLIENT)
     @EventListener
     public void onTextureRegister(TextureRegisterEvent event){
         ExpandableAtlas atlas = Atlases.getTerrain();
