@@ -97,7 +97,7 @@ public class EIHEntity extends AttackingAnimalEntity implements MobSpawnDataProv
 
         if (damageSource instanceof PlayerEntity player) {
             ItemStack heldItem = player.getHand();
-            if (heldItem == null || !heldItem.isSuitableFor(Block.IRON_BLOCK.getDefaultState())) {
+            if (heldItem == null || !heldItem.isSuitableFor(Block.IRON_BLOCK)) {
                 world.playSound(this, "tropicraft:entity.eih.laugh", 1.0F, 1.2F / (random.nextFloat() * 0.2F + 0.9F));
             } else {
                 super.damage(damageSource, amount);
