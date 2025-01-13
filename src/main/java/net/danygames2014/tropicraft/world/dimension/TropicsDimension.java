@@ -13,13 +13,18 @@ public class TropicsDimension extends Dimension implements TravelMessageProvider
     }
 
     @Override
+    protected void initBiomeSource() {
+        biomeSource = new TropicsBiomeSource();
+    }
+    
+    @Override
     public String getEnteringTranslationKey() {
-        return "dim.tropicraft:tropics.entering";
+        return "dim.tropicraft.tropics.entering";
     }
 
     @Override
     public String getLeavingTranslationKey() {
-        return "dim.tropicraft:tropics.leaving";
+        return "dim.tropicraft.tropics.leaving";
     }
 
     // Chunk Provider

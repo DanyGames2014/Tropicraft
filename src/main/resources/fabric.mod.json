@@ -19,7 +19,8 @@
       "net.danygames2014.tropicraft.Tropicraft",
       "net.danygames2014.tropicraft.world.ChunkDecorationListener",
       "net.danygames2014.tropicraft.init.InitListener",
-      "net.danygames2014.tropicraft.init.EntitySpawnListener"
+      "net.danygames2014.tropicraft.init.EntitySpawnListener",
+      "net.danygames2014.tropicraft.init.BiomeListener"
     ],
     "stationapi:event_bus_client": [
       "net.danygames2014.tropicraft.init.ColorizerListener"
@@ -40,6 +41,10 @@
     "tropicraft.mixins.json"
   ],
 
+  "suggests": {
+    "retrocommands": "*"
+  },
+  
   "depends": {
     "minecraft": "1.0.0-beta.7.3"
   }
