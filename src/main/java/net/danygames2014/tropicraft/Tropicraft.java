@@ -337,6 +337,7 @@ public class Tropicraft {
         Registry.register(event.registry, NAMESPACE.id("tropiskeleton"), TropiSkeletonEntity::new);
     }
 
+    @Environment(EnvType.CLIENT)
     @EventListener
     public void registerEntityRenderer(EntityRendererRegisterEvent event) {
         event.renderers.put(BeachChairEntity.class, new BeachChairRenderer());
@@ -356,6 +357,7 @@ public class Tropicraft {
         event.register(SifterBlockEntity.class, "sifter");
     }
 
+    @Environment(EnvType.CLIENT)
     @EventListener
     public void registerBlockEntityRenderer(BlockEntityRendererRegisterEvent event){
         event.renderers.put(SifterBlockEntity.class, new SifterBlockEntityRenderer());
