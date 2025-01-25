@@ -1,6 +1,6 @@
 package net.danygames2014.tropicraft.mixin.records;
 
-import com.llamalad7.mixinextras.injector.WrapWithCondition;
+import com.llamalad7.mixinextras.injector.v2.WrapWithCondition;
 import net.danygames2014.tropicraft.item.TropiRecordItem;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
