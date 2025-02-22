@@ -72,7 +72,6 @@ repositories {
 }
 
 dependencies {
-    // To change the versions see the gradle.properties file
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
     mappings "net.glasslauncher:biny:${project.yarn_mappings}:v2"
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
@@ -103,11 +102,15 @@ dependencies {
         transitive false
     }
 
-    modImplementation("com.github.paulevsGitch:BHCreative:${project.bhcreative_version}") {
+    modImplementation("net.danygames2014:spawneggs:${project.spawneggs_version}") {
         transitive false
     }
 
-    modImplementation("net.danygames2014:spawneggs:${project.spawneggs_version}") {
+    modImplementation("maven.modrinth:bh-creative:${project.bhcreative_version}-fabric,b1.7.3") {
+        transitive false
+    }
+
+    modRuntimeOnly("maven.modrinth:retroauth:${project.retroauth_version}-fabric,b1.7.3") {
         transitive false
     }
 
