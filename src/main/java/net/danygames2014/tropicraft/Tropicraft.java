@@ -5,9 +5,9 @@ import net.danygames2014.tropicraft.achievement.TropicraftAchievements;
 import net.danygames2014.tropicraft.block.*;
 import net.danygames2014.tropicraft.block.bamboochest.BambooChestBlock;
 import net.danygames2014.tropicraft.block.sifter.SifterBlock;
-import net.danygames2014.tropicraft.block.template.*;
 import net.danygames2014.tropicraft.block.sifter.SifterBlockEntity;
 import net.danygames2014.tropicraft.block.sifter.SifterBlockEntityRenderer;
+import net.danygames2014.tropicraft.block.template.*;
 import net.danygames2014.tropicraft.entity.*;
 import net.danygames2014.tropicraft.entity.renderer.*;
 import net.danygames2014.tropicraft.event.SiftingRecipeRegisterEvent;
@@ -16,7 +16,6 @@ import net.danygames2014.tropicraft.item.ColorClonerItem;
 import net.danygames2014.tropicraft.item.ShellItem;
 import net.danygames2014.tropicraft.item.TropiRecordItem;
 import net.danygames2014.tropicraft.item.armor.ScaleArmorItem;
-import net.danygames2014.tropicraft.item.food.FoodChunkItem;
 import net.danygames2014.tropicraft.item.food.PinaColadaItem;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -136,7 +135,7 @@ public class Tropicraft {
 
     // Drinks
     public static Item pinaColada;
-    
+
     // Food
     public static Block frogBlock;
     public static Item frogLeg;
@@ -178,7 +177,7 @@ public class Tropicraft {
         // Bamboo
         bambooShootBlock = new BambooShootBlock(NAMESPACE.id("bamboo_shoot")).setTranslationKey(NAMESPACE, "bamboo_block").disableAutoItemRegistration().setSoundGroup(Block.DIRT_SOUND_GROUP);
         bambooBundle = new RotateableBlockTemplate(NAMESPACE.id("bamboo_bundle"), Material.WOOD).setTranslationKey(NAMESPACE, "bamboo_bundle").setHardness(1.0F).setResistance(0.1F).setSoundGroup(Block.WOOD_SOUND_GROUP);
-        bambooPlanks = new TemplateBlock(NAMESPACE.id("bamboo_planks"), Material.WOOD). setTranslationKey(NAMESPACE, "bamboo_planks").setHardness(1.0F).setResistance(0.1F).setSoundGroup(Block.WOOD_SOUND_GROUP);
+        bambooPlanks = new TemplateBlock(NAMESPACE.id("bamboo_planks"), Material.WOOD).setTranslationKey(NAMESPACE, "bamboo_planks").setHardness(1.0F).setResistance(0.1F).setSoundGroup(Block.WOOD_SOUND_GROUP);
         bambooStairs = new StairsBlockTemplate(NAMESPACE.id("bamboo_stairs"), bambooBundle).setTranslationKey(NAMESPACE, "bamboo_stairs").setHardness(1.0F).setResistance(0.1F).setSoundGroup(Block.WOOD_SOUND_GROUP);
         bambooSlab = new SlabBlockTemplate(NAMESPACE.id("bamboo_slab"), bambooBundle).setTranslationKey(NAMESPACE, "bamboo_slab").setHardness(1.0F).setResistance(0.1F).setSoundGroup(Block.WOOD_SOUND_GROUP);
         bambooFence = new FenceBlockTemplate(NAMESPACE.id("bamboo_fence"), bambooBundle).setTranslationKey(NAMESPACE, "bamboo_fence").setHardness(1.0F).setResistance(0.1F).setSoundGroup(Block.WOOD_SOUND_GROUP);
@@ -250,17 +249,17 @@ public class Tropicraft {
         bambooStickItem = new TemplateItem(NAMESPACE.id("bamboo_stick")).setTranslationKey(NAMESPACE, "bamboo_stick");
 
         // Coconut
-        coconutChunk = new FoodChunkItem(NAMESPACE.id("coconut_chunk")).setTranslationKey(NAMESPACE, "coconut_chunk");
+        coconutChunk = new TemplateStackableFoodItem(NAMESPACE.id("coconut_chunk"), 1, false, 16).setTranslationKey(NAMESPACE, "coconut_chunk");
 
         // Pineapple
-        pineappleCubes = new FoodChunkItem(NAMESPACE.id("pineapple_cubes")).setTranslationKey(NAMESPACE, "pineapple_cubes");
+        pineappleCubes = new TemplateStackableFoodItem(NAMESPACE.id("pineapple_cubes"),1,false,16).setTranslationKey(NAMESPACE, "pineapple_cubes");
 
         // Drinks
         pinaColada = new PinaColadaItem(NAMESPACE.id("pina_colada")).setTranslationKey(NAMESPACE, "pina_colada");
 
         // Food
         frogLeg = new TemplateItem(NAMESPACE.id("frog_leg")).setTranslationKey(NAMESPACE, "frog_leg");
-        cookedFrogLeg = new TemplateStackableFoodItem(NAMESPACE.id("cooked_frog_leg"),3,true,16).setTranslationKey(NAMESPACE, "cooked_frog_leg");
+        cookedFrogLeg = new TemplateStackableFoodItem(NAMESPACE.id("cooked_frog_leg"), 3, true, 16).setTranslationKey(NAMESPACE, "cooked_frog_leg");
 
         // Beach Equipment
         colorCloner = new ColorClonerItem(NAMESPACE.id("color_cloner")).setTranslationKey(NAMESPACE, "color_cloner");
@@ -306,12 +305,12 @@ public class Tropicraft {
         event.register(BeachChairEntity.class, "beach_chair");
         event.register(IguanaEntity.class, "iguana");
         event.register(EIHEntity.class, "eih");
-        event.register(FrogEntity.class,"frog");
+        event.register(FrogEntity.class, "frog");
         event.register(RedPoisonousFrogEntity.class, "red_poison_frog");
         event.register(BluePoisonousFrogEntity.class, "blue_poison_frog");
         event.register(YellowPoisonousFrogEntity.class, "yellow_poison_frog");
-        event.register(PoisonBlotEntity.class,"poison_blot");
-        event.register(TropiCreeperEntity.class,"tropicreeper");
+        event.register(PoisonBlotEntity.class, "poison_blot");
+        event.register(TropiCreeperEntity.class, "tropicreeper");
         event.register(TropiSkeletonEntity.class, "tropiskeleton");
     }
 
@@ -349,23 +348,23 @@ public class Tropicraft {
     }
 
     @EventListener
-    public void registerBlockEntity(BlockEntityRegisterEvent event){
+    public void registerBlockEntity(BlockEntityRegisterEvent event) {
         event.register(SifterBlockEntity.class, "sifter");
     }
 
     @Environment(EnvType.CLIENT)
     @EventListener
-    public void registerBlockEntityRenderer(BlockEntityRendererRegisterEvent event){
+    public void registerBlockEntityRenderer(BlockEntityRendererRegisterEvent event) {
         event.renderers.put(SifterBlockEntity.class, new SifterBlockEntityRenderer());
     }
 
     @EventListener
-    public void sendSiftingRecipeRegisterEvent(AfterBlockAndItemRegisterEvent event){
+    public void sendSiftingRecipeRegisterEvent(AfterBlockAndItemRegisterEvent event) {
         StationAPI.EVENT_BUS.post(new SiftingRecipeRegisterEvent());
     }
 
     @EventListener
-    public void registerAchievements(AchievementRegisterEvent event){
+    public void registerAchievements(AchievementRegisterEvent event) {
         achievementPage = new TropicraftAchievementPage(NAMESPACE.id("tropicraft"));
         event.achievements.addAll(TropicraftAchievements.ACHIEVEMENTS);
         achievementPage.addAchievements(TropicraftAchievements.ACHIEVEMENTS.toArray(Achievement[]::new));
@@ -374,7 +373,7 @@ public class Tropicraft {
 
     @Environment(EnvType.CLIENT)
     @EventListener
-    public void onTextureRegister(TextureRegisterEvent event){
+    public void onTextureRegister(TextureRegisterEvent event) {
         ExpandableAtlas atlas = Atlases.getTerrain();
 
         achievementPage.updateTextures(atlas);

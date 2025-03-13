@@ -13,20 +13,31 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(PlayerEntity.class)
-public abstract class PlayerEntityMixin extends LivingEntity{
+public abstract class PlayerEntityMixin extends LivingEntity {
 
-    @Shadow public abstract ItemStack getHand();
+    @Shadow
+    public abstract ItemStack getHand();
 
     public PlayerEntityMixin(World world) {
         super(world);
     }
 
     @Inject(method = "interact", at = @At(value = "HEAD"), cancellable = true)
-    public void interactWithEntity(Entity entity, CallbackInfo ci){
+    public void interactWithEntity(Entity entity, CallbackInfo ci) {
         ItemStack stack = this.getHand();
         if (stack != null && stack.getItem() instanceof EntityInteractor interactor) {
             interactor.interactWithEntity(stack, entity, PlayerEntity.class.cast(this));
             ci.cancel();
+        }
+    }
+
+    @Inject(method = "attack", at = @At(value = "HEAD"), cancellable = true)
+    public void attackEntity(Entity entity, CallbackInfo ci) {
+        ItemStack stack = this.getHand();
+        if (stack != null && stack.getItem() instanceof EntityInteractor interactor) {
+            if (!interactor.attackEntity(stack, entity, PlayerEntity.class.cast(this))) {
+                ci.cancel();
+            }
         }
     }
 }
