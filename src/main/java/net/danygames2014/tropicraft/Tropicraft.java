@@ -17,6 +17,7 @@ import net.danygames2014.tropicraft.item.ShellItem;
 import net.danygames2014.tropicraft.item.TropiRecordItem;
 import net.danygames2014.tropicraft.item.armor.ScaleArmorItem;
 import net.danygames2014.tropicraft.item.food.PinaColadaItem;
+import net.danygames2014.tropicraft.world.dimension.TropicsDimension;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.glasslauncher.mods.gcapi3.api.ConfigRoot;
@@ -37,6 +38,8 @@ import net.modificationstation.stationapi.api.event.block.entity.BlockEntityRegi
 import net.modificationstation.stationapi.api.event.entity.EntityRegister;
 import net.modificationstation.stationapi.api.event.registry.*;
 import net.modificationstation.stationapi.api.mod.entrypoint.Entrypoint;
+import net.modificationstation.stationapi.api.registry.DimensionContainer;
+import net.modificationstation.stationapi.api.registry.DimensionRegistry;
 import net.modificationstation.stationapi.api.registry.Registry;
 import net.modificationstation.stationapi.api.template.block.TemplateBlock;
 import net.modificationstation.stationapi.api.template.block.TemplateSandBlock;
@@ -316,20 +319,20 @@ public class Tropicraft {
 
     @EventListener
     public void registerEntityHandlers(EntityHandlerRegistryEvent event) {
-        Registry.register(event.registry, NAMESPACE.id("beach_chair"), BeachChairEntity::new);
-        Registry.register(event.registry, NAMESPACE.id("poison_blot"), PoisonBlotEntity::new);
+        event.register(NAMESPACE.id("beach_chair"), BeachChairEntity::new);
+        event.register(NAMESPACE.id("poison_blot"), PoisonBlotEntity::new);
     }
 
     @EventListener
     public void registerMobHandlers(MobHandlerRegistryEvent event) {
-        Registry.register(event.registry, NAMESPACE.id("iguana"), IguanaEntity::new);
-        Registry.register(event.registry, NAMESPACE.id("eih"), EIHEntity::new);
-        Registry.register(event.registry, NAMESPACE.id("frog"), FrogEntity::new);
-        Registry.register(event.registry, NAMESPACE.id("red_poison_frog"), RedPoisonousFrogEntity::new);
-        Registry.register(event.registry, NAMESPACE.id("blue_poison_frog"), BluePoisonousFrogEntity::new);
-        Registry.register(event.registry, NAMESPACE.id("yellow_poison_frog"), YellowPoisonousFrogEntity::new);
-        Registry.register(event.registry, NAMESPACE.id("tropicreeper"), TropiCreeperEntity::new);
-        Registry.register(event.registry, NAMESPACE.id("tropiskeleton"), TropiSkeletonEntity::new);
+        event.register(NAMESPACE.id("iguana"), IguanaEntity::new);
+        event.register(NAMESPACE.id("eih"), EIHEntity::new);
+        event.register(NAMESPACE.id("frog"), FrogEntity::new);
+        event.register(NAMESPACE.id("red_poison_frog"), RedPoisonousFrogEntity::new);
+        event.register(NAMESPACE.id("blue_poison_frog"), BluePoisonousFrogEntity::new);
+        event.register(NAMESPACE.id("yellow_poison_frog"), YellowPoisonousFrogEntity::new);
+        event.register(NAMESPACE.id("tropicreeper"), TropiCreeperEntity::new);
+        event.register(NAMESPACE.id("tropiskeleton"), TropiSkeletonEntity::new);
     }
 
     @Environment(EnvType.CLIENT)
@@ -377,6 +380,5 @@ public class Tropicraft {
         ExpandableAtlas atlas = Atlases.getTerrain();
 
         achievementPage.updateTextures(atlas);
-
     }
 }

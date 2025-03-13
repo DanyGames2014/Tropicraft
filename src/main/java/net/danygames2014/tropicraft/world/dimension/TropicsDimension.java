@@ -27,7 +27,6 @@ public class TropicsDimension extends Dimension implements TravelMessageProvider
         return "dim.tropicraft.tropics.leaving";
     }
 
-    // Chunk Provider
     @Override
     public ChunkSource createChunkGenerator() {
         return new ChunkProviderTropics(this.world, this.world.getSeed());
