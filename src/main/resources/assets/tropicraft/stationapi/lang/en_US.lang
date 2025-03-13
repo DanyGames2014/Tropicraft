@@ -11,6 +11,7 @@ tile.tropicraft.bamboo_chest.name=Bamboo Chest
 
 ## Palm
 tile.tropicraft.palm_log.name=Palm Wood
+tile.tropicraft.palm_sapling.name=Palm Sapling
 tile.tropicraft.palm_leaves.name=Palm Leaves
 tile.tropicraft.palm_planks.name=Palm Planks
 tile.tropicraft.palm_stairs.name=Palm Stairs
@@ -68,6 +69,8 @@ item.tropicraft.bamboo.name=Bamboo Shoot
 item.tropicraft.bamboo_stick.name=Bamboo Stick
 
 ## Beach Equipment
+item.tropicraft.color_cloner.name=Color Cloner
+
 item.tropicraft.black_beach_chair.name=Black Beach Chair
 item.tropicraft.red_beach_chair.name=Red Beach Chair
 item.tropicraft.green_beach_chair.name=Green Beach Chair
