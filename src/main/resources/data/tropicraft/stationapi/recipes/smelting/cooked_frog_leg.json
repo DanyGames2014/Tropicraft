@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "tropicraft:frog_leg"
+  },
+  "result": {
+    "item": "tropicraft:cooked_frog_leg",
+    "count": 1
+  }
+}

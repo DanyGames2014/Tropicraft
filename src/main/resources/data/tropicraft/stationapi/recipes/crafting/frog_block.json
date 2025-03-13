@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    "rcr",
+    "crc",
+    "rcr"
+  ],
+  "key":
+  {
+    "r":
+    {
+      "item": "tropicraft:frog_leg"
+    },
+    "c":
+    {
+      "item": "tropicraft:cooked_frog_leg"
+    }
+  },
+  "result":
+  {
+    "item": "tropicraft:frog_block",
+    "count": 1
+  }
+}
