@@ -1,8 +1,11 @@
 package net.danygames2014.tropicraft.world.dimension;
 
 import net.danygames2014.tropicraft.Tropicraft;
+import net.danygames2014.tropicraft.init.BiomeListener;
+import net.minecraft.block.Block;
 import net.minecraft.client.gui.screen.LoadingDisplay;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.ChunkSource;
 import net.modificationstation.stationapi.impl.world.chunk.FlattenedChunk;
@@ -32,10 +35,32 @@ public class ChunkProviderTropics implements ChunkSource {
     public Chunk getChunk(int chunkX, int chunkZ) {
         FlattenedChunk chunk = new FlattenedChunk(world, chunkX, chunkZ);
 
-        for (int y = 0; y < 50; y++) {
+        // Place Bedrock Layer
+        for (int x = 0; x < 16; x++) {
+            for (int z = 0; z < 16; z++) {
+                chunk.setBlockState(x, 0, z, Block.BEDROCK.getDefaultState());
+            }
+        }
+
+        // Every other layer
+        for (int y = 1; y < 50; y++) {
             for (int x = 0; x < 16; x++) {
                 for (int z = 0; z < 16; z++) {
-                    chunk.setBlockState(x, y, z, Tropicraft.bambooBundle.getDefaultState());
+                    Biome biome = this.world.method_1781().getBiome((chunkX << 4) + x, (chunkZ << 4) + z);
+
+                    if (biome == BiomeListener.TROPICS) {
+                        chunk.setBlockState(x, y, z, Block.GRASS_BLOCK.getDefaultState());
+                    } else if (biome == BiomeListener.TROPICS_DUNES) {
+                        chunk.setBlockState(x, y, z, Tropicraft.purifiedSand.getDefaultState());
+                    } else if (biome == BiomeListener.TROPICS_OCEAN) {
+                        chunk.setBlockState(x, y, z, Block.DIAMOND_BLOCK.getDefaultState());
+                    } else if (biome == BiomeListener.TROPICS_DEEP_OCEAN) {
+                        chunk.setBlockState(x, y, z, Block.LAPIS_BLOCK.getDefaultState());
+                    } else if (biome == BiomeListener.TROPICS_ISLAND) {
+                        chunk.setBlockState(x, y, z, Block.GOLD_BLOCK.getDefaultState());
+                    } else {
+                        chunk.setBlockState(x, y, z, Block.BEDROCK.getDefaultState());
+                    }
                 }
             }
         }

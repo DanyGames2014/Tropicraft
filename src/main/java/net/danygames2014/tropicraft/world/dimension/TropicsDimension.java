@@ -14,7 +14,7 @@ public class TropicsDimension extends Dimension implements TravelMessageProvider
 
     @Override
     protected void initBiomeSource() {
-        biomeSource = new TropicsBiomeSource();
+        biomeSource = new TropicsBiomeSource(this.world);
     }
     
     @Override

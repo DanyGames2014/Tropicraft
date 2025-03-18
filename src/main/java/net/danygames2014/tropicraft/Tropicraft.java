@@ -39,8 +39,6 @@ import net.modificationstation.stationapi.api.event.entity.EntityRegister;
 import net.modificationstation.stationapi.api.event.registry.*;
 import net.modificationstation.stationapi.api.mod.entrypoint.Entrypoint;
 import net.modificationstation.stationapi.api.registry.DimensionContainer;
-import net.modificationstation.stationapi.api.registry.DimensionRegistry;
-import net.modificationstation.stationapi.api.registry.Registry;
 import net.modificationstation.stationapi.api.template.block.TemplateBlock;
 import net.modificationstation.stationapi.api.template.block.TemplateSandBlock;
 import net.modificationstation.stationapi.api.template.item.BlockStateItem;
@@ -255,7 +253,7 @@ public class Tropicraft {
         coconutChunk = new TemplateStackableFoodItem(NAMESPACE.id("coconut_chunk"), 1, false, 16).setTranslationKey(NAMESPACE, "coconut_chunk");
 
         // Pineapple
-        pineappleCubes = new TemplateStackableFoodItem(NAMESPACE.id("pineapple_cubes"),1,false,16).setTranslationKey(NAMESPACE, "pineapple_cubes");
+        pineappleCubes = new TemplateStackableFoodItem(NAMESPACE.id("pineapple_cubes"), 1, false, 16).setTranslationKey(NAMESPACE, "pineapple_cubes");
 
         // Drinks
         pinaColada = new PinaColadaItem(NAMESPACE.id("pina_colada")).setTranslationKey(NAMESPACE, "pina_colada");
@@ -299,8 +297,7 @@ public class Tropicraft {
 
     @EventListener
     public void registerDimension(DimensionRegistryEvent event) {
-//        DimensionRegistry registry = event.registry;
-//        event.registry.register(NAMESPACE.id("tropics"), new DimensionContainer<>(TropicsDimension::new));
+        event.registry.register(NAMESPACE.id("tropics"), new DimensionContainer<>(TropicsDimension::new));
     }
 
     @EventListener
