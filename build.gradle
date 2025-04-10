@@ -2,9 +2,9 @@
 //file:noinspection GroovyUnusedAssignment
 //file:noinspection ForeignDelegate
 plugins {
-    id 'fabric-loom' version '1.9.2'
-    id 'babric-loom-extension' version '1.9.2'
     id 'maven-publish'
+    id 'fabric-loom' version '1.10.1'
+    id 'babric-loom-extension' version '1.10.1'
 }
 
 sourceCompatibility = JavaVersion.VERSION_17

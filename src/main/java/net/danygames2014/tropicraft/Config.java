@@ -25,7 +25,7 @@ public class Config {
             @ConfigEntry(name = "Generate Palms")
             public Boolean generatePalms = true;
 
-            @ConfigEntry(name = "Palm Generation Chance", comment = "Chance is 1/value. Ex: 5 -> 1/5 = 20%")
+            @ConfigEntry(name = "Palm Generation Chance", minLength = 1, maxLength = 500, comment = "Chance is 1/value. Ex: 5 -> 1/5 = 20%")
             public Integer palmGenChance = 4;
         }
 
@@ -33,19 +33,19 @@ public class Config {
             @ConfigEntry(name = "Generate Bamboo")
             public Boolean generateBamboo = true;
 
-            @ConfigEntry(name = "Bamboo Generation Chance", comment = "Chance is 1/value. Ex: 5 -> 1/5 = 20%")
+            @ConfigEntry(name = "Bamboo Generation Chance", minLength = 1, maxLength = 500, comment = "Chance is 1/value. Ex: 5 -> 1/5 = 20%")
             public Integer bambooGenChance = 30;
 
-            @ConfigEntry(name = "Minimum Bamboo Height")
+            @ConfigEntry(name = "Minimum Bamboo Height", minLength = 1, maxLength = 32)
             public Integer minBambooHeight = 4;
 
-            @ConfigEntry(name = "Maximum Bamboo Height")
+            @ConfigEntry(name = "Maximum Bamboo Height", minLength = 1, maxLength = 64)
             public Integer maxBambooHeight = 11;
 
-            @ConfigEntry(name = "Minimum Bamboo Count")
+            @ConfigEntry(name = "Minimum Bamboo Count", minLength = 1, maxLength = 128)
             public Integer minBambooCount = 60;
 
-            @ConfigEntry(name = "Maximum Bamboo Count")
+            @ConfigEntry(name = "Maximum Bamboo Count", minLength = 1, maxLength = 256)
             public Integer maxBambooCount = 120;
         }
 
@@ -53,13 +53,13 @@ public class Config {
             @ConfigEntry(name = "Generate Flowers")
             public Boolean generateFlowers = true;
 
-            @ConfigEntry(name = "Flower Generation Chance", comment = "Chance is 1/value. Ex: 5 -> 1/5 = 20%")
+            @ConfigEntry(name = "Flower Generation Chance", minLength = 1, maxLength = 500, comment = "Chance is 1/value. Ex: 5 -> 1/5 = 20%")
             public Integer flowerGenChance = 8;
 
-            @ConfigEntry(name = "Minimum Flowers")
+            @ConfigEntry(name = "Minimum Flowers", minLength = 1, maxLength = 32)
             public Integer minimumFlowers = 7;
 
-            @ConfigEntry(name = "Maximum Flowers")
+            @ConfigEntry(name = "Maximum Flowers", minLength = 1, maxLength = 64)
             public Integer maximumFlowers = 15;
         }
 
@@ -67,13 +67,13 @@ public class Config {
             @ConfigEntry(name = "Generate Pineapples")
             public Boolean generatePineapples = true;
 
-            @ConfigEntry(name = "Pineapple Generation Chance", comment = "Chance is 1/value. Ex: 5 -> 1/5 = 20%")
+            @ConfigEntry(name = "Pineapple Generation Chance", minLength = 1, maxLength = 500, comment = "Chance is 1/value. Ex: 5 -> 1/5 = 20%")
             public Integer pineappleGenChance = 10;
 
-            @ConfigEntry(name = "Minimum Pineapples")
+            @ConfigEntry(name = "Minimum Pineapples", minLength = 1, maxLength = 32)
             public Integer minimumPineapples = 1;
 
-            @ConfigEntry(name = "Maximum Pineapples")
+            @ConfigEntry(name = "Maximum Pineapples", minLength = 1, maxLength = 64)
             public Integer maximumPineapples = 5;
         }
 
@@ -81,7 +81,7 @@ public class Config {
             @ConfigEntry(name = "Generate Island Heads")
             public Boolean generateIslandHeads = true;
 
-            @ConfigEntry(name = "Island Head Generation Chance", comment = "Chance is 1/value. Ex: 5 -> 1/100 = 1%")
+            @ConfigEntry(name = "Island Head Generation Chance", minLength = 1, maxLength = 500, comment = "Chance is 1/value. Ex: 5 -> 1/100 = 1%")
             public Integer islandHeadGenChance = 200;
         }
     }
