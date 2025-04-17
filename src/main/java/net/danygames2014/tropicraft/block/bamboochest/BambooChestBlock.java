@@ -30,7 +30,13 @@ public class BambooChestBlock extends TemplateChestBlock {
     @Override
     public void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         super.appendProperties(builder);
-        builder.add(Properties.HORIZONTAL_FACING);
+        // If this fails, another mod (probably VBE) already registered a facing property on the Chest Block itself
+        try {
+            builder.add(Properties.HORIZONTAL_FACING);
+        } catch (IllegalArgumentException ignored) {
+            
+        }
+        
         builder.add(CHEST_TYPE);
     }
 
