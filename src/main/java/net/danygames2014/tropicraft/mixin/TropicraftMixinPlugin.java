@@ -57,7 +57,7 @@ public class TropicraftMixinPlugin implements IMixinConfigPlugin {
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
         if (mixinClassName.equals("net.danygames2014.tropicraft.mixin.records.MusicDiscItemMixin")) {
-            return FabricLoader.getInstance().isModLoaded("musicdiscs");
+            return !FabricLoader.getInstance().isModLoaded("musicdiscs");
         }
 
         return true;
