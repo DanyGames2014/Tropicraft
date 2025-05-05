@@ -20,7 +20,7 @@ public class MusicDiscItemMixin extends Item implements CustomTooltipProvider {
 
     @Override
     public String[] getTooltip(ItemStack itemStack, String originalTooltip) {
-        if (Tropicraft.WORLDGEN_CONFIG.enableModernMusicDiscTooltips) {
+        if (Tropicraft.OTHER_CONFIG.enableModernMusicDiscTooltips) {
             return new String[]{"§b" + originalTooltip, "§7C418 - " + sound};
         } else {
             return new String[]{originalTooltip};

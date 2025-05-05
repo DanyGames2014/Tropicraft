@@ -17,7 +17,7 @@ public class TropiRecordItem extends TemplateMusicDiscItem implements CustomTool
 
     @Override
     public String[] getTooltip(ItemStack itemStack, String originalTooltip) {
-        if (Tropicraft.WORLDGEN_CONFIG.enableModernMusicDiscTooltips) {
+        if (Tropicraft.OTHER_CONFIG.enableModernMusicDiscTooltips) {
             return new String[]{"§b" + I18n.getTranslation("item.record.name"), "§7" + jukeboxMessage};
         } else {
             return new String[]{originalTooltip};

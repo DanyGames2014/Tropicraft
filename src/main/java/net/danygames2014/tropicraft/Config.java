@@ -21,9 +21,6 @@ public class Config {
         @ConfigCategory(name = "Island Head")
         public IslandHeadWorldgenConfig islandHead = new IslandHeadWorldgenConfig();
 
-        @ConfigEntry(name = "Enable Modern Music Disc Tooltips")
-        public Boolean enableModernMusicDiscTooltips = true;
-
         public static class PalmWorldgenConfig {
             @ConfigEntry(name = "Generate Palms")
             public Boolean generatePalms = true;
@@ -87,5 +84,10 @@ public class Config {
             @ConfigEntry(name = "Island Head Generation Chance", minLength = 1, maxLength = 500, comment = "Chance is 1/value. Ex: 5 -> 1/100 = 1%")
             public Integer islandHeadGenChance = 200;
         }
+    }
+
+    public static class OtherConfig {
+        @ConfigEntry(name = "Enable Modern Music Disc Tooltips")
+        public Boolean enableModernMusicDiscTooltips = true;
     }
 }

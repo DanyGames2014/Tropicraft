@@ -53,8 +53,11 @@ public class Tropicraft {
     @Entrypoint.Namespace
     public static Namespace NAMESPACE;
 
-    @ConfigRoot(value = "worldgen", visibleName = "Worldgen")
+    @ConfigRoot(value = "worldgen", visibleName = "Worldgen", index = 0)
     public static final Config.WorldgenConfig WORLDGEN_CONFIG = new Config.WorldgenConfig();
+
+    @ConfigRoot(value = "other", visibleName = "Other")
+    public static final Config.OtherConfig OTHER_CONFIG = new Config.OtherConfig();
 
     // Achievement Page
     public static TropicraftAchievementPage achievementPage;
