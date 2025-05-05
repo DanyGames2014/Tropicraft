@@ -85,4 +85,9 @@ public class Config {
             public Integer islandHeadGenChance = 200;
         }
     }
+
+    public static class OtherConfig {
+        @ConfigEntry(name = "Enable Modern Music Disc Tooltips")
+        public Boolean enableModernMusicDiscTooltips = true;
+    }
 }

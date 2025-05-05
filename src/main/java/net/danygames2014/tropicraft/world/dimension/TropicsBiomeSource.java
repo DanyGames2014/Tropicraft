@@ -30,12 +30,12 @@ public class TropicsBiomeSource extends BiomeSource {
         double sample = noiseSampler.samplePoint(x, z, 0.25D, 0.25D);
 
         if (sample <= lowest) {
-            System.out.println("LOWEST: " + lowest + " | HIGHEST: " + highest);
+            //System.out.println("LOWEST: " + lowest + " | HIGHEST: " + highest);
             lowest = sample;
         }
 
         if (sample >= highest) {
-            System.out.println("LOWEST: " + lowest + " | HIGHEST: " + highest);
+            //System.out.println("LOWEST: " + lowest + " | HIGHEST: " + highest);
             highest = sample;
         }
 
