@@ -21,6 +21,9 @@ public class Config {
         @ConfigCategory(name = "Island Head")
         public IslandHeadWorldgenConfig islandHead = new IslandHeadWorldgenConfig();
 
+        @ConfigEntry(name = "Enable Modern Music Disc Tooltips")
+        public Boolean enableModernMusicDiscTooltips = true;
+
         public static class PalmWorldgenConfig {
             @ConfigEntry(name = "Generate Palms")
             public Boolean generatePalms = true;

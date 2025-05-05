@@ -9,12 +9,13 @@
     "achievements.ItemEntityMixin",
     "scalearmor.EntityMixin",
     "scalearmor.LivingEntityMixin",
-    "scalearmor.PlayerEntityMixin"
-  ],
-  "server": [
+    "scalearmor.PlayerEntityMixin",
     "records.MusicDiscItemMixin"
   ],
+  "server": [
+  ],
   "client": [
+    "records.WorldRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1
