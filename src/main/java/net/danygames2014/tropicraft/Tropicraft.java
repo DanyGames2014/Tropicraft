@@ -297,7 +297,7 @@ public class Tropicraft {
 
     @EventListener
     public void registerDimension(DimensionRegistryEvent event) {
-        event.registry.register(NAMESPACE.id("tropics"), new DimensionContainer<>(TropicsDimension::new));
+        //event.registry.register(NAMESPACE.id("tropics"), new DimensionContainer<>(TropicsDimension::new));
     }
 
     @EventListener
