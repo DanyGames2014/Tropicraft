@@ -5,6 +5,7 @@ plugins {
     id 'maven-publish'
     id 'fabric-loom' version '1.10.5'
     id 'babric-loom-extension' version '1.10.2'
+    id "com.modrinth.minotaur" version "2.+"
 }
 
 sourceCompatibility = JavaVersion.VERSION_17
@@ -80,6 +81,7 @@ dependencies {
     implementation "org.apache.logging.log4j:log4j-slf4j18-impl:2.17.2"
     implementation "me.carleslc:Simple-Yaml:1.8.4"
 
+
     modImplementation "net.modificationstation:StationAPI:${project.stapi_version}"
 
     modImplementation("net.glasslauncher.mods:ModMenu:${project.modmenu_version}") {
@@ -98,7 +100,7 @@ dependencies {
         transitive false
     }
 
-    modImplementation("com.github.matthewperiut:retrocommands:${project.retrocommands_version}") {
+    modImplementation("maven.modrinth:retrocommands:${project.retrocommands_version}-b1.7.3") {
         transitive false
     }
 
@@ -106,19 +108,19 @@ dependencies {
         transitive false
     }
 
-    modImplementation("maven.modrinth:bh-creative:${project.bhcreative_version}-fabric,b1.7.3") {
+    modImplementation("maven.modrinth:bh-creative:${project.bhcreative_version}-b1.7.3") {
         transitive false
     }
 
-    modRuntimeOnly("maven.modrinth:retroauth:${project.retroauth_version}-fabric,b1.7.3") {
+    modRuntimeOnly("maven.modrinth:retroauth:${project.retroauth_version}-b1.7.3") {
         transitive false
     }
 
-    modRuntimeOnly("maven.modrinth:unitweaks:${project.unitweaks_version}-fabric,b1.7.3") {
+    modRuntimeOnly("maven.modrinth:unitweaks:${project.unitweaks_version}-b1.7.3") {
         transitive false
     }
 
-    modRuntimeOnly("maven.modrinth:fast-stapi-intro:2.0.0-fabric,b1.7.3") {
+    modRuntimeOnly("maven.modrinth:fast-stapi-intro:2.0.0-b1.7.3") {
         transitive false
     }
 }
@@ -133,15 +135,10 @@ processResources {
 }
 
 tasks.withType(JavaCompile).configureEach {
-    // Minecraft 1.18 (1.18-pre2) upwards uses Java 17.
-    // Loom also requires J17.
     it.options.release = 17
 }
 
 java {
-    // Loom will automatically attach sourcesJar to a RemapSourcesJar task and to the "build" task
-    // if it is present.
-    // If you remove this line, sources will not be generated.
     withSourcesJar()
 }
 
@@ -170,5 +167,22 @@ publishing {
         mavenJava(MavenPublication) {
             from components.java
         }
+    }
+}
+
+// Modrinth Publishing
+modrinth {
+    token = project.modrinth_publishing_cave
+    projectId = project.modrinth_slug
+    versionNumber = project.mod_version
+    versionName = "${project.modrinth_version_name} ${project.mod_version}"
+    changelog = rootProject.file("CHANGELOG.md").text
+    versionType = "release"
+    uploadFile = remapJar
+    gameVersions = ["b1.7.3"]
+    loaders = ["fabric", "babric"]
+    dependencies {
+        required.project "stationapi"
+        required.project "glass-config-api"
     }
 }
