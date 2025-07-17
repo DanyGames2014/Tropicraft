@@ -46,7 +46,7 @@ public class PlayerEntityMixin extends LivingEntityMixin {
     }
 
     @Override
-    public boolean entity_method_1332(Entity instance, Operation<Boolean> original) {
+    public boolean entity_setOnFire(Entity instance, Operation<Boolean> original) {
         return original.call(instance) || wearingScaleArmorSet;
     }
 
