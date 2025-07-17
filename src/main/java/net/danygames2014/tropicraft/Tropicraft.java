@@ -175,6 +175,10 @@ public class Tropicraft {
 
     @EventListener
     public void registerBlocks(BlockRegistryEvent event) {
+//        for (int i = 0; i < 512; i++) {
+//            new TemplateBlock(NAMESPACE.id("filler_" + i), Material.STONE).setTranslationKey(NAMESPACE.id("filler_" + i));
+//        }
+        
         // Bamboo
         bambooShootBlock = new BambooShootBlock(NAMESPACE.id("bamboo_shoot")).setTranslationKey(NAMESPACE, "bamboo_block").disableAutoItemRegistration().setSoundGroup(Block.DIRT_SOUND_GROUP);
         bambooBundle = new RotateableBlockTemplate(NAMESPACE.id("bamboo_bundle"), Material.WOOD).setTranslationKey(NAMESPACE, "bamboo_bundle").setHardness(1.0F).setResistance(0.1F).setSoundGroup(Block.WOOD_SOUND_GROUP);

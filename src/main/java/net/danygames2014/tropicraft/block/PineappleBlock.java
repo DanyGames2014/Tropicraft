@@ -110,6 +110,16 @@ public class PineappleBlock extends TemplateBlock {
     public List<ItemStack> getDropList(World world, int x, int y, int z, BlockState state, int meta) {
         ArrayList<ItemStack> drops = new ArrayList<>();
 
+        // TODO: Remove this temporary patch when https://github.com/ModificationStation/StationAPI/issues/210 is fixed
+        if(state.isAir()) {
+            if (chopped) {
+                drops.add(new ItemStack(Tropicraft.pineappleCubes, getRandomCubeCount(world.random)));
+            } else {
+                drops.add(new ItemStack(this, 1));
+            }
+            return drops;
+        }
+        
         if (state.get(PINEAPPLE_HALF) == PineappleHalf.TOP) {
             if (chopped) {
                 drops.add(new ItemStack(Tropicraft.pineappleCubes, getRandomCubeCount(world.random)));
