@@ -1,0 +1,1 @@
+* Fix breaking pineapple crashing the game

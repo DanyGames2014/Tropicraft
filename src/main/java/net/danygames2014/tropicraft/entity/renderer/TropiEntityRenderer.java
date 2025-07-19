@@ -40,7 +40,7 @@ public class TropiEntityRenderer extends LivingEntityRenderer {
             GL11.glTranslated(x,y,z);
 
             float animationProgress = this.getHeadBob(entity, delta);
-            this.getHandSwingProgress(entity, animationProgress, bodyYaw, delta);
+            this.applyHandSwingRotation(entity, animationProgress, bodyYaw, delta);
             float scale = 0.0625F;
             GL11.glEnable(32826);
             GL11.glScalef(-1.0F, -1.0F, 1.0F);
