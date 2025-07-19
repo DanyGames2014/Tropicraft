@@ -35,7 +35,7 @@ public class CoconutBlock extends TemplateBlock {
 
     @Override
     public int getDroppedItemId(int blockMeta, Random random) {
-        return chopped ? Tropicraft.coconutChunk.id : Tropicraft.coconut.id;
+        return chopped ? Tropicraft.coconutChunk.id : Tropicraft.coconut.asItem().id;
     }
 
     @Override

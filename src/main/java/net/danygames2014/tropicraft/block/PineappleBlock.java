@@ -94,7 +94,7 @@ public class PineappleBlock extends TemplateBlock {
 
     @Override
     public void onBlockBreakStart(World world, int x, int y, int z, PlayerEntity player) {
-        if ((player.inventory.getSelectedItem() != null) && (player.inventory.getSelectedItem().getItem() instanceof SwordItem)) {
+        if (!world.isRemote && (player.inventory.getSelectedItem() != null) && (player.inventory.getSelectedItem().getItem() instanceof SwordItem)) {
             chop(world, x, y, z);
         }
     }

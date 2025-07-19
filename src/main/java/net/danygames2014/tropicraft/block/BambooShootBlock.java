@@ -2,6 +2,7 @@ package net.danygames2014.tropicraft.block;
 
 import net.danygames2014.tropicraft.Tropicraft;
 import net.minecraft.block.material.Material;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
@@ -70,6 +71,11 @@ public class BambooShootBlock extends TemplateBlock {
     @Override
     public int getDroppedItemId(int blockMeta, Random random) {
         return Tropicraft.bambooShootItem.id;
+    }
+
+    @Override
+    public Item asItem() {
+        return Tropicraft.bambooShootItem;
     }
 
     @Override
