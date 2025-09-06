@@ -20,6 +20,7 @@ import net.danygames2014.tropicraft.item.food.PinaColadaItem;
 import net.danygames2014.tropicraft.world.dimension.TropicsDimension;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.fabricmc.loader.api.FabricLoader;
 import net.glasslauncher.mods.gcapi3.api.ConfigRoot;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.achievement.Achievement;
@@ -175,9 +176,9 @@ public class Tropicraft {
 
     @EventListener
     public void registerBlocks(BlockRegistryEvent event) {
-//        for (int i = 0; i < 512; i++) {
-//            new TemplateBlock(NAMESPACE.id("filler_" + i), Material.STONE).setTranslationKey(NAMESPACE.id("filler_" + i));
-//        }
+        for (int i = 0; i < 512; i++) {
+            new TemplateBlock(NAMESPACE.id("filler_" + i), Material.STONE).setTranslationKey(NAMESPACE.id("filler_" + i));
+        }
         
         // Bamboo
         bambooShootBlock = new BambooShootBlock(NAMESPACE.id("bamboo_shoot")).setTranslationKey(NAMESPACE, "bamboo_block").disableAutoItemRegistration().setSoundGroup(Block.DIRT_SOUND_GROUP);
@@ -301,7 +302,9 @@ public class Tropicraft {
 
     @EventListener
     public void registerDimension(DimensionRegistryEvent event) {
-        event.registry.register(NAMESPACE.id("tropics"), new DimensionContainer<>(TropicsDimension::new));
+        if (FabricLoader.getInstance().isDevelopmentEnvironment()) {
+            event.registry.register(NAMESPACE.id("tropics"), new DimensionContainer<>(TropicsDimension::new));
+        }
     }
 
     @EventListener
