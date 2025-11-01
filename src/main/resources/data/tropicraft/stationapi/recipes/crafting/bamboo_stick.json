@@ -1,19 +1,15 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern":
-  [
+  "pattern": [
     "s",
     "s"
   ],
-  "key":
-  {
-    "s":
-    {
-      "tag": "minecraft:planks/bamboo"
+  "key": {
+    "s": {
+      "item": "tropicraft:bamboo_shoot"
     }
   },
-  "result":
-  {
+  "result": {
     "item": "tropicraft:bamboo_stick",
     "count": 4
   }

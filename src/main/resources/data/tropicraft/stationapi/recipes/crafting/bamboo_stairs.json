@@ -1,20 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern":
-  [
+  "pattern": [
     "p  ",
     "pp ",
     "ppp"
   ],
-  "key":
-  {
-    "p":
-    {
-      "tag": "minecraft:planks/bamboo"
+  "key": {
+    "p": {
+      "item": "tropicraft:bamboo_bundle"
     }
   },
-  "result":
-  {
+  "result": {
     "item": "tropicraft:bamboo_stairs",
     "count": 4
   }
