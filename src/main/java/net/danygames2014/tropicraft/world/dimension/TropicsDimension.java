@@ -6,15 +6,20 @@ import net.minecraft.world.chunk.ChunkSource;
 import net.minecraft.world.dimension.Dimension;
 import net.modificationstation.stationapi.api.client.world.dimension.TravelMessageProvider;
 
+import java.util.Random;
+
 @EnvironmentInterface(value = EnvType.CLIENT, itf = TravelMessageProvider.class)
 public class TropicsDimension extends Dimension implements TravelMessageProvider {
+    public TropiNoiseSampler terrainNoise;
+
     public TropicsDimension(int id) {
         this.id = id;
     }
 
     @Override
     protected void initBiomeSource() {
-        biomeSource = new TropicsBiomeSource(this.world);
+        terrainNoise = new TropiNoiseSampler(new Random(this.world.getSeed()), 5);
+        biomeSource = new TropicsBiomeSource(this.world, this);
     }
     
     @Override
@@ -29,7 +34,7 @@ public class TropicsDimension extends Dimension implements TravelMessageProvider
 
     @Override
     public ChunkSource createChunkGenerator() {
-        return new ChunkProviderTropics(this.world, this.world.getSeed());
+        return new ChunkProviderTropics(this.world, this.world.getSeed(), this);
     }
 
 

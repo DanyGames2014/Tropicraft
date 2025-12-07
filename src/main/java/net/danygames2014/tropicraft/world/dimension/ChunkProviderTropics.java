@@ -8,6 +8,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.ChunkSource;
+import net.modificationstation.stationapi.api.block.BlockState;
 import net.modificationstation.stationapi.impl.world.chunk.FlattenedChunk;
 
 import java.util.Random;
@@ -16,9 +17,12 @@ public class ChunkProviderTropics implements ChunkSource {
     private final World world;
     public Random random;
 
-    public ChunkProviderTropics(World world, long seed) {
+    private final TropiNoiseSampler terrainNoise;
+
+    public ChunkProviderTropics(World world, long seed, TropicsDimension tropicsDimension) {
         this.world = world;
         this.random = new Random(seed);
+        this.terrainNoise = tropicsDimension.terrainNoise;
     }
 
     @Override
@@ -43,24 +47,34 @@ public class ChunkProviderTropics implements ChunkSource {
         }
 
         // Every other layer
-        for (int y = 1; y < 50; y++) {
-            for (int x = 0; x < 16; x++) {
-                for (int z = 0; z < 16; z++) {
-                    Biome biome = this.world.method_1781().getBiome((chunkX << 4) + x, (chunkZ << 4) + z);
+        for (int x = 0; x < 16; x++) {
+            for (int z = 0; z < 16; z++) {
+                Biome biome = this.world.method_1781().getBiome((chunkX << 4) + x, (chunkZ << 4) + z);
 
-                    if (biome == BiomeListener.TROPICS) {
-                        chunk.setBlockState(x, y, z, Block.GRASS_BLOCK.getDefaultState());
-                    } else if (biome == BiomeListener.TROPICS_DUNES) {
-                        chunk.setBlockState(x, y, z, Tropicraft.purifiedSand.getDefaultState());
-                    } else if (biome == BiomeListener.TROPICS_OCEAN) {
-                        chunk.setBlockState(x, y, z, Block.DIAMOND_BLOCK.getDefaultState());
-                    } else if (biome == BiomeListener.TROPICS_DEEP_OCEAN) {
-                        chunk.setBlockState(x, y, z, Block.LAPIS_BLOCK.getDefaultState());
-                    } else if (biome == BiomeListener.TROPICS_ISLAND) {
-                        chunk.setBlockState(x, y, z, Block.GOLD_BLOCK.getDefaultState());
-                    } else {
-                        chunk.setBlockState(x, y, z, Block.BEDROCK.getDefaultState());
-                    }
+                double noiseHeight = terrainNoise.samplePoint((chunkX << 4) + x, (chunkZ << 4) + z, 0.003D, 0.003D) * 1.9D;
+                int height = 63 + (int) (noiseHeight * 15D);
+
+                BlockState stoneState = Block.STONE.getDefaultState();
+
+                // Fill the stone below
+                for (int y = 1; y < height; y++) {
+                    chunk.setBlockState(x, y, z, stoneState);
+                }
+
+                if (biome == BiomeListener.TROPICS) {
+                    chunk.setBlockState(x, height, z, Block.GRASS_BLOCK.getDefaultState());
+                } else if (biome == BiomeListener.TROPICS_DUNES) {
+                    chunk.setBlockState(x, height, z, Tropicraft.purifiedSand.getDefaultState());
+                } else if (biome == BiomeListener.TROPICS_OCEAN) {
+                    chunk.setBlockState(x, height, z, Block.DIAMOND_BLOCK.getDefaultState());
+                } else if (biome == BiomeListener.TROPICS_DEEP_OCEAN) {
+                    chunk.setBlockState(x, height, z, Block.LAPIS_BLOCK.getDefaultState());
+                } else if (biome == BiomeListener.TROPICS_ISLAND) {
+                    chunk.setBlockState(x, height, z, Block.GOLD_BLOCK.getDefaultState());
+                } else if (biome == BiomeListener.TROPICS_ISLAND_DEEP) {
+                    chunk.setBlockState(x, height, z, Block.IRON_BLOCK.getDefaultState());
+                } else {
+                    chunk.setBlockState(x, height, z, Block.BEDROCK.getDefaultState());
                 }
             }
         }

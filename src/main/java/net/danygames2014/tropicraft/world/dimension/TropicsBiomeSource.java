@@ -7,14 +7,13 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.source.BiomeSource;
 
 import java.util.Arrays;
-import java.util.Random;
 
 public class TropicsBiomeSource extends BiomeSource {
-    private final TropiNoiseSampler noiseSampler;
-
-    public TropicsBiomeSource(World world) {
+    private final TropiNoiseSampler terrainNoise;
+    
+    public TropicsBiomeSource(World world, TropicsDimension tropicsDimension) {
         super(world);
-        this.noiseSampler = new TropiNoiseSampler(new Random(world.getSeed()), 7);
+        terrainNoise = tropicsDimension.terrainNoise;
     }
 
     @Override
@@ -27,7 +26,7 @@ public class TropicsBiomeSource extends BiomeSource {
 
     @Override
     public Biome getBiome(int x, int z) {
-        double sample = noiseSampler.samplePoint(x, z, 0.25D, 0.25D);
+        double sample = terrainNoise.samplePoint(x, z, 0.003D, 0.003D) * 1.9D;
 
         if (sample <= lowest) {
             System.out.println("LOWEST: " + lowest + " | HIGHEST: " + highest);
@@ -39,13 +38,15 @@ public class TropicsBiomeSource extends BiomeSource {
             highest = sample;
         }
 
-        if (sample <= -38D) {
+        if (sample <= -0.71D) {
+            return BiomeListener.TROPICS_ISLAND_DEEP;
+        } else if (sample <= -0.62D) {
             return BiomeListener.TROPICS_ISLAND;
-        } else if (sample <= -17D) {
+        } else if (sample <= -0.35D) {
             return BiomeListener.TROPICS_DEEP_OCEAN;
-        } else if (sample <= -0.39D) {
+        } else if (sample <= -0.1D) {
             return BiomeListener.TROPICS_OCEAN;
-        } else if (sample <= 0.4D) {
+        } else if (sample <= 0.0D) {
             return BiomeListener.TROPICS_DUNES;
         } else {
             return BiomeListener.TROPICS;
