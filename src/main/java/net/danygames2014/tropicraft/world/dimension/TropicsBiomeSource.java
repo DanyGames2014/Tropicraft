@@ -42,12 +42,12 @@ public class TropicsBiomeSource extends BiomeSource {
             return BiomeListener.TROPICS_ISLAND_DEEP;
         } else if (sample <= -0.62D) {
             return BiomeListener.TROPICS_ISLAND;
-        } else if (sample <= -0.35D) {
+        } else if (sample <= -0.30D) {
             return BiomeListener.TROPICS_DEEP_OCEAN;
         } else if (sample <= -0.1D) {
             return BiomeListener.TROPICS_OCEAN;
         } else if (sample <= 0.0D) {
-            return BiomeListener.TROPICS_DUNES;
+            return BiomeListener.TROPICS_BEACH;
         } else {
             return BiomeListener.TROPICS;
         }
