@@ -11,6 +11,7 @@ import java.util.Random;
 @EnvironmentInterface(value = EnvType.CLIENT, itf = TravelMessageProvider.class)
 public class TropicsDimension extends Dimension implements TravelMessageProvider {
     public TropiNoiseSampler terrainNoise;
+    public TropiNoiseSampler landBiomeNoise;
 
     public TropicsDimension(int id) {
         this.id = id;
@@ -19,6 +20,7 @@ public class TropicsDimension extends Dimension implements TravelMessageProvider
     @Override
     protected void initBiomeSource() {
         terrainNoise = new TropiNoiseSampler(new Random(this.world.getSeed()), 5);
+        landBiomeNoise = new TropiNoiseSampler(new Random(this.world.getSeed()), 2);
         biomeSource = new TropicsBiomeSource(this.world, this);
     }
     

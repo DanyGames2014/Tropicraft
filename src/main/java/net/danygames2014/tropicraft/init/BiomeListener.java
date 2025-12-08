@@ -6,12 +6,12 @@ import net.modificationstation.stationapi.api.event.world.biome.BiomeRegisterEve
 import net.modificationstation.stationapi.api.worldgen.biome.BiomeBuilder;
 
 public class BiomeListener {
-    public static Biome TROPICS_BEACH;
     public static Biome TROPICS_OCEAN;
     public static Biome TROPICS_DEEP_OCEAN;
     public static Biome TROPICS_ISLAND;
     public static Biome TROPICS_ISLAND_DEEP;
 
+    public static Biome TROPICS_BEACH;
     public static Biome TROPICS;
     public static Biome TROPICS_DUNES;
     public static Biome TROPICS_RAINFOREST;
@@ -21,13 +21,7 @@ public class BiomeListener {
 
     @EventListener
     public void registerBiomes(BiomeRegisterEvent event) {
-        TROPICS_BEACH = BiomeBuilder.start("tropics_dunes")
-                .grassAndLeavesColor(9286496)
-                .precipitation(true)
-                .snow(false)
-                .noDimensionFeatures()
-                .build();
-        
+        // Water Biomes
         TROPICS_OCEAN = BiomeBuilder.start("tropics_ocean")
                 .grassAndLeavesColor(9286496)
                 .precipitation(true)
@@ -56,7 +50,50 @@ public class BiomeListener {
                 .noDimensionFeatures()
                 .build();
 
+        // Land Biomes
+        TROPICS_BEACH = BiomeBuilder.start("tropics_beach")
+                .grassAndLeavesColor(9286496)
+                .precipitation(true)
+                .snow(false)
+                .noDimensionFeatures()
+                .build();
+        
         TROPICS = BiomeBuilder.start("tropics")
+                .grassAndLeavesColor(0x08FA36)
+                .precipitation(true)
+                .snow(false)
+                .noDimensionFeatures()
+                .build();
+        
+        TROPICS_DUNES = BiomeBuilder.start("tropics_dunes")
+                .grassAndLeavesColor(0x08FA36)
+                .precipitation(true)
+                .snow(false)
+                .noDimensionFeatures()
+                .build();
+        
+        TROPICS_RAINFOREST = BiomeBuilder.start("tropics_rainforest")
+                .grassAndLeavesColor(0x08FA36)
+                .precipitation(true)
+                .snow(false)
+                .noDimensionFeatures()
+                .build();
+        
+        TROPICS_ORCHARD = BiomeBuilder.start("tropics_orchard")
+                .grassAndLeavesColor(0x08FA36)
+                .precipitation(true)
+                .snow(false)
+                .noDimensionFeatures()
+                .build();
+        
+        TROPICS_RIVER = BiomeBuilder.start("tropics_river")
+                .grassAndLeavesColor(0x08FA36)
+                .precipitation(true)
+                .snow(false)
+                .noDimensionFeatures()
+                .build();
+
+        TROPICS_PLAINS = BiomeBuilder.start("tropics_plains")
                 .grassAndLeavesColor(0x08FA36)
                 .precipitation(true)
                 .snow(false)

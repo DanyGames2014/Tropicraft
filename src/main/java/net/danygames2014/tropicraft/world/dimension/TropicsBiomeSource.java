@@ -10,10 +10,12 @@ import java.util.Arrays;
 
 public class TropicsBiomeSource extends BiomeSource {
     private final TropiNoiseSampler terrainNoise;
+    private final TropiNoiseSampler landBiomeNoise;
     
     public TropicsBiomeSource(World world, TropicsDimension tropicsDimension) {
         super(world);
         terrainNoise = tropicsDimension.terrainNoise;
+        landBiomeNoise = tropicsDimension.landBiomeNoise;
     }
 
     @Override
@@ -26,29 +28,40 @@ public class TropicsBiomeSource extends BiomeSource {
 
     @Override
     public Biome getBiome(int x, int z) {
-        double sample = terrainNoise.samplePoint(x, z, 0.003D, 0.003D) * 1.9D;
+        double terrainSample = terrainNoise.samplePoint(x, z, 0.003D, 0.003D) * 1.9D;
+        double landBiomeSample = landBiomeNoise.samplePoint(x, z, 0.0025D, 0.0025D) * 1.9D;
 
-        if (sample <= lowest) {
+        if (terrainSample <= lowest) {
             System.out.println("LOWEST: " + lowest + " | HIGHEST: " + highest);
-            lowest = sample;
+            lowest = terrainSample;
         }
 
-        if (sample >= highest) {
+        if (terrainSample >= highest) {
             System.out.println("LOWEST: " + lowest + " | HIGHEST: " + highest);
-            highest = sample;
+            highest = terrainSample;
         }
 
-        if (sample <= -0.71D) {
+        if (terrainSample <= -0.71D) {
             return BiomeListener.TROPICS_ISLAND_DEEP;
-        } else if (sample <= -0.62D) {
+        } else if (terrainSample <= -0.62D) {
             return BiomeListener.TROPICS_ISLAND;
-        } else if (sample <= -0.30D) {
+        } else if (terrainSample <= -0.30D) {
             return BiomeListener.TROPICS_DEEP_OCEAN;
-        } else if (sample <= -0.1D) {
+        } else if (terrainSample <= -0.1D) {
             return BiomeListener.TROPICS_OCEAN;
-        } else if (sample <= 0.0D) {
-            return BiomeListener.TROPICS_BEACH;
         } else {
+            if (terrainSample < 0.0D) {
+                return BiomeListener.TROPICS_BEACH;
+            }
+            
+//            if (landBiomeSample > 0.8D) {
+//                return BiomeListener.TROPICS_DUNES;
+//            } else if (landBiomeSample > 0.75D) {
+//                return BiomeListener.TROPICS_RIVER;
+//            } else if (landBiomeSample > 0.6D) {
+//                return BiomeListener.TROPICS_ORCHARD;
+//            }
+        
             return BiomeListener.TROPICS;
         }
     }
