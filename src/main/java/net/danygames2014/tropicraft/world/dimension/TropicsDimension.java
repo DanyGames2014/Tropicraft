@@ -12,6 +12,7 @@ import java.util.Random;
 public class TropicsDimension extends Dimension implements TravelMessageProvider {
     public TropiNoiseSampler terrainNoise;
     public TropiNoiseSampler landBiomeNoise;
+    public TropiNoiseSampler riverNoise;
 
     public TropicsDimension(int id) {
         this.id = id;
@@ -20,7 +21,8 @@ public class TropicsDimension extends Dimension implements TravelMessageProvider
     @Override
     protected void initBiomeSource() {
         terrainNoise = new TropiNoiseSampler(new Random(this.world.getSeed()), 5);
-        landBiomeNoise = new TropiNoiseSampler(new Random(this.world.getSeed()), 2);
+        landBiomeNoise = new TropiNoiseSampler(new Random(this.world.getSeed() + 13), 2);
+        riverNoise = new TropiNoiseSampler(new Random(this.world.getSeed() + 18), 3, 0.4D, 1.5D);
         biomeSource = new TropicsBiomeSource(this.world, this);
     }
     

@@ -11,11 +11,13 @@ import java.util.Arrays;
 public class TropicsBiomeSource extends BiomeSource {
     private final TropiNoiseSampler terrainNoise;
     private final TropiNoiseSampler landBiomeNoise;
+    private final TropiNoiseSampler riverNoise;
     
     public TropicsBiomeSource(World world, TropicsDimension tropicsDimension) {
         super(world);
         terrainNoise = tropicsDimension.terrainNoise;
         landBiomeNoise = tropicsDimension.landBiomeNoise;
+        riverNoise = tropicsDimension.riverNoise;
     }
 
     @Override
@@ -29,8 +31,7 @@ public class TropicsBiomeSource extends BiomeSource {
     @Override
     public Biome getBiome(int x, int z) {
         double terrainSample = terrainNoise.samplePoint(x, z, 0.003D, 0.003D) * 1.9D;
-        double landBiomeSample = landBiomeNoise.samplePoint(x, z, 0.0025D, 0.0025D) * 1.9D;
-
+        
         if (terrainSample <= lowest) {
             System.out.println("LOWEST: " + lowest + " | HIGHEST: " + highest);
             lowest = terrainSample;
@@ -41,6 +42,7 @@ public class TropicsBiomeSource extends BiomeSource {
             highest = terrainSample;
         }
 
+        // Water Biomes
         if (terrainSample <= -0.71D) {
             return BiomeListener.TROPICS_ISLAND_DEEP;
         } else if (terrainSample <= -0.62D) {
@@ -49,11 +51,23 @@ public class TropicsBiomeSource extends BiomeSource {
             return BiomeListener.TROPICS_DEEP_OCEAN;
         } else if (terrainSample <= -0.1D) {
             return BiomeListener.TROPICS_OCEAN;
-        } else {
-            if (terrainSample < 0.0D) {
-                return BiomeListener.TROPICS_BEACH;
-            }
-            
+        }
+        
+        // Rivers
+        double riverSample = riverNoise.samplePoint(x, z, 0.001D, 0.001D) * 1.9D;
+
+        if (riverSample > 0.0D && riverSample < 0.03D) {
+            return BiomeListener.TROPICS_RIVER;
+        }
+
+        // Beaches
+        if (terrainSample < 0.0D) {
+            return BiomeListener.TROPICS_BEACH;
+        }
+
+        // Land Biomes
+        double landBiomeSample = landBiomeNoise.samplePoint(x, z, 0.0025D, 0.0025D) * 1.9D;
+
 //            if (landBiomeSample > 0.8D) {
 //                return BiomeListener.TROPICS_DUNES;
 //            } else if (landBiomeSample > 0.75D) {
@@ -61,9 +75,8 @@ public class TropicsBiomeSource extends BiomeSource {
 //            } else if (landBiomeSample > 0.6D) {
 //                return BiomeListener.TROPICS_ORCHARD;
 //            }
-        
-            return BiomeListener.TROPICS;
-        }
+
+        return BiomeListener.TROPICS;
     }
 
     @Override

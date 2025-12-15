@@ -18,12 +18,14 @@ public class ChunkProviderTropics implements ChunkSource {
     private final World world;
     public Random random;
 
-    private final TropiNoiseSampler terrainNoise;
+    private final TropiNoiseSampler terrainNoiseSampler;
+    private final TropiNoiseSampler riverNoiseSampler;
 
     public ChunkProviderTropics(World world, long seed, TropicsDimension tropicsDimension) {
         this.world = world;
         this.random = new Random(seed);
-        this.terrainNoise = tropicsDimension.terrainNoise;
+        this.terrainNoiseSampler = tropicsDimension.terrainNoise;
+        this.riverNoiseSampler = tropicsDimension.riverNoise;
     }
 
     @Override
@@ -61,36 +63,46 @@ public class ChunkProviderTropics implements ChunkSource {
         for (int x = 0; x < 16; x++) {
             for (int z = 0; z < 16; z++) {
                 Biome biome = this.world.method_1781().getBiome((chunkX << 4) + x, (chunkZ << 4) + z);
-
-                double noiseHeight = terrainNoise.samplePoint((chunkX << 4) + x, (chunkZ << 4) + z, 0.003D, 0.003D) * 1.9D;
+                
+                double terrainNoise = terrainNoiseSampler.samplePoint((chunkX << 4) + x, (chunkZ << 4) + z, 0.003D, 0.003D) * 1.9D;
 
                 int height = 63;
 
                 // Fill the surface
                 // Land Biomes
                 if (biome == BiomeListener.TROPICS) {
-                    height = height + (int) (noiseHeight * 15D);
+                    height = height + (int) (terrainNoise * 40D);
                     chunk.setBlockState(x, height, z, Block.GRASS_BLOCK.getDefaultState());
 
                 } else if (biome == BiomeListener.TROPICS_DUNES) {
-                    height = height + (int) (noiseHeight * 15D);
+                    height = height + (int) (terrainNoise * 15D);
                     chunk.setBlockState(x, height, z, Block.SAND.getDefaultState());
 
                 } else if (biome == BiomeListener.TROPICS_ORCHARD) {
-                    height = height + (int) (noiseHeight * 15D);
+                    height = height + (int) (terrainNoise * 15D);
                     chunk.setBlockState(x, height, z, Block.GOLD_BLOCK.getDefaultState());
 
                 } else if (biome == BiomeListener.TROPICS_RIVER) {
-                    height = height + (int) (noiseHeight * 3D);
+                    double riverNoise = riverNoiseSampler.samplePoint((chunkX << 4) + x, (chunkZ << 4) + z, 0.001D, 0.001D) * 1.9D;
+                    
+                    height--;
+                    if (riverNoise > 0.013D && riverNoise < 0.017D) {
+                        height = height - 3;
+                    } else if(riverNoise > 0.01D && riverNoise < 0.02D) {
+                        height = height - 2;
+                    } else if (riverNoise > 0.005D && riverNoise < 0.025D) {
+                        height = height - 1;
+                    }
+
                     chunk.setBlockState(x, height, z, Block.BRICKS.getDefaultState());
 
                 } else if (biome == BiomeListener.TROPICS_BEACH) {
-                    height = height + (int) (noiseHeight * 3D);
+                    height = height + (int) (terrainNoise * 3D);
                     chunk.setBlockState(x, height, z, Block.SAND.getDefaultState());
 
                 // Water Biomes
                 } else if (biome == BiomeListener.TROPICS_OCEAN) {
-                    height = (height - 1) + (int) (noiseHeight * 8D);
+                    height = (height - 1) + (int) (terrainNoise * 8D);
                     chunk.setBlockState(x, height, z, Block.DIAMOND_BLOCK.getDefaultState());
 
                     BlockState waterState = Block.GLASS.getDefaultState();
@@ -99,7 +111,7 @@ public class ChunkProviderTropics implements ChunkSource {
                     }
 
                 } else if (biome == BiomeListener.TROPICS_DEEP_OCEAN) {
-                    if (noiseHeight < -0.5D) {
+                    if (terrainNoise < -0.5D) {
                         // Readable code for reference:
                         // Invert the sum of the value below -0.5 to be above -0.5 (e.g it will turn -0.6 to -0.4)
                         // double newNoiseHeight = -noiseHeight - 1.0D;
@@ -111,11 +123,11 @@ public class ChunkProviderTropics implements ChunkSource {
                         // newNoiseHeight = (10.0D / 3.0D) * (newNoiseHeight + 0.50D) - 0.50D;
 
                         // An optimized implementation:
-                        double newNoiseHeight = (-10.0D / 3.0D) * noiseHeight - (13.0D / 6.0D);
+                        double newNoiseHeight = (-10.0D / 3.0D) * terrainNoise - (13.0D / 6.0D);
 
                         height = height + (int) (newNoiseHeight * 14D);
                     } else {
-                        height = height + (int) (noiseHeight * 14D);
+                        height = height + (int) (terrainNoise * 14D);
                     }
 
                     chunk.setBlockState(x, height, z, Block.LAPIS_BLOCK.getDefaultState());
@@ -126,11 +138,11 @@ public class ChunkProviderTropics implements ChunkSource {
                     }
 
                 } else if (biome == BiomeListener.TROPICS_ISLAND) {
-                    height = height + (int) ((noiseHeight + 0.62D) * -27D);
+                    height = height + (int) ((terrainNoise + 0.62D) * -27D);
                     chunk.setBlockState(x, height, z, Tropicraft.purifiedSand.getDefaultState());
 
                 } else if (biome == BiomeListener.TROPICS_ISLAND_DEEP) {
-                    height = height + (int) (noiseHeight * -4D);
+                    height = height + (int) (terrainNoise * -4D);
                     chunk.setBlockState(x, height, z, Block.GRASS_BLOCK.getDefaultState());
 
                 } else {
