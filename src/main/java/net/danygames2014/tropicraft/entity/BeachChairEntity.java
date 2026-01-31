@@ -18,7 +18,7 @@ import net.modificationstation.stationapi.api.util.Identifier;
 import net.modificationstation.stationapi.api.util.TriState;
 
 @SuppressWarnings("UnnecessaryBoxing")
-@HasTrackingParameters(updatePeriod = 4, sendVelocity = TriState.TRUE, trackingDistance = 30)
+@HasTrackingParameters(updatePeriod = 1, sendVelocity = TriState.TRUE, trackingDistance = 30)
 public class BeachChairEntity extends Entity implements EntitySpawnDataProvider, Dyeable {
     public BeachChairEntity(World world) {
         super(world);
@@ -92,12 +92,16 @@ public class BeachChairEntity extends Entity implements EntitySpawnDataProvider,
 
     @Override
     public Box getBoundingBox() {
-        return this.boundingBox;
+        return null;
     }
 
     @Override
     public Box getCollisionAgainstShape(Entity other) {
-        return this.boundingBox;
+        if (world.isRemote) {
+            return null;
+        }
+        
+        return other == passenger ? null : other.boundingBox;
     }
 
     @Override
