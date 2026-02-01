@@ -1,4 +1,4 @@
-package net.danygames2014.tropicraft.world.dimension;
+package net.danygames2014.tropicraft.util;
 
 import java.util.Random;
 

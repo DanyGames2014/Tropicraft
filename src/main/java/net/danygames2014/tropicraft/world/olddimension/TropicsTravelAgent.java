@@ -1,4 +1,4 @@
-package net.danygames2014.tropicraft.world.dimension;
+package net.danygames2014.tropicraft.world.olddimension;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.util.math.MathHelper;

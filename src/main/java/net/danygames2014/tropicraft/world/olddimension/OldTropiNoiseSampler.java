@@ -1,17 +1,18 @@
-package net.danygames2014.tropicraft.world.dimension;
+package net.danygames2014.tropicraft.world.olddimension;
 
+import net.danygames2014.tropicraft.util.PerlinNoise2D;
 import net.minecraft.util.math.noise.NoiseSampler;
 
 import java.util.Random;
 
-public class TropiNoiseSampler extends NoiseSampler {
+public class OldTropiNoiseSampler extends NoiseSampler {
     private final PerlinNoise2D sampler;
 
-    public TropiNoiseSampler(Random random, int octaves) {
+    public OldTropiNoiseSampler(Random random, int octaves) {
         this(random, octaves, 0.5D, 2.0D);
     }
 
-    public TropiNoiseSampler(Random random, int octaves, double persistence, double lacunarity) {
+    public OldTropiNoiseSampler(Random random, int octaves, double persistence, double lacunarity) {
         this.sampler = new PerlinNoise2D(random.nextLong(), octaves, persistence, lacunarity);
     }
 

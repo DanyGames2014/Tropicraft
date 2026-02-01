@@ -18,6 +18,7 @@ import net.danygames2014.tropicraft.item.TropiRecordItem;
 import net.danygames2014.tropicraft.item.armor.ScaleArmorItem;
 import net.danygames2014.tropicraft.item.food.PinaColadaItem;
 import net.danygames2014.tropicraft.world.dimension.TropicsDimension;
+import net.danygames2014.tropicraft.world.olddimension.OldTropicsDimension;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.loader.api.FabricLoader;
@@ -28,6 +29,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
 import net.minecraft.stat.Stat;
+import net.minecraft.world.dimension.Dimension;
 import net.modificationstation.stationapi.api.StationAPI;
 import net.modificationstation.stationapi.api.client.event.block.entity.BlockEntityRendererRegisterEvent;
 import net.modificationstation.stationapi.api.client.event.render.entity.EntityRendererRegisterEvent;
@@ -299,6 +301,7 @@ public class Tropicraft {
     @EventListener
     public void registerDimension(DimensionRegistryEvent event) {
         if (FabricLoader.getInstance().isDevelopmentEnvironment()) {
+            event.registry.register(NAMESPACE.id("old_tropics"), new DimensionContainer<>(OldTropicsDimension::new));
             event.registry.register(NAMESPACE.id("tropics"), new DimensionContainer<>(TropicsDimension::new));
         }
     }

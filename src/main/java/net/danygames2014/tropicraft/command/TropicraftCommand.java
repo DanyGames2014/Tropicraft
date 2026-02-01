@@ -3,7 +3,7 @@ package net.danygames2014.tropicraft.command;
 import com.matthewperiut.retrocommands.api.Command;
 import com.matthewperiut.retrocommands.util.SharedCommandSource;
 import net.danygames2014.tropicraft.Tropicraft;
-import net.danygames2014.tropicraft.world.dimension.TropicsTravelAgent;
+import net.danygames2014.tropicraft.world.olddimension.TropicsTravelAgent;
 import net.modificationstation.stationapi.api.world.dimension.DimensionHelper;
 
 import java.util.ArrayList;
@@ -18,6 +18,15 @@ public class TropicraftCommand implements Command {
                 DimensionHelper.switchDimension(
                         sharedCommandSource.getPlayer(),
                         Tropicraft.NAMESPACE.id("tropics"),
+                        1,
+                        new TropicsTravelAgent()
+                );
+            }
+
+            if (args[1].equalsIgnoreCase("driftold")) {
+                DimensionHelper.switchDimension(
+                        sharedCommandSource.getPlayer(),
+                        Tropicraft.NAMESPACE.id("old_tropics"),
                         1,
                         new TropicsTravelAgent()
                 );
