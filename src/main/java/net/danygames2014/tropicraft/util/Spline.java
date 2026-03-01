@@ -1,41 +1,58 @@
 package net.danygames2014.tropicraft.util;
 
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.Arrays;
 
 public class Spline {
-    private final ObjectArrayList<Point> points = new ObjectArrayList<>();
+    private float[] locations = new float[0];
+    private float[] values = new float[0];
+    private int size = 0;
 
     public void addPoint(float location, float value) {
-        points.add(new Point(location, value));
-        points.sort((a, b) -> Float.compare(a.location, b.location));
+        // Ensure capacity
+        if (size >= locations.length) {
+            locations = Arrays.copyOf(locations, locations.length + 1);
+            values = Arrays.copyOf(values, values.length + 1);
+        }
+
+        // Find insertion point
+        int i = size - 1;
+        while (i >= 0 && locations[i] > location) {
+            locations[i + 1] = locations[i];
+            values[i + 1] = values[i];
+            i--;
+        }
+
+        locations[i + 1] = location;
+        values[i + 1] = value;
+        size++;
     }
 
     public float sample(float noiseValue) {
-        if (points.isEmpty()) return 0;
-        if (noiseValue <= points.get(0).location) return points.get(0).value;
-        if (noiseValue >= points.get(points.size() - 1).location) return points.get(points.size() - 1).value;
+        // 1. Quick Guard Clauses
+        if (size == 0) return 0;
+        float firstLoc = locations[0];
+        if (noiseValue <= firstLoc) return values[0];
 
-        // Find the segment containing the noiseValue
-        for (int i = 0; i < points.size() - 1; i++) {
-            Point p1 = points.get(i);
-            Point p2 = points.get(i + 1);
+        float lastLoc = locations[size - 1];
+        if (noiseValue >= lastLoc) return values[size - 1];
 
-            if (noiseValue >= p1.location && noiseValue <= p2.location) {
-                // Linear interpolation (Lerp)
-                float t = (noiseValue - p1.location) / (p2.location - p1.location);
-                return p1.value + t * (p2.value - p1.value);
+        // 2. Linear Search (Fastest for N <= 16 due to cache locality)
+        // We start from index 1 because we already checked index 0
+        for (int i = 1; i < size; i++) {
+            float currLoc = locations[i];
+
+            if (noiseValue < currLoc) {
+                float prevLoc = locations[i - 1];
+                float prevVal = values[i - 1];
+                float currVal = values[i];
+
+                // 3. Linear Interpolation (Lerp)
+                // t = (x - x0) / (x1 - x0)
+                float t = (noiseValue - prevLoc) / (currLoc - prevLoc);
+                return prevVal + t * (currVal - prevVal);
             }
         }
-        return 0;
-    }
 
-    private static class Point {
-        float location; // Noise value (e.g., -1.0 to 1.0)
-        float value;    // Resulting height/factor
-
-        public Point(float loc, float val) {
-            this.location = loc;
-            this.value = val;
-        }
+        return values[size - 1];
     }
 }
