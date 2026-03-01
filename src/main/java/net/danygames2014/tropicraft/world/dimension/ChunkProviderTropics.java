@@ -126,20 +126,28 @@ public class ChunkProviderTropics implements ChunkSource {
     }
 
     public BlockState resolveBlock(int x, int y, int z, double c, double e, double riv, double density) {
-        // --- AIR AND WATER ---
+        // Air & Water
         if (density <= 0) {
             // Anything below sea level that isn't solid ground becomes water
             return (y <= 64) ? States.AIR.get() : States.AIR.get();
         }
 
-        // --- SOLID TERRAIN ---
+        // Terrain
         // Check if there is air or water above to determine if this is the "Surface"
-        boolean surface = (y >= 127 || calculateDensity(x, y + 1, z, c, e, riv) <= 0);
+        boolean surface = (y >= 127);
+        
+        // This should be optimized by precalculating and passing in an array of all densities of a given column
+        surface |= calculateDensity(x, y + 1, z, c, e, riv) <= 0;
+        
+        boolean soil = surface;
+        soil |= calculateDensity(x, y + 2, z, c, e, riv) <= 0;
+        soil |= calculateDensity(x, y + 3, z, c, e, riv) <= 0;
+        soil |= calculateDensity(x, y + 4, z, c, e, riv) <= 0;
 
-        if (surface) {
+        if (surface || soil) {
             float erosionOffset = erosionSpline.sample((float) e);
             
-            // RIVER BED (If surface is underwater)
+            // River Bed (If surface is underwater)
             if (y <= 63) {
                 if (riv < 0.06f) {
                     return Block.BRICKS.getDefaultState();
@@ -171,14 +179,25 @@ public class ChunkProviderTropics implements ChunkSource {
             if (c < -0.8f) {
                 return Block.GOLD_BLOCK.getDefaultState();
             }
+            
+            // Edge cases
+            // The surface block
+            if (surface) {
+                return Block.OBSIDIAN.getDefaultState();
+            }
+
+            // The soil block
+            return Block.OBSIDIAN.getDefaultState();
         }
 
-        // --- UNDERGROUND ---
-        return (y < 50) ? Block.STONE.getDefaultState() : Block.DIRT.getDefaultState();
+        // Stone Layers
+        return Block.STONE.getDefaultState();
     }
 
     @Override
     public Chunk getChunk(int chunkX, int chunkZ) {
+        long nanoTime = System.nanoTime();
+        
         FlattenedChunk chunk = new FlattenedChunk(world, chunkX, chunkZ);
 
         // Place Bedrock Layer
@@ -213,6 +232,7 @@ public class ChunkProviderTropics implements ChunkSource {
                 }
 
                 for (int y = 0; y < 127; y++) {
+                    // Should pregenerate the density for all heights and then pass in the array to reduce density calculations to 25% per block
                     double dens = calculateDensity(worldX, y, worldZ, c, e, riv);
                     BlockState state = resolveBlock(worldX, y, worldZ, c, e, riv, dens);
                     setChunkState(chunk, x, y, z, state);
@@ -223,6 +243,7 @@ public class ChunkProviderTropics implements ChunkSource {
         chunk.populateHeightMap();
         chunk.populateBlockLight();
 
+        System.err.println("Chunk took " + ((System.nanoTime() - nanoTime) / 1000) + "μs to generate.");
         return chunk;
     }
 
