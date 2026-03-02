@@ -147,26 +147,30 @@ public class ChunkProviderTropics implements ChunkSource {
         if (surface || soil) {
             float erosionOffset = erosionSpline.sample((float) e);
             
-            // River Bed (If surface is underwater)
+            // Under the sea level
             if (y <= 63) {
                 if (riv < 0.06f) {
+                    // River Bed
                     return Block.BRICKS.getDefaultState();
                 } else {
+                    // Ocean Floor
                     if (c < -0.4) {
                         return Block.LAPIS_BLOCK.getDefaultState();
                     }
+                    
+                    // Shallow Ocean Floor
                     return Block.DIAMOND_BLOCK.getDefaultState();
                 }
             }
 
             float beachLimit = 65.0f + erosionOffset;
             
-            // MAINLAND BEACH / SHALLOWS (0.1 to 0.0)
+            // Mainland Beach / Shallows (-0.5 to 0.0)
             if (c < 0.0f && c > -0.5f && y <= beachLimit) {
                 return Block.SAND.getDefaultState();
             }
             
-            // MAINLAND (1.0 to 0.0)
+            // Mainland (1.0 to 0.0)
             if (c > 0.0f) {
                 if (y > 90) {
                     return Block.STONE.getDefaultState();
@@ -175,19 +179,29 @@ public class ChunkProviderTropics implements ChunkSource {
                 }
             }
 
-            // TROPICAL ISLAND (-0.8 to -1.0)
-            if (c < -0.8f) {
-                return Block.GOLD_BLOCK.getDefaultState();
-            }
-            
-            // Edge cases
-            // The surface block
-            if (surface) {
-                return Block.OBSIDIAN.getDefaultState();
-            }
+            // Tropical Island & its surroundings (~ -0.7 to -1.0)
+            if (c < -0.7f) {
+                // Tropical Island (-0.8 to -1.0)
+                if (c < -0.8f) {
+                    if (c < -0.85f) {
+                        return Block.GRASS_BLOCK.getDefaultState();
+                    }
 
-            // The soil block
-            return Block.OBSIDIAN.getDefaultState();
+                    return Block.SAND.getDefaultState();
+                }
+
+                if (y > 64) {
+                    return Block.STONE.getDefaultState();
+                }
+                
+                // Eroded surface block
+                if (surface) {
+                    return Block.SAND.getDefaultState();
+                }
+
+                // The soil block
+                return Block.SAND.getDefaultState();
+            }
         }
 
         // Stone Layers
