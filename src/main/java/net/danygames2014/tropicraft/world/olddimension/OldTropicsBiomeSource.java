@@ -44,9 +44,9 @@ public class OldTropicsBiomeSource extends BiomeSource {
 
         // Water Biomes
         if (terrainSample <= -0.71D) {
-            return BiomeListener.TROPICS_ISLAND_DEEP.biome;
-        } else if (terrainSample <= -0.62D) {
             return BiomeListener.TROPICS_ISLAND.biome;
+        } else if (terrainSample <= -0.62D) {
+            return BiomeListener.TROPICS_ISLAND_BEACH.biome;
         } else if (terrainSample <= -0.30D) {
             return BiomeListener.TROPICS_DEEP_OCEAN.biome;
         } else if (terrainSample <= -0.1D) {

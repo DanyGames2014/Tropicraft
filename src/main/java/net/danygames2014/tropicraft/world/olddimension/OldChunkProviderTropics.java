@@ -137,11 +137,11 @@ public class OldChunkProviderTropics implements ChunkSource {
                         //setChunkState(chunk, x, i, z, waterState);
                     }
 
-                } else if (biome == BiomeListener.TROPICS_ISLAND.biome) {
+                } else if (biome == BiomeListener.TROPICS_ISLAND_BEACH.biome) {
                     height = height + (int) ((terrainNoise + 0.62D) * -27D);
                     chunk.setBlockState(x, height, z, Tropicraft.purifiedSand.getDefaultState());
 
-                } else if (biome == BiomeListener.TROPICS_ISLAND_DEEP.biome) {
+                } else if (biome == BiomeListener.TROPICS_ISLAND.biome) {
                     height = height + (int) (terrainNoise * -4D);
                     chunk.setBlockState(x, height, z, Block.GRASS_BLOCK.getDefaultState());
 

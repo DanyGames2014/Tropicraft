@@ -11,6 +11,7 @@ import java.util.Random;
 @EnvironmentInterface(value = EnvType.CLIENT, itf = TravelMessageProvider.class)
 public class TropicsDimension extends Dimension implements TravelMessageProvider {
     public Random random;
+    public ChunkProviderTropics chunkProvider;
     
     public TropiNoiseSampler2D continentalNoise;
     public TropiNoiseSampler2D erosionNoise;
@@ -50,7 +51,8 @@ public class TropicsDimension extends Dimension implements TravelMessageProvider
 
     @Override
     public ChunkSource createChunkGenerator() {
-        return new ChunkProviderTropics(this.world, this.world.getSeed(), this);
+        this.chunkProvider = new ChunkProviderTropics(this.world, this.world.getSeed(), this);
+        return this.chunkProvider;
     }
 
 

@@ -1,5 +1,6 @@
 package net.danygames2014.tropicraft.world.dimension;
 
+import net.danygames2014.tropicraft.Tropicraft;
 import net.danygames2014.tropicraft.util.MathHelper;
 import net.danygames2014.tropicraft.util.Spline;
 import net.minecraft.block.Block;
@@ -12,7 +13,6 @@ import net.modificationstation.stationapi.api.block.States;
 import net.modificationstation.stationapi.impl.world.chunk.ChunkSection;
 import net.modificationstation.stationapi.impl.world.chunk.FlattenedChunk;
 
-import java.lang.annotation.ElementType;
 import java.util.Random;
 
 public class ChunkProviderTropics implements ChunkSource {
@@ -58,7 +58,7 @@ public class ChunkProviderTropics implements ChunkSource {
         heightSpline.addPoint(0.3f, 67.0f);
         heightSpline.addPoint(0.1f, 66.0f);
 
-        // -0.05 to 0.0: Beach
+        // -0.09 to 0.0: Beach
         heightSpline.addPoint(0.0f, 65.0f);
         heightSpline.addPoint(-0.09f, 64.0f);
 
@@ -125,9 +125,9 @@ public class ChunkProviderTropics implements ChunkSource {
         return (finalHeight - y) / 4.0;
     }
 
-    public BlockState resolveBlock(int x, int y, int z, double c, double e, double riv, double density) {
+    public BlockState resolveBlock(int x, int y, int z, double c, double e, double riv, double[] density) {
         // Air & Water
-        if (density <= 0) {
+        if (density[y] <= 0.0D) {
             // Anything below sea level that isn't solid ground becomes water
             return (y <= 64) ? States.AIR.get() : States.AIR.get();
         }
@@ -136,25 +136,24 @@ public class ChunkProviderTropics implements ChunkSource {
         // Check if there is air or water above to determine if this is the "Surface"
         boolean surface = (y >= 127);
         
-        // This should be optimized by precalculating and passing in an array of all densities of a given column
-        surface |= calculateDensity(x, y + 1, z, c, e, riv) <= 0;
+        surface |= density[y + 1] <= 0.0D;
         
         boolean soil = surface;
-        soil |= calculateDensity(x, y + 2, z, c, e, riv) <= 0;
-        soil |= calculateDensity(x, y + 3, z, c, e, riv) <= 0;
-        soil |= calculateDensity(x, y + 4, z, c, e, riv) <= 0;
+        soil |= density[y + 2] <= 0.0D;
+        soil |= density[y + 3] <= 0.0D;
+        soil |= density[y + 4] <= 0.0D;
 
         if (surface || soil) {
             float erosionOffset = erosionSpline.sample((float) e);
             
             // Under the sea level
             if (y <= 63) {
-                if (riv < 0.06f) {
+                if (riv < 0.06D) {
                     // River Bed
                     return Block.BRICKS.getDefaultState();
                 } else {
                     // Ocean Floor
-                    if (c < -0.4) {
+                    if (c < -0.4D) {
                         return Block.LAPIS_BLOCK.getDefaultState();
                     }
                     
@@ -166,12 +165,12 @@ public class ChunkProviderTropics implements ChunkSource {
             float beachLimit = 65.0f + erosionOffset;
             
             // Mainland Beach / Shallows (-0.5 to 0.0)
-            if (c < 0.0f && c > -0.5f && y <= beachLimit) {
+            if (c < 0.0D && c > -0.5D && y <= beachLimit) {
                 return Block.SAND.getDefaultState();
             }
             
             // Mainland (1.0 to 0.0)
-            if (c > 0.0f) {
+            if (c > 0.0D) {
                 if (y > 90) {
                     return Block.STONE.getDefaultState();
                 } else {
@@ -180,27 +179,12 @@ public class ChunkProviderTropics implements ChunkSource {
             }
 
             // Tropical Island & its surroundings (~ -0.7 to -1.0)
-            if (c < -0.7f) {
-                // Tropical Island (-0.8 to -1.0)
-                if (c < -0.8f) {
-                    if (c < -0.85f) {
-                        return Block.GRASS_BLOCK.getDefaultState();
-                    }
-
-                    return Block.SAND.getDefaultState();
+            if (c < -0.7D) {
+                if (c > -0.85D) {
+                    return Tropicraft.purifiedSand.getDefaultState();
                 }
 
-                if (y > 64) {
-                    return Block.STONE.getDefaultState();
-                }
-                
-                // Eroded surface block
-                if (surface) {
-                    return Block.SAND.getDefaultState();
-                }
-
-                // The soil block
-                return Block.SAND.getDefaultState();
+                return Block.GRASS_BLOCK.getDefaultState();
             }
         }
 
@@ -235,7 +219,7 @@ public class ChunkProviderTropics implements ChunkSource {
                 double seaThreshold = -0.09D - (Math.max(0, erosionOffset) * 0.02D);
                 
                 // Widen rivers approaching sea
-                if (c > seaThreshold && c < 0.0f) {
+                if (c > seaThreshold && c < 0.0D) {
                     riv -= MathHelper.clamp((Math.abs(c) * 0.25D), -0.02D, 0.00D);
                 }
 
@@ -245,10 +229,17 @@ public class ChunkProviderTropics implements ChunkSource {
                     riv += (Math.abs(c) + seaThreshold) * erosionMuffler;
                 }
 
+                double[] densities = new double[132];
+                for (int y = 0; y < densities.length; y++) {
+                    if (y <= 127) {
+                        densities[y] = calculateDensity(worldX, y, worldZ, c, e, riv);
+                    } else {
+                        densities[y] = 0.0D;
+                    }
+                }
+                
                 for (int y = 0; y < 127; y++) {
-                    // Should pregenerate the density for all heights and then pass in the array to reduce density calculations to 25% per block
-                    double dens = calculateDensity(worldX, y, worldZ, c, e, riv);
-                    BlockState state = resolveBlock(worldX, y, worldZ, c, e, riv, dens);
+                    BlockState state = resolveBlock(worldX, y, worldZ, c, e, riv, densities);
                     setChunkState(chunk, x, y, z, state);
                 }
             }

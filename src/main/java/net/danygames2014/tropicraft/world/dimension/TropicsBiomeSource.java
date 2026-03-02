@@ -1,18 +1,37 @@
 package net.danygames2014.tropicraft.world.dimension;
 
 import net.danygames2014.tropicraft.init.BiomeListener;
+import net.danygames2014.tropicraft.item.food.PinaColadaItem;
+import net.danygames2014.tropicraft.world.biome.TropiBiome;
 import net.danygames2014.tropicraft.world.olddimension.OldTropiNoiseSampler;
 import net.danygames2014.tropicraft.world.olddimension.OldTropicsDimension;
+import net.minecraft.block.Block;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.source.BiomeSource;
+import net.modificationstation.stationapi.api.block.States;
 
 import java.util.Arrays;
 
 public class TropicsBiomeSource extends BiomeSource {
+    public TropicsDimension tropicsDimension;
+    
+    public TropiNoiseSampler2D continentalNoise;
+    public TropiNoiseSampler2D erosionNoise;
+    public TropiNoiseSampler2D peaksValleysNoise;
+    public TropiNoiseSampler2D riverNoise;
+    public TropiNoiseSampler2D biomeNoise;
+
     public TropicsBiomeSource(World world, TropicsDimension tropicsDimension) {
         super(world);
+        this.tropicsDimension = tropicsDimension;
+        
+        this.continentalNoise = tropicsDimension.continentalNoise;
+        this.erosionNoise = tropicsDimension.erosionNoise;
+        this.peaksValleysNoise = tropicsDimension.peakValleyNoise;
+        this.riverNoise = tropicsDimension.riverNoise;
+        this.biomeNoise = tropicsDimension.biomeNoise;
     }
 
     @Override
@@ -22,7 +41,56 @@ public class TropicsBiomeSource extends BiomeSource {
 
     @Override
     public Biome getBiome(int x, int z) {
-        return BiomeListener.TROPICS.biome;
+        double c = continentalNoise.samplePoint(x, z, 0.001, 0.001) * 1.9D;
+        double e = erosionNoise.samplePoint(x, z, 0.005, 0.005);
+        double riv = Math.abs(riverNoise.samplePoint(x, z, 0.0025, 0.0025));
+
+        return getBiome(x, z, c, e, riv);
+    }
+
+    public Biome getBiome(int x, int z, double c, double e, double riv) {
+        return getTropiBiome(x, z, c, e, riv).biome;
+    }
+
+    public TropiBiome getTropiBiome(int x, int z, double c, double e, double riv) {
+        // River
+        if (c > -0.1 && riv < 0.06D) {
+            // River Bed
+            return BiomeListener.TROPICS_RIVER;
+        }
+
+        // Mainland (1.0 to 0.0)
+        if (c > 0.0D) {
+            return BiomeListener.TROPICS;
+        }
+
+        // Mainland Beach / Shallows (0.0 to -0.1)
+        if (c > -0.1D) {
+            return BiomeListener.TROPICS_BEACH;
+        }
+        
+        // Ocean (-0.1 to -0.4)
+        if (c > -0.4D) {
+            return BiomeListener.TROPICS_OCEAN;
+        }
+        
+        // Deep Ocean (-0.4 to -0.8)
+        if (c > -0.7D) {
+            return BiomeListener.TROPICS_DEEP_OCEAN;
+        }
+
+        // Tropical Island & its surroundings (-0.7 to -1.0)
+        if (c <= -0.7D) {
+            // Tropical Island Beach (-0.8 to -1.0)
+            if (c < -0.85D) {
+                return BiomeListener.TROPICS_ISLAND;
+            }
+
+            return BiomeListener.TROPICS_ISLAND_BEACH;
+        }
+
+        // Stone Layers
+        return BiomeListener.TROPICS;
     }
 
     @Override
@@ -32,9 +100,11 @@ public class TropicsBiomeSource extends BiomeSource {
 
     @Override
     public double[] create(double[] temperatures, int x, int z, int width, int depth) {
-        if (temperatures == null || temperatures.length < width * depth)
+        if (temperatures == null || temperatures.length < width * depth) {
             temperatures = new double[width * depth];
-        Arrays.fill(temperatures, 0, width * depth, 1.0F);
+        }
+        
+        Arrays.fill(temperatures, 0, width * depth, 1.0D);
         return temperatures;
     }
 
