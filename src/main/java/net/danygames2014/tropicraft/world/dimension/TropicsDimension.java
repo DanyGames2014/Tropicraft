@@ -36,6 +36,8 @@ public class TropicsDimension extends Dimension implements TravelMessageProvider
         riverNoise = new TropiNoiseSampler2D(seed + 3, 2, 0.5, 2.0);
         terrainNoise = new TropiNoiseSampler3D(seed + 4, 5, 0.5, 2.0);
         
+        biomeNoise = new TropiNoiseSampler2D(seed + 5, 3, 0.5, 2.0);
+        
         biomeSource = new TropicsBiomeSource(this.world, this);
     }
     
@@ -54,6 +56,4 @@ public class TropicsDimension extends Dimension implements TravelMessageProvider
         this.chunkProvider = new ChunkProviderTropics(this.world, this.world.getSeed(), this);
         return this.chunkProvider;
     }
-
-
 }

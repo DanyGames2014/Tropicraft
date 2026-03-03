@@ -42,7 +42,7 @@ public class BiomeListener {
         ).setSurfaceBlock(Block.LAPIS_BLOCK);
 
         // Island
-        TROPICS_ISLAND_BEACH = new TropiBiome(BiomeBuilder.start("tropics_island")
+        TROPICS_ISLAND_BEACH = new TropiBiome(BiomeBuilder.start("tropics_island_beach")
                 .grassAndLeavesColor(0x08CA15)
                 .precipitation(true)
                 .snow(false)
@@ -50,7 +50,7 @@ public class BiomeListener {
                 .build()
         ).setSurfaceBlock(Tropicraft.purifiedSand);
 
-        TROPICS_ISLAND = new TropiBiome(BiomeBuilder.start("tropics_island_deep")
+        TROPICS_ISLAND = new TropiBiome(BiomeBuilder.start("tropics_island")
                 .grassAndLeavesColor(0x08CA15)
                 .precipitation(true)
                 .snow(false)
@@ -81,7 +81,7 @@ public class BiomeListener {
                 .snow(false)
                 .noDimensionFeatures()
                 .build()
-        ).setSurfaceBlock(Block.SAND);
+        ).setSurfaceBlock(Block.CLAY);
 
         TROPICS_RAINFOREST = new TropiBiome(BiomeBuilder.start("tropics_rainforest")
                 .grassAndLeavesColor(0x08FA36)
@@ -89,7 +89,7 @@ public class BiomeListener {
                 .snow(false)
                 .noDimensionFeatures()
                 .build()
-        ).setSurfaceBlock(Block.GRASS_BLOCK);
+        ).setSurfaceBlock(Block.OBSIDIAN);
 
         TROPICS_ORCHARD = new TropiBiome(BiomeBuilder.start("tropics_orchard")
                 .grassAndLeavesColor(0x08FA36)
@@ -97,7 +97,7 @@ public class BiomeListener {
                 .snow(false)
                 .noDimensionFeatures()
                 .build()
-        ).setSurfaceBlock(Block.GRASS_BLOCK);
+        ).setSurfaceBlock(Block.MOSSY_COBBLESTONE);
 
         TROPICS_RIVER = new TropiBiome(BiomeBuilder.start("tropics_river")
                 .grassAndLeavesColor(0x08FA36)
@@ -105,7 +105,7 @@ public class BiomeListener {
                 .snow(false)
                 .noDimensionFeatures()
                 .build()
-        ).setSurfaceBlock(Block.SAND);
+        ).setSurfaceBlock(Block.BRICKS);
 
         TROPICS_PLAINS = new TropiBiome(BiomeBuilder.start("tropics_plains")
                 .grassAndLeavesColor(0x08FA36)
@@ -113,7 +113,7 @@ public class BiomeListener {
                 .snow(false)
                 .noDimensionFeatures()
                 .build()
-        ).setSurfaceBlock(Block.GRASS_BLOCK);
+        ).setSurfaceBlock(Block.IRON_BLOCK);
 
         TROPICS_PEAKS = new TropiBiome(BiomeBuilder.start("tropics_peaks")
                 .grassAndLeavesColor(0x08FA36)

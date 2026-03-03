@@ -1,6 +1,6 @@
 package net.danygames2014.tropicraft.world.dimension;
 
-import net.danygames2014.tropicraft.Tropicraft;
+import net.danygames2014.tropicraft.init.BiomeListener;
 import net.danygames2014.tropicraft.util.MathHelper;
 import net.danygames2014.tropicraft.util.Spline;
 import net.minecraft.block.Block;
@@ -17,6 +17,7 @@ import java.util.Random;
 
 public class ChunkProviderTropics implements ChunkSource {
     private final World world;
+    private final TropicsBiomeSource biomeSource;
     public Random random;
 
     public Spline heightSpline = new Spline();
@@ -34,6 +35,7 @@ public class ChunkProviderTropics implements ChunkSource {
 
     public ChunkProviderTropics(World world, long seed, TropicsDimension tropicsDimension) {
         this.world = world;
+        this.biomeSource = (TropicsBiomeSource) tropicsDimension.biomeSource;
         this.random = new Random(seed);
 
         this.continentalNoise = tropicsDimension.continentalNoise;
@@ -129,7 +131,7 @@ public class ChunkProviderTropics implements ChunkSource {
         // Air & Water
         if (density[y] <= 0.0D) {
             // Anything below sea level that isn't solid ground becomes water
-            return (y <= 64) ? States.AIR.get() : States.AIR.get();
+            return (y <= 64) ? Block.WATER.getDefaultState() : States.AIR.get();
         }
 
         // Terrain
@@ -150,15 +152,15 @@ public class ChunkProviderTropics implements ChunkSource {
             if (y <= 63) {
                 if (riv < 0.06D) {
                     // River Bed
-                    return Block.BRICKS.getDefaultState();
+                    return BiomeListener.TROPICS_RIVER.surfaceBlock.getDefaultState();
                 } else {
                     // Ocean Floor
                     if (c < -0.4D) {
-                        return Block.LAPIS_BLOCK.getDefaultState();
+                        return BiomeListener.TROPICS_DEEP_OCEAN.surfaceBlock.getDefaultState();
                     }
                     
                     // Shallow Ocean Floor
-                    return Block.DIAMOND_BLOCK.getDefaultState();
+                    return BiomeListener.TROPICS_OCEAN.surfaceBlock.getDefaultState();
                 }
             }
 
@@ -166,25 +168,25 @@ public class ChunkProviderTropics implements ChunkSource {
             
             // Mainland Beach / Shallows (-0.5 to 0.0)
             if (c < 0.0D && c > -0.5D && y <= beachLimit) {
-                return Block.SAND.getDefaultState();
+                return BiomeListener.TROPICS_BEACH.surfaceBlock.getDefaultState();
             }
             
             // Mainland (1.0 to 0.0)
             if (c > 0.0D) {
                 if (y > 90) {
-                    return Block.STONE.getDefaultState();
+                    return BiomeListener.TROPICS_PEAKS.surfaceBlock.getDefaultState();
                 } else {
-                    return Block.GRASS_BLOCK.getDefaultState();
+                    return biomeSource.getTropiBiome(x,z,c,e,riv).surfaceBlock.getDefaultState();
                 }
             }
 
             // Tropical Island & its surroundings (~ -0.7 to -1.0)
             if (c < -0.7D) {
                 if (c > -0.85D) {
-                    return Tropicraft.purifiedSand.getDefaultState();
+                    return BiomeListener.TROPICS_ISLAND_BEACH.surfaceBlock.getDefaultState();
                 }
 
-                return Block.GRASS_BLOCK.getDefaultState();
+                return BiomeListener.TROPICS_ISLAND.surfaceBlock.getDefaultState();
             }
         }
 

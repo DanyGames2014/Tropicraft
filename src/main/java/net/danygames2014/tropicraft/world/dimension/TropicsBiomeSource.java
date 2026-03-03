@@ -1,16 +1,11 @@
 package net.danygames2014.tropicraft.world.dimension;
 
 import net.danygames2014.tropicraft.init.BiomeListener;
-import net.danygames2014.tropicraft.item.food.PinaColadaItem;
 import net.danygames2014.tropicraft.world.biome.TropiBiome;
-import net.danygames2014.tropicraft.world.olddimension.OldTropiNoiseSampler;
-import net.danygames2014.tropicraft.world.olddimension.OldTropicsDimension;
-import net.minecraft.block.Block;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.source.BiomeSource;
-import net.modificationstation.stationapi.api.block.States;
 
 import java.util.Arrays;
 
@@ -52,6 +47,9 @@ public class TropicsBiomeSource extends BiomeSource {
         return getTropiBiome(x, z, c, e, riv).biome;
     }
 
+    double lowest = Double.MAX_VALUE;
+    double highest = Double.MIN_VALUE;
+    
     public TropiBiome getTropiBiome(int x, int z, double c, double e, double riv) {
         // River
         if (c > -0.1 && riv < 0.06D) {
@@ -60,7 +58,24 @@ public class TropicsBiomeSource extends BiomeSource {
         }
 
         // Mainland (1.0 to 0.0)
-        if (c > 0.0D) {
+        if (c > -0.05D) {
+            double value = biomeNoise.samplePoint(x, z, 0.002, 0.002) * 1.9D;
+            
+            highest = Math.max(highest, value);
+            lowest = Math.min(lowest, value);
+            
+            if (value > 0.5D) {
+                return BiomeListener.TROPICS_RAINFOREST;
+            }
+            
+            if (value > -0.1D && value < 0.35D) {
+                return BiomeListener.TROPICS_ORCHARD;
+            }
+            
+            if (value > -0.7D && value < -0.4D) {
+                return BiomeListener.TROPICS_PLAINS;
+            }
+            
             return BiomeListener.TROPICS;
         }
 
