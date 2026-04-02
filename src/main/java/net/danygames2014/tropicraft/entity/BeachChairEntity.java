@@ -41,9 +41,9 @@ public class BeachChairEntity extends Entity implements EntitySpawnDataProvider,
                 if (this.passenger != null && this.passenger instanceof PlayerEntity player) {
                     LivingEntityAccessor playerA = (LivingEntityAccessor) player;
                     if (playerA.jumping()) {
-                        System.out.println("JUMP");
-                        System.out.println(playerA.rightMovement());
-                        System.out.println(playerA.frontMovement());
+//                        System.out.println("JUMP");
+//                        System.out.println(playerA.rightMovement());
+//                        System.out.println(playerA.frontMovement());
                         if (playerA.rightMovement() > 0.9F) {
                             this.yaw -= random.nextFloat(5.0F, 10.0F);
                             this.addVelocity(0, 0.2D, 0);
@@ -136,13 +136,11 @@ public class BeachChairEntity extends Entity implements EntitySpawnDataProvider,
         if (this.passenger != null && this.passenger instanceof PlayerEntity && this.passenger != player) {
             return true;
         }
+        
         if (!this.world.isRemote && !player.isSneaking()) {
             player.setVehicle(this);
         }
 
-        if (player.isSneaking()) {
-            player.sendMessage(FabricLoader.getInstance().getEnvironmentType().name() + " Color: " + this.getColor());
-        }
         return true;
     }
 

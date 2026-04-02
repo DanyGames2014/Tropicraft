@@ -77,10 +77,6 @@ public class PoisonousFrogEntity extends FrogEntity implements MobSpawnDataProvi
         }
 
         this.yaw = (float) (Math.atan2(zPos, xPos) * 180.0 / 3.1415927410125732) - 90.0F;
-
-        if(other instanceof PlayerEntity player){
-            player.heal(20);
-        }
     }
 
     @Override
