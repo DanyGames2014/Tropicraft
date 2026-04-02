@@ -17,6 +17,7 @@ public class TallPalmTreeFeature extends Feature {
     public TallPalmTreeFeature(World world) {
         BlockState palmLog = Tropicraft.palmLog.getDefaultState();
         BlockState palmLeaves = Tropicraft.palmLeaves.getDefaultState();
+        BlockState coconut = Tropicraft.coconut.getDefaultState();
 
         this.structure = new TreeStructure(world, palmLog, CollisionType.DONT_GENERATE);
 
@@ -26,6 +27,12 @@ public class TallPalmTreeFeature extends Feature {
         structure.addBlock(-1, 0, 0, palmLog);
         structure.addBlock(0, 0, 1, palmLog);
         structure.addBlock(0, 0, -1, palmLog);
+
+        // Coconuts
+        structure.addBlock(-1, -1, 0, coconut);
+        structure.addBlock(1, -1, 0, coconut);
+        structure.addBlock(0, -1, -1, coconut);
+        structure.addBlock(0, -1, 1, coconut);
 
         // Center Leaves
         structure.addBlock(0, 1, 0, palmLeaves);

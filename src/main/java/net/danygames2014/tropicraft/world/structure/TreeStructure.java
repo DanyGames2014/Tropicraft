@@ -1,5 +1,6 @@
 package net.danygames2014.tropicraft.world.structure;
 
+import net.danygames2014.tropicraft.Tropicraft;
 import net.minecraft.world.World;
 import net.modificationstation.stationapi.api.block.BlockState;
 
@@ -37,5 +38,16 @@ public class TreeStructure extends Structure {
         }
 
         return true;
+    }
+
+    @Override
+    public boolean placeState(World world, int x, int y, int z, BlockState state, CollisionType collisionType) {
+        if (state.isOf(Tropicraft.coconut)) {
+            if (random.nextInt(2) == 1) {
+                return false;
+            }
+        }
+        
+        return super.placeState(world, x, y, z, state, collisionType);
     }
 }

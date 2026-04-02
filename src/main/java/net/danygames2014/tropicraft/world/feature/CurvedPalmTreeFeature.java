@@ -17,6 +17,7 @@ public class CurvedPalmTreeFeature extends Feature {
     public CurvedPalmTreeFeature(World world) {
         BlockState palmLog = Tropicraft.palmLog.getDefaultState();
         BlockState palmLeaves = Tropicraft.palmLeaves.getDefaultState();
+        BlockState coconut = Tropicraft.coconut.getDefaultState();
 
         this.structure = new Structure(world);
 
@@ -33,6 +34,12 @@ public class CurvedPalmTreeFeature extends Feature {
         structure.addBlock(3, 6, 0, palmLog);
         structure.addBlock(3, 7, 0, palmLog);
         structure.addBlock(3, 8, 0, palmLog);
+
+        // Side Coconuts
+        structure.addBlock(4, 7, 0, coconut);
+        structure.addBlock(2, 7, 0, coconut);
+        structure.addBlock(3, 7, -1, coconut);
+        structure.addBlock(3, 7, 1, coconut);
 
         // Leaves Core
         structure.addBlock(4, 8, 0, palmLeaves);
