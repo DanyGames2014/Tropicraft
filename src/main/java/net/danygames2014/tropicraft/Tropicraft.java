@@ -76,7 +76,6 @@ public class Tropicraft {
     // TODO : ???Bamboo Item Frame???
     public static Item bambooShootItem;
     public static Item bambooStickItem;
-
     // TODO : Bamboo Mug
     // TODO : Bamboo Spear
     // TODO : Bamboo Fishing Rod
@@ -133,24 +132,34 @@ public class Tropicraft {
     public static Block bromeliad;
     public static Block iris;
 
-    // Pineapple
+    // Food & Drinks
     public static Block pineapple;
     public static Item pineappleCubes;
-
-    // Drinks
-    public static Item pinaColada;
-
-    // Food
     public static Block frogBlock;
     public static Item frogLeg;
     public static Item cookedFrogLeg;
-
-    // Beach Equipment
-    public static Item colorCloner;
-    public static Item beachChair;
+    public static Item pinaColada;
+    // TODO: Fertilizer
 
     // Mob Drops
     public static Item poisonousFrogSkin;
+    
+    // Equipment
+    public static Item colorCloner;
+    public static Item beachChair;
+    // TODO: Beach Floats
+    // TODO: Beach Umbrella
+    // TODO: Blow Gun
+    // TODO: Fishing Net
+    // TODO: Fish Bucket
+    // TODO: Snorkel
+    // TODO: Flippers
+    // TODO: Dagger
+    // TODO: Ashen Masks
+
+    // Resources
+    // TODO: Eudialyte
+    // TODO: Zircon
 
     // Scale
     public static Item scale;
