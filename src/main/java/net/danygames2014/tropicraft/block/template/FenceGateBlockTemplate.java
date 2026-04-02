@@ -37,9 +37,25 @@ public class FenceGateBlockTemplate extends TemplateBlock {
     @Override
     public boolean onUse(World world, int x, int y, int z, PlayerEntity player) {
         BlockState state = world.getBlockState(x, y, z);
-        world.setBlockState(x, y, z, state.with(OPEN, !state.get(OPEN)));
+
+        if (state.get(OPEN)) {
+            world.setBlockStateWithNotify(x, y, z, state.with(OPEN, false));
+            world.playSound(x, y, z, getCloseSound(world, x, y, z), 1.0F, (world.random.nextFloat() * 0.1F) + 0.9F);
+        } else {
+            world.setBlockStateWithNotify(x, y, z, state.with(OPEN, true));
+            world.playSound(x, y, z, getOpenSound(world, x, y, z), 1.0F, (world.random.nextFloat() * 0.1F) + 0.9F);
+        }
+
         world.setBlockDirty(x, y, z);
         return true;
+    }
+
+    public String getOpenSound(World world, int x, int y, int z) {
+        return "random.door_open";
+    }
+
+    public String getCloseSound(World world, int x, int y, int z) {
+        return "random.door_close";
     }
 
     public Box generateBox(World world, int x, int y, int z, boolean collider) {
