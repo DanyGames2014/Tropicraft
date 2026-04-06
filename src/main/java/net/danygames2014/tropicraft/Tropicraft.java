@@ -59,9 +59,6 @@ public class Tropicraft {
     @ConfigRoot(value = "worldgen", visibleName = "Worldgen")
     public static final Config.WorldgenConfig WORLDGEN_CONFIG = new Config.WorldgenConfig();
 
-    // Achievement Page
-    public static TropicraftAchievementPage achievementPage;
-
     // Bamboo
     public static Block bambooShootBlock;
     public static Block bambooBundle;
@@ -378,19 +375,11 @@ public class Tropicraft {
         StationAPI.EVENT_BUS.post(new SiftingRecipeRegisterEvent());
     }
 
-    @EventListener
-    public void registerAchievements(AchievementRegisterEvent event) {
-        achievementPage = new TropicraftAchievementPage(NAMESPACE.id("tropicraft"));
-        event.achievements.addAll(TropicraftAchievements.ACHIEVEMENTS);
-        achievementPage.addAchievements(TropicraftAchievements.ACHIEVEMENTS.toArray(Achievement[]::new));
-        TropicraftAchievements.ACHIEVEMENTS.forEach(Stat::addStat);
-    }
-
     @Environment(EnvType.CLIENT)
     @EventListener
     public void onTextureRegister(TextureRegisterEvent event) {
         ExpandableAtlas atlas = Atlases.getTerrain();
 
-        achievementPage.updateTextures(atlas);
+        TropicraftAchievements.achievementPage.updateTextures(atlas);
     }
 }

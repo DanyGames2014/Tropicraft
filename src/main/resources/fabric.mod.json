@@ -21,7 +21,8 @@
       "net.danygames2014.tropicraft.init.InitListener",
       "net.danygames2014.tropicraft.init.EntitySpawnListener",
       "net.danygames2014.tropicraft.init.BiomeListener",
-      "net.danygames2014.tropicraft.init.FlammableRegisterListener"
+      "net.danygames2014.tropicraft.init.FlammableRegisterListener",
+      "net.danygames2014.tropicraft.achievement.TropicraftAchievements"
     ],
     "stationapi:event_bus_client": [
       "net.danygames2014.tropicraft.init.ColorizerListener"

@@ -140,6 +140,7 @@ dim.tropicraft.tropics.leaving=Leaving the Tropics!
 tab.tropicraft.tropicraft.name=Tropicraft
 
 # Achievements
+gui.stationapi.achievementPage.tropicraft.tropicraft=Tropicraft
 achievement.tropicraft.bamboozled=Bamboozled!
 achievement.tropicraft.bamboozled.desc=Get some bamboo, the most important material in Tropicraft
 achievement.tropicraft.escape=If you like Pina Coladas
