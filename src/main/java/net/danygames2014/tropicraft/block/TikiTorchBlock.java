@@ -74,6 +74,10 @@ public class TikiTorchBlock extends TemplateBlock {
     protected void checkValidPlacement(World world, int x, int y, int z) {
         BlockState state = world.getBlockState(x, y, z);
 
+        if (!state.contains(TIKI_TORCH_PART)) {
+            return;
+        }
+        
         switch (state.get(TIKI_TORCH_PART)) {
             case UPPER -> {
                 if (!(world.getBlockState(x, y - 1, z).isOf(this) && world.getBlockState(x, y - 1, z).get(TIKI_TORCH_PART) == TikiTorchPart.MIDDLE)) {
@@ -108,7 +112,7 @@ public class TikiTorchBlock extends TemplateBlock {
     public List<ItemStack> getDropList(World world, int x, int y, int z, BlockState state, int meta) {
         ArrayList<ItemStack> drops = new ArrayList<>();
 
-        if (state.get(TIKI_TORCH_PART) == TikiTorchPart.UPPER) {
+        if (state.contains(TIKI_TORCH_PART) && state.get(TIKI_TORCH_PART) == TikiTorchPart.UPPER) {
             drops.add(new ItemStack(this, 1));
         }
 
