@@ -28,6 +28,11 @@ public class PalmSaplingBlock extends TemplateBlock {
         generateTree(world, random, x, y, z);
     }
 
+    @Override
+    public boolean canPlaceAt(World world, int x, int y, int z) {
+        return world.getBlockState(x, y - 1, z).isIn(TagKey.of(BlockRegistry.INSTANCE.getKey(), Tropicraft.NAMESPACE.id("palm_grows_on")));
+    }
+
     public boolean generateTree(World world, Random random, int x, int y, int z) {
         if (world.isRemote) {
             return false;
