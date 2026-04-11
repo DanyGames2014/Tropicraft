@@ -13,6 +13,8 @@ import net.modificationstation.stationapi.api.state.property.Properties;
 import net.modificationstation.stationapi.api.template.block.TemplateChestBlock;
 import net.modificationstation.stationapi.api.util.Identifier;
 
+import javax.sound.sampled.BooleanControl;
+
 public class BambooChestBlock extends TemplateChestBlock {
     public static final EnumProperty<ChestType> CHEST_TYPE = EnumProperty.of("chest_type", ChestType.class);
 
@@ -57,60 +59,62 @@ public class BambooChestBlock extends TemplateChestBlock {
         this.checkChestConnection(world, x, y, z);
     }
 
-    @Override
-    public boolean onUse(World world, int x, int y, int z, PlayerEntity player) {
-        this.checkChestConnection(world, x, y, z);
-        return super.onUse(world, x, y, z, player);
-    }
-
     public void checkChestConnection(World world, int x, int y, int z) {
         BlockState state = world.getBlockState(x, y, z);
+
+        boolean connected = false;
         for (BlockPos offset : offsets) {
             BlockState otherState = world.getBlockState(x + offset.x, y + offset.y, z + offset.z);
             if (canConnectTo(world, x, y, z, otherState)) {
+                state = state.with(Properties.HORIZONTAL_FACING, otherState.get(Properties.HORIZONTAL_FACING));
+                
+                connected = true;
                 switch (state.get(Properties.HORIZONTAL_FACING)) {
                     case EAST:
                         if (offset.x == -1) {
-                            world.setBlockState(x, y, z, state.with(CHEST_TYPE, ChestType.LEFT));
+                            world.setBlockStateWithNotify(x, y, z, state.with(CHEST_TYPE, ChestType.LEFT));
                         } else if (offset.x == 1) {
-                            world.setBlockState(x, y, z, state.with(CHEST_TYPE, ChestType.RIGHT));
+                            world.setBlockStateWithNotify(x, y, z, state.with(CHEST_TYPE, ChestType.RIGHT));
                         }
                         break;
 
                     case WEST:
                         if (offset.x == 1) {
-                            world.setBlockState(x, y, z, state.with(CHEST_TYPE, ChestType.LEFT));
+                            world.setBlockStateWithNotify(x, y, z, state.with(CHEST_TYPE, ChestType.LEFT));
                         } else if (offset.x == -1) {
-                            world.setBlockState(x, y, z, state.with(CHEST_TYPE, ChestType.RIGHT));
+                            world.setBlockStateWithNotify(x, y, z, state.with(CHEST_TYPE, ChestType.RIGHT));
                         }
                         break;
 
                     case NORTH:
                         if (offset.z == 1) {
-                            world.setBlockState(x, y, z, state.with(CHEST_TYPE, ChestType.LEFT));
+                            world.setBlockStateWithNotify(x, y, z, state.with(CHEST_TYPE, ChestType.LEFT));
                         } else if (offset.z == -1) {
-                            world.setBlockState(x, y, z, state.with(CHEST_TYPE, ChestType.RIGHT));
+                            world.setBlockStateWithNotify(x, y, z, state.with(CHEST_TYPE, ChestType.RIGHT));
                         }
                         break;
 
                     case SOUTH:
                         if (offset.z == -1) {
-                            world.setBlockState(x, y, z, state.with(CHEST_TYPE, ChestType.LEFT));
+                            world.setBlockStateWithNotify(x, y, z, state.with(CHEST_TYPE, ChestType.LEFT));
                         } else if (offset.z == 1) {
-                            world.setBlockState(x, y, z, state.with(CHEST_TYPE, ChestType.RIGHT));
+                            world.setBlockStateWithNotify(x, y, z, state.with(CHEST_TYPE, ChestType.RIGHT));
                         }
                         break;
                 }
             }
+        }
+
+        System.err.println(connected);
+        if (!connected) {
+            world.setBlockStateWithNotify(x, y, z, state.with(CHEST_TYPE, ChestType.SINGLE));
         }
     }
 
     public boolean canConnectTo(World world, int x, int y, int z, BlockState otherChest) {
         BlockState state = world.getBlockState(x, y, z);
         if (state.isOf(this) && otherChest.isOf(this)) {
-            if (state.get(Properties.HORIZONTAL_FACING) == otherChest.get(Properties.HORIZONTAL_FACING)) {
-                return true; //otherChest.get(CHEST_TYPE) == ChestType.SINGLE;
-            }
+            return true;
         }
         return false;
     }
