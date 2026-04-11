@@ -3,6 +3,7 @@ package net.danygames2014.tropicraft.block;
 import net.danygames2014.tropicraft.Tropicraft;
 import net.danygames2014.tropicraft.world.ChunkDecorationListener;
 import net.minecraft.block.material.Material;
+import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
 import net.modificationstation.stationapi.api.block.BlockState;
 import net.modificationstation.stationapi.api.registry.BlockRegistry;
@@ -52,6 +53,11 @@ public class PalmSaplingBlock extends TemplateBlock {
             }
         }
         return false;
+    }
+
+    @Override
+    public Box getCollisionShape(World world, int x, int y, int z) {
+        return null;
     }
 
     @Override
