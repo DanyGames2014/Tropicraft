@@ -39,7 +39,7 @@ public class BambooPatchFeature extends Feature {
                     break;
                     //continue; This should probably not continue
                 }
-                world.setBlockState(pos.x, pos.y, pos.z, Tropicraft.bambooShootBlock.getDefaultState());
+                world.setBlockStateWithoutNotifyingNeighbors(pos.x, pos.y, pos.z, Tropicraft.bambooShootBlock.getDefaultState());
             }
         }
         return true;

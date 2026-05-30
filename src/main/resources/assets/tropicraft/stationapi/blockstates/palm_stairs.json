@@ -1,17 +1,17 @@
 {
   "variants": {
-    "facing=north": {
+    "facing=east": {
       "model": "tropicraft:block/palm_stairs"
     },
-    "facing=east": {
+    "facing=soth": {
       "model": "tropicraft:block/palm_stairs",
       "y": 90
     },
-    "facing=south": {
+    "facing=west": {
       "model": "tropicraft:block/palm_stairs",
       "y": 180
     },
-    "facing=west": {
+    "facing=north": {
       "model": "tropicraft:block/palm_stairs",
       "y": 270
     }

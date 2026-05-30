@@ -1,6 +1,5 @@
 package net.danygames2014.tropicraft;
 
-import net.danygames2014.tropicraft.achievement.TropicraftAchievementPage;
 import net.danygames2014.tropicraft.achievement.TropicraftAchievements;
 import net.danygames2014.tropicraft.block.*;
 import net.danygames2014.tropicraft.block.bamboochest.BambooChestBlock;
@@ -24,21 +23,17 @@ import net.fabricmc.api.Environment;
 import net.fabricmc.loader.api.FabricLoader;
 import net.glasslauncher.mods.gcapi3.api.ConfigRoot;
 import net.mine_diver.unsafeevents.listener.EventListener;
-import net.minecraft.achievement.Achievement;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
-import net.minecraft.stat.Stat;
-import net.minecraft.world.dimension.Dimension;
 import net.modificationstation.stationapi.api.StationAPI;
 import net.modificationstation.stationapi.api.client.event.block.entity.BlockEntityRendererRegisterEvent;
 import net.modificationstation.stationapi.api.client.event.render.entity.EntityRendererRegisterEvent;
 import net.modificationstation.stationapi.api.client.event.texture.TextureRegisterEvent;
 import net.modificationstation.stationapi.api.client.texture.atlas.Atlases;
 import net.modificationstation.stationapi.api.client.texture.atlas.ExpandableAtlas;
-import net.modificationstation.stationapi.api.event.achievement.AchievementRegisterEvent;
 import net.modificationstation.stationapi.api.event.block.entity.BlockEntityRegisterEvent;
-import net.modificationstation.stationapi.api.event.entity.EntityRegister;
+import net.modificationstation.stationapi.api.event.entity.EntityRegisterEvent;
 import net.modificationstation.stationapi.api.event.registry.*;
 import net.modificationstation.stationapi.api.mod.entrypoint.Entrypoint;
 import net.modificationstation.stationapi.api.registry.DimensionContainer;
@@ -313,17 +308,17 @@ public class Tropicraft {
     }
 
     @EventListener
-    public void registerEntities(EntityRegister event) {
-        event.register(BeachChairEntity.class, "beach_chair");
-        event.register(IguanaEntity.class, "iguana");
-        event.register(EIHEntity.class, "eih");
-        event.register(FrogEntity.class, "frog");
-        event.register(RedPoisonousFrogEntity.class, "red_poison_frog");
-        event.register(BluePoisonousFrogEntity.class, "blue_poison_frog");
-        event.register(YellowPoisonousFrogEntity.class, "yellow_poison_frog");
-        event.register(PoisonBlotEntity.class, "poison_blot");
-        event.register(TropiCreeperEntity.class, "tropicreeper");
-        event.register(TropiSkeletonEntity.class, "tropiskeleton");
+    public void registerEntities(EntityRegisterEvent event) {
+        event.register(NAMESPACE.id("beach_chair"), BeachChairEntity.class);
+        event.register(NAMESPACE.id("iguana"), IguanaEntity.class);
+        event.register(NAMESPACE.id("eih"), EIHEntity.class);
+        event.register(NAMESPACE.id("frog"), FrogEntity.class);
+        event.register(NAMESPACE.id("red_poison_frog"), RedPoisonousFrogEntity.class);
+        event.register(NAMESPACE.id("blue_poison_frog"), BluePoisonousFrogEntity.class);
+        event.register(NAMESPACE.id("yellow_poison_frog"), YellowPoisonousFrogEntity.class);
+        event.register(NAMESPACE.id("poison_blot"), PoisonBlotEntity.class);
+        event.register(NAMESPACE.id("tropicreeper"), TropiCreeperEntity.class);
+        event.register(NAMESPACE.id("tropiskeleton"), TropiSkeletonEntity.class);
     }
 
     @EventListener
@@ -361,13 +356,13 @@ public class Tropicraft {
 
     @EventListener
     public void registerBlockEntity(BlockEntityRegisterEvent event) {
-        event.register(SifterBlockEntity.class, "sifter");
+        event.register(NAMESPACE.id("sifter"), SifterBlockEntity.class);
     }
 
     @Environment(EnvType.CLIENT)
     @EventListener
     public void registerBlockEntityRenderer(BlockEntityRendererRegisterEvent event) {
-        event.renderers.put(SifterBlockEntity.class, new SifterBlockEntityRenderer());
+        event.register(SifterBlockEntity.class, new SifterBlockEntityRenderer());
     }
 
     @EventListener

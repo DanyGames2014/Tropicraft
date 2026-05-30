@@ -10,10 +10,10 @@ import net.modificationstation.stationapi.api.template.block.TemplateBlock;
 import net.modificationstation.stationapi.api.util.Identifier;
 
 public class FenceBlockTemplate extends TemplateBlock {
-    public static final BooleanProperty NORTH = BooleanProperty.of("north"); // X--
-    public static final BooleanProperty SOUTH = BooleanProperty.of("south"); // X++
-    public static final BooleanProperty EAST = BooleanProperty.of("east"); // Z--
-    public static final BooleanProperty WEST = BooleanProperty.of("west"); // Z++
+    public static final BooleanProperty NORTH = BooleanProperty.of("north");
+    public static final BooleanProperty SOUTH = BooleanProperty.of("south");
+    public static final BooleanProperty EAST = BooleanProperty.of("east");
+    public static final BooleanProperty WEST = BooleanProperty.of("west");
 
     public FenceBlockTemplate(Identifier identifier, Block baseBlock) {
         super(identifier, baseBlock.material);
@@ -36,7 +36,7 @@ public class FenceBlockTemplate extends TemplateBlock {
             return null;
         }
 
-        Box box = Box.create(state.get(NORTH) ? 0 : 0.375F, 0F, state.get(EAST) ? 0F : 0.375F, state.get(SOUTH) ? 1F : 0.625F, 1F, state.get(WEST) ? 1.F : 0.625F);
+        Box box = Box.create(state.get(WEST) ? 0 : 0.375F, 0F, state.get(NORTH) ? 0F : 0.375F, state.get(EAST) ? 1F : 0.625F, 1F, state.get(SOUTH) ? 1.F : 0.625F);
 
         box.minX += x;
         box.minY += y;
@@ -77,12 +77,12 @@ public class FenceBlockTemplate extends TemplateBlock {
     public void updateConnections(World world, int x, int y, int z) {
         BlockState state = world.getBlockState(x, y, z);
 
-        state = state.with(NORTH, canConnectTo(world.getBlockState(x - 1, y, z)));
-        state = state.with(SOUTH, canConnectTo(world.getBlockState(x + 1, y, z)));
-        state = state.with(EAST, canConnectTo(world.getBlockState(x, y, z - 1)));
-        state = state.with(WEST, canConnectTo(world.getBlockState(x, y, z + 1)));
+        state = state.with(WEST, canConnectTo(world.getBlockState(x - 1, y, z)));
+        state = state.with(EAST, canConnectTo(world.getBlockState(x + 1, y, z)));
+        state = state.with(NORTH, canConnectTo(world.getBlockState(x, y, z - 1)));
+        state = state.with(SOUTH, canConnectTo(world.getBlockState(x, y, z + 1)));
 
-        world.setBlockState(x, y, z, state);
+        world.setBlockStateWithoutNotifyingNeighbors(x, y, z, state);
     }
 
     public boolean canConnectTo(BlockState state) {

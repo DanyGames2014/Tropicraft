@@ -43,7 +43,7 @@ public class FlowerPatchFeature extends Feature {
             int y = world.getTopY(x, z);
 
             if (world.getBlockState(x,y,z).isAir() && world.getBlockState(x, y - 1, z).isIn(TagKey.of(BlockRegistry.INSTANCE.getKey(), Tropicraft.NAMESPACE.id("flower_grows_on")))) {
-                world.setBlockState(x, y, z, flowers[random.nextInt(0, 16)]);
+                world.setBlockStateWithoutNotifyingNeighbors(x, y, z, flowers[random.nextInt(0, 16)]);
             } else {
                 if (retriesRemaining > 0) {
                     i--;

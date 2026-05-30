@@ -1,9 +1,7 @@
 package net.danygames2014.tropicraft.block.bamboochest;
 
 import net.minecraft.block.Block;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.modificationstation.stationapi.api.block.BlockState;
 import net.modificationstation.stationapi.api.item.ItemPlacementContext;
@@ -12,8 +10,6 @@ import net.modificationstation.stationapi.api.state.property.EnumProperty;
 import net.modificationstation.stationapi.api.state.property.Properties;
 import net.modificationstation.stationapi.api.template.block.TemplateChestBlock;
 import net.modificationstation.stationapi.api.util.Identifier;
-
-import javax.sound.sampled.BooleanControl;
 
 public class BambooChestBlock extends TemplateChestBlock {
     public static final EnumProperty<ChestType> CHEST_TYPE = EnumProperty.of("chest_type", ChestType.class);
@@ -70,44 +66,43 @@ public class BambooChestBlock extends TemplateChestBlock {
                 
                 connected = true;
                 switch (state.get(Properties.HORIZONTAL_FACING)) {
-                    case EAST:
-                        if (offset.x == -1) {
-                            world.setBlockStateWithNotify(x, y, z, state.with(CHEST_TYPE, ChestType.LEFT));
-                        } else if (offset.x == 1) {
-                            world.setBlockStateWithNotify(x, y, z, state.with(CHEST_TYPE, ChestType.RIGHT));
-                        }
-                        break;
-
-                    case WEST:
-                        if (offset.x == 1) {
-                            world.setBlockStateWithNotify(x, y, z, state.with(CHEST_TYPE, ChestType.LEFT));
-                        } else if (offset.x == -1) {
-                            world.setBlockStateWithNotify(x, y, z, state.with(CHEST_TYPE, ChestType.RIGHT));
-                        }
-                        break;
-
                     case NORTH:
-                        if (offset.z == 1) {
-                            world.setBlockStateWithNotify(x, y, z, state.with(CHEST_TYPE, ChestType.LEFT));
-                        } else if (offset.z == -1) {
-                            world.setBlockStateWithNotify(x, y, z, state.with(CHEST_TYPE, ChestType.RIGHT));
+                        if (offset.x == -1) {
+                            world.setBlockState(x, y, z, state.with(CHEST_TYPE, ChestType.LEFT));
+                        } else if (offset.x == 1) {
+                            world.setBlockState(x, y, z, state.with(CHEST_TYPE, ChestType.RIGHT));
                         }
                         break;
 
                     case SOUTH:
+                        if (offset.x == 1) {
+                            world.setBlockState(x, y, z, state.with(CHEST_TYPE, ChestType.LEFT));
+                        } else if (offset.x == -1) {
+                            world.setBlockState(x, y, z, state.with(CHEST_TYPE, ChestType.RIGHT));
+                        }
+                        break;
+
+                    case WEST:
+                        if (offset.z == 1) {
+                            world.setBlockState(x, y, z, state.with(CHEST_TYPE, ChestType.LEFT));
+                        } else if (offset.z == -1) {
+                            world.setBlockState(x, y, z, state.with(CHEST_TYPE, ChestType.RIGHT));
+                        }
+                        break;
+
+                    case EAST:
                         if (offset.z == -1) {
-                            world.setBlockStateWithNotify(x, y, z, state.with(CHEST_TYPE, ChestType.LEFT));
+                            world.setBlockState(x, y, z, state.with(CHEST_TYPE, ChestType.LEFT));
                         } else if (offset.z == 1) {
-                            world.setBlockStateWithNotify(x, y, z, state.with(CHEST_TYPE, ChestType.RIGHT));
+                            world.setBlockState(x, y, z, state.with(CHEST_TYPE, ChestType.RIGHT));
                         }
                         break;
                 }
             }
         }
 
-        System.err.println(connected);
         if (!connected) {
-            world.setBlockStateWithNotify(x, y, z, state.with(CHEST_TYPE, ChestType.SINGLE));
+            world.setBlockState(x, y, z, state.with(CHEST_TYPE, ChestType.SINGLE));
         }
     }
 

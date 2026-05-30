@@ -6,9 +6,9 @@ import net.minecraft.achievement.Achievement;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.stat.Stat;
 import net.modificationstation.stationapi.api.event.achievement.AchievementRegisterEvent;
 import net.modificationstation.stationapi.api.mod.entrypoint.Entrypoint;
+import net.modificationstation.stationapi.api.template.achievement.TemplateAchievement;
 import net.modificationstation.stationapi.api.util.Namespace;
 
 import java.util.ArrayList;
@@ -21,7 +21,6 @@ public class TropicraftAchievements {
     // Achievement Page
     public static TropicraftAchievementPage achievementPage;
     public static final ArrayList<Achievement> ACHIEVEMENTS = new ArrayList<>();
-    private static int achievementId = 13400;
 
     // Achievements    
     public static Achievement BAMBOOZLED;
@@ -47,17 +46,17 @@ public class TropicraftAchievements {
         achievementPage = new TropicraftAchievementPage(NAMESPACE.id("tropicraft"));
         event.achievements.addAll(TropicraftAchievements.ACHIEVEMENTS);
         achievementPage.addAchievements(TropicraftAchievements.ACHIEVEMENTS.toArray(Achievement[]::new));
-        TropicraftAchievements.ACHIEVEMENTS.forEach(Stat::addStat);
+        //TropicraftAchievements.ACHIEVEMENTS.forEach(Stat::addStat);
     }
     
     public static Achievement create(String name, Item icon, int x, int y, Achievement parent){
-        Achievement achievement = new Achievement(achievementId++, "tropicraft." + name, x, y, new ItemStack(icon), parent);
+        Achievement achievement = new TemplateAchievement(NAMESPACE.id(name), "tropicraft." + name, x, y, new ItemStack(icon), parent);
         ACHIEVEMENTS.add(achievement);
         return achievement;
     }
 
     public static Achievement create(String name, Block icon, int x, int y, Achievement parent){
-        Achievement achievement = new Achievement(achievementId++, "tropicraft." + name, x, y, new ItemStack(icon), parent);
+        Achievement achievement = new TemplateAchievement(NAMESPACE.id(name), "tropicraft." + name, x, y, new ItemStack(icon), parent);
         ACHIEVEMENTS.add(achievement);
         return achievement;
     }

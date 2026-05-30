@@ -39,10 +39,10 @@ public class FenceGateBlockTemplate extends TemplateBlock {
         BlockState state = world.getBlockState(x, y, z);
 
         if (state.get(OPEN)) {
-            world.setBlockStateWithNotify(x, y, z, state.with(OPEN, false));
+            world.setBlockState(x, y, z, state.with(OPEN, false));
             world.playSound(x, y, z, getCloseSound(world, x, y, z), 1.0F, (world.random.nextFloat() * 0.1F) + 0.9F);
         } else {
-            world.setBlockStateWithNotify(x, y, z, state.with(OPEN, true));
+            world.setBlockState(x, y, z, state.with(OPEN, true));
             world.playSound(x, y, z, getOpenSound(world, x, y, z), 1.0F, (world.random.nextFloat() * 0.1F) + 0.9F);
         }
 

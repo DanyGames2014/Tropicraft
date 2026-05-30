@@ -72,10 +72,10 @@ public class SlabBlockTemplate extends TemplateBlock {
                 if (world.getBlockId(x, y + offset, z) == this.id) {
                     if (direction == 0 && world.getBlockState(x, y + offset, z).get(SLAB_TYPE) == SlabType.TOP) {
                         world.setBlock(x, y, z, 0);
-                        world.setBlockState(x, y + offset, z, this.getDefaultState().with(SLAB_TYPE, SlabType.DOUBLE));
+                        world.setBlockStateWithoutNotifyingNeighbors(x, y + offset, z, this.getDefaultState().with(SLAB_TYPE, SlabType.DOUBLE));
                     } else if (direction == 1 && world.getBlockState(x, y + offset, z).get(SLAB_TYPE) == SlabType.BOTTOM) {
                         world.setBlock(x, y, z, 0);
-                        world.setBlockState(x, y + offset, z, this.getDefaultState().with(SLAB_TYPE, SlabType.DOUBLE));
+                        world.setBlockStateWithoutNotifyingNeighbors(x, y + offset, z, this.getDefaultState().with(SLAB_TYPE, SlabType.DOUBLE));
                     }
                 }
             }

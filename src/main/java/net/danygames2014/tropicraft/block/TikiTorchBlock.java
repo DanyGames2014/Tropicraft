@@ -82,21 +82,21 @@ public class TikiTorchBlock extends TemplateBlock {
             case UPPER -> {
                 if (!(world.getBlockState(x, y - 1, z).isOf(this) && world.getBlockState(x, y - 1, z).get(TIKI_TORCH_PART) == TikiTorchPart.MIDDLE)) {
                     dropStack(world, x, y, z, new ItemStack(this.asItem(), 1, 0));
-                    world.setBlockStateWithNotify(x, y, z, States.AIR.get());
+                    world.setBlockState(x, y, z, States.AIR.get());
                 }
             }
             case MIDDLE -> {
                 if (!(world.getBlockState(x, y - 1, z).isOf(this) && world.getBlockState(x, y - 1, z).get(TIKI_TORCH_PART) == TikiTorchPart.LOWER)) {
-                    world.setBlockStateWithNotify(x, y, z, States.AIR.get());
+                    world.setBlockState(x, y, z, States.AIR.get());
                 }
 
                 if (!(world.getBlockState(x, y + 1, z).isOf(this) && world.getBlockState(x, y + 1, z).get(TIKI_TORCH_PART) == TikiTorchPart.UPPER)) {
-                    world.setBlockStateWithNotify(x, y, z, States.AIR.get());
+                    world.setBlockState(x, y, z, States.AIR.get());
                 }
             }
             case LOWER -> {
                 if (!(world.getBlockState(x, y + 1, z).isOf(this) && world.getBlockState(x, y + 1, z).get(TIKI_TORCH_PART) == TikiTorchPart.MIDDLE)) {
-                    world.setBlockStateWithNotify(x, y, z, States.AIR.get());
+                    world.setBlockState(x, y, z, States.AIR.get());
                 }
             }
         }

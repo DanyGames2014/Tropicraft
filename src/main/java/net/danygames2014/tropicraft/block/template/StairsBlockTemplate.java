@@ -33,18 +33,8 @@ public class StairsBlockTemplate extends TemplateBlock {
 
     @Override
     public BlockState getPlacementState(ItemPlacementContext context) {
-        PlayerEntity player = context.getPlayer();
         BlockState state = getDefaultState();
-
-        Direction facing = context.getSide();
-
-//        System.out.println("Facing : " + facing + " | Horizontal : " + facing.getAxis().isHorizontal() + " | Vertical : " + facing.getAxis().isVertical());
-
-//        if (facing.getAxis().isHorizontal() && false) {
-//            facing = Direction.fromRotation(player == null ? 0 : (player.yaw - 45.0F));
-//        } else {
-        facing = Direction.fromRotation(player == null ? 0 : player.yaw);
-//        }
+        Direction facing = context.getHorizontalPlayerFacing().getOpposite();
 
         return state.with(FACING, facing);
     }
@@ -52,22 +42,22 @@ public class StairsBlockTemplate extends TemplateBlock {
     @Override
     public void addIntersectingBoundingBox(World world, int x, int y, int z, Box box, ArrayList boxes) {
         Direction facing = world.getBlockState(x, y, z).get(FACING);
-        if (facing == Direction.SOUTH) {
+        if (facing == Direction.WEST) {
             this.setBoundingBox(0.0F, 0.0F, 0.0F, 0.5F, 0.5F, 1.0F);
             super.addIntersectingBoundingBox(world, x, y, z, box, boxes);
             this.setBoundingBox(0.5F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
             super.addIntersectingBoundingBox(world, x, y, z, box, boxes);
-        } else if (facing == Direction.NORTH) {
+        } else if (facing == Direction.EAST) {
             this.setBoundingBox(0.0F, 0.0F, 0.0F, 0.5F, 1.0F, 1.0F);
             super.addIntersectingBoundingBox(world, x, y, z, box, boxes);
             this.setBoundingBox(0.5F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F);
             super.addIntersectingBoundingBox(world, x, y, z, box, boxes);
-        } else if (facing == Direction.WEST) {
+        } else if (facing == Direction.NORTH) {
             this.setBoundingBox(0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 0.5F);
             super.addIntersectingBoundingBox(world, x, y, z, box, boxes);
             this.setBoundingBox(0.0F, 0.0F, 0.5F, 1.0F, 1.0F, 1.0F);
             super.addIntersectingBoundingBox(world, x, y, z, box, boxes);
-        } else if (facing == Direction.EAST) {
+        } else if (facing == Direction.SOUTH) {
             this.setBoundingBox(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.5F);
             super.addIntersectingBoundingBox(world, x, y, z, box, boxes);
             this.setBoundingBox(0.0F, 0.0F, 0.5F, 1.0F, 0.5F, 1.0F);

@@ -73,7 +73,7 @@ public class TropiCreeperEntity extends CreeperEntity implements MobSpawnDataPro
                     }
 
                     if (random.nextInt(3) == 0) {
-                        world.setBlockStateWithNotify(x + xOffset, y + yOffset, z + zOffset, flowers[random.nextInt(0, 16)]);
+                        world.setBlockState(x + xOffset, y + yOffset, z + zOffset, flowers[random.nextInt(0, 16)]);
                     }
                 }
             }

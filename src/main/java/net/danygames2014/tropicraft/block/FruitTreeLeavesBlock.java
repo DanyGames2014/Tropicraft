@@ -50,9 +50,9 @@ public class FruitTreeLeavesBlock extends TemplateBlock {
         BlockState state = world.getBlockState(x, y, z);
 
         if (player.isSneaking()) {
-            world.setBlockStateWithNotify(x,y,z,state.cycle(VARIANT));
+            world.setBlockState(x,y,z,state.cycle(VARIANT));
         } else {
-            world.setBlockStateWithNotify(x,y,z,state.cycle(HAS_FRUIT));
+            world.setBlockState(x,y,z,state.cycle(HAS_FRUIT));
         }
 
         return true;

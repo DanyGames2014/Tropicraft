@@ -21,8 +21,8 @@ public class PineapplePatchFeature extends Feature {
             int y = world.getTopY(x, z);
 
             if (world.getBlockState(x, y - 1, z).isIn(TagKey.of(BlockRegistry.INSTANCE.getKey(), Tropicraft.NAMESPACE.id("pineapple_grows_on")))) {
-                world.setBlockState(x, y, z, Tropicraft.pineapple.getDefaultState().with(PineappleBlock.PINEAPPLE_HALF, PineappleBlock.PineappleHalf.BOTTOM));
-                world.setBlockState(x, y+1, z, Tropicraft.pineapple.getDefaultState().with(PineappleBlock.PINEAPPLE_HALF, PineappleBlock.PineappleHalf.TOP));
+                world.setBlockStateWithoutNotifyingNeighbors(x, y, z, Tropicraft.pineapple.getDefaultState().with(PineappleBlock.PINEAPPLE_HALF, PineappleBlock.PineappleHalf.BOTTOM));
+                world.setBlockStateWithoutNotifyingNeighbors(x, y+1, z, Tropicraft.pineapple.getDefaultState().with(PineappleBlock.PINEAPPLE_HALF, PineappleBlock.PineappleHalf.TOP));
             } else {
                 if (retriesRemaining > 0) {
                     i--;
