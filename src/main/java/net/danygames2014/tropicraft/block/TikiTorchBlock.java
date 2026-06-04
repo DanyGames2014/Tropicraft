@@ -27,6 +27,7 @@ public class TikiTorchBlock extends TemplateBlock {
         super(identifier, Material.WOOD);
         this.setBoundingBox(0.4375F, 0.0F, 0.4375F, 0.5625F, 1.0F, 0.5625F);
         this.setTickRandomly(true);
+        this.setLuminance(1.0F);
     }
 
     @Environment(EnvType.CLIENT)
@@ -62,7 +63,7 @@ public class TikiTorchBlock extends TemplateBlock {
 
     @Override
     public boolean canPlaceAt(World world, int x, int y, int z, int side) {
-        return world.getBlockState(x, y + 1, z).isAir() && world.getBlockState(x, y + 2, z).isAir();
+        return world.shouldSuffocate(x, y - 1, z) && world.getBlockState(x, y + 1, z).isAir() && world.getBlockState(x, y + 2, z).isAir();
     }
 
     @Override
@@ -96,6 +97,10 @@ public class TikiTorchBlock extends TemplateBlock {
             }
             case LOWER -> {
                 if (!(world.getBlockState(x, y + 1, z).isOf(this) && world.getBlockState(x, y + 1, z).get(TIKI_TORCH_PART) == TikiTorchPart.MIDDLE)) {
+                    world.setBlockState(x, y, z, States.AIR.get());
+                }
+                
+                if (!world.shouldSuffocate(x, y - 1, z)) {
                     world.setBlockState(x, y, z, States.AIR.get());
                 }
             }
