@@ -126,12 +126,16 @@ item.tropicraft.white_pearl.name=White Pearl
 item.tropicraft.black_pearl.name=Black Pearl
 
 # Entity
-entity.spawneggs.iguana.name=Iguana
-entity.spawneggs.eih.name=Easter Island Head
-entity.spawneggs.frog.name=Green Frog
-entity.spawneggs.red_poison_frog.name=Red Poisonous Frog
-entity.spawneggs.blue_poison_frog.name=Blue Poisonous Frog
-entity.spawneggs.yellow_poison_frog.name=Yellow Poisonous Frog
+entity.tropicraft.beach_chair.name=Beach Chair
+entity.tropicraft.iguana.name=Iguana
+entity.tropicraft.eih.name=Easter Island Head
+entity.tropicraft.frog.name=Green Frog
+entity.tropicraft.red_poison_frog.name=Red Poisonous Frog
+entity.tropicraft.blue_poison_frog.name=Blue Poisonous Frog
+entity.tropicraft.yellow_poison_frog.name=Yellow Poisonous Frog
+entity.tropicraft.posion_blot.name=Poison Blot
+entity.tropicraft.tropicreeper.name=Tropicreeper
+entity.tropicraft.tropiskeleton.name=Tropiskeleton
 
 # Dimension
 dim.tropicraft.tropics.entering=Drifting into the Tropics!
