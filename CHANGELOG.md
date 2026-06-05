@@ -1,1 +1,1 @@
-* Update localization
+* Allow opening/closing fence gates by punching them
