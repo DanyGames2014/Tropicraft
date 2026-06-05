@@ -35,6 +35,12 @@ public class FenceGateBlockTemplate extends TemplateBlock {
     }
 
     @Override
+    public void onBlockBreakStart(World world, int x, int y, int z, PlayerEntity player) {
+        this.onUse(world, x, y, z, player);
+        super.onBlockBreakStart(world, x, y, z, player);
+    }
+
+    @Override
     public boolean onUse(World world, int x, int y, int z, PlayerEntity player) {
         BlockState state = world.getBlockState(x, y, z);
 
