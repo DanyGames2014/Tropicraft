@@ -35,7 +35,7 @@ public class IguanaEntity extends AttackingAnimalEntity implements MobSpawnDataP
     }
 
     @SuppressWarnings("unused")
-    public IguanaEntity(World world, Double x, Double y, Double z) {
+    public IguanaEntity(World world, double x, double y, double z) {
         this(world);
     }
 

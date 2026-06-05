@@ -27,7 +27,7 @@ public class BeachChairEntity extends Entity implements EntitySpawnDataProvider,
         //this.setColor(ColorHelper.getColor(random.nextFloat(), random.nextFloat(), random.nextFloat()));
     }
 
-    public BeachChairEntity(World world, Double x, Double y, Double z) {
+    public BeachChairEntity(World world, double x, double y, double z) {
         this(world);
         this.setPosition(x, y, z);
     }
