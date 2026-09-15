@@ -1,1 +1,1 @@
-* Allow opening/closing fence gates by punching them
+* Always return textures in entities for better compat with SpawnEggs auto-colorization
