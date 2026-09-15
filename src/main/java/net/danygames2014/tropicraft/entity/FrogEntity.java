@@ -45,7 +45,7 @@ public class FrogEntity extends AttackingAnimalEntity implements MobSpawnDataPro
     // Texture
     @Override
     public String getTexture() {
-        return "/assets/tropicraft/stationapi/textures/entity/green.png";
+        return "/assets/tropicraft/stationapi/textures/entity/frog/green.png";
     }
     
     // MobSpawnDataProvider
