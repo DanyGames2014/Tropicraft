@@ -22,11 +22,7 @@ public class TropiSkeletonEntity extends MonsterEntity implements MobSpawnDataPr
         this.attackDamage = 5;
     }
 
-    @Override
-    public String getTexture() {
-        return "/assets/tropicraft/stationapi/textures/entity/tropiskeleton/tropiskeleton.png";
-    }
-
+    // Behaviour
     @Override
     public boolean canSpawn() {
         int spawnX = MathHelper.floor(this.x);
@@ -40,6 +36,26 @@ public class TropiSkeletonEntity extends MonsterEntity implements MobSpawnDataPr
         ) == Block.SAND.id && this.world.getBrightness(spawnX, spawnY, spawnZ) > 8;
     }
 
+    @Override
+    public ItemStack getHeldItem() {
+        return defaultHeldItem;
+    }
+    
+    // Mob Drops
+    @Override
+    protected int getDroppedItemId() {
+        return Item.ARROW.id;
+    }
+
+    @Override
+    protected void dropItems() {
+        int amount = this.random.nextInt(3);
+        for (int i = 0; i < amount; ++i) {
+            this.dropItem(Item.BONE.id, 1);
+        }
+    }
+    
+    // Sounds
     @Override
     protected String getRandomSound() {
         return "mob.skeleton";
@@ -55,24 +71,13 @@ public class TropiSkeletonEntity extends MonsterEntity implements MobSpawnDataPr
         return "mob.skeletonhurt";
     }
 
+    // Texture
     @Override
-    protected int getDroppedItemId() {
-        return Item.ARROW.id;
+    public String getTexture() {
+        return "/assets/tropicraft/stationapi/textures/entity/tropiskeleton.png";
     }
-
-    @Override
-    protected void dropItems() {
-        int amount = this.random.nextInt(3);
-        for (int i = 0; i < amount; ++i) {
-            this.dropItem(Item.BONE.id, 1);
-        }
-    }
-
-    @Override
-    public ItemStack getHeldItem() {
-        return defaultHeldItem;
-    }
-
+    
+    // MobSpawnDataProvider
     @Override
     public Identifier getHandlerIdentifier() {
         return Tropicraft.NAMESPACE.id("tropiskeleton");

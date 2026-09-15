@@ -20,11 +20,13 @@ public class FrogEntity extends AttackingAnimalEntity implements MobSpawnDataPro
         return 3;
     }
 
+    // Mob Drops
     @Override
     protected int getDroppedItemId() {
         return Tropicraft.frogLeg.id;
     }
 
+    // Sound
     @Override
     protected String getRandomSound() {
         return null;
@@ -40,6 +42,13 @@ public class FrogEntity extends AttackingAnimalEntity implements MobSpawnDataPro
         return null;
     }
 
+    // Texture
+    @Override
+    public String getTexture() {
+        return "/assets/tropicraft/stationapi/textures/entity/green.png";
+    }
+    
+    // MobSpawnDataProvider
     @Override
     public Identifier getHandlerIdentifier() {
         return Tropicraft.NAMESPACE.id("frog");

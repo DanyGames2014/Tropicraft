@@ -39,11 +39,6 @@ public class IguanaEntity extends AttackingAnimalEntity implements MobSpawnDataP
         this(world);
     }
 
-    @Override
-    public Identifier getHandlerIdentifier() {
-        return Tropicraft.NAMESPACE.id("iguana");
-    }
-
     // Behaviour
     @Override
     public void tick() {
@@ -144,6 +139,18 @@ public class IguanaEntity extends AttackingAnimalEntity implements MobSpawnDataP
     @Override
     protected float getSoundVolume() {
         return 0.4F;
+    }
+
+    // Texture
+    @Override
+    public String getTexture() {
+        return "/assets/tropicraft/stationapi/textures/entity/iguana.png";
+    }
+
+    // MobSpawnDataProvider
+    @Override
+    public Identifier getHandlerIdentifier() {
+        return Tropicraft.NAMESPACE.id("iguana");
     }
 
     // NBT

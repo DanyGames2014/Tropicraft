@@ -22,11 +22,7 @@ public class TropiCreeperEntity extends CreeperEntity implements MobSpawnDataPro
         this.setBoundingBoxSpacing(0.9F, 1.3F);
     }
 
-    @Override
-    public String getTexture() {
-        return "/assets/tropicraft/stationapi/textures/entity/tropicreeper/tropicreeper.png";
-    }
-
+    // Behavior
     @Override
     public void attack(Entity other, float distance) {
         if (!this.world.isRemote) {
@@ -80,6 +76,13 @@ public class TropiCreeperEntity extends CreeperEntity implements MobSpawnDataPro
         }
     }
 
+    // Texture
+    @Override
+    public String getTexture() {
+        return "/assets/tropicraft/stationapi/textures/entity/tropicreeper.png";
+    }
+    
+    // MobSpawnDataProvider
     @Override
     public Identifier getHandlerIdentifier() {
         return Tropicraft.NAMESPACE.id("tropicreeper");

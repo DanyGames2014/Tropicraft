@@ -79,6 +79,13 @@ public class PoisonousFrogEntity extends FrogEntity implements MobSpawnDataProvi
         this.yaw = (float) (Math.atan2(zPos, xPos) * 180.0 / 3.1415927410125732) - 90.0F;
     }
 
+    // Texture
+    @Override
+    public String getTexture() {
+        return "/assets/tropicraft/stationapi/textures/entity/frog/green.png";
+    }
+    
+    // MobSpawnDataProvider
     @Override
     public Identifier getHandlerIdentifier() {
         return Tropicraft.NAMESPACE.id("poison_frog");
@@ -89,7 +96,14 @@ public class PoisonousFrogEntity extends FrogEntity implements MobSpawnDataProvi
         public RedPoisonousFrogEntity(World world) {
             super(world);
         }
+
+        // Texture
+        @Override
+        public String getTexture() {
+            return "/assets/tropicraft/stationapi/textures/entity/frog/red.png";
+        }
         
+        // MobSpawnDataProvider
         @Override
         public Identifier getHandlerIdentifier() {
             return Tropicraft.NAMESPACE.id("red_poison_frog");
@@ -102,6 +116,13 @@ public class PoisonousFrogEntity extends FrogEntity implements MobSpawnDataProvi
             super(world);
         }
 
+        // Texture
+        @Override
+        public String getTexture() {
+            return "/assets/tropicraft/stationapi/textures/entity/frog/blue.png";
+        }
+        
+        // MobSpawnDataProvider
         @Override
         public Identifier getHandlerIdentifier() {
             return Tropicraft.NAMESPACE.id("blue_poison_frog");
@@ -114,6 +135,13 @@ public class PoisonousFrogEntity extends FrogEntity implements MobSpawnDataProvi
             super(world);
         }
 
+        // Texture
+        @Override
+        public String getTexture() {
+            return "/assets/tropicraft/stationapi/textures/entity/frog/yellow.png";
+        }
+        
+        // MobSpawnDataProvider
         @Override
         public Identifier getHandlerIdentifier() {
             return Tropicraft.NAMESPACE.id("yellow_poison_frog");

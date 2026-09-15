@@ -32,6 +32,7 @@ public class BeachChairEntity extends Entity implements EntitySpawnDataProvider,
         this.setPosition(x, y, z);
     }
 
+    // Behaviour
     @Override
     public void tick() {
         super.tick();
@@ -155,6 +156,19 @@ public class BeachChairEntity extends Entity implements EntitySpawnDataProvider,
         return true;
     }
 
+    // Texture
+    @Override
+    public String getTexture() {
+        return "/assets/tropicraft/stationapi/textures/entity/beach_chair/beach_chair_red.png";
+    }
+    
+    // EntitySpawnDataProvider
+    @Override
+    public Identifier getHandlerIdentifier() {
+        return Tropicraft.NAMESPACE.id("beach_chair");
+    }
+    
+    // Dyeable
     @Override
     public int getColor() {
         return this.dataTracker.getInt(16);
@@ -201,10 +215,5 @@ public class BeachChairEntity extends Entity implements EntitySpawnDataProvider,
     @Override
     public void readFromMessage(MessagePacket message) {
         this.dataTracker.set(16, Integer.valueOf(message.ints[5]));
-    }
-
-    @Override
-    public Identifier getHandlerIdentifier() {
-        return Tropicraft.NAMESPACE.id("beach_chair");
     }
 }

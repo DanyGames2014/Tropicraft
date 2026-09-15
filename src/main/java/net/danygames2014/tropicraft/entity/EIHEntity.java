@@ -23,11 +23,6 @@ public class EIHEntity extends AttackingAnimalEntity implements MobSpawnDataProv
         this.setBoundingBoxSpacing(1.0F, 3.0F);
     }
 
-    @Override
-    public Identifier getHandlerIdentifier() {
-        return Tropicraft.NAMESPACE.id("eih");
-    }
-
     @SuppressWarnings("UnnecessaryBoxing")
     @Override
     protected void initDataTracker() {
@@ -156,6 +151,18 @@ public class EIHEntity extends AttackingAnimalEntity implements MobSpawnDataProv
         return "tropicraft:entity.eih.death";
     }
 
+    // Texture
+    @Override
+    public String getTexture() {
+        return "/assets/tropicraft/stationapi/textures/entity/eih/normal.png";
+    }
+    
+    // MobSpawnDataProvider
+    @Override
+    public Identifier getHandlerIdentifier() {
+        return Tropicraft.NAMESPACE.id("eih");
+    }
+    
     // NBT
     @Override
     public void writeNbt(NbtCompound nbt) {

@@ -52,6 +52,7 @@ public class PoisonBlotEntity extends ArrowEntity implements EntitySpawnDataProv
         this.setVelocity(this.velocityX, this.velocityY, this.velocityZ, 1.5F, 1.0F);
     }
 
+    // Behavior
     public void setVelocity(double x, double y, double z, float speed, float divergence) {
         float var9 = MathHelper.sqrt(x * x + y * y + z * z);
         x /= var9;
@@ -178,19 +179,27 @@ public class PoisonBlotEntity extends ArrowEntity implements EntitySpawnDataProv
         this.setPosition(this.x, this.y, this.z);
     }
 
-    public void writeNbt(NbtCompound nbt) {
-    }
-
-    public void readNbt(NbtCompound nbt) {
-    }
-
     @Override
     public void onPlayerInteraction(PlayerEntity player) {
         // We are not picking up poison from the ground :-)
     }
 
+    // Texture
+    @Override
+    public String getTexture() {
+        return "/assets/tropicraft/stationapi/textures/entity/frog/poison_blot.png";
+    }
+    
+    // EntitySpawnDataProvider
     @Override
     public Identifier getHandlerIdentifier() {
         return Tropicraft.NAMESPACE.id("poison_blot");
+    }
+    
+    // NBT
+    public void writeNbt(NbtCompound nbt) {
+    }
+
+    public void readNbt(NbtCompound nbt) {
     }
 }
